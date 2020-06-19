@@ -331,7 +331,7 @@ Public Class frmRepAntigHIST
             Dim nClientes As Integer = 0
             Dim nDiasVencido As Integer = 0
             Dim nGestion As Integer = 0
-            Dim nPlazo As Byte
+            Dim nPlazoX As Byte
             Dim nSaldoFac As Decimal
             Dim nSaldoInsoluto As Decimal
             Dim cConvenioJUR As String
@@ -474,7 +474,7 @@ Public Class frmRepAntigHIST
                 cNombre = drFactura("Descr")
                 cAnexo = drFactura("Anexo")
                 cLetra = drFactura("Letra")
-                nPlazo = drFactura("Plazo")
+                nPlazoX = drFactura("Plazo")
                 cPromotor = drFactura("DescPromotor")
                 cInicialesPromotor = drFactura("Iniciales")
                 cGestor = Trim(drFactura("Gestor"))
@@ -590,7 +590,7 @@ Public Class frmRepAntigHIST
                         drAnexo("Cliente") = cCliente
                         drAnexo("Nombre") = cNombre
                         drAnexo("Letra") = cLetra
-                        drAnexo("Plazo") = nPlazo
+                        drAnexo("Plazo") = nPlazoX
                         drAnexo("Dia") = 1
                         drAnexo("Saldo") = nSaldoInsoluto
                         drAnexo("Col1a29") = 0

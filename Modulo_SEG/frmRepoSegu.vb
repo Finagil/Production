@@ -238,7 +238,6 @@ Public Class frmRepoSegu
             Dim nMes As Integer
             Dim nMpt As Integer
             Dim nMptseg As Integer
-            Dim nPlazo As Integer
             Dim nSaldoEquipo As Decimal
 
             'dECLARACION DE VARIABLES PARA RESUMEN
@@ -366,8 +365,6 @@ Public Class frmRepoSegu
             For Each drDato In dsAgil.Tables("Anexos").Rows
                 cAnexo = drDato("Anexo")
                 lProcesar = True
-
-                nPlazo = drDato("Plazo")
                 cTermina = DTOC(Termina(cAnexo))
 
                 ' Solo procesa contratos que terminen con posterioridad a la fecha de proceso

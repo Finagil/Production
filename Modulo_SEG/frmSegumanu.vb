@@ -587,7 +587,7 @@ Public Class frmSegumanu
         Dim i As Int16
         Dim nVencimiento As Int32
         Dim nMesesxtrans As Int32
-        Dim nPlazo As Int32
+        Dim nPlazoX As Int32
         Dim nIntEquipo As Decimal
         Dim nCarEquipo As Decimal
         Dim nSaldoEquipo As Decimal
@@ -654,7 +654,7 @@ Public Class frmSegumanu
 
         txtCusnam.Text = drAnexo("Descr")
         cCliente = drAnexo("Cliente")
-        nPlazo = drAnexo("Plazo")
+        nPlazoX = drAnexo("Plazo")
         nTasaApli = (drAnexo("Tasas") + drAnexo("Difer")) / 1200
         txtTasaAp.Text = nTasaApli
 
@@ -746,7 +746,7 @@ Public Class frmSegumanu
                     MsgBox("Existe algún ERROR en el contrato (No existen Amortizaciones futuras para cargar el seguro)", MsgBoxStyle.OkOnly, "Mensaje")
                     Me.Close()
                 Else
-                    nMesesxtrans = nPlazo - nVencimiento + 1
+                    nMesesxtrans = nPlazoX - nVencimiento + 1
                     txtVencimiento.Text = nVencimiento
                     txtMeses.Text = nMesesxtrans
                     txtFecha.Text = Mes(cFeven)

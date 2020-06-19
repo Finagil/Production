@@ -285,7 +285,7 @@ Public Class frmFisicas
         Dim nInteresOtros As Decimal = 0
         Dim nMoi As Decimal
         Dim nMop As Integer
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nRenta As Decimal
         Dim nSaldoEquipo As Decimal = 0
         Dim nSaldoSeguro As Decimal = 0
@@ -473,7 +473,7 @@ Public Class frmFisicas
             cCiudad = drAnexo("DescPlaza")
             cEstado = drAnexo("BC")
             cCP = drAnexo("Copos")
-            nPlazo = drAnexo("Plazo")
+            nPlazoX = drAnexo("Plazo")
             cFlcan = drAnexo("Flcan")
             cApertura = drAnexo("Fechacon")
             cTermina = DTOC(Termina(cAnexo))
@@ -489,7 +489,7 @@ Public Class frmFisicas
             nMoi = drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin")
             nRenta = drAnexo("Mensu")
             If nRenta = 0 Then
-                nRenta = nMoi / nPlazo
+                nRenta = nMoi / nPlazoX
             End If
             If cFlcan = "C" Then
                 nRenta = 0
@@ -664,7 +664,7 @@ Public Class frmFisicas
                 strInsert = strInsert & cEstado & "', '"
                 strInsert = strInsert & cCP & "', '"
                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "-" & Mid(cAnexo, 6, 4) & "', '"
-                strInsert = strInsert & nPlazo.ToString & "', '"
+                strInsert = strInsert & nPlazoX.ToString & "', '"
                 strInsert = strInsert & Round(nRenta, 0).ToString & "', '"
                 strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
                 strInsert = strInsert & Mid(cUltPago, 7, 2) & Mid(cUltPago, 5, 2) & Mid(cUltPago, 1, 4) & "', '"
@@ -773,7 +773,7 @@ Public Class frmFisicas
                     strInsert = strInsert & rx.Abreviado & "', '"
                     strInsert = strInsert & rx.Copos & "', '"
                     strInsert = strInsert & Mid(cAnexo, 1, 5) & "-" & Mid(cAnexo, 6, 4) & "', '"
-                    strInsert = strInsert & nPlazo.ToString & "', '"
+                    strInsert = strInsert & nPlazoX.ToString & "', '"
                     strInsert = strInsert & Round(nRenta, 0).ToString & "', '"
                     strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
                     strInsert = strInsert & Mid(cUltPago, 7, 2) & Mid(cUltPago, 5, 2) & Mid(cUltPago, 1, 4) & "', '"

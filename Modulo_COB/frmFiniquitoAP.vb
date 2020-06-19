@@ -106,7 +106,6 @@ Public Class frmFiniquitoAP
     Dim nNota As Decimal = 0
     Dim nOpcion As Decimal = 0
     Dim nPagoTotal As Decimal = 0
-    Dim nPlazo As Integer = 0
     Dim nPorieq As Decimal = 0
     Dim nRD As Byte = 0
     Dim nSaldoBonifica As Decimal = 0
@@ -252,7 +251,6 @@ Public Class frmFiniquitoAP
             cTipar = drAnexo("Tipar")
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fecha_pago")
-            nPlazo = drAnexo("Plazo")
             cTipta = drAnexo("Tipta")
             nDifer = drAnexo("Difer")
             cFinse = drAnexo("Finse")
@@ -684,11 +682,16 @@ Public Class frmFiniquitoAP
         txtTasaAplicada.Text = FormatNumber(nTasaFact, 4)
         txtPenalizacion.Text = FormatNumber(nTasaPen, 2)
         txtDiasIntereses.Text = FormatNumber(nDiasFact, 0)
-        txtOpcion.Text = FormatNumber(nOpcion, 2)
-        txtIvaOpcion.Text = FormatNumber(nIvaOpcion, 2)
+        'txtOpcion.Text = FormatNumber(nOpcion, 2)
+        'txtIvaOpcion.Text = FormatNumber(nIvaOpcion, 2) YA NO SE TOMA EN CEUNTA POR SOLICITUD DE VCRUZ
         txtPagoTotal.Text = FormatNumber(nPagoTotal, 2)
 
         Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
+        If TaQUERY.AvisosSinFacturar(cAnexo, "29990101") <= 0 Then
+            MessageBox.Show("el contrato ya no tienes rentas por facturar, por lo que no es posible realziar un finiquito", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
+        End If
+
         If SaldoFavor > 0 Then
             MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -715,6 +718,7 @@ Public Class frmFiniquitoAP
         nPenalizacion = CDbl(txtPenalizacion.Text)
         nDiasIntereses = CDbl(txtDiasIntereses.Text)
         nOC = CDbl(txtOpcion.Text)
+
 
         ' Se recalcula el IVA de la Opción de Compra
 

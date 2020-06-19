@@ -5,14 +5,14 @@ Imports System.Math
 
 Module mCuentaPagos
 
-    Public Sub CuentaPagos(ByVal cAnexo As String, ByRef nPagos As Byte)
+    Public Sub CuentaPagos(ByVal cAnexo As String)
 
         ' Declaración de variables de conexión ADO .NET
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
+        Dim nPagos As Integer
 
-        nPagos = 0
 
         ' Tengo que tomar los vencimientos de capital o interés (o ambos) que no hayan sido prepagados.
         ' Esto incluye vencimientos facturados y no facturados.

@@ -1193,6 +1193,9 @@ Public Class frmCalcfiniAP
             ' Validando que el Contrato esté en cartera 
             MsgBox("No existe la tabla de amortización de este contrato", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
+        ElseIf TaQUERY.AvisosSinFacturar(cAnexo, "29990101") <= 0 Then
+            MsgBox("el contrato ya no tienes rentas por facturar, por lo que no es posible realziar un finiquito", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            Me.Close()
         End If
 
         GroupBox1.Visible = True
@@ -1225,6 +1228,7 @@ Public Class frmCalcfiniAP
         If Trim(drAnexo("OCPagado")) = "S" Then
             nOpcion = 0
         End If
+        nOpcion = 0 ' seimpre cero, vcruz solicito quitarlo para finiquitos donde aun tenga plazo
 
         ' Determina saldo de Rentas en Depósito
 

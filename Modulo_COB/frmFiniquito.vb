@@ -106,7 +106,6 @@ Public Class frmFiniquito
     Dim nNota As Decimal = 0
     Dim nOpcion As Decimal = 0
     Dim nPagoTotal As Decimal = 0
-    Dim nPlazo As Integer = 0
     Dim nPorieq As Decimal = 0
     Dim nRD As Byte = 0
     Dim nSaldoBonifica As Decimal = 0
@@ -255,7 +254,6 @@ Public Class frmFiniquito
             End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fecha_pago")
-            nPlazo = drAnexo("Plazo")
             cTipta = drAnexo("Tipta")
             nDifer = drAnexo("Difer")
             cFinse = drAnexo("Finse")
@@ -733,6 +731,10 @@ Public Class frmFiniquito
         txtPagoTotal.Text = FormatNumber(nPagoTotal, 2)
 
         Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
+        If TaQUERY.AvisosSinFacturar(cAnexo, "29990101") <= 0 Then
+            MessageBox.Show("el contrato ya no tienes Letras por facturar, por lo que no es posible realziar un finiquito", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
+        End If
         If SaldoFavor > 0 Then
             MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

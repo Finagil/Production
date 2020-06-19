@@ -928,7 +928,7 @@ Module mProcesos
 
     End Function
 
-    Public Function TerminaANT(dInicio As Date, nplazo As Decimal) As Date
+    Public Function TerminaANT(dInicio As Date, nplazoX As Decimal) As Date
 
         Dim nDay As Byte
         Dim nYear As Integer
@@ -941,8 +941,8 @@ Module mProcesos
         Dim nDia As Integer
 
         nDay = Day(dInicio)
-        nMonth = (Month(dInicio) + (nplazo Mod 12)) - 1
-        nYear = Year(dInicio) + Int(nplazo / 12)
+        nMonth = (Month(dInicio) + (nplazoX Mod 12)) - 1
+        nYear = Year(dInicio) + Int(nplazoX / 12)
         If nMonth > 12 Then
             nMonth -= 12
             nYear += 1

@@ -447,7 +447,6 @@ Public Class frmCaptsegu
         Dim cFeven As String
         Dim lBienesFac As Boolean
         Dim nVencimiento As Int32
-        Dim nPlazo As Int32
         Dim nIntEquipo As Decimal
         Dim nCarEquipo As Decimal
         Dim nSaldoEquipo As Decimal
@@ -502,7 +501,6 @@ Public Class frmCaptsegu
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
 
         txtCusnam.Text = drAnexo("Descr")
-        nPlazo = drAnexo("Plazo")
         nTasaApli = (drAnexo("Tasas") + drAnexo("Difer")) / 1200
 
         If drAnexo("Flcan") <> "A" Then

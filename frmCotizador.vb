@@ -43,7 +43,7 @@ Public Class frmCotizador
     Dim nNafin As Decimal = 0
     Dim nOpcion As Decimal = 11500.0
     Dim nPagosIniciales As Decimal = 0
-    Dim nPlazo As Decimal = 36
+    Dim nPlazoX As Decimal = 36
     Dim nPorCo As Decimal = 2.0
     Dim nPorieq As Decimal = 16
     Dim nPorOp As Decimal = 1.0
@@ -69,7 +69,7 @@ Public Class frmCotizador
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
         Dim cm6 As New SqlCommand()
-        
+
         Dim dsAgil As New DataSet()
         Dim daTasasAplicables As New SqlDataAdapter(cm1)
         Dim daFrecuencias As New SqlDataAdapter(cm2)
@@ -82,7 +82,7 @@ Public Class frmCotizador
         ' Declaración de variables de datos
 
         Dim i As Byte
-   
+
         ' Con este Stored Procedure obtengo la información del periodo vigente
 
         With cm7
@@ -756,7 +756,7 @@ Public Class frmCotizador
             End If
 
             nSaldoEquipo = Round(nImpEq - nIvaEq - nAmorin - nEnganche, 2)
-            nPlazo = Val(cbPlazo.SelectedItem)
+            nPlazoX = Val(cbPlazo.SelectedItem)
 
             ' En esta parte se determina la tasa a partir de los datos del financiamiento o del crédito
             ' y en el caso de Arrendamiento Puro se determina el porcentaje de valor residual
@@ -794,7 +794,7 @@ Public Class frmCotizador
             ' el diferencial (si es un contrato con tasa variable) y 
             ' el porcentaje de valor residual (si se trata de un arrendamiento puro)
 
-            TasaAplicable(cTipar, cTipta, nPlazo, nIvaEq, lRD, nRD, lDG, nDG, dsAgil, nTasas, nDifer, nPorOp)
+            TasaAplicable(cTipar, cTipta, nPlazoX, nIvaEq, lRD, nRD, lDG, nDG, dsAgil, nTasas, nDifer, nPorOp)
 
             nTasaAplicable = (nTasas + nDifer) / 1200
 
@@ -847,13 +847,13 @@ Public Class frmCotizador
 
                 ' Arrendamiento Financiero o Crédito Refaccionario
 
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, 0), 2)
 
             ElseIf cTipar = "P" Then
 
                 ' Arrendamiento Puro
 
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, nResidual), 2)
 
             End If
 
@@ -900,17 +900,17 @@ Public Class frmCotizador
                 nRentaEquipo = Round(nMensu, 2)
             ElseIf cForca = "2" Then
                 If cTipar = "F" Or cTipar = "R" Then
-                    nAbCap = Round((nSaldoEquipo) / nPlazo, 2)
+                    nAbCap = Round((nSaldoEquipo) / nPlazoX, 2)
                 ElseIf cTipar = "P" Then
-                    nAbCap = Round((nSaldoEquipo - nResidual) / nPlazo, 2)
+                    nAbCap = Round((nSaldoEquipo - nResidual) / nPlazoX, 2)
                 End If
             End If
 
-            nSuma = nPlazo - Val(cbRD.SelectedItem)
+            nSuma = nPlazoX - Val(cbRD.SelectedItem)
 
             dtTabla.Clear()
 
-            For nLetra = 1 To nPlazo
+            For nLetra = 1 To nPlazoX
 
                 nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
 
@@ -920,7 +920,7 @@ Public Class frmCotizador
                     nCapitalEquipo = nAbCap
                 End If
 
-                If (cTipar = "F" Or cTipar = "R") And nLetra = nPlazo Then
+                If (cTipar = "F" Or cTipar = "R") And nLetra = nPlazoX Then
                     nCapitalEquipo = nSaldoEquipo
                     nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
                 End If
@@ -1087,7 +1087,7 @@ Public Class frmCotizador
             dtCotiza.Clear()
 
             drDato = dtCotiza.NewRow()
-            drDato("Letras") = nPlazo.ToString
+            drDato("Letras") = nPlazoX.ToString
             drDato("Valfac") = nImpEq
             drDato("Ivafac") = nIvaEq
             drDato("Facsiniva") = nSubtotal
@@ -1480,7 +1480,7 @@ Public Class frmCotizador
         ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptImpreFac
         ' dsImprimir.WriteXml("C:\Schema43.xml", XmlWriteMode.WriteSchema)
         cReportComments = "ATENCIÓN : " & txtDescr.Text
-        cMostrar = "Tabla de Amortización a " & nPlazo.ToString & " meses"
+        cMostrar = "Tabla de Amortización a " & nPlazoX.ToString & " meses"
 
         newfrmTablaCotizador = New frmTablaCotizador(cReportTitle, cReportComments, cMostrar, dsImprimir)
         newfrmTablaCotizador.Show()

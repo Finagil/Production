@@ -37,7 +37,6 @@ Public Class frmRepoValo
         Dim nContratos As Decimal
         Dim nFaltantes As Decimal
         Dim nMpt As Integer
-        Dim nPlazo As Integer
         Dim nSaldoEquipo As Decimal
         Dim cReestructura As String
 
@@ -114,8 +113,6 @@ Public Class frmRepoValo
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
 
             lProcesar = True
-
-            nPlazo = drAnexo("Plazo")
             cFvenc = drAnexo("Fvenc")
             If drAnexo("Reestructura") = "S" Then
                 cReestructura = "R"

@@ -1223,7 +1223,6 @@ Public Class frmSeguicre
         Dim cSolicitud As String
         Dim cDisposicion As String
         Dim cTipo As String
-        Dim nPlazo As Integer
         Dim nSdoInsol As Decimal
         Dim nTasaApli As Decimal
         Dim nMensu As Decimal
@@ -1258,7 +1257,6 @@ Public Class frmSeguicre
             drCliente = dsAgil.Tables("Tipo").Rows(0)
             cTipo = drCliente("Tipo")
             cCusnam = drCliente("Descr")
-            nPlazo = drCliente("Plazo")
             nTasaApli = Round((drCliente("Tasas") + drCliente("Difer")) / 1200, 2)
             nSdoInsol = drCliente("Impeq") - drCliente("Ivaeq")
             nMensu = drCliente("Mensu")
@@ -1570,7 +1568,6 @@ Public Class frmSeguicre
         Dim cSolicitud As String
         Dim cDisposicion As String
         Dim cTipo As String
-        Dim nPlazo As Integer
         Dim nSdoInsol As Decimal
         Dim nTasaApli As Decimal
         Dim nMensu As Decimal
@@ -1605,7 +1602,6 @@ Public Class frmSeguicre
             drCliente = dsAgil.Tables("Tipo").Rows(0)
             cTipo = drCliente("Tipo")
             cCusnam = drCliente("Descr")
-            nPlazo = drCliente("Plazo")
             nTasaApli = Round((drCliente("Tasas") + drCliente("Difer")) / 1200, 2)
             nSdoInsol = drCliente("Impeq") - drCliente("Ivaeq")
             nMensu = drCliente("Mensu")

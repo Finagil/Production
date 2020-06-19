@@ -182,7 +182,6 @@ Public Class frmGeneFact
         Public IvaSe As Decimal
         Public Letra As String
         Public Opcion As Decimal
-        Public Plazo As Decimal
         Public RenPr As Decimal
         Public RenSe As Decimal
         Public Saldo As Decimal
@@ -257,7 +256,6 @@ Public Class frmGeneFact
         Dim nIvaInteresOtros As Decimal = 0
         Dim nIvaInteresSeguro As Decimal = 0
         Dim nLetra As Integer = 0
-        Dim nPlazo As Byte = 0
         Dim nPrimaSeguro As Decimal = 0.67
         Dim nPrimaSeguroAux As Decimal = 0
         Dim nSaldoEquipo As Decimal = 0
@@ -562,9 +560,6 @@ Public Class frmGeneFact
                 ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
                 ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-                nPlazo = 0
-                CuentaPagos(cAnexo, nPlazo)
-
                 ' Campos de la Tabla Edoctav
 
                 cFeven = drAnexo("Feven")
@@ -577,7 +572,7 @@ Public Class frmGeneFact
                 nBonifica = 0
                 nIvaCapital = 0
 
-                If nPlazo = nLetra And cTipar = "P" Then ' carga el valor residual de la ultima renta
+                If TaQUERY.UltimaLetra(cAnexo) = nLetra And cTipar = "P" Then ' carga el valor residual de la ultima renta
                     Dim tx As New TesoreriaDSTableAdapters.OpcionesTableAdapter
                     tx.BorraOpcion(cAnexo)
                     Dim nResidual As Decimal = Round((drAnexo("ImpEq") * drAnexo("Porop") / 100), 2)
@@ -983,7 +978,6 @@ Public Class frmGeneFact
                 With aFactura
                     .Anexo = cAnexo
                     .Letra = cLetra
-                    .Plazo = nPlazo
                     .Cliente = cCliente
                     .Feven = cFeven
                     .Fepag = ""
@@ -1220,7 +1214,7 @@ Public Class frmGeneFact
 
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
 
-                If Val(aFactura.Letra) = Val(aFactura.Plazo) Then
+                If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(cAnexo)) Then
                     strUpdate = "UPDATE Opciones SET Exigible = '" & "S'"
                     strUpdate = strUpdate & " WHERE Anexo = '" & aFactura.Anexo & "'"
                     cm1 = New SqlCommand(strUpdate, cnAgil)
@@ -1273,7 +1267,6 @@ Public Class frmGeneFact
         With Fact
             .Anexo = drAnexo("Anexo")
             .Letra = drAnexo("letra")
-            .Plazo = drAnexo("plazo")
             .Cliente = drAnexo("cliente")
             .Feven = drAnexo("feven")
             .Fepag = ""

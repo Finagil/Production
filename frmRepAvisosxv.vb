@@ -43,8 +43,8 @@ Public Class frmRepAvisosxv
         Dim nInteresEquipo As Decimal
         Dim nCarteraEquipo As Decimal
         Dim nRtaven As Byte
-        Dim nPlazo As Byte
-       
+
+
         ' Declaración de variables de Crystal Reports
 
         Dim newrptRepAvisosxv As New rptRepAvisosxVen()
@@ -116,7 +116,6 @@ Public Class frmRepAvisosxv
             cLetra = drAvisos("Letra")
             cFvenc = drAvisos("Feven")
             cTipar = drAvisos("Tipar")
-            nPlazo = drAvisos("Plazo")
             nImpFa = drAvisos("ImporteFac")
             nImpSf = drAvisos("SaldoFac")
             nSegu = drAvisos("Segu")
@@ -143,7 +142,7 @@ Public Class frmRepAvisosxv
             drReporte("Contrato") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)
             drReporte("Cliente") = cCusnam
             drReporte("Feven") = CTOD(cFvenc).ToShortDateString
-            drReporte("Letra") = Val(cLetra).ToString & " de " & nPlazo.ToString
+            drReporte("Letra") = Val(cLetra).ToString & " de " & Val(TaQUERY.UltimaLetra(cAnexo))
             drReporte("Tipar") = cTipar
             drReporte("Saldoa") = nSaldoEquipo
             drReporte("Saldov") = nSdoven

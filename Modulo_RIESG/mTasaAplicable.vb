@@ -1,6 +1,6 @@
 Module mTasaAplicable
 
-    Public Sub TasaAplicable(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazo As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasas As Decimal, ByRef nDifer As Decimal, ByRef nPorOp As Decimal)
+    Public Sub TasaAplicable(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazoX As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasas As Decimal, ByRef nDifer As Decimal, ByRef nPorOp As Decimal)
 
         ' Esta función determina la tasa aplicable a un contrato (si es tasa fija),
         ' el diferencial (si es un contrato con tasa variable) y 
@@ -22,7 +22,7 @@ Module mTasaAplicable
                 If nIvaEq = 0 Then
                     drTasasAplicables = dsAgil.Tables("TVAFsinIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nDifer = drTasaAplicable("Diferencial Aplicable")
                             If lRD = True Then
                                 If nRD = 1 Then
@@ -48,7 +48,7 @@ Module mTasaAplicable
                 Else
                     drTasasAplicables = dsAgil.Tables("TVAFconIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nDifer = drTasaAplicable("Diferencial Aplicable")
                             If lRD = True Then
                                 If lDG = True Then
@@ -91,7 +91,7 @@ Module mTasaAplicable
                 drTasasAplicables = dsAgil.Tables("TVAP").Rows
 
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDifer = drTasaAplicable("Diferencial Aplicable")
                         nPorOp = drTasaAplicable("VR")
                         If lRD = True Then
@@ -122,7 +122,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("TVCR").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDifer = drTasaAplicable("Diferencial Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -142,7 +142,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("TVCS").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDifer = drTasaAplicable("Diferencial Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -171,7 +171,7 @@ Module mTasaAplicable
                 If nIvaEq = 0 Then
                     drTasasAplicables = dsAgil.Tables("AFsinIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nTasas = drTasaAplicable("Tasa Aplicable")
                             If lRD = True Then
                                 If nRD = 1 Then
@@ -197,7 +197,7 @@ Module mTasaAplicable
                 Else
                     drTasasAplicables = dsAgil.Tables("AFconIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nTasas = drTasaAplicable("Tasa Aplicable")
                             If lRD = True Then
                                 If lDG = True Then
@@ -241,7 +241,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("AP").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasas = drTasaAplicable("Tasa Aplicable")
                         nPorOp = drTasaAplicable("VR")
                         If lRD = True Then
@@ -273,7 +273,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("CR").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasas = drTasaAplicable("Tasa Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -295,7 +295,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("CS").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasas = drTasaAplicable("Tasa Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -315,7 +315,7 @@ Module mTasaAplicable
 
     End Sub
 
-    Public Sub TasaAplicablePASIVA(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazo As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasasP As Decimal, ByRef nDiferP As Decimal, ByRef nPorOp As Decimal)
+    Public Sub TasaAplicablePASIVA(ByVal cTipar As String, ByVal cTipta As String, ByVal nPlazoX As Integer, ByVal nIvaEq As Decimal, ByVal lRD As Boolean, ByVal nRD As Byte, ByVal lDG As Boolean, ByVal nDG As Byte, ByVal dsAgil As DataSet, ByRef nTasasP As Decimal, ByRef nDiferP As Decimal, ByRef nPorOp As Decimal)
 
         ' Esta función determina la tasa aplicable a un contrato (si es tasa fija),
         ' el diferencial (si es un contrato con tasa variable) y 
@@ -337,7 +337,7 @@ Module mTasaAplicable
                 If nIvaEq = 0 Then
                     drTasasAplicables = dsAgil.Tables("TVAFsinIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nDiferP = drTasaAplicable("Diferencial Aplicable")
                             If lRD = True Then
                                 If nRD = 1 Then
@@ -363,7 +363,7 @@ Module mTasaAplicable
                 Else
                     drTasasAplicables = dsAgil.Tables("TVAFconIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nDiferP = drTasaAplicable("Diferencial Aplicable")
                             If lRD = True Then
                                 If lDG = True Then
@@ -406,7 +406,7 @@ Module mTasaAplicable
                 drTasasAplicables = dsAgil.Tables("TVAP").Rows
 
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDiferP = drTasaAplicable("Diferencial Aplicable")
                         nPorOp = drTasaAplicable("VR")
                         If lRD = True Then
@@ -437,7 +437,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("TVCR").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDiferP = drTasaAplicable("Diferencial Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -457,7 +457,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("TVCS").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nDiferP = drTasaAplicable("Diferencial Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -486,7 +486,7 @@ Module mTasaAplicable
                 If nIvaEq = 0 Then
                     drTasasAplicables = dsAgil.Tables("AFsinIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nTasasP = drTasaAplicable("Tasa Aplicable")
                             If lRD = True Then
                                 If nRD = 1 Then
@@ -512,7 +512,7 @@ Module mTasaAplicable
                 Else
                     drTasasAplicables = dsAgil.Tables("AFconIVA").Rows
                     For Each drTasaAplicable In drTasasAplicables
-                        If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                        If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                             nTasasP = drTasaAplicable("Tasa Aplicable")
                             If lRD = True Then
                                 If lDG = True Then
@@ -556,7 +556,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("AP").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasasP = drTasaAplicable("Tasa Aplicable")
                         nPorOp = drTasaAplicable("VR")
                         If lRD = True Then
@@ -588,7 +588,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("CR").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasasP = drTasaAplicable("Tasa Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then
@@ -610,7 +610,7 @@ Module mTasaAplicable
 
                 drTasasAplicables = dsAgil.Tables("CS").Rows
                 For Each drTasaAplicable In drTasasAplicables
-                    If nPlazo >= drTasaAplicable("Límite Inferior") And nPlazo <= drTasaAplicable("Límite Superior") Then
+                    If nPlazoX >= drTasaAplicable("Límite Inferior") And nPlazoX <= drTasaAplicable("Límite Superior") Then
                         nTasasP = drTasaAplicable("Tasa Aplicable")
                         If lDG = True Then
                             If nDG = 1 Then

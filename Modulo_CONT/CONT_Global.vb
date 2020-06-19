@@ -304,7 +304,6 @@ Module CONT_Global
         Dim nInteresSeguro As Decimal = 0
         Dim nLetra As Byte = 0
         Dim nNufac As Decimal = 0
-        Dim nPlazo As Byte = 0
         Dim nSaldoEquipo As Decimal = 0
         Dim nSaldoOtros As Decimal = 0
         Dim nSaldoSeguro As Decimal = 0
@@ -410,7 +409,6 @@ Module CONT_Global
                 If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
                     cTipar = "L"
                 End If
-                nPlazo = drAnexo("Plazo")
                 cFechacon = drAnexo("Fechacon")
                 cFechaPago = drAnexo("Fecha_pago")
                 cFvenc = drAnexo("Fvenc")

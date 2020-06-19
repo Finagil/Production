@@ -1917,7 +1917,7 @@ Public Class frmActuaDat
         Dim nMensu As Decimal
         Dim nNafin As Decimal
         Dim nOpcion As Decimal
-        Dim nPlazo As Decimal
+        Dim nPlazoX As Decimal
         Dim nPorieq As Decimal
         Dim nPorOp As Decimal
         Dim nRD As Integer
@@ -2128,7 +2128,7 @@ Public Class frmActuaDat
         nPorieq = drDisposicion("Porieq")
         nSaldoEquipo = drDisposicion("ImpEq") - drDisposicion("IvaEq") - drDisposicion("Amorin")
         nTasaAplicable = (drDisposicion("Tasas") + drDisposicion("Difer")) / 1200
-        nPlazo = drDisposicion("Plazo")
+        nPlazoX = drDisposicion("Plazo")
         nAmorin = drDisposicion("Amorin")
         If cTipar = "R" Then
             nIvaAmorin = drDisposicion("Derechos")
@@ -2287,7 +2287,7 @@ Public Class frmActuaDat
             dtpFvenc.Value = CTOD(drDisposicion("Fvenc"))
         End If
 
-        Select Case nPlazo
+        Select Case nPlazoX
             Case 6
                 cbPlazo.SelectedIndex = 0
             Case 12
@@ -2335,9 +2335,9 @@ Public Class frmActuaDat
 
         If nSaldoEquipo > 0 Then
             If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, 0), 2)
             ElseIf cTipar = "P" Then
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2) * (1 + nPorcentajeIVA)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, nResidual), 2) * (1 + nPorcentajeIVA)
             End If
         Else
             nMensu = 0
@@ -2455,7 +2455,7 @@ Public Class frmActuaDat
         Dim nMontofin As Decimal
         Dim nNafin As Decimal
         Dim nOpcion As Decimal
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nPorCo As Decimal
         Dim nPorieq As Decimal
         Dim nPorOp As Decimal
@@ -2792,7 +2792,7 @@ Public Class frmActuaDat
             txtPIAmorin.Text = Format(nAmorin, "##,##0.00")
 
             nSaldoEquipo = Round(nImpEq - nIvaEq - nAmorin, 2)
-            nPlazo = Val(cbPlazo.SelectedItem)
+            nPlazoX = Val(cbPlazo.SelectedItem)
 
             nMontofin = nImpEq - nIvaEq - nAmorin
 
@@ -2860,12 +2860,12 @@ Public Class frmActuaDat
             ' el diferencial (si es un contrato con tasa variable) y 
             ' el porcentaje de valor residual (si se trata de un arrendamiento puro)
             If ChkTasa.Checked = False Or Not IsNumeric(txtTasas.Text) Then
-                TasaAplicable(cTipar, cTipta, nPlazo, nIvaEq, lRD, nRD, lDG, nDG, dsAgil, nTasas, nDifer, nPorOp)
+                TasaAplicable(cTipar, cTipta, nPlazoX, nIvaEq, lRD, nRD, lDG, nDG, dsAgil, nTasas, nDifer, nPorOp)
             Else
                 nTasas = txtTasas.Text
                 nDifer = txtDifer.Text
             End If
-            TasaAplicablePASIVA(cTipar, cTipta, nPlazo, nIvaEq, lRD, nRD, lDG, nDG, dsAgilP, nTasasP, nDiferP, nPorOp)
+            TasaAplicablePASIVA(cTipar, cTipta, nPlazoX, nIvaEq, lRD, nRD, lDG, nDG, dsAgilP, nTasasP, nDiferP, nPorOp)
 
 
             txtTasas.Text = Format(nTasas, "##,##0.0000")
@@ -2915,13 +2915,13 @@ Public Class frmActuaDat
 
                 ' Arrendamiento Financiero, Crédito Refaccionario, Crédito Simple
 
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, 0), 2)
 
             ElseIf cTipar = "P" Then
 
                 ' Arrendamiento Puro
 
-                nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2)
+                nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, nResidual), 2)
 
             End If
 
@@ -2969,15 +2969,15 @@ Public Class frmActuaDat
                     nRentaEquipo = Round(nMensu, 2)
                 ElseIf cForca = "2" Then
                     If cTipar = "F" Then
-                        nAbCap = Round((nSaldoEquipo) / nPlazo, 2)
+                        nAbCap = Round((nSaldoEquipo) / nPlazoX, 2)
                     ElseIf cTipar = "P" Then
-                        nAbCap = Round((nSaldoEquipo - nResidual) / nPlazo, 2)
+                        nAbCap = Round((nSaldoEquipo - nResidual) / nPlazoX, 2)
                     End If
                 End If
 
-                nSuma = nPlazo - Val(cbRtas.SelectedItem)
+                nSuma = nPlazoX - Val(cbRtas.SelectedItem)
 
-                For nLetra = 1 To nPlazo
+                For nLetra = 1 To nPlazoX
 
                     nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
 
@@ -2987,7 +2987,7 @@ Public Class frmActuaDat
                         nCapitalEquipo = nAbCap
                     End If
 
-                    If cTipar = "F" And nLetra = nPlazo Then
+                    If cTipar = "F" And nLetra = nPlazoX Then
                         nCapitalEquipo = nSaldoEquipo
                         nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
                     End If

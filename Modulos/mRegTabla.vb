@@ -4,8 +4,8 @@ Imports System.Data.SqlClient
 Imports System.Math
 
 Module mRegTabla
-  
-    Public Sub RegTabla(ByVal cAnexo As String, ByVal nSaldoInsoluto As Decimal, ByVal nPlazoRestante As Integer, ByVal cTabla As String)
+
+    Public Sub RegTabla(ByVal cAnexo As String, ByVal nSaldoInsoluto As Decimal, ByVal cTabla As String)
 
         ' Declaración de variables de conexión ADO .NET
 
@@ -76,7 +76,7 @@ Module mRegTabla
             dtCambios.Columns.Add("Abcap", Type.GetType("System.String"))
             dtCambios.Columns.Add("Iva", Type.GetType("System.String"))
         End If
-        
+
         n = 0
         nIva = 0
         nIvacapital = 0
@@ -105,7 +105,7 @@ Module mRegTabla
                         nIvacapital = nAbcap * nFactorIva
                     End If
                 End If
-                
+
                 drDatos = dtCambios.NewRow()
                 drDatos("Letra") = drCambios("Letra")
                 drDatos("Saldo") = nNuevoSaldo

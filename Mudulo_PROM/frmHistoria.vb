@@ -287,7 +287,6 @@ Public Class frmHistoria
         Dim i As Integer
         Dim nBalance As Decimal
         Dim nDocumento As Byte
-        Dim nPlazo As Byte
         Dim nPromDias As Decimal
         Dim nPromMonto As Decimal
         Dim nPromMontoAux As Decimal
@@ -596,7 +595,6 @@ Public Class frmHistoria
         Dim i As Integer
         Dim nBalance As Decimal
         Dim nDocumento As Byte
-        Dim nPlazo As Byte
         Dim nPromDias As Decimal
         Dim nPromMonto As Decimal
         Dim nPromMontoAux As Decimal

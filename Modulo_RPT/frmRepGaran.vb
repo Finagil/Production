@@ -312,7 +312,6 @@ Public Class frmRepGaran
         Dim nMtofin As Decimal
         Dim nCounter As Integer
         Dim nMaxCounter As Integer = 100
-        Dim nPlazo As Byte
         Dim nSaldoEquipo As Decimal
         Dim nSaldo As Decimal
 
@@ -400,7 +399,6 @@ Public Class frmRepGaran
                 cCusnam = Mid(drAnexo("Descr"), 1, 40)
                 cFechacon = drAnexo("Fechacon")
                 cTipeq = drAnexo("Factura")
-                nPlazo = drAnexo("Plazo")
                 cTermina = DTOC(Termina(cAnexo))
                 nMOI = drAnexo("Importe")
                 nMtofin = drAnexo("Mtofin")
@@ -549,7 +547,6 @@ Public Class frmRepGaran
                     cTipar = drAnexo("Tipar")
                     cCusnam = Mid(drAnexo("Descr"), 1, 40)
                     cTipeq = drAnexo("Tipeq")
-                    nPlazo = drAnexo("Plazo")
                     cFechacon = drAnexo("Fechacon")
                     cFvenc = drAnexo("Fvenc")
                     cFondeo = drAnexo("Fondeo")

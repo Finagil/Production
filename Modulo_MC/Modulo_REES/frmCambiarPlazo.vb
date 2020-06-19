@@ -30,7 +30,7 @@ Public Class frmCambiarPlazo
         Dim cFecha As String
         Dim cFeven As String
         Dim nVencimiento As Int32
-        Dim nPlazo As Int32
+        Dim nPlazoX As Int32
         Dim nIntEquipo As Decimal
         Dim nCarEquipo As Decimal
         Dim nSaldoEquipo As Decimal
@@ -118,10 +118,10 @@ Public Class frmCambiarPlazo
                 ' Identificamos a partir de cuál vencimiento inicia la reestructura
 
                 nVencimiento = 0
-                nPlazo = 0
+                nPlazoX = 0
                 For Each drDato In drEdoctav
                     If drDato("Nufac") = 0 And drDato("Indrec") = "S" Then
-                        nPlazo += 1
+                        nPlazoX += 1
                         If nVencimiento = 0 Then
                             nVencimiento = Val(drDato("Letra"))
                             cFeven = drDato("Feven")
@@ -131,12 +131,12 @@ Public Class frmCambiarPlazo
                 Next
                 txtTap.Text = nTasaApli
                 txtVen.Text = nVencimiento
-                txtPzo.Text = nPlazo
+                txtPzo.Text = nPlazoX
 
-                If nPlazo = 1 Then
-                    lblPlazomax.Text = "Le queda " & nPlazo.ToString & " mes de plazo para poder capitalizar su Adeudo"
+                If nPlazoX = 1 Then
+                    lblPlazomax.Text = "Le queda " & nPlazoX.ToString & " mes de plazo para poder capitalizar su Adeudo"
                 Else
-                    lblPlazomax.Text = "Le quedan " & nPlazo.ToString & " meses de plazo para poder capitalizar su Adeudo"
+                    lblPlazomax.Text = "Le quedan " & nPlazoX.ToString & " meses de plazo para poder capitalizar su Adeudo"
                 End If
 
                 If nCount > 0 Then
@@ -182,7 +182,7 @@ Public Class frmCambiarPlazo
         Dim nVencimiento As Int32
         Dim nVenciAnt As Int32
         Dim i As Integer
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nSaldo As Decimal
         Dim nInteres As Decimal
         Dim nCapital As Decimal
@@ -195,7 +195,7 @@ Public Class frmCambiarPlazo
 
         cFecha = DTOC(FECHA_APLICACION)
         nVencimiento = txtVen.Text
-        nPlazo = txtPzo.Text
+        nPlazoX = txtPzo.Text
         nSdoAnt = txtSant.Text
         nTasaApli = txtTap.Text
         cFeven = txtFven.Text
@@ -208,7 +208,7 @@ Public Class frmCambiarPlazo
             Exit Sub
         End If
 
-        If Val(txtMonto.Text) > 0 And txtPlazo.Text > nPlazo Then
+        If Val(txtMonto.Text) > 0 And Val(txtPlazo.Text) > nPlazoX Then
 
             nSaldo = txtMonto.Text + nSdoAnt
             nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -txtPlazo.Text)), 2)
@@ -263,7 +263,7 @@ Public Class frmCambiarPlazo
                 nVencimiento += 1
             Next
         End If
-        If Val(TxtSaldoInsoluto.Text) > 0 And txtPlazo.Text > nPlazo Then
+        If Val(TxtSaldoInsoluto.Text) > 0 And Val(txtPlazo.Text) > nPlazoX Then
             'PARA EL PRINCIPAL
             nVencimiento = txtVen.Text
             nSaldo = TxtSaldoInsoluto.Text

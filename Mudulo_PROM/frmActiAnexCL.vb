@@ -194,7 +194,7 @@ Public Class frmActiAnexCL
     Dim nOpcion As Decimal
     Dim nPagosi As Decimal
     Dim nPiso As Decimal
-    Dim nPlazo As Integer
+    Dim nPlazoX As Integer
     Dim nPorop As Decimal
     Dim nRenta As Decimal
     Dim nRentasD As Decimal
@@ -3572,7 +3572,7 @@ Public Class frmActiAnexCL
             cDomi = drAnexo("Autoriza")
             dTermino = Termina(cAnexo)
             cTermino = DTOC(dTermino)
-            nPlazo = drAnexo("Plazo")
+            nPlazoX = drAnexo("Plazo")
             nAmorin = drAnexo("Amorin")
             nIvaAmorin = drAnexo("IvaAmorin")
             nMensu = drAnexo("Mensu")
@@ -5760,7 +5760,7 @@ Public Class frmActiAnexCL
                         Documento.Bookmarks.Item("OC").Range.Text = ""
                     End If
                     Documento.Bookmarks.Item("Penalizacion").Range.Text = nTaspen.ToString("n2")
-                    Documento.Bookmarks.Item("Plazo").Range.Text = nPlazo
+                    Documento.Bookmarks.Item("Plazo").Range.Text = nPlazoX
                     Documento.Bookmarks.Item("producto").Range.Text = cProducto
                     Documento.Bookmarks.Item("Promotor").Range.Text = cPromo
                     'If cSucursal = "03" Or cSucursal = "04" Or cSucursal = "08" or cSucursal = "09" Then

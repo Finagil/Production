@@ -1201,7 +1201,9 @@ Public Class frmCalcfini
 
             MsgBox("No existe la tabla de amortización de este contrato", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
-
+        ElseIf TaQUERY.AvisosSinFacturar(cAnexo, "29990101") <= 0 Then
+            MessageBox.Show("el contrato ya no tienes letras por facturar, por lo que no es posible realziar un finiquito", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
         End If
 
         GroupBox1.Visible = True

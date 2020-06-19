@@ -60,7 +60,7 @@ Public Class frmActiAnexFull
     Dim cParrafo As String = ""
     Dim cExRepr As String = ""
     Dim cExAval As String = ""
-    Dim nPlazo As Integer
+    Dim nPlazoX As Integer
     Dim drAnexoCTO As DataRow
     Dim drAnexoREPRE As DataRow
     Dim drAnexoAVA As DataRow
@@ -376,7 +376,7 @@ Public Class frmActiAnexFull
         Else
             cCuadrocte = "DENOMINACION SOCIAL: " & Trim(cCusnam) & Space(10) & "R.F.C.: " & drAnexoCTO("RFC") & "E_MAIL: " & Trim(drAnexoCTO("Email1")) & Chr(10) & cDomicilio & Space(10) & "TELEFONOS: " & Trim(drAnexoCTO("Telef1"))
         End If
-        nPlazo = drAnexoCTO("Plazo")
+        nPlazoX = drAnexoCTO("Plazo")
         If Not IsDBNull(drAnexoCTO("AtencionDe")) Then
             cAtteCli = drAnexoCTO("AtencionDe")
         End If
@@ -693,7 +693,7 @@ Public Class frmActiAnexFull
         drAnex = dsAgil.Tables("DatosCto").Rows(0)
         cTipo = drAnex("Tipo")
         cCusnam = drAnex("Descr")
-        nPlazo = drAnex("Plazo")
+        nPlazoX = drAnex("Plazo")
         nMensu = CDec(drAnex("Mensu") / (1 + (drAnex("IvaAnexo") / 100))).ToString("n2")
         nComis = CDec(drAnex("Comis") / (1 + (drAnex("IvaAnexo") / 100))).ToString("n2")
         nGastos = drAnex("Gastos")
@@ -930,13 +930,13 @@ Public Class frmActiAnexFull
                         myMField.Result.Text = cDatosRepFirma
                     Case "mMtoTotal"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(Round(nMensu * nPlazo, 2)).ToString & " " & Letras(Round(nMensu * nPlazo, 2))
+                        myMField.Result.Text = FormatNumber(Round(nMensu * nPlazoX, 2)).ToString & " " & Letras(Round(nMensu * nPlazoX, 2))
                     Case "mPI"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = FormatNumber(Round(nComis + nGastos + nMensu, 2)).ToString & " " & Letras(Round(nComis + nGastos + nMensu, 2))
                     Case "mPlazo"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = nPlazo.ToString
+                        myMField.Result.Text = nPlazoX.ToString
                     Case "mMensu"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = FormatNumber(Round(nMensu, 2)).ToString & " " & Letras(Round(nMensu, 2))
@@ -1130,7 +1130,7 @@ Public Class frmActiAnexFull
                         End If
                     Case "mPlazo"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = nPlazo.ToString
+                        myMField.Result.Text = nPlazoX.ToString
                     Case "mFechacon"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Mes(drAnexoCTO("Fechacon")).ToLower
@@ -1304,7 +1304,7 @@ Public Class frmActiAnexFull
             cRenta = cRenta & Chr(10) & FormatNumber(Round(drAnexoCTO("Mensu"), 2)).ToString
         Next
 
-        cCantidad = Mid(Letras(drAnexoCTO("Mensu") * nPlazo), 1, Len(Letras(drAnexoCTO("Mensu") * nPlazo)) - 5)
+        cCantidad = Mid(Letras(drAnexoCTO("Mensu") * nPlazoX), 1, Len(Letras(drAnexoCTO("Mensu") * nPlazoX)) - 5)
         cCantidad = cCantidad.ToLower & "M.N.)"
         cCantidad2 = Mid(Cant_Letras(((drAnexoCTO("Tasas") + drAnexoCTO("Difer")) * 2).ToString, ""), 1, Len(Cant_Letras(((drAnexoCTO("Tasas") + drAnexoCTO("Difer")) * 2).ToString, "")) - 1)
         cCantidad2 = cCantidad2.ToLower & " por ciento) anual"
@@ -1372,7 +1372,7 @@ Public Class frmActiAnexFull
                         End If
                     Case "mTotal"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
-                        myMField.Result.Text = FormatNumber(Round(drAnexoCTO("Mensu") * nPlazo, 2)).ToString & " " & cCantidad
+                        myMField.Result.Text = FormatNumber(Round(drAnexoCTO("Mensu") * nPlazoX, 2)).ToString & " " & cCantidad
                     Case "mCusnam"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = cCusnam

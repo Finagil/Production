@@ -456,13 +456,6 @@ Public Class frmPideAnexo
                 End If
                 Dim newfrmImprCert As New frmImprCert(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmImprCert.Show()
-            Case "mnuReestructuras"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-                Dim newfrmReestructuras As New frmReestructuras(Mid(ListBox1.SelectedItem, 1, 10))
-                newfrmReestructuras.Show()
             Case "mnuCheckList"
                 If TipoCredito = "B" Then ' FULL SERVICE
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)

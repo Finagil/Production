@@ -40,7 +40,6 @@ Public Class frmAdelanto
     Dim nFactura As Decimal = 0
     Dim nIva As Decimal = 0
     Dim nLetra As Integer = 0
-    Dim nPlazo As Integer = 0
     Dim nTasaIVACliente As Decimal = 0
     Dim nSubTotal As Decimal = 0
     Dim nTotal As Decimal = 0
@@ -306,7 +305,6 @@ Public Class frmAdelanto
             End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fechacon")
-            nPlazo = drAnexo("Plazo")
             cTipta = drAnexo("Tipta")
             nDifer = drAnexo("Difer")
             cFinse = drAnexo("Finse")
@@ -1354,7 +1352,6 @@ Public Class frmAdelanto
         Dim cFormaPago As String
         Dim nImporte As Decimal = 0
         Dim nLetraSeguro As Decimal = 0
-        Dim nPlazoRestante As Integer = 0
         Dim nPlazoSeguro As Decimal = 0
         Dim nSaldoSeguro As Decimal = 0
         Dim nSaldoOtros As Decimal = 0
@@ -1438,7 +1435,7 @@ Public Class frmAdelanto
                 ' por lo que debe aplicarse como adelanto a capital del seguro y reconstruir la
                 ' tabla del seguro
 
-                RegTabla(cAnexo, CDec(txtSaldoSeguro.Text) - CDec(txtAbonoSeguro.Text), nPlazoSeguro - nLetraSeguro + 1, "S")
+                RegTabla(cAnexo, CDec(txtSaldoSeguro.Text) - CDec(txtAbonoSeguro.Text), "S")
 
             End If
 
@@ -1510,7 +1507,7 @@ Public Class frmAdelanto
                 ' El pago no cubre totalmente el Saldo de Otros Adeudos, por lo que debe
                 ' aplicarse como adelanto a capital de Otros Adeudos y reconstruir su tabla
 
-                RegTabla(cAnexo, CDec(txtSaldoOtros.Text) - CDec(txtAbonoOtros.Text), nPlazoOtros - nLetraOtros + 1, "O")
+                RegTabla(cAnexo, CDec(txtSaldoOtros.Text) - CDec(txtAbonoOtros.Text), "O")
 
             End If
 
@@ -1540,9 +1537,7 @@ Public Class frmAdelanto
 
             ' Reconstruyo la Tabla de Amortización y luego inserto un registro por el adelanto a capital
 
-            nPlazoRestante = nPlazo - nLetra + 1
-
-            RegTabla(cAnexo, CDec(txtSaldoEquipo.Text) - CDec(txtAbonoEquipo.Text), nPlazoRestante, "E")
+            RegTabla(cAnexo, CDec(txtSaldoEquipo.Text) - CDec(txtAbonoEquipo.Text), "E")
 
             strInsert = "INSERT INTO Edoctav(Anexo, Letra, Feven, Nufac, IndRec, Saldo, Abcap, Inter, Iva, IvaCapital )"
             strInsert = strInsert & " VALUES ('"

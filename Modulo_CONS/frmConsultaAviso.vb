@@ -54,7 +54,6 @@ Public Class frmConsultaAviso
         Dim nIvaOt As Decimal = 0
         Dim nIvaSe As Decimal = 0
         Dim nOpcion As Decimal = 0
-        Dim nPlazo As Integer = 0
         Dim nRense As Decimal = 0
         Dim nSaldo As Decimal = 0
         Dim nSaldot As Decimal = 0
@@ -217,8 +216,7 @@ Public Class frmConsultaAviso
             ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
             ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-            nPlazo = 0
-            CuentaPagos(cAnexo, nPlazo)
+            CuentaPagos(cAnexo)
 
             nSaldo = drAnexo("Saldo")
             nSalse = drAnexo("Salse")
@@ -275,7 +273,7 @@ Public Class frmConsultaAviso
             nOpcion = 0
             nIvaopc = 0
 
-            If Val(drAnexo("Letra")) = nPlazo Then
+            If Val(drAnexo("Letra")) = TaQUERY.UltimaLetra(cAnexo) Then
                 If Not IsDBNull(drAnexo("Opcion")) Then
                     If cTipar = "P" Then
                         nOpcion = drAnexo("Opcion") + drAnexo("IvaOpcion")
@@ -418,7 +416,7 @@ Public Class frmConsultaAviso
             drAviso("Factu") = nFactura
             drAviso("Feven") = drAnexo("Feven")
             drAviso("Anexo") = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 9)
-            drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & nPlazo.ToString
+            drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & TaQUERY.UltimaLetra(drAnexo("Anexo"))
             drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
             drAviso("Dias") = drAnexo("Dias")
             drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)
@@ -547,7 +545,6 @@ Public Class frmConsultaAviso
         Dim nIvaOt As Decimal = 0
         Dim nIvaSe As Decimal = 0
         Dim nOpcion As Decimal = 0
-        Dim nPlazo As Integer = 0
         Dim nRense As Decimal = 0
         Dim nSaldo As Decimal = 0
         Dim nSaldot As Decimal = 0
@@ -707,9 +704,7 @@ Public Class frmConsultaAviso
             ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
             ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-            nPlazo = 0
-            CuentaPagos(cAnexo, nPlazo)
-
+            CuentaPagos(cAnexo)
             nSaldo = drAnexo("Saldo")
             nSalse = drAnexo("Salse")
             nSaldot = drAnexo("Saldot")
@@ -765,7 +760,7 @@ Public Class frmConsultaAviso
             nOpcion = 0
             nIvaopc = 0
 
-            If Val(drAnexo("Letra")) = nPlazo Then
+            If Val(drAnexo("Letra")) = Val(TaQUERY.UltimaLetra(drAnexo("Anexo"))) Then
                 If Not IsDBNull(drAnexo("Opcion")) Then
                     If cTipar = "P" Then
                         nOpcion = drAnexo("Opcion") + drAnexo("IvaOpcion")
@@ -908,7 +903,7 @@ Public Class frmConsultaAviso
             drAviso("Factu") = nFactura
             drAviso("Feven") = drAnexo("Feven")
             drAviso("Anexo") = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 9)
-            drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & nPlazo.ToString
+            drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & TaQUERY.UltimaLetra(drAnexo("Anexo"))
             drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
             drAviso("Dias") = drAnexo("Dias")
             drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)

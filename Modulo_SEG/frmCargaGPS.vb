@@ -9,7 +9,6 @@ Public Class frmCargaGPS
     Dim cFeven As String
     Dim nTasaApli As Decimal
     Dim nVencimiento As Int32
-    Dim nPlazo As Int32
     Dim nSaldoAnt As Decimal
     Dim cAdeudo As String
     Dim Fila As Integer
@@ -36,8 +35,7 @@ Public Class frmCargaGPS
         Dim drAnexo As DataRow
         Dim drDato As DataRow
         Dim relAnexoEdoctav As DataRelation
-
-
+        Dim Cont As Integer
         Dim nIntEquipo As Decimal
         Dim nCarEquipo As Decimal
         Dim nSaldoEquipo As Decimal
@@ -121,10 +119,10 @@ Public Class frmCargaGPS
                 Me.Close()
             Else
                 nVencimiento = 0
-                nPlazo = 0
+                Cont = 0
                 For Each drDato In drEdoctav
                     If drDato("Nufac") = 0 And drDato("Indrec") = "S" Then
-                        nPlazo += 1
+                        Cont += 1
                         If nVencimiento = 0 Then
                             nVencimiento = Val(drDato("Letra"))
                             cFeven = drDato("Feven")
@@ -132,10 +130,10 @@ Public Class frmCargaGPS
                     End If
                 Next
 
-                If nPlazo = 1 Then
-                    lblPlazomax.Text = "Le queda " & nPlazo.ToString & " mes de plazo para poder capitalizar su Adeudo"
+                If Cont = 1 Then
+                    lblPlazomax.Text = "Le queda " & Cont.ToString & " mes de plazo para poder capitalizar su Adeudo"
                 Else
-                    lblPlazomax.Text = "Le quedan " & nPlazo.ToString & " meses de plazo para poder capitalizar su Adeudo"
+                    lblPlazomax.Text = "Le quedan " & Cont.ToString & " meses de plazo para poder capitalizar su Adeudo"
                 End If
                 CargaFinan = 0
                 If nCount > 0 Then
@@ -173,7 +171,7 @@ Public Class frmCargaGPS
         Dim cString As String
         Dim nVenciAnt As Int32
         Dim i As Integer
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nSaldo As Decimal
         Dim nInteres As Decimal
         Dim nCapital As Decimal
@@ -183,12 +181,12 @@ Public Class frmCargaGPS
 
         Fila = 1
         nValorIva = 0.16
-        nPlazo = txtPlazo.Text
-        If Val(txtPlazo.Text) > Val(nPlazo) Then
-            MsgBox("El plazo máximo es de " & nPlazo, MsgBoxStyle.OkOnly, "Mensaje")
+        nPlazoX = txtPlazo.Text
+        If Val(txtPlazo.Text) > Val(nPlazoX) Then
+            MsgBox("El plazo máximo es de " & nPlazoX, MsgBoxStyle.OkOnly, "Mensaje")
         End If
 
-        If Val(txtMonto.Text) > 0 And txtPlazo.Text <= nPlazo Then
+        If Val(txtMonto.Text) > 0 And Val(txtPlazo.Text) <= nPlazoX Then
 
             nSaldo = txtMonto.Text + nSaldoAnt
             nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -txtPlazo.Text)), 2)
@@ -273,7 +271,7 @@ Public Class frmCargaGPS
             cnAgil.Open()
             Dim taGps As New SegurosDSTableAdapters.GPSTableAdapter
             taGps.DeleteMismaFecha(cAnexo, cFecha)
-            taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, nPlazo, txtMonto.Text + nSaldoAnt, CargaFinanNEW - CargaFinan)
+            taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, TaQUERY.UltimaLetra(cAnexo), txtMonto.Text + nSaldoAnt, CargaFinanNEW - CargaFinan)
 
             If cAdeudo = "S" Then
                 With cm3

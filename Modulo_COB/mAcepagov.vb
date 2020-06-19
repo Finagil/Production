@@ -27,7 +27,6 @@ Module mAcepagov
     ' Declaración de variables de alcance privado
 
     Dim cFeven As String = ""
-    Dim cPlazo As String = ""
     Dim cTipar As String = ""
     Dim nBaseFEGA As Decimal = 0
     Dim nImporteFac As Decimal = 0
@@ -104,7 +103,6 @@ Module mAcepagov
         Dim nIvaInteresSeg As Decimal = 0
         Dim nIvaOtros As Decimal = 0
         Dim nPagoConcepto As Decimal = 0
-        Dim nPlazo As Byte = 0
         Dim nPrevioCartera As Decimal = 0
         Dim nPrevioOtros As Decimal = 0
         Dim nSeguroVida As Decimal = 0
@@ -204,10 +202,8 @@ Module mAcepagov
         ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
         ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-        nPlazo = 0
-        CuentaPagos(cAnexo, nPlazo)
 
-        cPlazo = CStr(nPlazo)
+        CuentaPagos(cAnexo)
 
         ' Datos de la Factura
 
@@ -293,9 +289,9 @@ Module mAcepagov
             drPago("Tipmon") = "01"
             drPago("Banco") = cBanco
             If cTipar = "B" Then
-                drPago("Concepto") = "MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
             Else
-                drPago("Concepto") = "MORATORIOS VENCIMIENTO " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "MORATORIOS VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
             End If
             drPago("Importe") = nMoratorios
             drPago("Iva") = nIvaMoratorios
@@ -312,9 +308,9 @@ Module mAcepagov
             drPago("Tipmon") = "01"
             drPago("Banco") = cBanco
             If cTipar = "B" Then
-                drPago("Concepto") = "IVA MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "IVA MORATORIOS MENSUALIDAD No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
             Else
-                drPago("Concepto") = "IVA MORATORIOS VENCIMIENTO " + cLetra + "/0" + cPlazo
+                drPago("Concepto") = "IVA MORATORIOS VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
             End If
 
             drPago("Importe") = nIvaMoratorios
@@ -554,9 +550,9 @@ Module mAcepagov
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
                     If cTipar = "B" Then
-                        drPago("Concepto") = cConcepto + " No. " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = cConcepto + " No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     Else
-                        drPago("Concepto") = cConcepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = cConcepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     End If
 
                     drPago("Importe") = nPagoConcepto
@@ -1497,7 +1493,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = nCapitalEquipo
                     dtPagos.Rows.Add(drPago)
                     If nBonifica > 0 Then
@@ -1508,7 +1504,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = Round(-nBonifica / (1 + (nPorieq / 100)), 2)
                         dtPagos.Rows.Add(drPago)
                         nBonifica = Round(nBonifica - Round(nBonifica / (1 + (nPorieq / 100)), 2), 2)
@@ -1521,7 +1517,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nIvaCapital
                         dtPagos.Rows.Add(drPago)
                         If nBonifica > 0 Then
@@ -1532,7 +1528,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = -nBonifica
                             dtPagos.Rows.Add(drPago)
                             nBonifica = 0
@@ -1548,7 +1544,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = nBaseFEGA
                     dtPagos.Rows.Add(drPago)
 
@@ -1559,7 +1555,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = nIvaFEGA
                     dtPagos.Rows.Add(drPago)
 
@@ -1573,9 +1569,9 @@ Module mAcepagov
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
                     If cTipar = "B" Then
-                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     Else
-                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     End If
 
                     drPago("Importe") = aConcepto.Importe
@@ -1649,7 +1645,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = Round(aConcepto.Importe - nIvaCapital, 2)
                         dtPagos.Rows.Add(drPago)
                         If nBonifica > 0 Then
@@ -1661,7 +1657,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = -nAplicacionDGvsCV
                             dtPagos.Rows.Add(drPago)
                         End If
@@ -1672,7 +1668,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = Round(nIvaCapital, 2)
                         dtPagos.Rows.Add(drPago)
                         If nBonifica > 0 Then
@@ -1684,7 +1680,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = -nAplicacionDGvsIC
                             dtPagos.Rows.Add(drPago)
                         End If
@@ -1697,7 +1693,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = aConcepto.Importe
                         dtPagos.Rows.Add(drPago)
                     End If
@@ -1715,7 +1711,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = nBaseFEGA
                     dtPagos.Rows.Add(drPago)
 
@@ -1726,7 +1722,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = nIvaFEGA
                     dtPagos.Rows.Add(drPago)
 
@@ -1740,9 +1736,9 @@ Module mAcepagov
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
                     If cTipar = "B" Then
-                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     Else
-                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     End If
                     drPago("Importe") = aConcepto.Importe
                     dtPagos.Rows.Add(drPago)
@@ -1842,7 +1838,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nBaseFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -1853,7 +1849,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nIvaFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -1867,9 +1863,9 @@ Module mAcepagov
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
                         If cTipar = "B" Then
-                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         Else
-                            drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         End If
 
                         drPago("Importe") = aConcepto.Importe
@@ -1920,7 +1916,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = Round(nCapitalEquipo, 2)
                             dtPagos.Rows.Add(drPago)
                             If nBonifica > 0 Then
@@ -1932,7 +1928,7 @@ Module mAcepagov
                                 drPago("Fepag") = cFecha
                                 drPago("Tipmon") = "01"
                                 drPago("Banco") = cBanco
-                                drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                                drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                                 drPago("Importe") = -nAplicacionDGvsCV
                                 dtPagos.Rows.Add(drPago)
                             End If
@@ -1943,7 +1939,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = Round(nIvaCapital, 2)
                             dtPagos.Rows.Add(drPago)
                             If nBonifica > 0 Then
@@ -1955,7 +1951,7 @@ Module mAcepagov
                                 drPago("Fepag") = cFecha
                                 drPago("Tipmon") = "01"
                                 drPago("Banco") = cBanco
-                                drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                                drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                                 drPago("Importe") = -nAplicacionDGvsIC
                                 dtPagos.Rows.Add(drPago)
                             End If
@@ -1968,7 +1964,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = nParcial
                             dtPagos.Rows.Add(drPago)
                         End If
@@ -1986,7 +1982,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nBaseFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -1997,7 +1993,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nIvaFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -2011,9 +2007,9 @@ Module mAcepagov
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
                         If cTipar = "B" Then
-                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " No. " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         Else
-                            drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         End If
 
                         drPago("Importe") = nParcial
@@ -2132,7 +2128,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nBaseFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -2143,7 +2139,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nIvaFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -2156,7 +2152,7 @@ Module mAcepagov
                     drPago("Fepag") = cFecha
                     drPago("Tipmon") = "01"
                     drPago("Banco") = cBanco
-                    drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                    drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                     drPago("Importe") = aConcepto.Importe
                     dtPagos.Rows.Add(drPago)
 
@@ -2196,7 +2192,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = Round(nCapitalEquipo, 2)
                             dtPagos.Rows.Add(drPago)
                             If nBonifica > 0 Then
@@ -2208,7 +2204,7 @@ Module mAcepagov
                                 drPago("Fepag") = cFecha
                                 drPago("Tipmon") = "01"
                                 drPago("Banco") = cBanco
-                                drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                                drPago("Concepto") = "APLICACION DEPOSITO vs CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                                 drPago("Importe") = -nAplicacionDGvsCV
                                 dtPagos.Rows.Add(drPago)
                             End If
@@ -2219,7 +2215,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = Round(nIvaCapital, 2)
                             dtPagos.Rows.Add(drPago)
                             If nBonifica > 0 Then
@@ -2231,7 +2227,7 @@ Module mAcepagov
                                 drPago("Fepag") = cFecha
                                 drPago("Tipmon") = "01"
                                 drPago("Banco") = cBanco
-                                drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + cPlazo
+                                drPago("Concepto") = "APLICACION DEPOSITO vs IVA CAPITAL VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                                 drPago("Importe") = -nAplicacionDGvsIC
                                 dtPagos.Rows.Add(drPago)
                             End If
@@ -2244,7 +2240,7 @@ Module mAcepagov
                             drPago("Fepag") = cFecha
                             drPago("Tipmon") = "01"
                             drPago("Banco") = cBanco
-                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + cPlazo
+                            drPago("Concepto") = "CAPITAL EQUIPO VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                             drPago("Importe") = nParcial
                             dtPagos.Rows.Add(drPago)
                         End If
@@ -2262,7 +2258,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nBaseFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -2273,7 +2269,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = "IVA FEGA VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nIvaFEGA
                         dtPagos.Rows.Add(drPago)
 
@@ -2286,7 +2282,7 @@ Module mAcepagov
                         drPago("Fepag") = cFecha
                         drPago("Tipmon") = "01"
                         drPago("Banco") = cBanco
-                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + cPlazo
+                        drPago("Concepto") = aConcepto.Concepto + " VENCIMIENTO " + cLetra + "/0" + TaQUERY.UltimaLetra(cAnexo)
                         drPago("Importe") = nParcial
                         dtPagos.Rows.Add(drPago)
 

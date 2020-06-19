@@ -337,7 +337,7 @@ Public Class frmMorales
         Dim nInteresSeguro As Decimal = 0
         Dim nInteresOtros As Decimal = 0
         Dim nMoi As Decimal
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nPlazoFactor As Decimal
         Dim nSaldoEquipo As Decimal = 0
         Dim nSaldoSeguro As Decimal = 0
@@ -720,9 +720,7 @@ Public Class frmMorales
             cFlcan = drAnexo("Flcan")
             cCliente = drAnexo("Cliente")
             cApertura = drAnexo("Fechacon")
-            nPlazo = Round(drAnexo("Plazo"))
-            ' nPlazo = Round(drAnexo("Plazo") / nPlazoFactor)  el plazo ya viene en meses ???  DAGL 21/10/2017
-
+            nPlazoX = Round(drAnexo("Plazo"))
 
 
             cTipar = drAnexo("Tipar")
@@ -835,7 +833,7 @@ Public Class frmMorales
                                 strInsert = strInsert & cCliente & "', '"
                                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
                                 strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
-                                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
+                                strInsert = strInsert & Stuff(Trim(CStr(nPlazoX)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
                                 strInsert = strInsert & cTipar & "', '"
                                 strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                                 strInsert = strInsert & "001" & "', '"
@@ -923,7 +921,7 @@ Public Class frmMorales
                 strInsert = strInsert & cCliente & "', '"
                 strInsert = strInsert & Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "', '"
                 strInsert = strInsert & Mid(cApertura, 7, 2) & Mid(cApertura, 5, 2) & Mid(cApertura, 1, 4) & "', '"
-                strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
+                strInsert = strInsert & Stuff(Trim(CStr(nPlazoX)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
                 strInsert = strInsert & cTipar & "', '"
                 strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                 strInsert = strInsert & "001" & "', '"
@@ -969,8 +967,8 @@ Public Class frmMorales
                 cTipar = "0000"
             End If
 
-            nPlazo = DateDiff(DateInterval.Day, drAvio("Fecha Inicio"), drAvio("FechaTerminacion"))
-            nPlazo = Round(nPlazo / nPlazoFactor, 0)
+            nPlazoX = DateDiff(DateInterval.Day, drAvio("Fecha Inicio"), drAvio("FechaTerminacion"))
+            nPlazoX = Round(nPlazoX / nPlazoFactor, 0)
             nMoi = Round(drAvio("Saldo"), 0)
             nSaldoEquipo = Round(drAvio("Saldo"), 0)
             cFechaFin = ""
@@ -1036,7 +1034,7 @@ Public Class frmMorales
             strInsert = strInsert & drAvio("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
+            strInsert = strInsert & Stuff(Trim(CStr(nPlazoX)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
             strInsert = strInsert & cTipar & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
             strInsert = strInsert & "001" & "', '"
@@ -1086,8 +1084,8 @@ Public Class frmMorales
             '            interesAVnufac = Me.DetalleFINAGILTableAdapter.Interesnofact(anexosin1)
 
             fechaU = CTOD(drAvioC("UltimoCorte"))
-            nPlazo = DateDiff(DateInterval.Day, fecha, fechaU)
-            nPlazo = Round(nPlazo / nPlazoFactor, 0) 'cambiar a meses ECT
+            nPlazoX = DateDiff(DateInterval.Day, fecha, fechaU)
+            nPlazoX = Round(nPlazoX / nPlazoFactor, 0) 'cambiar a meses ECT
             nMoi = Round(drAvioC("MOI"), 0)
             nSaldoEquipo = 0
             cFechaFin = drAvioC("UltimoCorte")
@@ -1107,7 +1105,7 @@ Public Class frmMorales
             strInsert = strInsert & drAvioC("Cliente") & "', '"
             strInsert = strInsert & cAnexo & "', '"
             strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-            strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
+            strInsert = strInsert & Stuff(Trim(CStr(nPlazoX)), "I", "0", 6) & "', '" 'dagl 31/10/2017 cambia de 5 a 6 la long de plazo en meses
             strInsert = strInsert & cTipar & "', '"
             strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
             strInsert = strInsert & "001" & "', '"
@@ -1255,9 +1253,9 @@ Public Class frmMorales
 
                     'fecha = LineaX(16)
                     If LineaX(17) = "" Then
-                        nPlazo = 0
+                        nPlazoX = 0
                     Else
-                        nPlazo = LineaX(17)
+                        nPlazoX = LineaX(17)
                     End If
                     If LineaX(19) = "" Then
                         LineaX(19) = "0"
@@ -1329,7 +1327,7 @@ Public Class frmMorales
                     strInsert = strInsert & cCliente & "', '"
                     strInsert = strInsert & cAnexo & "', '"
                     strInsert = strInsert & fecha.ToString("ddMMyyyy") & "', '"
-                    strInsert = strInsert & Stuff(Trim(CStr(nPlazo)), "I", "0", 6) & "', '"
+                    strInsert = strInsert & Stuff(Trim(CStr(nPlazoX)), "I", "0", 6) & "', '"
                     strInsert = strInsert & cTipar & "', '"
                     strInsert = strInsert & Stuff(Trim(CStr(nMoi)), "I", "0", 20) & "', '"
                     strInsert = strInsert & cMoneda & "', '"

@@ -167,7 +167,7 @@ Public Class FrmTablasESP_PROM
         End If
 
         Valida = True
-        Dim Tcapital, IVAinter, IVAcap, SaldoIni, Plazo As Decimal
+        Dim Tcapital, IVAinter, IVAcap, SaldoIni, nPlazoX As Decimal
         Dim ErrorFecha As Boolean = False
         Dim ErrorIVAInte As Boolean = False
         Dim ErrorIVAcap As Boolean = False
@@ -176,7 +176,7 @@ Public Class FrmTablasESP_PROM
         Dim FechaCon As Date = CTOD(TxtFEcCon.Text)
 
         For Each r As PromocionDS.TablaESPTMPRow In Me.PromocionDS.TablaESPTMP
-            Plazo += 1
+            nPlazoX += 1
 
             Tcapital += Math.Round(r.Capital, 2)
             IVAinter += Math.Round(r.IvaInteres)
@@ -198,7 +198,7 @@ Public Class FrmTablasESP_PROM
 
             End If
 
-            If Plazo = 1 Then
+            If nPlazoX = 1 Then
                 SaldoIni = r.Saldo
                 FechaIni = r.Fecha
             Else
@@ -302,7 +302,7 @@ Public Class FrmTablasESP_PROM
                 Exit Sub
             End If
         End If
-        InsertaAnexo(Plazo, FechaIni)
+        InsertaAnexo(nPlazoX, FechaIni)
     End Sub
 
     Private Sub BttnDomi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDomi.Click
@@ -378,7 +378,7 @@ Public Class FrmTablasESP_PROM
         End If
     End Function
 
-    Sub InsertaAnexo(ByVal Plazo As Integer, ByVal FechaIni As Date)
+    Sub InsertaAnexo(ByVal nPlazoX As Integer, ByVal FechaIni As Date)
         If MessageBox.Show("¿esta seguro de cargar la Tabla solicitada?", "Tabla Especial", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             Dim Tabla As New PromocionDSTableAdapters.EdoctavTableAdapter
             Dim ta As New PromocionDSTableAdapters.RentasdepTableAdapter
@@ -390,7 +390,7 @@ Public Class FrmTablasESP_PROM
             If IsNumeric(TxtRD.Text) Then
                 If CInt(TxtRD.Text) > 0 Then
                     Rentas = TxtRD.Text
-                    Rentas = Plazo - Rentas
+                    Rentas = nPlazoX - Rentas
                     ta.BorraRentas(CmbAnexos.SelectedValue)
                 Else
                     Rentas = 9999
@@ -433,7 +433,7 @@ Public Class FrmTablasESP_PROM
                 Liquidez = True
             End If
             TxtComi.Text = (CDec(TxtMF.Text) * (CDec(TxtPorcComi.Text) / 100) * 1.16).ToString("n2")
-            Me.AnexosTablaESPTableAdapter.CambiaDatosAnexo(TxtTasa.Text, TxtDif.Text, Plazo,
+            Me.AnexosTablaESPTableAdapter.CambiaDatosAnexo(TxtTasa.Text, TxtDif.Text, nPlazoX,
              CmbAcumInte.Text, TxtDG.Text, TxtIvadg.Text, TxtRD.Text, RD, RDIva, TxtTasPen.Text,
              Fondeo, Cobertura, FechaIni.ToString("yyyyMMdd"), Liquidez, TxtOpcion.Text, Mensu,
              DTPContrato.Value.ToString("yyyyMMdd"), TxtDere.Text, TxtPorcComi.Text, TxtComi.Text, AplicaFega,

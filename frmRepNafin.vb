@@ -248,7 +248,6 @@ Public Class frmRepNafin
         Dim cFeven As String
         Dim cFondeo As String
         Dim cTipoFondeo As String
-        Dim nPlazo As Integer
         Dim nAmortizacion As Decimal
         Dim nSaldoEquipo As Decimal
         Dim nInteresEquipo As Decimal
@@ -315,7 +314,6 @@ Public Class frmRepNafin
 
                     cAnexo = drAnexo("Anexo")
                     cCusnam = Mid(drAnexo("Descr"), 1, 40)
-                    nPlazo = drAnexo("Plazo")
                     cFondeo = drAnexo("Fondeo")
 
                     ' Se trata de un contrato que NO está vencido (no tiene rentas vencidas a más de 89 días)

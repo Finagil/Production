@@ -1012,7 +1012,7 @@ Public Class frmCierreCo
         Dim nNafin As Decimal
         Dim nOpcion As Decimal
         Dim nPagosIniciales As Decimal
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nPorcentajeIVA As Decimal = 0
         Dim nRD As Byte
         Dim nSaldoEquipo As Decimal = 0
@@ -1108,7 +1108,7 @@ Public Class frmCierreCo
             cFecha_Pago = drAnexo("Fecha_Pago")
             cForca = drAnexo("Forca")
             nMensu = drAnexo("Mensu")
-            nPlazo = drAnexo("Plazo")
+            nPlazoX = drAnexo("Plazo")
             nImpEq = drAnexo("Impeq")
             nIvaEq = drAnexo("Ivaeq")
             nAmorin = drAnexo("Amorin")
@@ -1190,7 +1190,7 @@ Public Class frmCierreCo
                 Next
 
                 If lAdelanto = True And (cForca = "1" Or cForca = "4") Then
-                    nInteresEquipo = (nMensu * nPlazo) - (nImpEq - nIvaEq - nAmorin)
+                    nInteresEquipo = (nMensu * nPlazoX) - (nImpEq - nIvaEq - nAmorin)
                 End If
 
                 ' El saldo del seguro será siempre cero ya que se tomó la determinación
@@ -1723,7 +1723,7 @@ Public Class frmCierreCo
         Dim nNafin As Decimal
         Dim nOpcion As Decimal
         Dim nPagosIniciales As Decimal
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nPorcentajeIVA As Decimal = 0
         Dim nRD As Byte
         Dim nSaldoEquipo As Decimal = 0
@@ -1790,7 +1790,7 @@ Public Class frmCierreCo
             cFecha_Pago = drAnexo("Fecha")
             cForca = drAnexo("Forca")
             nMensu = drAnexo("Mensu")
-            nPlazo = drAnexo("Plazo")
+            nPlazoX = drAnexo("Plazo")
             nImpEq = drAnexo("Impeq")
             nIvaEq = drAnexo("Ivaeq")
             nAmorin = drAnexo("Amorin")
@@ -1872,7 +1872,7 @@ Public Class frmCierreCo
                 Next
 
                 If lAdelanto = True And (cForca = "1" Or cForca = "4") Then
-                    nInteresEquipo = (nMensu * nPlazo) - (nImpEq - nIvaEq - nAmorin)
+                    nInteresEquipo = (nMensu * nPlazoX) - (nImpEq - nIvaEq - nAmorin)
                 End If
 
                 ' El saldo del seguro será siempre cero ya que se tomó la determinación
@@ -2354,7 +2354,6 @@ Public Class frmCierreCo
         Dim nIvaSe As Decimal = 0
         Dim nLetra As Integer = 0
         Dim nOpcion As Decimal = 0
-        Dim nPlazo As Integer = 0
         Dim nRenPr As Decimal = 0
         Dim nRenSe As Decimal = 0
         Dim nSeguroVida As Decimal = 0
@@ -2425,7 +2424,6 @@ Public Class frmCierreCo
                 cTipar = "L"
             End If
             nLetra = CInt(drFactura("Letra"))
-            nPlazo = CInt(drFactura("Plazo"))
             cFeven = drFactura("Feven")
             nIntPr = drFactura("IntPr")
             nIntSe = drFactura("IntSe")
@@ -2450,7 +2448,7 @@ Public Class frmCierreCo
             nIvaFEGA = Round(nImporteFEGA - nBaseFEGA, 2)
             FolioFiscal = drFactura("FolioFiscal")
 
-            If nLetra = nPlazo Then
+            If nLetra = Val(TaQUERY.UltimaLetra(cAnexo)) Then
                 nOpcion = drFactura("OC")
                 nIvaOpcion = drFactura("IO")
             Else
@@ -4044,7 +4042,7 @@ Public Class frmCierreCo
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
         Dim Corto, Largo As Decimal
-        Dim Plazo As Integer
+        Dim nPlazoX As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
@@ -4052,7 +4050,7 @@ Public Class frmCierreCo
         taFond.FillByBancomer(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
             taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "CAPITAL", "CAPITAL")
-            Plazo = DateDiff(DateInterval.Month, r.FechaInicio, r.FechaVencimiento)
+            nPlazoX = DateDiff(DateInterval.Month, r.FechaInicio, r.FechaVencimiento)
             For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
                 With aMovimiento
                     .Anexo = ""
@@ -4064,16 +4062,16 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = rr.Banco
-                    .Concepto = "Fondeo Bancomer  Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
+                    .Concepto = "Fondeo Bancomer  Plazo " & nPlazoX & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
-                If Plazo <= 12 Then
+                If nPlazoX <= 12 Then
                     Corto = rr.Importe
                     Largo = 0
                 Else
-                    Corto = (rr.Importe / Plazo) * 12
-                    Largo = (rr.Importe / Plazo) * (Plazo - 12)
+                    Corto = (rr.Importe / nPlazoX) * 12
+                    Largo = (rr.Importe / nPlazoX) * (nPlazoX - 12)
                 End If
                 With aMovimiento
                     .Anexo = ""
@@ -4085,7 +4083,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Fondeo Bancomer Corto Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
+                    .Concepto = "Fondeo Bancomer Corto Plazo " & nPlazoX & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -4101,7 +4099,7 @@ Public Class frmCierreCo
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                         .Tipmov = Tipmov
                         .Banco = ""
-                        .Concepto = "Fondeo Bancomer Largo Plazo " & Plazo & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
+                        .Concepto = "Fondeo Bancomer Largo Plazo " & nPlazoX & " " & rr.FechaInicio.ToString("dd/MM/yyyy")
                         .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
@@ -4119,7 +4117,7 @@ Public Class frmCierreCo
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
         Dim Corto, Largo, SaldoCap, Interes As Decimal
-        Dim Plazo As Integer
+        Dim nPlazoX As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
@@ -4127,10 +4125,10 @@ Public Class frmCierreCo
         taFond.FillByBancomer(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
             taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "PAGO AUTOMATICO", "PAGO")
-            Plazo = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
+            nPlazoX = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
             For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
                 SaldoCap = taEdocta.SaldoCapital(r.id_Fondeo, rr.FechaFin)
-                If Plazo <= 12 Then
+                If nPlazoX <= 12 Then
                     With aMovimiento
                         .Anexo = ""
                         .Cliente = ""
@@ -4146,8 +4144,8 @@ Public Class frmCierreCo
                         aMovimientos.Add(aMovimiento)
                     End With
                 Else
-                    Corto = (SaldoCap / Plazo) * 12
-                    Largo = (SaldoCap / Plazo) * (Plazo - 12)
+                    Corto = (SaldoCap / nPlazoX) * 12
+                    Largo = (SaldoCap / nPlazoX) * (nPlazoX - 12)
                     If Largo >= Math.Abs(rr.Importe) Then
                         With aMovimiento
                             .Anexo = ""
@@ -4295,7 +4293,7 @@ Public Class frmCierreCo
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
         Dim Corto, Largo As Decimal
-        Dim Plazo As Integer
+        Dim nPlazoX As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
@@ -4303,7 +4301,7 @@ Public Class frmCierreCo
         taFond.FillByNoBancarios(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
             taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "CAPITAL", "CAPITAL")
-            Plazo = DateDiff(DateInterval.Month, r.FechaInicio, r.FechaVencimiento)
+            nPlazoX = DateDiff(DateInterval.Month, r.FechaInicio, r.FechaVencimiento)
             For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
                 With aMovimiento
                     .Anexo = ""
@@ -4315,16 +4313,16 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = rr.Banco
-                    .Concepto = "Fondeo " & r.Fondeador & " Plazo" & Plazo
+                    .Concepto = "Fondeo " & r.Fondeador & " Plazo" & nPlazoX
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
-                If Plazo <= 12 Then
+                If nPlazoX <= 12 Then
                     Corto = rr.Importe
                     Largo = 0
                 Else
-                    Corto = (rr.Importe / Plazo) * 12
-                    Largo = (rr.Importe / Plazo) * (Plazo - 12)
+                    Corto = (rr.Importe / nPlazoX) * 12
+                    Largo = (rr.Importe / nPlazoX) * (nPlazoX - 12)
                 End If
                 With aMovimiento
                     .Anexo = ""
@@ -4336,7 +4334,7 @@ Public Class frmCierreCo
                     .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                     .Tipmov = Tipmov
                     .Banco = ""
-                    .Concepto = "Fondeo Corto " & r.Fondeador & " Plazo" & Plazo
+                    .Concepto = "Fondeo Corto " & r.Fondeador & " Plazo" & nPlazoX
                     .Segmento = r.Segmento
                     aMovimientos.Add(aMovimiento)
                 End With
@@ -4352,7 +4350,7 @@ Public Class frmCierreCo
                         .Fecha = rr.FechaInicio.ToString("yyyyMMdd")
                         .Tipmov = Tipmov
                         .Banco = ""
-                        .Concepto = "Fondeo Largo " & r.Fondeador & " Plazo" & Plazo
+                        .Concepto = "Fondeo Largo " & r.Fondeador & " Plazo" & nPlazoX
                         .Segmento = r.Segmento
                         aMovimientos.Add(aMovimiento)
                     End With
@@ -4370,7 +4368,7 @@ Public Class frmCierreCo
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
         Dim Corto, Largo, SaldoCap, Interes As Decimal
-        Dim Plazo As Integer
+        Dim nPlazoX As Integer
         Dim Fecha1 As Date = CTOD(Mid(cFecha, 1, 6) & "01")
         Dim Fecha2 As Date = CTOD(cFecha)
         Dim taFond As New PasivosDSTableAdapters.FondeosNoFiraTableAdapter
@@ -4378,10 +4376,10 @@ Public Class frmCierreCo
         taFond.FillByNoBancarios(PasivoDS.FondeosNoFira)
         For Each r As PasivosDS.FondeosNoFiraRow In PasivoDS.FondeosNoFira.Rows
             taEdocta.Fill(PasivoDS.FOND_EstadoCuenta, r.id_Fondeo, Fecha1, Fecha2, "PAGO AUTOMATICO", "PAGO")
-            Plazo = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
+            nPlazoX = DateDiff(DateInterval.Month, Fecha1, r.FechaVencimiento)
             For Each rr As PasivosDS.FOND_EstadoCuentaRow In PasivoDS.FOND_EstadoCuenta.Rows
                 SaldoCap = taEdocta.SaldoCapital(r.id_Fondeo, rr.FechaFin)
-                If Plazo <= 12 Then
+                If nPlazoX <= 12 Then
                     With aMovimiento
                         .Anexo = ""
                         .Cliente = ""
@@ -4397,8 +4395,8 @@ Public Class frmCierreCo
                         aMovimientos.Add(aMovimiento)
                     End With
                 Else
-                    Corto = (SaldoCap / Plazo) * 12
-                    Largo = (SaldoCap / Plazo) * (Plazo - 12)
+                    Corto = (SaldoCap / nPlazoX) * 12
+                    Largo = (SaldoCap / nPlazoX) * (nPlazoX - 12)
                     If Largo >= Math.Abs(rr.Importe) Then
                         With aMovimiento
                             .Anexo = ""

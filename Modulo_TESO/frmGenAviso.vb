@@ -145,7 +145,6 @@ Public Class frmGenAviso
         Dim nIvaOt As Decimal = 0
         Dim nIvaSe As Decimal = 0
         Dim nOpcion As Decimal = 0
-        Dim nPlazo As Integer = 0
         Dim nRense As Decimal = 0
         Dim nSaldo As Decimal = 0
         Dim nSaldot As Decimal = 0
@@ -317,9 +316,6 @@ Public Class frmGenAviso
                 ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
                 ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-                nPlazo = 0
-                CuentaPagos(cAnexo, nPlazo)
-
                 nSaldo = drAnexo("Saldo")
                 nSalse = drAnexo("Salse")
                 nSaldot = drAnexo("Saldot")
@@ -374,7 +370,7 @@ Public Class frmGenAviso
                 nOpcion = 0
                 nIvaopc = 0
 
-                If Val(drAnexo("Letra")) = nPlazo Then
+                If Val(drAnexo("Letra")) = TaQUERY.UltimaLetra(drAnexo("Anexo")) Then
                     If Not IsDBNull(drAnexo("Opcion")) Then
                         If cTipar = "P" Then
                             nOpcion = drAnexo("Opcion") + drAnexo("IvaOpcion")
@@ -527,7 +523,7 @@ Public Class frmGenAviso
                 If drAviso("Anexo") = "00223/0036" Then drAviso("Anexo") = "10284121001"
                 If drAviso("Anexo") = "01350/0012" Then drAviso("Anexo") = "10318141001"
 
-                drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & nPlazo.ToString
+                drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & TaQUERY.UltimaLetra(drAnexo("Anexo"))
                 drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
                 drAviso("Dias") = drAnexo("Dias")
                 drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)
@@ -651,7 +647,7 @@ Public Class frmGenAviso
                     Facturas.BloqueaFactura(nFactura)
                 End If
                 '#ECT esto es para mandar avisos AP a Avelina en ves del Cliente
-                If drAnexo("Tipar") = "P" And Val(drAnexo("Letra")) = nPlazo And cEnviado <> "X" Then
+                If drAnexo("Tipar") = "P" And Val(drAnexo("Letra")) = Val(TaQUERY.UltimaLetra(drAnexo("Anexo"))) And cEnviado <> "X" Then
                     'Facturas.BloqueaFactura(nFactura)
                     'oMsg.To = "avrojas@finagil.com.mx"
                     oMsg_CC = "ecacerest@lamoderna.com.mx"

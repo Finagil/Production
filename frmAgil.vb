@@ -121,8 +121,6 @@ Public Class frmAgil
     Friend WithEvents mnuDepoRefe As System.Windows.Forms.MenuItem
     Friend WithEvents mnuFega As System.Windows.Forms.MenuItem
     Friend WithEvents mnuReestructuras As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRCporAnexo As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRCporNombre As System.Windows.Forms.MenuItem
     Friend WithEvents mnuAplicaDR As System.Windows.Forms.MenuItem
     Friend WithEvents mnuAvio As System.Windows.Forms.MenuItem
     Friend WithEvents mnuAltaContratos As System.Windows.Forms.MenuItem
@@ -369,8 +367,6 @@ Public Class frmAgil
         Me.mnuImprActi = New System.Windows.Forms.MenuItem()
         Me.mnuRepCobra = New System.Windows.Forms.MenuItem()
         Me.mnuReestructuras = New System.Windows.Forms.MenuItem()
-        Me.mnuRCporAnexo = New System.Windows.Forms.MenuItem()
-        Me.mnuRCporNombre = New System.Windows.Forms.MenuItem()
         Me.mnuAplicaDR = New System.Windows.Forms.MenuItem()
         Me.mnuDocBlanco = New System.Windows.Forms.MenuItem()
         Me.mnuGFE = New System.Windows.Forms.MenuItem()
@@ -885,18 +881,7 @@ Public Class frmAgil
         '
         Me.mnuReestructuras.Enabled = False
         Me.mnuReestructuras.Index = 5
-        Me.mnuReestructuras.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRCporAnexo, Me.mnuRCporNombre})
         Me.mnuReestructuras.Text = "Reestructuras y Capitalizaciones"
-        '
-        'mnuRCporAnexo
-        '
-        Me.mnuRCporAnexo.Index = 0
-        Me.mnuRCporAnexo.Text = "por Anexo"
-        '
-        'mnuRCporNombre
-        '
-        Me.mnuRCporNombre.Index = 1
-        Me.mnuRCporNombre.Text = "por Nombre"
         '
         'mnuAplicaDR
         '
@@ -2734,12 +2719,12 @@ Public Class frmAgil
         newfrmFega.Show()
     End Sub
 
-    Private Sub mnuRCporAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRCporAnexo.Click
+    Private Sub mnuRCporAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim newfrmPideContrato As New frmPideContrato("mnuReestructuras")
         newfrmPideContrato.Show()
     End Sub
 
-    Private Sub mnuRCporNombre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRCporNombre.Click
+    Private Sub mnuRCporNombre_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim newfrmPideAnexo As New frmPideAnexo("mnuReestructuras")
         newfrmPideAnexo.Show()
     End Sub

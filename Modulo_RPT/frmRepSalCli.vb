@@ -97,7 +97,6 @@ Public Class frmRepSalCli
         Dim nIvaDiferido As Decimal
         Dim nIvaEq As Decimal
         Dim nIvaRD As Decimal
-        Dim nPlazo As Byte
         Dim nPorieq As Decimal
         Dim nRtasD As Decimal
         Dim nSaldoEquipo As Decimal
@@ -161,7 +160,6 @@ Public Class frmRepSalCli
             cAnexo = drAnexo("Anexo")
             cCusnam = cDescr
             cTipar = drAnexo("Tipar")
-            nPlazo = drAnexo("Plazo")
             cFechacon = drAnexo("Fechacon")
             cFvenc = drAnexo("Fvenc")
             cFondeo = drAnexo("Fondeo")

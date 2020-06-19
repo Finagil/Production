@@ -98,7 +98,6 @@ Public Class frmImprCert
         Dim cTipar As String
         Dim cTipo As String
         Dim cTipta As String
-        Dim nPlazo As Integer
         Dim nDiasMora As Integer
         Dim nOcurre As Integer
         Dim nDifer As Decimal
@@ -226,7 +225,6 @@ Public Class frmImprCert
         cFechacon = drAnexo("Fechacon")
         cAcumulaIntereses = drAnexo("AcumulaIntereses")
         cFvenc = drAnexo("Fvenc")
-        nPlazo = drAnexo("Plazo")
         cTipta = drAnexo("Tipta")
         nDifer = drAnexo("Difer")
         cFinse = drAnexo("Finse")

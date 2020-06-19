@@ -755,7 +755,7 @@ Public Class frmContSoli
         Dim nLetra As Integer
         Dim nMensu As Decimal
         Dim nOpcion As Decimal
-        Dim nPlazo As Integer
+        Dim nPlazoX As Integer
         Dim nPorieq As Decimal
         Dim nPorop As Decimal
         Dim nRentaEquipo As Decimal
@@ -840,7 +840,7 @@ Public Class frmContSoli
             cNEmp = drSolicitud("CNEmpresa")
             cNPta = drSolicitud("CNPlanta")
             cTFrec = drSolicitud("TipoFrecuencia")
-            nPlazo = drSolicitud("Plazo")
+            nPlazoX = drSolicitud("Plazo")
             cFechacon = drSolicitud("Fechacon")
             If cFechacon < Date.Now.Date.ToString("yyyyMMdd") Then 'La fecha de contrato no puede ser menor a la del dia de hoy
                 cFechacon = Date.Now.Date.ToString("yyyyMMdd")
@@ -905,9 +905,9 @@ Public Class frmContSoli
 
             If nSaldoEquipo > 0 Then
                 If cTipar = "F" Or cTipar = "R" Or cTipar = "S" Or cTipar = "L" Then
-                    nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, 0), 2)
+                    nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, 0), 2)
                 ElseIf cTipar = "P" Then
-                    nMensu = Round(Pmt(nTasaAplicable, nPlazo, -nSaldoEquipo, nResidual), 2)
+                    nMensu = Round(Pmt(nTasaAplicable, nPlazoX, -nSaldoEquipo, nResidual), 2)
                 ElseIf cTipar = "B" Then
                     nMensu = 0
                 End If
@@ -998,7 +998,7 @@ Public Class frmContSoli
                         strInsert = strInsert & "S" & "', '"
                         strInsert = strInsert & drSolicitud("Cliente") & "', '"
                         strInsert = strInsert & nImpEq & "', '"
-                        strInsert = strInsert & nPlazo & "', '"
+                        strInsert = strInsert & nPlazoX & "', '"
                         strInsert = strInsert & nIvaEq & "', '"
                         strInsert = strInsert & nPorieq & "', '"
                         strInsert = strInsert & nAmorin & "', '"
@@ -1085,15 +1085,15 @@ Public Class frmContSoli
                             nRentaEquipo = Round(nMensu, 2)
                         ElseIf cForca = "2" Then
                             If cTipar = "F" Or cTipar = "R" Then
-                                nAbcap = Round((nSaldoEquipo) / nPlazo, 2)
+                                nAbcap = Round((nSaldoEquipo) / nPlazoX, 2)
                             End If
                         End If
 
                         cFeven = cFvenc
                         nTasaAplicable = (nTasas + nDifer) / 1200
-                        nCount = nPlazo - nRd
+                        nCount = nPlazoX - nRd
 
-                        For nLetra = 1 To nPlazo
+                        For nLetra = 1 To nPlazoX
 
                             nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
 
@@ -1103,7 +1103,7 @@ Public Class frmContSoli
                                 nCapitalEquipo = nAbcap
                             End If
 
-                            If nLetra = nPlazo Then
+                            If nLetra = Val(TaQUERY.UltimaLetra(cAnexo)) Then
                                 nCapitalEquipo = nSaldoEquipo
                                 nInteresEquipo = Round(nSaldoEquipo * nTasaAplicable, 2)
                             End If
@@ -1151,7 +1151,7 @@ Public Class frmContSoli
                                 End If
                             End If
 
-                            If nLetra = nPlazo And cTipar = "P" Then
+                            If nLetra = Val(TaQUERY.UltimaLetra(cAnexo)) And cTipar = "P" Then
                                 'nSaldoEquipo = nSaldoEquipo + nResidual
                                 'nCapitalEquipo = (nRentaEquipo - nInteresEquipo) + nResidual
                                 'nIvaIntEq = Round(nRentaEquipo * nPorcentajeIVA, 2) + Round(nResidual * nPorcentajeIVA, 2)
@@ -1180,7 +1180,7 @@ Public Class frmContSoli
                             ' Si nRD > 0 quiere decir que hay rentas en depósito por lo que hay que guardar
                             ' información en la Base de Rentas en Depósito
 
-                            If nLetra = nPlazo And cTipar = "PP" Then
+                            If nLetra = Val(TaQUERY.UltimaLetra(cAnexo)) And cTipar = "PP" Then
                                 nSaldoEquipo = nSaldoEquipo - nResidual
                                 nCapitalEquipo = nCapitalEquipo - nResidual
                                 nIvaIntEq = nIvaIntEq - Round(nResidual * nPorcentajeIVA, 2)
