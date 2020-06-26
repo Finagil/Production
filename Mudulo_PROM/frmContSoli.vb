@@ -434,12 +434,12 @@ Public Class frmContSoli
             cm2 = New SqlCommand(strInsert, cnAgil)
             cm2.ExecuteNonQuery()
 
-            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente)"
+            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente,TasasP,DiferP)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cSolicitud & "', '"
             strInsert = strInsert & cDisposicion & "', '"
             strInsert = strInsert & txtCliente.Text
-            strInsert = strInsert & "')"
+            strInsert = strInsert & "',0,0)"
             cm3 = New SqlCommand(strInsert, cnAgil)
             cm3.ExecuteNonQuery()
 
@@ -1255,12 +1255,12 @@ Public Class frmContSoli
             nDisposicion = ListBox1.Items.Count + 1
             cDisposicion = Stuff(nDisposicion.ToString, "I", "0", 3)
 
-            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente)"
+            strInsert = "INSERT INTO DetSol(Solicitud, Disposicion, Cliente,TasasP,DiferP)"
             strInsert = strInsert & " VALUES ('"
             strInsert = strInsert & cSolicitud & "', '"
             strInsert = strInsert & cDisposicion & "', '"
             strInsert = strInsert & txtCliente.Text
-            strInsert = strInsert & "')"
+            strInsert = strInsert & "',0,0)"
 
             Try
                 Dim cnAgil As New SqlConnection(strConn)
