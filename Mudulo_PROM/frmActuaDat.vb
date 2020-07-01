@@ -1704,7 +1704,7 @@ Public Class frmActuaDat
         'cbTasaIVAcap
         '
         Me.cbTasaIVAcap.FormattingEnabled = True
-        Me.cbTasaIVAcap.Items.AddRange(New Object() {"0%", "16%", "EXE"})
+        Me.cbTasaIVAcap.Items.AddRange(New Object() {"0%", "8%", "16%", "EXE"})
         Me.cbTasaIVAcap.Location = New System.Drawing.Point(144, 270)
         Me.cbTasaIVAcap.Name = "cbTasaIVAcap"
         Me.cbTasaIVAcap.Size = New System.Drawing.Size(47, 21)
@@ -2159,10 +2159,12 @@ Public Class frmActuaDat
             If Not IsDBNull(drDisposicion("TasaIvaCapital")) Then
                 If Trim(drDisposicion("TasaIvaCapital")) = "0%" Then
                     cbTasaIVAcap.SelectedIndex = 0
-                ElseIf drDisposicion("TasaIvaCapital") = "16%" Then
+                ElseIf drDisposicion("TasaIvaCapital") = "8%" Then
                     cbTasaIVAcap.SelectedIndex = 1
-                Else
+                ElseIf drDisposicion("TasaIvaCapital") = "16%" Then
                     cbTasaIVAcap.SelectedIndex = 2
+                Else
+                    cbTasaIVAcap.SelectedIndex = 3
                 End If
             End If
         Else

@@ -186,14 +186,14 @@ VALUES        (@Ciclo,@Anexo,@Flcan,@IDCredito,@Tipar,@Cliente,@IDPersona,@IDDTU
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Vw_Anexos.AnexoCon AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios.Tipar, Vw_Anexos.AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr) 
-                         AS Titulo
+                    <CommandText>SELECT        MAX(Vw_Anexos.AnexoCon) AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios.Tipar, MAX(Vw_Anexos.AnexoSin) AS AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, 
+                         Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr) AS Titulo
 FROM            Avios INNER JOIN
                          Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN
                          CRED_LineasCredito ON Avios.Cliente = CRED_LineasCredito.Cliente INNER JOIN
                          CRED_FactorajeFechas ON CRED_LineasCredito.id_lineaCredito = CRED_FactorajeFechas.id_lineaCredito
-WHERE        (CRED_LineasCredito.TipoLinea = 'CC') AND (Avios.Flcan = N'A')
-GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_Anexos.AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr)
+WHERE        (CRED_LineasCredito.TipoLinea = 'CC') AND (Avios.FechaAutorizacion BETWEEN CRED_FactorajeFechas.FechaInicio AND CRED_FactorajeFechas.FechaFin)
+GROUP BY Avios.Tipar, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr)
 HAVING        (Avios.Tipar = N'C') AND (CRED_FactorajeFechas.FechaFin &gt;= GETDATE() - 1)
 ORDER BY Anexo</CommandText>
                     <Parameters />

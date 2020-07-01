@@ -39021,18 +39021,19 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios.Tipar"& _ 
-                ", Vw_Anexos.AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.Fec"& _ 
-                "haFin, Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     AS Titulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_An"& _ 
-                "exos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CRED_"& _ 
-                "LineasCredito ON Avios.Cliente = CRED_LineasCredito.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "                 CRED_FactorajeFechas ON CRED_LineasCredito.id_lineaCredito = CR"& _ 
-                "ED_FactorajeFechas.id_lineaCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_LineasCredito.TipoLinea ="& _ 
-                " 'CC') AND (Avios.Flcan = N'A')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Vw_Anexos.AnexoCon, Avios.Tipar, Vw_An"& _ 
-                "exos.AnexoSin, CRED_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, "& _ 
-                "Vw_Anexos.AnexoCon + N' ' + RTRIM(Vw_Anexos.Descr)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Avios.Tipar ="& _ 
-                " N'C') AND (CRED_FactorajeFechas.FechaFin >= GETDATE() - 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
+            Me._commandCollection(0).CommandText = "SELECT        MAX(Vw_Anexos.AnexoCon) AS Anexo, MIN(Avios.Flcan) AS Flcan, Avios."& _ 
+                "Tipar, MAX(Vw_Anexos.AnexoSin) AS AnexoSin, CRED_FactorajeFechas.FechaInicio, CR"& _ 
+                "ED_FactorajeFechas.FechaFin, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos.AnexoCon + N' "& _ 
+                "' + RTRIM(Vw_Anexos.Descr) AS Titulo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 Vw_Anexos ON Avios.Anexo = Vw_Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 CRED_LineasCredito ON Avios.Cliente = CRED_LineasCredito.Client"& _ 
+                "e INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CRED_FactorajeFechas ON CRED_LineasCredit"& _ 
+                "o.id_lineaCredito = CRED_FactorajeFechas.id_lineaCredito"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CRED_Lin"& _ 
+                "easCredito.TipoLinea = 'CC') AND (Avios.FechaAutorizacion BETWEEN CRED_Factoraje"& _ 
+                "Fechas.FechaInicio AND CRED_FactorajeFechas.FechaFin)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY Avios.Tipar, CRE"& _ 
+                "D_FactorajeFechas.FechaInicio, CRED_FactorajeFechas.FechaFin, Vw_Anexos.AnexoCon"& _ 
+                " + N' ' + RTRIM(Vw_Anexos.Descr)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"HAVING        (Avios.Tipar = N'C') AND (CRED_F"& _ 
+                "actorajeFechas.FechaFin >= GETDATE() - 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Anexo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection

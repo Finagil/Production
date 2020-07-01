@@ -1470,8 +1470,8 @@ Public Class frmModiGene
                 Next
             End If
 
-            'cPlaza = drCodigo("Plaza")
-            'Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
+            'cPlaza = drCodigo("Estado")
+            Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
 
         Else
 
