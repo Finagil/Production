@@ -365,4 +365,15 @@ Public Class FrmAltaLiquidez
             End If
         End If
     End Sub
+
+    Private Sub LbAut_Click(sender As Object, e As EventArgs) Handles LbAut.Click
+        Try
+            Dim id As Integer = InputBox("id")
+            Dim Fecha As Date = InputBox("Fecha Ingreso")
+            Dim f As New FrmAltaLiquidezFinan
+            f.GeneraCorreoAUTX(id, Fecha)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class

@@ -193,6 +193,7 @@ Partial Class FrmAltaLiquidez
         Me.BtnCancel = New System.Windows.Forms.Button()
         Me.GEN_EstadoCivilTableAdapter = New Agil.GeneralDSTableAdapters.GEN_EstadoCivilTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.LbAut = New System.Windows.Forms.Label()
         CType(Me.ContClie1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductionDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1808,11 +1809,22 @@ Partial Class FrmAltaLiquidez
         Me.Button1.Text = "Calc. RDC"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'LbAut
+        '
+        Me.LbAut.AutoSize = True
+        Me.LbAut.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbAut.Location = New System.Drawing.Point(1327, 9)
+        Me.LbAut.Name = "LbAut"
+        Me.LbAut.Size = New System.Drawing.Size(10, 13)
+        Me.LbAut.TabIndex = 215
+        Me.LbAut.Text = "."
+        '
         'FrmAltaLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1349, 532)
+        Me.Controls.Add(Me.LbAut)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnCancel)
         Me.Controls.Add(Me.TextBox48)
@@ -2152,4 +2164,5 @@ Partial Class FrmAltaLiquidez
     Friend WithEvents GENEstadoCivilBindingSource As BindingSource
     Friend WithEvents GEN_EstadoCivilTableAdapter As GeneralDSTableAdapters.GEN_EstadoCivilTableAdapter
     Friend WithEvents Button1 As Button
+    Friend WithEvents LbAut As Label
 End Class

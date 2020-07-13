@@ -293,4 +293,11 @@ Public Class FrmAltaLiquidezFinan
 
         End If
     End Sub
+
+    Sub GeneraCorreoAUTX(id As Integer, Fecha As Date)
+        Dim Antiguedad As Integer = Fix(DateDiff(DateInterval.Day, Fecha, Date.Now.Date) / 365)
+        Dim Asunto As String = ""
+        Dim Archivo As String = GeneraDocAutorizacion(id, Antiguedad)
+        MessageBox.Show("Solicitud Generada", id.ToString, MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class
