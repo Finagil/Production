@@ -606,7 +606,11 @@ Public Class frmGeneFact
                 If cAcumulaIntereses = "SI" Then
 
                     ' Los créditos con Esquema de acumulación de intereses entrarían a esta sección
-                    nLetra = Val(cLetra)
+                    If TaQUERY.PrimeraLetra(cAnexo) = cLetra Then
+                        nLetra = 1
+                    Else
+                        nLetra = Val(cLetra)
+                    End If
                     If nLetra = 1 Then
                         If cFechacon <= "20110930" Then
                             cFechaDocumento = cFechacon
