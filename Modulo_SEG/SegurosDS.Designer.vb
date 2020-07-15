@@ -13080,6 +13080,8 @@ Partial Public Class SegurosDS
         
         Private columnNotas As Global.System.Data.DataColumn
         
+        Private columnFechaRecepcion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -13172,6 +13174,14 @@ Partial Public Class SegurosDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaRecepcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaRecepcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -13208,9 +13218,9 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddSEG_LiberacionesMCRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal PlazoMaximo As Date, ByVal Liberado As Boolean, ByVal FechaLiberacion As Date, ByVal usuario As String, ByVal Notas As String) As SEG_LiberacionesMCRow
+        Public Overloads Function AddSEG_LiberacionesMCRow(ByVal Anexo As String, ByVal Ciclo As String, ByVal PlazoMaximo As Date, ByVal Liberado As Boolean, ByVal FechaLiberacion As Date, ByVal usuario As String, ByVal Notas As String, ByVal FechaRecepcion As Date) As SEG_LiberacionesMCRow
             Dim rowSEG_LiberacionesMCRow As SEG_LiberacionesMCRow = CType(Me.NewRow,SEG_LiberacionesMCRow)
-            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Notas}
+            Dim columnValuesArray() As Object = New Object() {Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Notas, FechaRecepcion}
             rowSEG_LiberacionesMCRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSEG_LiberacionesMCRow)
             Return rowSEG_LiberacionesMCRow
@@ -13246,6 +13256,7 @@ Partial Public Class SegurosDS
             Me.columnFechaLiberacion = MyBase.Columns("FechaLiberacion")
             Me.columnusuario = MyBase.Columns("usuario")
             Me.columnNotas = MyBase.Columns("Notas")
+            Me.columnFechaRecepcion = MyBase.Columns("FechaRecepcion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13265,6 +13276,8 @@ Partial Public Class SegurosDS
             MyBase.Columns.Add(Me.columnusuario)
             Me.columnNotas = New Global.System.Data.DataColumn("Notas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNotas)
+            Me.columnFechaRecepcion = New Global.System.Data.DataColumn("FechaRecepcion", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaRecepcion)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo, Me.columnCiclo}, true))
             Me.columnAnexo.AllowDBNull = false
             Me.columnAnexo.MaxLength = 9
@@ -21927,6 +21940,22 @@ Partial Public Class SegurosDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaRecepcion() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSEG_LiberacionesMC.FechaRecepcionColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaRecepcion' de la tabla 'SEG_LiberacionesMC' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSEG_LiberacionesMC.FechaRecepcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsPlazoMaximoNull() As Boolean
             Return Me.IsNull(Me.tableSEG_LiberacionesMC.PlazoMaximoColumn)
         End Function
@@ -21983,6 +22012,18 @@ Partial Public Class SegurosDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetNotasNull()
             Me(Me.tableSEG_LiberacionesMC.NotasColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaRecepcionNull() As Boolean
+            Return Me.IsNull(Me.tableSEG_LiberacionesMC.FechaRecepcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaRecepcionNull()
+            Me(Me.tableSEG_LiberacionesMC.FechaRecepcionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -36519,6 +36560,7 @@ Namespace SegurosDSTableAdapters
             tableMapping.ColumnMappings.Add("FechaLiberacion", "FechaLiberacion")
             tableMapping.ColumnMappings.Add("usuario", "usuario")
             tableMapping.ColumnMappings.Add("Notas", "Notas")
+            tableMapping.ColumnMappings.Add("FechaRecepcion", "FechaRecepcion")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -36529,7 +36571,8 @@ Namespace SegurosDSTableAdapters
                 " 1 AND [FechaLiberacion] IS NULL) OR ([FechaLiberacion] = @Original_FechaLiberac"& _ 
                 "ion)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario] = @Original"& _ 
                 "_usuario)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Original_"& _ 
-                "Notas)))"
+                "Notas)) AND ((@IsNull_FechaRecepcion = 1 AND [FechaRecepcion] IS NULL) OR ([Fech"& _ 
+                "aRecepcion] = @Original_FechaRecepcion)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -36543,13 +36586,15 @@ Namespace SegurosDSTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaRecepcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaRecepcion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [SEG_LiberacionesMC] ([Anexo], [Ciclo], [PlazoMaximo], [Liberado], [F"& _ 
-                "echaLiberacion], [usuario], [Notas]) VALUES (@Anexo, @Ciclo, @PlazoMaximo, @Libe"& _ 
-                "rado, @FechaLiberacion, @usuario, @Notas);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, PlazoMaximo, Li"& _ 
-                "berado, FechaLiberacion, usuario, Notas FROM SEG_LiberacionesMC WHERE (Anexo = @"& _ 
-                "Anexo) AND (Ciclo = @Ciclo)"
+                "echaLiberacion], [usuario], [Notas], [FechaRecepcion]) VALUES (@Anexo, @Ciclo, @"& _ 
+                "PlazoMaximo, @Liberado, @FechaLiberacion, @usuario, @Notas, @FechaRecepcion);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"S"& _ 
+                "ELECT Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Notas, Fech"& _ 
+                "aRecepcion FROM SEG_LiberacionesMC WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -36558,20 +36603,23 @@ Namespace SegurosDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLiberacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaRecepcion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SEG_LiberacionesMC] SET [Anexo] = @Anexo, [Ciclo] = @Ciclo, [PlazoMaximo]"& _ 
                 " = @PlazoMaximo, [Liberado] = @Liberado, [FechaLiberacion] = @FechaLiberacion, ["& _ 
-                "usuario] = @usuario, [Notas] = @Notas WHERE (([Anexo] = @Original_Anexo) AND ([C"& _ 
-                "iclo] = @Original_Ciclo) AND ((@IsNull_PlazoMaximo = 1 AND [PlazoMaximo] IS NULL"& _ 
-                ") OR ([PlazoMaximo] = @Original_PlazoMaximo)) AND ((@IsNull_Liberado = 1 AND [Li"& _ 
-                "berado] IS NULL) OR ([Liberado] = @Original_Liberado)) AND ((@IsNull_FechaLibera"& _ 
-                "cion = 1 AND [FechaLiberacion] IS NULL) OR ([FechaLiberacion] = @Original_FechaL"& _ 
-                "iberacion)) AND ((@IsNull_usuario = 1 AND [usuario] IS NULL) OR ([usuario] = @Or"& _ 
-                "iginal_usuario)) AND ((@IsNull_Notas = 1 AND [Notas] IS NULL) OR ([Notas] = @Ori"& _ 
-                "ginal_Notas)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, us"& _ 
-                "uario, Notas FROM SEG_LiberacionesMC WHERE (Anexo = @Anexo) AND (Ciclo = @Ciclo)"& _ 
-                ""
+                "usuario] = @usuario, [Notas] = @Notas, [FechaRecepcion] = @FechaRecepcion WHERE "& _ 
+                "(([Anexo] = @Original_Anexo) AND ([Ciclo] = @Original_Ciclo) AND ((@IsNull_Plazo"& _ 
+                "Maximo = 1 AND [PlazoMaximo] IS NULL) OR ([PlazoMaximo] = @Original_PlazoMaximo)"& _ 
+                ") AND ((@IsNull_Liberado = 1 AND [Liberado] IS NULL) OR ([Liberado] = @Original_"& _ 
+                "Liberado)) AND ((@IsNull_FechaLiberacion = 1 AND [FechaLiberacion] IS NULL) OR ("& _ 
+                "[FechaLiberacion] = @Original_FechaLiberacion)) AND ((@IsNull_usuario = 1 AND [u"& _ 
+                "suario] IS NULL) OR ([usuario] = @Original_usuario)) AND ((@IsNull_Notas = 1 AND"& _ 
+                " [Notas] IS NULL) OR ([Notas] = @Original_Notas)) AND ((@IsNull_FechaRecepcion ="& _ 
+                " 1 AND [FechaRecepcion] IS NULL) OR ([FechaRecepcion] = @Original_FechaRecepcion"& _ 
+                ")));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Nota"& _ 
+                "s, FechaRecepcion FROM SEG_LiberacionesMC WHERE (Anexo = @Anexo) AND (Ciclo = @C"& _ 
+                "iclo)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -36580,6 +36628,7 @@ Namespace SegurosDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaLiberacion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaLiberacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FechaRecepcion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Anexo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Ciclo", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PlazoMaximo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PlazoMaximo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -36592,6 +36641,8 @@ Namespace SegurosDSTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuario", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuario", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Notas", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Notas", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_FechaRecepcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_FechaRecepcion", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FechaRecepcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -36608,8 +36659,8 @@ Namespace SegurosDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Anexo, Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Nota"& _ 
-                "s"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Ciclo "& _ 
-                "= @Ciclo)"
+                "s, FechaRecepcion"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @An"& _ 
+                "exo) AND (Ciclo = @Ciclo)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -36698,7 +36749,7 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date), ByVal Original_Liberado As Global.System.Nullable(Of Boolean), ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date), ByVal Original_usuario As String, ByVal Original_Notas As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date), ByVal Original_Liberado As Global.System.Nullable(Of Boolean), ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date), ByVal Original_usuario As String, ByVal Original_Notas As String, ByVal Original_FechaRecepcion As Global.System.Nullable(Of Date)) As Integer
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
@@ -36744,6 +36795,13 @@ Namespace SegurosDSTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Notas,String)
             End If
+            If (Original_FechaRecepcion.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_FechaRecepcion.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -36763,7 +36821,7 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal PlazoMaximo As Global.System.Nullable(Of Date), ByVal Liberado As Global.System.Nullable(Of Boolean), ByVal FechaLiberacion As Global.System.Nullable(Of Date), ByVal usuario As String, ByVal Notas As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Anexo As String, ByVal Ciclo As String, ByVal PlazoMaximo As Global.System.Nullable(Of Date), ByVal Liberado As Global.System.Nullable(Of Boolean), ByVal FechaLiberacion As Global.System.Nullable(Of Date), ByVal usuario As String, ByVal Notas As String, ByVal FechaRecepcion As Global.System.Nullable(Of Date)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -36799,6 +36857,11 @@ Namespace SegurosDSTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = CType(Notas,String)
             End If
+            If (FechaRecepcion.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(FechaRecepcion.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -36818,7 +36881,23 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Anexo As String, ByVal Ciclo As String, ByVal PlazoMaximo As Global.System.Nullable(Of Date), ByVal Liberado As Global.System.Nullable(Of Boolean), ByVal FechaLiberacion As Global.System.Nullable(Of Date), ByVal usuario As String, ByVal Notas As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date), ByVal Original_Liberado As Global.System.Nullable(Of Boolean), ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date), ByVal Original_usuario As String, ByVal Original_Notas As String) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal Anexo As String,  _
+                    ByVal Ciclo As String,  _
+                    ByVal PlazoMaximo As Global.System.Nullable(Of Date),  _
+                    ByVal Liberado As Global.System.Nullable(Of Boolean),  _
+                    ByVal FechaLiberacion As Global.System.Nullable(Of Date),  _
+                    ByVal usuario As String,  _
+                    ByVal Notas As String,  _
+                    ByVal FechaRecepcion As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Anexo As String,  _
+                    ByVal Original_Ciclo As String,  _
+                    ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Liberado As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date),  _
+                    ByVal Original_usuario As String,  _
+                    ByVal Original_Notas As String,  _
+                    ByVal Original_FechaRecepcion As Global.System.Nullable(Of Date)) As Integer
             If (Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Anexo")
             Else
@@ -36854,50 +36933,62 @@ Namespace SegurosDSTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Notas,String)
             End If
+            If (FechaRecepcion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(FechaRecepcion.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
             If (Original_Anexo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Anexo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Anexo,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Anexo,String)
             End If
             If (Original_Ciclo Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Ciclo")
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Ciclo,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Ciclo,String)
             End If
             If (Original_PlazoMaximo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_PlazoMaximo.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_PlazoMaximo.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             If (Original_Liberado.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Liberado.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Liberado.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
             If (Original_FechaLiberacion.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_FechaLiberacion.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_FechaLiberacion.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             If (Original_usuario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_usuario,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_usuario,String)
             End If
             If (Original_Notas Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Notas,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Notas,String)
+            End If
+            If (Original_FechaRecepcion.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_FechaRecepcion.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -36918,8 +37009,8 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal PlazoMaximo As Global.System.Nullable(Of Date), ByVal Liberado As Global.System.Nullable(Of Boolean), ByVal FechaLiberacion As Global.System.Nullable(Of Date), ByVal usuario As String, ByVal Notas As String, ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date), ByVal Original_Liberado As Global.System.Nullable(Of Boolean), ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date), ByVal Original_usuario As String, ByVal Original_Notas As String) As Integer
-            Return Me.Update(Original_Anexo, Original_Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Notas, Original_Anexo, Original_Ciclo, Original_PlazoMaximo, Original_Liberado, Original_FechaLiberacion, Original_usuario, Original_Notas)
+        Public Overloads Overridable Function Update(ByVal PlazoMaximo As Global.System.Nullable(Of Date), ByVal Liberado As Global.System.Nullable(Of Boolean), ByVal FechaLiberacion As Global.System.Nullable(Of Date), ByVal usuario As String, ByVal Notas As String, ByVal FechaRecepcion As Global.System.Nullable(Of Date), ByVal Original_Anexo As String, ByVal Original_Ciclo As String, ByVal Original_PlazoMaximo As Global.System.Nullable(Of Date), ByVal Original_Liberado As Global.System.Nullable(Of Boolean), ByVal Original_FechaLiberacion As Global.System.Nullable(Of Date), ByVal Original_usuario As String, ByVal Original_Notas As String, ByVal Original_FechaRecepcion As Global.System.Nullable(Of Date)) As Integer
+            Return Me.Update(Original_Anexo, Original_Ciclo, PlazoMaximo, Liberado, FechaLiberacion, usuario, Notas, FechaRecepcion, Original_Anexo, Original_Ciclo, Original_PlazoMaximo, Original_Liberado, Original_FechaLiberacion, Original_usuario, Original_Notas, Original_FechaRecepcion)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

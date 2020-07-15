@@ -51,6 +51,7 @@
             r.Anexo = Me.AnexosSEGBindingSource.Current("Anexo")
             r.Ciclo = Me.AnexosSEGBindingSource.Current("Ciclo")
             r.PlazoMaximo = Date.Now.AddDays(-1).Date
+            r.FechaRecepcion = Date.Now
             r.Liberado = False
             r.usuario = UsuarioGlobal
             r.Notas = ""

@@ -141,7 +141,7 @@ Partial Class FrmLiberacionesSEG
         Me.ButtonADD.Name = "ButtonADD"
         Me.ButtonADD.Size = New System.Drawing.Size(111, 23)
         Me.ButtonADD.TabIndex = 15
-        Me.ButtonADD.Text = "Agregar Liberación"
+        Me.ButtonADD.Text = "Recibir Info."
         Me.ButtonADD.UseVisualStyleBackColor = True
         '
         'Label2
