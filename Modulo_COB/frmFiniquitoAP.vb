@@ -682,8 +682,8 @@ Public Class frmFiniquitoAP
         txtTasaAplicada.Text = FormatNumber(nTasaFact, 4)
         txtPenalizacion.Text = FormatNumber(nTasaPen, 2)
         txtDiasIntereses.Text = FormatNumber(nDiasFact, 0)
-        'txtOpcion.Text = FormatNumber(nOpcion, 2)
-        'txtIvaOpcion.Text = FormatNumber(nIvaOpcion, 2) YA NO SE TOMA EN CEUNTA POR SOLICITUD DE VCRUZ
+        txtOpcion.Text = 0 'FormatNumber(nOpcion, 2) YA NO SE TOMA EN CUENTA POR SOLICITUD DE VCRUZ
+        txtIvaOpcion.Text = 0 'FormatNumber(nIvaOpcion, 2) YA NO SE TOMA EN CUENTA POR SOLICITUD DE VCRUZ
         txtPagoTotal.Text = FormatNumber(nPagoTotal, 2)
 
         Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
