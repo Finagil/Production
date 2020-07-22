@@ -60,6 +60,7 @@ Partial Class FrmRptCarteraVEN
         Me.Giro = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ActividadInegi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ActividadEconomica = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Reestructura = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,7 +92,7 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica, Me.Reestructura})
         Me.DataGridView1.DataSource = Me.CarteraVencidaRPTBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
@@ -346,6 +347,13 @@ Partial Class FrmRptCarteraVEN
         Me.ActividadEconomica.Name = "ActividadEconomica"
         Me.ActividadEconomica.ReadOnly = True
         '
+        'Reestructura
+        '
+        Me.Reestructura.DataPropertyName = "Reestructura"
+        Me.Reestructura.HeaderText = "Reestructura"
+        Me.Reestructura.Name = "Reestructura"
+        Me.Reestructura.ReadOnly = True
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -406,4 +414,5 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents Giro As DataGridViewTextBoxColumn
     Friend WithEvents ActividadInegi As DataGridViewTextBoxColumn
     Friend WithEvents ActividadEconomica As DataGridViewTextBoxColumn
+    Friend WithEvents Reestructura As DataGridViewTextBoxColumn
 End Class
