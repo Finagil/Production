@@ -22,13 +22,13 @@ Partial Class frmCalifica
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.btnProcesar = New System.Windows.Forms.Button
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.dtpProcesar = New System.Windows.Forms.DateTimePicker
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer
-        Me.btnResumen = New System.Windows.Forms.Button
-        Me.btnDetalle = New System.Windows.Forms.Button
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.btnResumen = New System.Windows.Forms.Button()
+        Me.btnDetalle = New System.Windows.Forms.Button()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
+        Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'btnSalir
@@ -48,28 +48,11 @@ Partial Class frmCalifica
         Me.btnProcesar.TabIndex = 28
         Me.btnProcesar.Text = "Procesar"
         '
-        'Label6
-        '
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(11, 24)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(112, 16)
-        Me.Label6.TabIndex = 27
-        Me.Label6.Text = "Fecha de Proceso"
-        '
-        'dtpProcesar
-        '
-        Me.dtpProcesar.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpProcesar.Location = New System.Drawing.Point(137, 22)
-        Me.dtpProcesar.Name = "dtpProcesar"
-        Me.dtpProcesar.Size = New System.Drawing.Size(88, 20)
-        Me.dtpProcesar.TabIndex = 26
-        '
         'CrystalReportViewer1
         '
         Me.CrystalReportViewer1.ActiveViewIndex = -1
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.DisplayGroupTree = False
+        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(8, 56)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
@@ -98,18 +81,36 @@ Partial Class frmCalifica
         Me.btnDetalle.UseVisualStyleBackColor = True
         Me.btnDetalle.Visible = False
         '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(157, 21)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 34
+        '
+        'CmbDB
+        '
+        Me.CmbDB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbDB.FormattingEnabled = True
+        Me.CmbDB.Location = New System.Drawing.Point(12, 20)
+        Me.CmbDB.Name = "CmbDB"
+        Me.CmbDB.Size = New System.Drawing.Size(121, 21)
+        Me.CmbDB.TabIndex = 33
+        '
         'frmCalifica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.DTPFecha)
+        Me.Controls.Add(Me.CmbDB)
         Me.Controls.Add(Me.btnDetalle)
         Me.Controls.Add(Me.btnResumen)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnProcesar)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.dtpProcesar)
         Me.Name = "frmCalifica"
         Me.Text = "Calificación de la Cartera"
         Me.ResumeLayout(False)
@@ -117,9 +118,9 @@ Partial Class frmCalifica
     End Sub
     Friend WithEvents btnSalir As System.Windows.Forms.Button
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents dtpProcesar As System.Windows.Forms.DateTimePicker
     Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents btnResumen As System.Windows.Forms.Button
     Friend WithEvents btnDetalle As System.Windows.Forms.Button
+    Friend WithEvents DTPFecha As DateTimePicker
+    Friend WithEvents CmbDB As ComboBox
 End Class

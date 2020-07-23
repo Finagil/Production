@@ -571,4 +571,7 @@ Public Class FrmRptCarteraVEN
         rr.Sucursal = "TOLUCA"
     End Sub
 
+    Private Sub DTPFecha_ValueChanged(sender As Object, e As EventArgs) Handles DTPFecha.ValueChanged
+
+    End Sub
 End Class

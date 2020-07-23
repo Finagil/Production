@@ -1032,13 +1032,13 @@
       <DependentUpon>rptBitacora.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptCalificaDetalle.vb">
+    <Compile Include="Modulo_RPT\rptCalificaDetalle.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCalificaDetalle.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_RPTant\rptCalificaResumen.vb">
+    <Compile Include="Modulo_RPT\rptCalificaResumen.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptCalificaResumen.rpt</DependentUpon>
@@ -1955,10 +1955,10 @@
     <Compile Include="Modulo_CONS\frmBuscaSerie.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCalifica.Designer.vb">
+    <Compile Include="Modulo_RPT\frmCalifica.Designer.vb">
       <DependentUpon>frmCalifica.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCalifica.vb">
+    <Compile Include="Modulo_RPT\frmCalifica.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCambioCuenta.designer.vb">
@@ -3005,11 +3005,11 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptBitacora.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCalificaDetalle.rpt">
+    <EmbeddedResource Include="Modulo_RPT\rptCalificaDetalle.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCalificaDetalle.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_RPTant\rptCalificaResumen.rpt">
+    <EmbeddedResource Include="Modulo_RPT\rptCalificaResumen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptCalificaResumen.vb</LastGenOutput>
     </EmbeddedResource>
@@ -3605,7 +3605,7 @@
       <DependentUpon>frmBuscaSerie.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCalifica.resx">
+    <EmbeddedResource Include="Modulo_RPT\frmCalifica.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmCalifica.vb</DependentUpon>
     </EmbeddedResource>

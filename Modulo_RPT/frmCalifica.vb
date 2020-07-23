@@ -20,16 +20,16 @@ Public Class frmCalifica
     Dim cFecha As String
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
+        Dim strConnAUX As String
+        Dim Db As String
+        If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
+        If CmbDB.Text = "A la Fecha" Then
+            strConnAUX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & Db & "; User ID=User_PRO; pwd=User_PRO2015"
+        Else
+            strConnAUX = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & Db & "; User ID=User_PRO; pwd=User_PRO2015"
+        End If
 
-        ' Este programa debe tomar todos los contratos activos con fecha de contratación menor o igual a la
-        ' fecha de proceso.   También debe tomar la tabla de amortización del equipo de todos los contratos
-        ' obtenidos con el criterio anterior.   Aunque esto creará un dataset con muchos registros, por
-        ' otra parte permitirá mantener abierta la conexión únicamente durante el tiempo que tarde en
-        ' traer dicha información de la base de datos.
-
-        ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
+        Dim cnAgil As New SqlConnection(strConnAUX)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
@@ -79,7 +79,7 @@ Public Class frmCalifica
 
         btnProcesar.Enabled = False
 
-        cFecha = DTOC(dtpProcesar.Value)
+        cFecha = DTOC(DTPFecha.Value)
 
         ' Primero creo la tabla Detalle que será la base del reporte
 
@@ -481,7 +481,6 @@ Public Class frmCalifica
     Private Sub btnResumen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResumen.Click
 
         Dim newrptCalificaResumen As New rptCalificaResumen()
-
         If dsAgil.Tables.Contains("Resumen") = False Then
             dsAgil.Tables.Add(dtResumen)
         End If
@@ -518,4 +517,47 @@ Public Class frmCalifica
         Me.Close()
     End Sub
 
+    Private Sub frmCalifica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim t As New DataTable
+        Dim r As DataRow
+        t.Columns.Add("ID")
+        t.Columns.Add("TIT")
+
+        Dim Fecha As Date = Date.Now
+        r = t.NewRow
+        r("ID") = Date.Now.ToString("yyyyMMdd")
+        r("TIT") = "A la Fecha"
+        t.Rows.Add(r)
+
+        For x As Integer = 0 To 11
+            Fecha = Fecha.AddDays(-1 * Fecha.Day)
+            If Fecha >= "01/07/2017" Then
+                r = t.NewRow
+                r("ID") = Fecha.ToString("yyyyMMdd")
+                r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
+                t.Rows.Add(r)
+            End If
+        Next
+        CmbDB.DataSource = t
+        CmbDB.DisplayMember = t.Columns("TIT").ToString
+        CmbDB.ValueMember = t.Columns("ID").ToString
+        CmbDB.SelectedIndex = 1
+    End Sub
+
+    Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
+        DTPFecha.MaxDate = "01/01/3000"
+        DTPFecha.MinDate = "01/01/1900"
+
+        If CmbDB.SelectedIndex = 0 Then
+            DTPFecha.Enabled = True
+            DTPFecha.MaxDate = FECHA_APLICACION
+            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
+            DTPFecha.Value = FECHA_APLICACION
+        Else
+            DTPFecha.Enabled = False
+            DTPFecha.MaxDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.MinDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.Value = CTOD(CmbDB.SelectedValue)
+        End If
+    End Sub
 End Class
