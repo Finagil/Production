@@ -55,6 +55,7 @@ Public Class FrmCALconsumo
         Dim Fecha As Date = CTOD(TAmezcla.MesCalificacion)
         logaritmo = Math.Exp(1)
         CalificacionDS.Tables("Reporte").Rows.Clear()
+        TAmezcla.CommandTimeout = 120
 
         TAmezcla.Fill(Mezcla)
         For Each M In Mezcla.Rows
