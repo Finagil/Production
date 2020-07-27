@@ -10,7 +10,8 @@ Public Class frmCalifica
     Dim dsAgil As New DataSet()
     Dim dtDetalle As New DataTable("Detalle")
     Dim dtResumen As New DataTable("Resumen")
-
+    Dim dtAvios As New DataTable("Avios")
+    Dim dtProvision As New DataTable("Provision")
     ' Declaración de variables de Crystal Reports de alcance privado
 
     Dim cReportTitle As String
@@ -19,10 +20,95 @@ Public Class frmCalifica
 
     Dim cFecha As String
 
+
+    Private Sub btnResumen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResumen.Click
+
+        Dim newrptCalificaResumen As New rptCalificaResumen()
+        If dsAgil.Tables.Contains("Resumen") = False Then
+            dsAgil.Tables.Add(dtResumen)
+        End If
+
+        ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptCalificaResumen
+        ' dsAgil.WriteXml("C:\Schema15.xml", XmlWriteMode.WriteSchema)
+
+        newrptCalificaResumen.SetDataSource(dsAgil)
+        cReportTitle = "RESUMEN DE CALIFICACIÓN DE LA CARTERA AL " & Mes(cFecha)
+        newrptCalificaResumen.SummaryInfo.ReportTitle = cReportTitle
+        CrystalReportViewer1.ReportSource = newrptCalificaResumen
+
+    End Sub
+
+    Private Sub btnDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDetalle.Click
+
+        Dim newrptCalificaDetalle As New rptCalificaDetalle()
+
+        If dsAgil.Tables.Contains("Detalle") = False Then
+            dsAgil.Tables.Add(dtDetalle)
+        End If
+
+        ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptCalificaDetalle
+        ' dsAgil.WriteXml("C:\Schema15.xml", XmlWriteMode.WriteSchema)
+
+        newrptCalificaDetalle.SetDataSource(dsAgil)
+        cReportTitle = "DETALLE DE CALIFICACIÓN DE LA CARTERA AL " & Mes(cFecha)
+        newrptCalificaDetalle.SummaryInfo.ReportTitle = cReportTitle
+        CrystalReportViewer1.ReportSource = newrptCalificaDetalle
+
+    End Sub
+
+    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmCalifica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim t As New DataTable
+        Dim r As DataRow
+        t.Columns.Add("ID")
+        t.Columns.Add("TIT")
+
+        Dim Fecha As Date = Date.Now
+        r = t.NewRow
+        r("ID") = Date.Now.ToString("yyyyMMdd")
+        r("TIT") = "A la Fecha"
+        t.Rows.Add(r)
+
+        For x As Integer = 0 To 11
+            Fecha = Fecha.AddDays(-1 * Fecha.Day)
+            If Fecha >= "01/07/2017" Then
+                r = t.NewRow
+                r("ID") = Fecha.ToString("yyyyMMdd")
+                r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
+                t.Rows.Add(r)
+            End If
+        Next
+        CmbDB.DataSource = t
+        CmbDB.DisplayMember = t.Columns("TIT").ToString
+        CmbDB.ValueMember = t.Columns("ID").ToString
+        CmbDB.SelectedIndex = 1
+    End Sub
+
+    Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
+        DTPFecha.MaxDate = "01/01/3000"
+        DTPFecha.MinDate = "01/01/1900"
+
+        If CmbDB.SelectedIndex = 0 Then
+            DTPFecha.Enabled = True
+            DTPFecha.MaxDate = FECHA_APLICACION
+            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
+            DTPFecha.Value = FECHA_APLICACION
+        Else
+            DTPFecha.Enabled = False
+            DTPFecha.MaxDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.MinDate = CTOD(CmbDB.SelectedValue)
+            DTPFecha.Value = CTOD(CmbDB.SelectedValue)
+        End If
+    End Sub
+
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
+
         Dim strConnAUX As String
         Dim Db As String
-        If CmbDB.SelectedIndex <> 0 Then DB = CmbDB.Text
+        If CmbDB.SelectedIndex <> 0 Then Db = CmbDB.Text
         If CmbDB.Text = "A la Fecha" Then
             strConnAUX = "Server=" & My.Settings.ServidorPROD & "; DataBase=" & Db & "; User ID=User_PRO; pwd=User_PRO2015"
         Else
@@ -36,6 +122,8 @@ Public Class frmCalifica
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
         Dim cm6 As New SqlCommand()
+        Dim cm7 As New SqlCommand()
+        Dim cm8 As New SqlCommand()
         Dim dsReporte As New DataSet()
         Dim daAnexos As New SqlDataAdapter(cm1)
         Dim daEdoctaV As New SqlDataAdapter(cm2)
@@ -43,6 +131,8 @@ Public Class frmCalifica
         Dim daEdoctaO As New SqlDataAdapter(cm4)
         Dim daFacturas As New SqlDataAdapter(cm5)
         Dim daReestructurados As New SqlDataAdapter(cm6)
+        Dim daProvision As New SqlDataAdapter(cm7)
+        Dim daAvios As New SqlDataAdapter(cm8)
         Dim dtFinal As New DataTable()
         Dim drEdoctav As DataRow()
         Dim drEdoctas As DataRow()
@@ -50,6 +140,8 @@ Public Class frmCalifica
         Dim drRegistros As DataRow()
         Dim drAnexo As DataRow
         Dim drFactura As DataRow
+        Dim drAvio As DataRow
+        Dim drProvision As DataRow
         Dim drReestructura As DataRow
         Dim drRegistro As DataRow
         Dim drDetalle As DataRow
@@ -63,6 +155,8 @@ Public Class frmCalifica
 
         Dim cAnexo As String = ""
         Dim cCusnam As String = ""
+        Dim cFechaTerminacion As String = ""
+        Dim cTipar As String = ""
         Dim cVencida As String = ""
         Dim nCarteraEquipo As Decimal = 0
         Dim nSaldoSeguro As Decimal = 0
@@ -73,7 +167,9 @@ Public Class frmCalifica
         Dim nCarteraOtros As Decimal = 0
         Dim nDiasVencido As Integer = 0
         Dim nInteresEquipo As Decimal = 0
+        Dim nProvision As Decimal = 0
         Dim nRango As Integer = 0
+        Dim nRetraso As Decimal = 0
         Dim nSaldoEquipo As Decimal = 0
         Dim nSaldoFac As Decimal = 0
 
@@ -204,8 +300,8 @@ Public Class frmCalifica
         drResumen("Reserva2") = 0
         dtResumen.Rows.Add(drResumen)
 
-        ' Este Stored Procedure trae todos los contratos activos con fecha de contratación menor o igual
-        ' a la de proceso
+        ' Este Stored Procedure trae todos los contratos activos
+        ' con fecha de contratación menor o igual a la de proceso
 
         With cm1
             .CommandType = CommandType.StoredProcedure
@@ -268,6 +364,14 @@ Public Class frmCalifica
             .Connection = cnAgil
         End With
 
+        ' El siguiente Command es para traer el importe de la provisión de intereses de cada Crédito Tradicional
+
+        With cm7
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT * FROM cont_Provinte ORDER BY Anexo"
+            .Connection = cnAgil
+        End With
+
         ' Llenar el DataSet a través del DataAdapter, lo cual abre y cierra la conexión
 
         daAnexos.Fill(dsAgil, "Anexos")
@@ -276,6 +380,10 @@ Public Class frmCalifica
         daEdoctaO.Fill(dsAgil, "Edoctas")
         daFacturas.Fill(dsAgil, "Facturas")
         daReestructurados.Fill(dsAgil, "Reestructurados")
+
+        ' Llenar la tabla dtProvision lo cual abre y cierra la conexión
+
+        daProvision.Fill(dtProvision)
 
         ' Establecer la relación entre Anexos y EdoctaV
 
@@ -298,12 +406,13 @@ Public Class frmCalifica
         For Each drAnexo In dsAgil.Tables("Anexos").Rows
 
             cAnexo = drAnexo("Anexo")
+            cTipar = drAnexo("Tipar")
             cCusnam = drAnexo("Descr")
             cVencida = drAnexo("Vencida")
 
-            If cVencida <> "C" Then
+            If cVencida <> "C" And cTipar <> "P" Then
 
-                ' Solamente procesa los contratos que no estén Castigados
+                ' Solamente procesa los contratos que no estén Castigados y los que no sean Arrendamiento Puro
 
                 nSaldoEquipo = 0
                 nInteresEquipo = 0
@@ -313,7 +422,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctav = drAnexo.GetChildRows("AnexoEdoctav")
-                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo, True, drAnexo("Tipar"))
+                TraeSald(drEdoctav, cFecha, nSaldoEquipo, nInteresEquipo, nCarteraEquipo)
 
                 nSaldoSeguro = 0
                 nInteresSeguro = 0
@@ -323,7 +432,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctas = drAnexo.GetChildRows("AnexoEdoctas")
-                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro, False, drAnexo("Tipar"))
+                TraeSald(drEdoctas, cFecha, nSaldoSeguro, nInteresSeguro, nCarteraSeguro)
 
                 nSaldoOtros = 0
                 nInteresOtros = 0
@@ -333,7 +442,7 @@ Public Class frmCalifica
                 ' que está siendo procesado
 
                 drEdoctao = drAnexo.GetChildRows("AnexoEdoctao")
-                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros, False, drAnexo("Tipar"))
+                TraeSald(drEdoctao, cFecha, nSaldoOtros, nInteresOtros, nCarteraOtros)
 
                 drDetalle = dtDetalle.NewRow()
                 drDetalle("Anexo") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4)
@@ -346,6 +455,19 @@ Public Class frmCalifica
 
             End If
 
+        Next
+
+        ' Aquí le aumento a cada Crédito Tradicional sus intereses devengados no exigibles (Provisión de Intereses)
+
+        For Each drProvision In dtProvision.Rows
+            cAnexo = Mid(drProvision("Anexo"), 1, 5) & "/" & Mid(drProvision("Anexo"), 6, 4)
+            nProvision = drProvision("Importe")
+            drDetalle = dtDetalle.Rows.Find(cAnexo)
+            If drDetalle Is Nothing Then
+            Else
+                drDetalle("SaldoEquipo") += nProvision
+                drDetalle("AdeudoTotal") += nProvision
+            End If
         Next
 
         ' Ahora barro la tabla Facturas para determinar la antiguedad del saldo de cada factura
@@ -385,7 +507,50 @@ Public Class frmCalifica
                 End If
 
             End If
+        Next
 
+        ' En esta parte nos traemos la Cartera de Avío y Cuenta Corriente (Vigente y Vencida)
+
+        With cm8
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, FechaTerminacion, RTRIM(Descr) AS Nombre, SUM(Importe+FEGA+Garantia+Intereses) AS SaldoTotal FROM DetalleFINAGIL " &
+                           "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
+                           "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                           "WHERE FechaFinal <= '" & cFecha & "' " &
+                           "GROUP BY DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, FechaTerminacion, Descr " &
+                           "HAVING SUM(Importe + FEGA + Garantia + Intereses) > 0 " &
+                           "ORDER BY DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo"
+            .Connection = cnAgil
+        End With
+
+        ' Llenar el DataTable lo cual abre y cierra la conexión
+
+        daAvios.Fill(dtAvios)
+
+        For Each drAvio In dtAvios.Rows
+            cAnexo = drAvio("Anexo")
+            cCusnam = drAvio("Nombre")
+            cFechaTerminacion = drAvio("FechaTerminacion")
+            If Trim(cFechaTerminacion) <> "" Then
+                nRetraso = DateDiff(DateInterval.Day, CTOD(cFechaTerminacion), CTOD(cFecha))
+                If nRetraso < 0 Then
+                    nRetraso = 0
+                End If
+            Else
+                nRetraso = 0
+            End If
+            drDetalle = dtDetalle.NewRow()
+            drDetalle("Anexo") = Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 6, 4) & "-" & drAvio("Ciclo")
+            drDetalle("Cliente") = cCusnam
+            If nRetraso > 0 Then
+                drDetalle("SaldoEquipo") = 0
+            Else
+                drDetalle("SaldoEquipo") = drAvio("SaldoTotal")
+            End If
+            drDetalle("Dias") = nRetraso
+            drDetalle("AdeudoTotal") = drAvio("SaldoTotal")
+            drDetalle("Reestructurado") = "N"
+            dtDetalle.Rows.Add(drDetalle)
         Next
 
         For Each drReestructura In dsAgil.Tables("Reestructurados").Rows
@@ -468,6 +633,8 @@ Public Class frmCalifica
         cm4.Dispose()
         cm5.Dispose()
         cm6.Dispose()
+        cm7.Dispose()
+        cm8.Dispose()
 
         btnProcesar.Enabled = False
 
@@ -478,86 +645,23 @@ Public Class frmCalifica
 
     End Sub
 
-    Private Sub btnResumen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResumen.Click
+    Sub TraeSald(ByVal drVencimientos As DataRow(), ByVal cFeven As String, ByRef nSaldo As Decimal, ByRef nInteres As Decimal, ByRef nCartera As Decimal)
 
-        Dim newrptCalificaResumen As New rptCalificaResumen()
-        If dsAgil.Tables.Contains("Resumen") = False Then
-            dsAgil.Tables.Add(dtResumen)
-        End If
+        ' Esta variable datarow contendrá los datos de 1 vencimiento a la vez, de la tabla Edoctav, Edoctas o Edoctao
 
-        ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptCalificaResumen
-        ' dsAgil.WriteXml("C:\Schema15.xml", XmlWriteMode.WriteSchema)
+        Dim drVencimiento As DataRow
 
-        newrptCalificaResumen.SetDataSource(dsAgil)
-        cReportTitle = "RESUMEN DE CALIFICACIÓN DE LA CARTERA AL " & Mes(cFecha)
-        newrptCalificaResumen.SummaryInfo.ReportTitle = cReportTitle
-        CrystalReportViewer1.ReportSource = newrptCalificaResumen
-
-    End Sub
-
-    Private Sub btnDetalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDetalle.Click
-
-        Dim newrptCalificaDetalle As New rptCalificaDetalle()
-
-        If dsAgil.Tables.Contains("Detalle") = False Then
-            dsAgil.Tables.Add(dtDetalle)
-        End If
-
-        ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptCalificaDetalle
-        ' dsAgil.WriteXml("C:\Schema15.xml", XmlWriteMode.WriteSchema)
-
-        newrptCalificaDetalle.SetDataSource(dsAgil)
-        cReportTitle = "DETALLE DE CALIFICACIÓN DE LA CARTERA AL " & Mes(cFecha)
-        newrptCalificaDetalle.SummaryInfo.ReportTitle = cReportTitle
-        CrystalReportViewer1.ReportSource = newrptCalificaDetalle
-
-    End Sub
-
-    Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
-        Me.Close()
-    End Sub
-
-    Private Sub frmCalifica_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim t As New DataTable
-        Dim r As DataRow
-        t.Columns.Add("ID")
-        t.Columns.Add("TIT")
-
-        Dim Fecha As Date = Date.Now
-        r = t.NewRow
-        r("ID") = Date.Now.ToString("yyyyMMdd")
-        r("TIT") = "A la Fecha"
-        t.Rows.Add(r)
-
-        For x As Integer = 0 To 11
-            Fecha = Fecha.AddDays(-1 * Fecha.Day)
-            If Fecha >= "01/07/2017" Then
-                r = t.NewRow
-                r("ID") = Fecha.ToString("yyyyMMdd")
-                r("TIT") = Mid(Fecha.ToString("yyyyMMM").ToUpper, 1, 7)
-                t.Rows.Add(r)
+        For Each drVencimiento In drVencimientos
+            If (drVencimiento("Feven") > cFeven And drVencimiento("IndRec") = "S") Or drVencimiento("Nufac") = 0 Then
+                nSaldo += drVencimiento("Abcap")
+                nInteres += drVencimiento("Inter")
+                nCartera += drVencimiento("Abcap") + drVencimiento("Inter")
             End If
         Next
-        CmbDB.DataSource = t
-        CmbDB.DisplayMember = t.Columns("TIT").ToString
-        CmbDB.ValueMember = t.Columns("ID").ToString
-        CmbDB.SelectedIndex = 1
+        nSaldo = Round(nSaldo, 2)
+        nInteres = Round(nInteres, 2)
+        nCartera = Round(nCartera, 2)
+
     End Sub
 
-    Private Sub CmbDB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbDB.SelectedIndexChanged
-        DTPFecha.MaxDate = "01/01/3000"
-        DTPFecha.MinDate = "01/01/1900"
-
-        If CmbDB.SelectedIndex = 0 Then
-            DTPFecha.Enabled = True
-            DTPFecha.MaxDate = FECHA_APLICACION
-            DTPFecha.MinDate = FECHA_APLICACION.AddDays(FECHA_APLICACION.Day * -1).AddDays(1)
-            DTPFecha.Value = FECHA_APLICACION
-        Else
-            DTPFecha.Enabled = False
-            DTPFecha.MaxDate = CTOD(CmbDB.SelectedValue)
-            DTPFecha.MinDate = CTOD(CmbDB.SelectedValue)
-            DTPFecha.Value = CTOD(CmbDB.SelectedValue)
-        End If
-    End Sub
 End Class
