@@ -37171,7 +37171,7 @@ Namespace SegurosDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
@@ -37181,7 +37181,8 @@ Namespace SegurosDSTableAdapters
                 "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
                 "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
                 " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
-                "s.CicloPagare > N'')"
+                "s.CicloPagare > N'') AND (NOT (SEG_LiberacionesMC.usuario LIKE '%1') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  SEG_LiberacionesMC.usuario LIKE '%2')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -37192,8 +37193,33 @@ Namespace SegurosDSTableAdapters
                 "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
                 "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
                 " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
-                "s.CicloPagare = N'')"
+                "s.CicloPagare > N'') AND (SEG_LiberacionesMC.usuario LIKE '%1' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+                "            SEG_LiberacionesMC.usuario LIKE '%2')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
+                "EG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Cicl"& _ 
+                "o, SEG_LiberacionesMC.Liberado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RTRIM(Vw_Anexos.Descr"& _ 
+                ") AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promot"& _ 
+                "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
+                "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
+                " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
+                "s.CicloPagare = N'') AND (NOT (SEG_LiberacionesMC.usuario LIKE '%1') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  SEG_LiberacionesMC.usuario LIKE '%2')"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        Vw_Anexos.AnexoCon, Vw_Anexos.CicloPagare, Vw_Anexos.TipoCredito, S"& _ 
+                "EG_LiberacionesMC.PlazoMaximo, SEG_LiberacionesMC.Anexo, SEG_LiberacionesMC.Cicl"& _ 
+                "o, SEG_LiberacionesMC.Liberado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RTRIM(Vw_Anexos.Descr"& _ 
+                ") AS Descr, Vw_Anexos.Nombre_Sucursal, Vw_Anexos.Status, Vw_Anexos.Nombre_Promot"& _ 
+                "or"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SEG_LiberacionesMC INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_A"& _ 
+                "nexos ON SEG_LiberacionesMC.Anexo = Vw_Anexos.Anexo AND SEG_LiberacionesMC.Ciclo"& _ 
+                " = Vw_Anexos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (SEG_LiberacionesMC.Liberado = 0) AND (Vw_Anexo"& _ 
+                "s.CicloPagare = N'') AND (SEG_LiberacionesMC.usuario LIKE '%1' OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+                "            SEG_LiberacionesMC.usuario LIKE '%2')"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -37224,7 +37250,7 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillTRA(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
+        Public Overloads Overridable Function FillAV1(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -37237,8 +37263,56 @@ Namespace SegurosDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataTRA() As SegurosDS.VW_LiberacionesMCDataTable
+        Public Overloads Overridable Function GetDataAV1() As SegurosDS.VW_LiberacionesMCDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Dim dataTable As SegurosDS.VW_LiberacionesMCDataTable = New SegurosDS.VW_LiberacionesMCDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillTRA(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataTRA() As SegurosDS.VW_LiberacionesMCDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Dim dataTable As SegurosDS.VW_LiberacionesMCDataTable = New SegurosDS.VW_LiberacionesMCDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillTRA1(ByVal dataTable As SegurosDS.VW_LiberacionesMCDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataTRA1() As SegurosDS.VW_LiberacionesMCDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             Dim dataTable As SegurosDS.VW_LiberacionesMCDataTable = New SegurosDS.VW_LiberacionesMCDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
