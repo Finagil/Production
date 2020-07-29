@@ -66,10 +66,13 @@ Public Class frmAltaClie
     Friend WithEvents PromotoresActivosBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PromotoresActivosTableAdapter As Agil.GeneralDSTableAdapters.PromotoresActivosTableAdapter
     Friend WithEvents CmbNacionalidad As ComboBox
+    Friend WithEvents SucursalesBindingSource As BindingSource
+    Friend WithEvents SucursalesTableAdapter As GeneralDSTableAdapters.SucursalesTableAdapter
     Friend WithEvents rbEmpresarial As System.Windows.Forms.RadioButton
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CmbNacionalidad = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CmbPromo = New System.Windows.Forms.ComboBox()
         Me.PromotoresActivosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -101,11 +104,13 @@ Public Class frmAltaClie
         Me.btnActualizar = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PromotoresActivosTableAdapter = New Agil.GeneralDSTableAdapters.PromotoresActivosTableAdapter()
-        Me.CmbNacionalidad = New System.Windows.Forms.ComboBox()
+        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SucursalesTableAdapter = New Agil.GeneralDSTableAdapters.SucursalesTableAdapter()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PromotoresActivosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -138,6 +143,16 @@ Public Class frmAltaClie
         Me.GroupBox1.Size = New System.Drawing.Size(501, 246)
         Me.GroupBox1.TabIndex = 51
         Me.GroupBox1.TabStop = False
+        '
+        'CmbNacionalidad
+        '
+        Me.CmbNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbNacionalidad.FormattingEnabled = True
+        Me.CmbNacionalidad.Items.AddRange(New Object() {"MEXICANA", "EXTRANJERA"})
+        Me.CmbNacionalidad.Location = New System.Drawing.Point(178, 153)
+        Me.CmbNacionalidad.Name = "CmbNacionalidad"
+        Me.CmbNacionalidad.Size = New System.Drawing.Size(153, 21)
+        Me.CmbNacionalidad.TabIndex = 10
         '
         'Label11
         '
@@ -285,11 +300,14 @@ Public Class frmAltaClie
         '
         'cbSucursales
         '
+        Me.cbSucursales.DataSource = Me.SucursalesBindingSource
+        Me.cbSucursales.DisplayMember = "Nombre_Sucursal"
         Me.cbSucursales.FormattingEnabled = True
         Me.cbSucursales.Location = New System.Drawing.Point(337, 104)
         Me.cbSucursales.Name = "cbSucursales"
         Me.cbSucursales.Size = New System.Drawing.Size(142, 21)
         Me.cbSucursales.TabIndex = 8
+        Me.cbSucursales.ValueMember = "ID_Sucursal"
         '
         'Label3
         '
@@ -406,15 +424,14 @@ Public Class frmAltaClie
         '
         Me.PromotoresActivosTableAdapter.ClearBeforeFill = True
         '
-        'CmbNacionalidad
+        'SucursalesBindingSource
         '
-        Me.CmbNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbNacionalidad.FormattingEnabled = True
-        Me.CmbNacionalidad.Items.AddRange(New Object() {"MEXICANA", "EXTRANJERA"})
-        Me.CmbNacionalidad.Location = New System.Drawing.Point(178, 153)
-        Me.CmbNacionalidad.Name = "CmbNacionalidad"
-        Me.CmbNacionalidad.Size = New System.Drawing.Size(153, 21)
-        Me.CmbNacionalidad.TabIndex = 10
+        Me.SucursalesBindingSource.DataMember = "Sucursales"
+        Me.SucursalesBindingSource.DataSource = Me.GeneralDSBindingSource
+        '
+        'SucursalesTableAdapter
+        '
+        Me.SucursalesTableAdapter.ClearBeforeFill = True
         '
         'frmAltaClie
         '
@@ -433,6 +450,7 @@ Public Class frmAltaClie
         CType(Me.PromotoresActivosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -441,45 +459,14 @@ Public Class frmAltaClie
 #End Region
 
     Private Sub frmAltaClie_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'GeneralDS.PromotoresActivos' table. You can move, or remove it, as needed.
-        Me.PromotoresActivosTableAdapter.Fill(Me.GeneralDS.PromotoresActivos)
-
-        ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
-        Dim cm1 As New SqlCommand()
-        Dim daSucursales As New SqlDataAdapter(cm1)
-
-        Dim dsAgil As New DataSet()
-
-        With cm1
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM Sucursales ORDER BY ID_Sucursal"
-            .Connection = cnAgil
-        End With
-
         Try
-
-            ' Llenar el DataSet lo cual abre y cierra la conexión
-
-            daSucursales.Fill(dsAgil, "Sucursales")
-
-            ' Ligar la tabla Sucursales del dataset dsAgil al ComboBox Sucursales
-
-            cbSucursales.DataSource = dsAgil
-            cbSucursales.DisplayMember = "Sucursales.Nombre_Sucursal"
-            cbSucursales.ValueMember = "Sucursales.ID_Sucursal"
+            Me.SucursalesTableAdapter.Fill(Me.GeneralDS.Sucursales)
+            Me.PromotoresActivosTableAdapter.Fill(Me.GeneralDS.PromotoresActivos)
             cbSucursales.SelectedIndex = 0
             CmbNacionalidad.SelectedIndex = 0
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
-
-        cnAgil.Dispose()
-        cm1.Dispose()
-
     End Sub
 
     Private Sub btnActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnActualizar.Click

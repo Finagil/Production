@@ -125,10 +125,18 @@ Public Class frmModiGene
     Friend WithEvents ClavesFIRABindingSource As BindingSource
     Friend WithEvents ClavesFIRATableAdapter As PromocionDSTableAdapters.ClavesFiraTableAdapter
     Friend WithEvents LbClave As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents CmbSucursal As ComboBox
+    Friend WithEvents SucursalesBindingSource As BindingSource
+    Friend WithEvents SucursalesTableAdapter As GeneralDSTableAdapters.SucursalesTableAdapter
     Friend WithEvents dtpFecha1 As System.Windows.Forms.DateTimePicker
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.CmbSucursal = New System.Windows.Forms.ComboBox()
+        Me.GruposRiesgosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
         Me.LbClave = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.CmbInegi = New System.Windows.Forms.ComboBox()
@@ -212,14 +220,16 @@ Public Class frmModiGene
         Me.mtxtCURP = New System.Windows.Forms.MaskedTextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.CmbGR = New System.Windows.Forms.ComboBox()
-        Me.GruposRiesgosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GeneralDS = New Agil.GeneralDS()
         Me.GruposRiesgosTableAdapter = New Agil.GeneralDSTableAdapters.GruposRiesgosTableAdapter()
         Me.txtGrupoRiesgo = New System.Windows.Forms.TextBox()
         Me.btnIntegrar = New System.Windows.Forms.Button()
         Me.MetodoPagoTableAdapter = New Agil.PromocionDSTableAdapters.MetodoPagoTableAdapter()
         Me.ClavesFIRATableAdapter = New Agil.PromocionDSTableAdapters.ClavesFiraTableAdapter()
+        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SucursalesTableAdapter = New Agil.GeneralDSTableAdapters.SucursalesTableAdapter()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.GruposRiesgosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClavesFIRABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -227,12 +237,13 @@ Public Class frmModiGene
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.GruposRiesgosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.CmbSucursal)
         Me.GroupBox1.Controls.Add(Me.LbClave)
         Me.GroupBox1.Controls.Add(Me.Label16)
         Me.GroupBox1.Controls.Add(Me.CmbInegi)
@@ -285,6 +296,37 @@ Public Class frmModiGene
         Me.GroupBox1.Size = New System.Drawing.Size(736, 431)
         Me.GroupBox1.TabIndex = 35
         Me.GroupBox1.TabStop = False
+        '
+        'Label17
+        '
+        Me.Label17.Location = New System.Drawing.Point(518, 273)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(134, 16)
+        Me.Label17.TabIndex = 74
+        Me.Label17.Text = "Sucursal"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'CmbSucursal
+        '
+        Me.CmbSucursal.DataSource = Me.SucursalesBindingSource
+        Me.CmbSucursal.DisplayMember = "Nombre_Sucursal"
+        Me.CmbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbSucursal.FormattingEnabled = True
+        Me.CmbSucursal.Location = New System.Drawing.Point(518, 292)
+        Me.CmbSucursal.Name = "CmbSucursal"
+        Me.CmbSucursal.Size = New System.Drawing.Size(197, 21)
+        Me.CmbSucursal.TabIndex = 73
+        Me.CmbSucursal.ValueMember = "ID_Sucursal"
+        '
+        'GruposRiesgosBindingSource
+        '
+        Me.GruposRiesgosBindingSource.DataMember = "GruposRiesgos"
+        Me.GruposRiesgosBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'LbClave
         '
@@ -1010,16 +1052,6 @@ Public Class frmModiGene
         Me.CmbGR.TabIndex = 70
         Me.CmbGR.ValueMember = "id_GrupoRiesgo"
         '
-        'GruposRiesgosBindingSource
-        '
-        Me.GruposRiesgosBindingSource.DataMember = "GruposRiesgos"
-        Me.GruposRiesgosBindingSource.DataSource = Me.GeneralDS
-        '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'GruposRiesgosTableAdapter
         '
         Me.GruposRiesgosTableAdapter.ClearBeforeFill = True
@@ -1047,6 +1079,15 @@ Public Class frmModiGene
         'ClavesFIRATableAdapter
         '
         Me.ClavesFIRATableAdapter.ClearBeforeFill = True
+        '
+        'SucursalesBindingSource
+        '
+        Me.SucursalesBindingSource.DataMember = "Sucursales"
+        Me.SucursalesBindingSource.DataSource = Me.GeneralDS
+        '
+        'SucursalesTableAdapter
+        '
+        Me.SucursalesTableAdapter.ClearBeforeFill = True
         '
         'frmModiGene
         '
@@ -1080,6 +1121,8 @@ Public Class frmModiGene
         Me.Text = "Modificar Generales"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.GruposRiesgosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClavesFIRABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MetodoPagoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1087,8 +1130,7 @@ Public Class frmModiGene
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.GruposRiesgosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SucursalesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1108,12 +1150,15 @@ Public Class frmModiGene
 
 
     Private Sub frmModiGene_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.SucursalesTableAdapter.Fill(Me.GeneralDS.Sucursales)
         'Me.MetodoPagoTableAdapter.Fill(Me.PromocionDS.MetodoPago)
-        If Array.IndexOf(New String() {"mleal", "desarrollo", "mlopezb", "mbeltral"}, UsuarioGlobal.ToLower) > -1 Then
+        If TaQUERY.SacaPermisoModulo("PROM_CAMB_PROMO", UsuarioGlobal) > 0 Then
             'btnIntegrar.Enabled = False Se activa pata todos
             cbPromotores.Enabled = True
+            CmbSucursal.Enabled = True
         Else
             cbPromotores.Enabled = False
+            CmbSucursal.Enabled = False
         End If
 
         Me.GruposRiesgosTableAdapter.Fill(Me.GeneralDS.GruposRiesgos)
@@ -1264,6 +1309,7 @@ Public Class frmModiGene
                 txtVentas.Text = drCliente("VentasAnuales")
                 txtMail1.Text = drCliente("EMail1")
                 txtMail2.Text = drCliente("EMail2")
+                CmbSucursal.SelectedValue = drCliente("sucursal")
                 If drCliente("Promo") = "000" Then
                     cbPromotores.SelectedIndex = 0
                     cbPromotores.Enabled = True
@@ -1669,6 +1715,7 @@ Public Class frmModiGene
             strUpdate = strUpdate & ", FormadePago1 = '" & cbFormapag1.Text & "'"
             strUpdate = strUpdate & ", Cve_LOC = '" & CmbInegi.SelectedValue & "'"
             strUpdate = strUpdate & ", FechaNac = '" & dtpFecha1.Value.ToString("yyyy-MM-dd") & "'"
+            strUpdate = strUpdate & ", Sucursal = '" & CmbSucursal.SelectedValue & "'"
 
 
             If cbFormapag2.SelectedItem = "EFECTIVO" Then
