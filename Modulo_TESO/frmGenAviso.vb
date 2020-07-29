@@ -662,11 +662,11 @@ Public Class frmGenAviso
                     If oMsg_to.Trim <> "NoEnviar@Finagil.com.mx" And InStr(oMsg_to, "@") > 0 Then
                         oMsg_to = oMsg_to.Replace(" ", "")
                         oMsg_to = oMsg_to.Replace("ñ", "n")
-                        MandaCorreo(UsuarioGlobalCorreo, oMsg_to, oMsg_Subject, oMsg_Body, sSource1)
+                        MandaCorreo("avisos@finagil.com.mx", oMsg_to, oMsg_Subject, oMsg_Body, sSource1)
                         If oMsg_CC.Trim <> "" Then
-                            MandaCorreo(UsuarioGlobalCorreo, oMsg_CC, oMsg_Subject, oMsg_Body, sSource1)
+                            MandaCorreo("avisos@finagil.com.mx", oMsg_CC, oMsg_Subject, oMsg_Body, sSource1)
                         End If
-                        MandaCorreo(UsuarioGlobalCorreo, UsuarioGlobalCorreo, oMsg_Subject, oMsg_Body, sSource1)
+                        MandaCorreo("avisos@finagil.com.mx", UsuarioGlobalCorreo, oMsg_Subject, oMsg_Body, sSource1)
                     End If
 
                     strUpdate = "UPDATE Facturas SET Enviado = 'S' WHERE Factura = " & nFactura
