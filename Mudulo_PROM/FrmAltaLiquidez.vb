@@ -55,6 +55,7 @@ Public Class FrmAltaLiquidez
             ComboBox7.SelectedIndex = 0
             ComboBox8.SelectedIndex = 0
             CmbtipoVivienda.SelectedIndex = 0
+            DtpFecSol.Value = Now.Date
             Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
@@ -81,6 +82,7 @@ Public Class FrmAltaLiquidez
             r.SalarioNeto = 0
             r.Pasivos = 0
             r.Fecha = Now.Date
+            DtpFecSol.Value = Now.Date
             PromocionDS.PROM_SolicitudesLIQ.AddPROM_SolicitudesLIQRow(r)
             Combosol.SelectedIndex = Combosol.Items.Count - 1
         End If
