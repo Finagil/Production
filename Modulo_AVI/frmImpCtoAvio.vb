@@ -11,6 +11,7 @@ Imports System.Security.Principal.WindowsIdentity
 Public Class frmImpCtoAvio
 
     ' Declaración de variables de datos de alcance privado
+    Dim taTEXTO As New DocumentosDSTableAdapters.GEN_TextoConfigurableTableAdapter
     Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
     Dim cAnexo As String = ""
     Dim cAval1 As String = ""
@@ -2216,7 +2217,7 @@ Public Class frmImpCtoAvio
                         Case "mSegV1"
                             oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                             If cTipo = "F" Or cTipo = "E" Then
-                                myMField.Result.Text = "Del 01 de Agosto de 2019 al 01 de Agosto de 2020, renovable anualmente hasta la total liquidación del contrato con la aseguradora que seleccione el acreditado con la conformidad de la acreditante."
+                                myMField.Result.Text = taTEXTO.SacaTexto("TEXT_VIGEN_SEGVIDA")
                             Else
                                 myMField.Result.Text = "N/A"
                             End If
