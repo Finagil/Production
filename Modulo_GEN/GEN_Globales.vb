@@ -459,7 +459,10 @@ Module GEN_Globales
             cad = cad.Replace("-", "")
         End If
         If IsNumeric(cad) Then ' no se quitan los ceros a la derecha si es numero de cliente
-            cad = CInt(cad)
+            If cad.Length < 5 Then
+                cad = Stuff(cad, "I", "0", 5)
+            End If
+            'cad = CInt(cad)
         End If
         Return cad
     End Function
