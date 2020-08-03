@@ -73,14 +73,14 @@ Partial Class FrmLiberacionesSEG
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VWLiberacionesMCBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SegurosDS1 = New Agil.SegurosDS()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TxtNotas1 = New System.Windows.Forms.TextBox()
         Me.SEGLiberacionesMCBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SegurosDS1 = New Agil.SegurosDS()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.VWLiberacionesMCBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.AnexosSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,9 +88,9 @@ Partial Class FrmLiberacionesSEG
         CType(Me.VWLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VWLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CmbAnexo
@@ -503,6 +503,16 @@ Partial Class FrmLiberacionesSEG
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         '
+        'VWLiberacionesMCBindingSource1
+        '
+        Me.VWLiberacionesMCBindingSource1.DataMember = "VW_LiberacionesMC"
+        Me.VWLiberacionesMCBindingSource1.DataSource = Me.SegurosDS1
+        '
+        'SegurosDS1
+        '
+        Me.SegurosDS1.DataSetName = "SegurosDS"
+        Me.SegurosDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(858, 327)
@@ -545,11 +555,6 @@ Partial Class FrmLiberacionesSEG
         Me.SEGLiberacionesMCBindingSource1.DataMember = "SEG_LiberacionesMC"
         Me.SEGLiberacionesMCBindingSource1.DataSource = Me.SegurosDS1
         '
-        'SegurosDS1
-        '
-        Me.SegurosDS1.DataSetName = "SegurosDS"
-        Me.SegurosDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -558,11 +563,6 @@ Partial Class FrmLiberacionesSEG
         Me.Label10.Size = New System.Drawing.Size(78, 13)
         Me.Label10.TabIndex = 36
         Me.Label10.Text = "Observaciones"
-        '
-        'VWLiberacionesMCBindingSource1
-        '
-        Me.VWLiberacionesMCBindingSource1.DataMember = "VW_LiberacionesMC"
-        Me.VWLiberacionesMCBindingSource1.DataSource = Me.SegurosDS1
         '
         'FrmLiberacionesSEG
         '
@@ -608,9 +608,9 @@ Partial Class FrmLiberacionesSEG
         CType(Me.VWLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VWLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
