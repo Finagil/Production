@@ -458,9 +458,11 @@ Module GEN_Globales
         If InStr(cad, "-") Then
             cad = cad.Replace("-", "")
         End If
-        If IsNumeric(cad) Then ' no se quitan los ceros a la derecha si es numero de cliente
-            If cad.Length < 5 Then
+        If IsNumeric(cad) Then
+            If cad.Length < 5 Then 'no se quitan los ceros a la derecha si es numero de cliente
                 cad = Stuff(cad, "I", "0", 5)
+            ElseIf cad.Length = 9 Then 'se quitaun cero a la derecha si es contrato
+                cad = cad.Substring(1, 8)
             End If
             'cad = CInt(cad)
         End If
