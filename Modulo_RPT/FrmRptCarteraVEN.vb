@@ -405,6 +405,13 @@ Public Class FrmRptCarteraVEN
         rr.Moneda = r.Moneda
         rr.Cliente = r.Descr
         rr.Tipo_Credito = r.TipoCredito
+
+        rr.ParteRelacionada = r.ParteRelacionada
+        rr.Prendaria = r.Prendaria
+        rr.Hipotecaria = r.Hipotecaria
+        rr.GarantiaLiquida = r.GarantiaLiquida
+        rr.GarantiaFega = r.GarantiaFega
+
         rr.Reestructura = r.Reestructura
         rr.MontoFinanciado = r.MontoFinanciado
         rr.Fondeotit = r.Fondeotit

@@ -26,6 +26,15 @@ Partial Class FrmRptCarteraVEN
         Me.BtnProc = New System.Windows.Forms.Button()
         Me.CmbDB = New System.Windows.Forms.ComboBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportesDS = New Agil.ReportesDS()
+        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ComboSucursal = New System.Windows.Forms.ComboBox()
+        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.AnexoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaActivacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -52,15 +61,11 @@ Partial Class FrmRptCarteraVEN
         Me.ActividadInegi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ActividadEconomica = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Reestructura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CarteraVencidaRPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ReportesDS = New Agil.ReportesDS()
-        Me.CRViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.DTPFecha = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboSucursal = New System.Windows.Forms.ComboBox()
-        Me.SucursalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SucursalesTableAdapter = New Agil.ReportesDSTableAdapters.SucursalesTableAdapter()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ParteRelacionada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Prendaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Hipotecaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GarantiaLiquida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GarantiaFega = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,13 +97,85 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica, Me.Reestructura})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica, Me.Reestructura, Me.ParteRelacionada, Me.Prendaria, Me.Hipotecaria, Me.GarantiaLiquida, Me.GarantiaFega})
         Me.DataGridView1.DataSource = Me.CarteraVencidaRPTBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(1123, 57)
         Me.DataGridView1.TabIndex = 5
+        '
+        'CarteraVencidaRPTBindingSource
+        '
+        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
+        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
+        '
+        'ReportesDS
+        '
+        Me.ReportesDS.DataSetName = "ReportesDS"
+        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CRViewer
+        '
+        Me.CRViewer.ActiveViewIndex = -1
+        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
+        Me.CRViewer.Name = "CRViewer"
+        Me.CRViewer.SelectionFormula = ""
+        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
+        Me.CRViewer.TabIndex = 6
+        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.CRViewer.ViewTimeSelectionFormula = ""
+        '
+        'DTPFecha
+        '
+        Me.DTPFecha.Enabled = False
+        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTPFecha.Location = New System.Drawing.Point(401, 9)
+        Me.DTPFecha.Name = "DTPFecha"
+        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
+        Me.DTPFecha.TabIndex = 7
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(139, 11)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
+        Me.Label2.TabIndex = 39
+        Me.Label2.Text = "Sucursal"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ComboSucursal
+        '
+        Me.ComboSucursal.DataSource = Me.SucursalesBindingSource
+        Me.ComboSucursal.DisplayMember = "Nombre_Sucursal"
+        Me.ComboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboSucursal.FormattingEnabled = True
+        Me.ComboSucursal.Location = New System.Drawing.Point(193, 8)
+        Me.ComboSucursal.Name = "ComboSucursal"
+        Me.ComboSucursal.Size = New System.Drawing.Size(121, 21)
+        Me.ComboSucursal.TabIndex = 4
+        Me.ComboSucursal.ValueMember = "ID_Sucursal"
+        '
+        'SucursalesBindingSource
+        '
+        Me.SucursalesBindingSource.DataMember = "Sucursales"
+        Me.SucursalesBindingSource.DataSource = Me.ReportesDS
+        '
+        'SucursalesTableAdapter
+        '
+        Me.SucursalesTableAdapter.ClearBeforeFill = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(1095, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 13)
+        Me.Label1.TabIndex = 40
+        Me.Label1.Text = "."
         '
         'AnexoDataGridViewTextBoxColumn
         '
@@ -282,77 +359,40 @@ Partial Class FrmRptCarteraVEN
         Me.Reestructura.Name = "Reestructura"
         Me.Reestructura.ReadOnly = True
         '
-        'CarteraVencidaRPTBindingSource
+        'ParteRelacionada
         '
-        Me.CarteraVencidaRPTBindingSource.DataMember = "CarteraVencidaRPT"
-        Me.CarteraVencidaRPTBindingSource.DataSource = Me.ReportesDS
+        Me.ParteRelacionada.DataPropertyName = "ParteRelacionada"
+        Me.ParteRelacionada.HeaderText = "ParteRelacionada"
+        Me.ParteRelacionada.Name = "ParteRelacionada"
+        Me.ParteRelacionada.ReadOnly = True
         '
-        'ReportesDS
+        'Prendaria
         '
-        Me.ReportesDS.DataSetName = "ReportesDS"
-        Me.ReportesDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Prendaria.DataPropertyName = "Prendaria"
+        Me.Prendaria.HeaderText = "Prendaria"
+        Me.Prendaria.Name = "Prendaria"
+        Me.Prendaria.ReadOnly = True
         '
-        'CRViewer
+        'Hipotecaria
         '
-        Me.CRViewer.ActiveViewIndex = -1
-        Me.CRViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CRViewer.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CRViewer.Location = New System.Drawing.Point(12, 36)
-        Me.CRViewer.Name = "CRViewer"
-        Me.CRViewer.SelectionFormula = ""
-        Me.CRViewer.Size = New System.Drawing.Size(1123, 593)
-        Me.CRViewer.TabIndex = 6
-        Me.CRViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        Me.CRViewer.ViewTimeSelectionFormula = ""
+        Me.Hipotecaria.DataPropertyName = "Hipotecaria"
+        Me.Hipotecaria.HeaderText = "Hipotecaria"
+        Me.Hipotecaria.Name = "Hipotecaria"
+        Me.Hipotecaria.ReadOnly = True
         '
-        'DTPFecha
+        'GarantiaLiquida
         '
-        Me.DTPFecha.Enabled = False
-        Me.DTPFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTPFecha.Location = New System.Drawing.Point(401, 9)
-        Me.DTPFecha.Name = "DTPFecha"
-        Me.DTPFecha.Size = New System.Drawing.Size(98, 20)
-        Me.DTPFecha.TabIndex = 7
+        Me.GarantiaLiquida.DataPropertyName = "GarantiaLiquida"
+        Me.GarantiaLiquida.HeaderText = "GarantiaLiquida"
+        Me.GarantiaLiquida.Name = "GarantiaLiquida"
+        Me.GarantiaLiquida.ReadOnly = True
         '
-        'Label2
+        'GarantiaFega
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(139, 11)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 13)
-        Me.Label2.TabIndex = 39
-        Me.Label2.Text = "Sucursal"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'ComboSucursal
-        '
-        Me.ComboSucursal.DataSource = Me.SucursalesBindingSource
-        Me.ComboSucursal.DisplayMember = "Nombre_Sucursal"
-        Me.ComboSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboSucursal.FormattingEnabled = True
-        Me.ComboSucursal.Location = New System.Drawing.Point(193, 8)
-        Me.ComboSucursal.Name = "ComboSucursal"
-        Me.ComboSucursal.Size = New System.Drawing.Size(121, 21)
-        Me.ComboSucursal.TabIndex = 4
-        Me.ComboSucursal.ValueMember = "ID_Sucursal"
-        '
-        'SucursalesBindingSource
-        '
-        Me.SucursalesBindingSource.DataMember = "Sucursales"
-        Me.SucursalesBindingSource.DataSource = Me.ReportesDS
-        '
-        'SucursalesTableAdapter
-        '
-        Me.SucursalesTableAdapter.ClearBeforeFill = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1095, 13)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(10, 13)
-        Me.Label1.TabIndex = 40
-        Me.Label1.Text = "."
+        Me.GarantiaFega.DataPropertyName = "GarantiaFega"
+        Me.GarantiaFega.HeaderText = "GarantiaFega"
+        Me.GarantiaFega.Name = "GarantiaFega"
+        Me.GarantiaFega.ReadOnly = True
         '
         'FrmRptCarteraVEN
         '
@@ -415,4 +455,9 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents ActividadInegi As DataGridViewTextBoxColumn
     Friend WithEvents ActividadEconomica As DataGridViewTextBoxColumn
     Friend WithEvents Reestructura As DataGridViewTextBoxColumn
+    Friend WithEvents ParteRelacionada As DataGridViewTextBoxColumn
+    Friend WithEvents Prendaria As DataGridViewTextBoxColumn
+    Friend WithEvents Hipotecaria As DataGridViewTextBoxColumn
+    Friend WithEvents GarantiaLiquida As DataGridViewTextBoxColumn
+    Friend WithEvents GarantiaFega As DataGridViewTextBoxColumn
 End Class
