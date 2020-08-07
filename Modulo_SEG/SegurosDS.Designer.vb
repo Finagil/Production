@@ -37661,13 +37661,14 @@ Namespace SegurosDSTableAdapters
                 "                 Vw_Anexos.Nombre_Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Vw_Anexos INNER JOIN"& _ 
                 ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Ciclos ON Vw_Anexos.Ciclo = Ciclos.Ciclo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
                 "  (Vw_Anexos.Tipar = N'H') AND (Vw_Anexos.Ciclo >= N'20') AND (Vw_Anexos.Cliente"& _ 
-                " = @Cliente) AND (Ciclos.Estado = N'V') AND (NOT (Vw_Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-                "                   (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM    "& _ 
-                "        SEG_LiberacionesMC))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Vw_Anexos.Tipar = N'"& _ 
-                "C') AND (Vw_Anexos.Cliente = @Cliente) AND (NOT (Vw_Anexos.Anexo IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "                  (SELECT        Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM     "& _ 
-                "       SEG_LiberacionesMC AS SEG_LiberacionesMC_1)))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Anexo, "& _ 
-                "Vw_Anexos.Ciclo"
+                " = @Cliente) AND (Ciclos.Estado = N'V') AND (NOT ((Vw_Anexos.Anexo + Vw_Anexos.C"& _ 
+                "iclo) IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        Anexo + Ciclo AS 'Full'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+                "                              FROM            SEG_LiberacionesMC))) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 (Vw_Anexos.Tipar = N'C') AND (Vw_Anexos.Cliente = @Cliente) AND"& _ 
+                " (NOT ((Vw_Anexos.Anexo + Vw_Anexos.Ciclo) IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SEL"& _ 
+                "ECT        Anexo + Ciclo AS 'Full'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM         "& _ 
+                "   SEG_LiberacionesMC AS SEG_LiberacionesMC_1)))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Vw_Anexos.Anexo, Vw_A"& _ 
+                "nexos.Ciclo"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
