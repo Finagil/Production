@@ -127,6 +127,7 @@ Partial Class FrmAtachments
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GENAtachmentsBindingSource, "id_TipoAttch", True))
         Me.ComboBox1.DataSource = Me.GENAtachmentsTipoAttachBindingSource
         Me.ComboBox1.DisplayMember = "Descripcion"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(9, 43)
         Me.ComboBox1.Name = "ComboBox1"

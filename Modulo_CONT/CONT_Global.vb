@@ -390,10 +390,10 @@ Module CONT_Global
 
         ' Genero la tabla que contiene las TIIE promedio por mes 
         ' Para FINAGIL considera todos los días del mes y redondea a 4 decimales
-        Dim Result() As DataRow = dsAgil.Tables("Anexos").Select("anexo = '007730033'")
+        'Dim Result() As DataRow = dsAgil.Tables("Anexos").Select("anexo = '007730033'")
 
         dtTIIE = TIIEavg("FINAGIL")
-        For Each drAnexo In Result
+        For Each drAnexo In dsAgil.Tables("Anexos").Rows
             cAnexo = drAnexo("Anexo")
             cVencida = drAnexo("Vencida")
 
