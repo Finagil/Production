@@ -4240,6 +4240,38 @@ Partial Public Class CreditoDS
         
         Private column23_obs As Global.System.Data.DataColumn
         
+        Private column24_org As Global.System.Data.DataColumn
+        
+        Private column24_cop As Global.System.Data.DataColumn
+        
+        Private column24_cot As Global.System.Data.DataColumn
+        
+        Private column24_obs As Global.System.Data.DataColumn
+        
+        Private column25_org As Global.System.Data.DataColumn
+        
+        Private column25_cop As Global.System.Data.DataColumn
+        
+        Private column25_cot As Global.System.Data.DataColumn
+        
+        Private column25_obs As Global.System.Data.DataColumn
+        
+        Private column26_org As Global.System.Data.DataColumn
+        
+        Private column26_cop As Global.System.Data.DataColumn
+        
+        Private column26_cot As Global.System.Data.DataColumn
+        
+        Private column26_obs As Global.System.Data.DataColumn
+        
+        Private column27_org As Global.System.Data.DataColumn
+        
+        Private column27_cop As Global.System.Data.DataColumn
+        
+        Private column27_cot As Global.System.Data.DataColumn
+        
+        Private column27_obs As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -5124,6 +5156,134 @@ Partial Public Class CreditoDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _24_orgColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column24_org
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _24_copColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column24_cop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _24_cotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column24_cot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _24_obsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column24_obs
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _25_orgColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column25_org
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _25_copColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column25_cop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _25_cotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column25_cot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _25_obsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column25_obs
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _26_orgColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column26_org
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _26_copColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column26_cop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _26_cotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column26_cot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _26_obsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column26_obs
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _27_orgColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column27_org
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _27_copColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column27_cop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _27_cotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column27_cot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property _27_obsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column27_obs
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5265,9 +5425,25 @@ Partial Public Class CreditoDS
                     ByVal _23_org As Boolean,  _
                     ByVal _23_cop As Boolean,  _
                     ByVal _23_cot As Boolean,  _
-                    ByVal _23_obs As String) As CRED_RelDocumentosRow
+                    ByVal _23_obs As String,  _
+                    ByVal _24_org As Boolean,  _
+                    ByVal _24_cop As Boolean,  _
+                    ByVal _24_cot As Boolean,  _
+                    ByVal _24_obs As String,  _
+                    ByVal _25_org As Boolean,  _
+                    ByVal _25_cop As Boolean,  _
+                    ByVal _25_cot As Boolean,  _
+                    ByVal _25_obs As String,  _
+                    ByVal _26_org As Boolean,  _
+                    ByVal _26_cop As Boolean,  _
+                    ByVal _26_cot As Boolean,  _
+                    ByVal _26_obs As String,  _
+                    ByVal _27_org As Boolean,  _
+                    ByVal _27_cop As Boolean,  _
+                    ByVal _27_cot As Boolean,  _
+                    ByVal _27_obs As String) As CRED_RelDocumentosRow
             Dim rowCRED_RelDocumentosRow As CRED_RelDocumentosRow = CType(Me.NewRow,CRED_RelDocumentosRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, cliente, no_cliente, tipo_cliente, sucursal, tipo_credito, fecha, estatus, analista, _1_org, _1_cop, _1_obs, _2_org, _2_cop, _2_obs, _3_org, _3_cop, _3_obs, _4_org, _4_cop, _4_obs, _5_org, _5_cop, _5_obs, _6_org, _6_cop, _6_obs, _7_org, _7_cop, _7_obs, _8_org, _8_cop, _8_obs, _9_org, _9_cop, _9_obs, _10_org, _10_cop, _10_obs, _11_org, _11_cop, _11_obs, _12_org, _12_cop, _12_obs, _13_org, _13_cop, _13_obs, _14_org, _14_cop, _14_obs, _15_org, _15_cop, _15_obs, _16_org, _16_cop, _16_obs, _17_org, _17_cop, _17_obs, _18_org, _18_cop, _18_obs, _1_cot, _2_cot, _3_cot, _4_cot, _5_cot, _6_cot, _7_cot, _8_cot, _9_cot, _10_cot, _11_cot, _12_cot, _13_cot, _14_cot, _15_cot, _16_cot, _17_cot, _18_cot, usuario, n_suc, observaciones, user_id, _19_org, _19_cop, _19_cot, _19_obs1, resguarda, _20_org, _20_cop, _20_cot, _20_obs, _21_org, _21_cop, _21_cot, _21_obs, _22_org, _22_cop, _22_cot, _22_obs, _23_org, _23_cop, _23_cot, _23_obs}
+            Dim columnValuesArray() As Object = New Object() {Nothing, cliente, no_cliente, tipo_cliente, sucursal, tipo_credito, fecha, estatus, analista, _1_org, _1_cop, _1_obs, _2_org, _2_cop, _2_obs, _3_org, _3_cop, _3_obs, _4_org, _4_cop, _4_obs, _5_org, _5_cop, _5_obs, _6_org, _6_cop, _6_obs, _7_org, _7_cop, _7_obs, _8_org, _8_cop, _8_obs, _9_org, _9_cop, _9_obs, _10_org, _10_cop, _10_obs, _11_org, _11_cop, _11_obs, _12_org, _12_cop, _12_obs, _13_org, _13_cop, _13_obs, _14_org, _14_cop, _14_obs, _15_org, _15_cop, _15_obs, _16_org, _16_cop, _16_obs, _17_org, _17_cop, _17_obs, _18_org, _18_cop, _18_obs, _1_cot, _2_cot, _3_cot, _4_cot, _5_cot, _6_cot, _7_cot, _8_cot, _9_cot, _10_cot, _11_cot, _12_cot, _13_cot, _14_cot, _15_cot, _16_cot, _17_cot, _18_cot, usuario, n_suc, observaciones, user_id, _19_org, _19_cop, _19_cot, _19_obs1, resguarda, _20_org, _20_cop, _20_cot, _20_obs, _21_org, _21_cop, _21_cot, _21_obs, _22_org, _22_cop, _22_cot, _22_obs, _23_org, _23_cop, _23_cot, _23_obs, _24_org, _24_cop, _24_cot, _24_obs, _25_org, _25_cop, _25_cot, _25_obs, _26_org, _26_cop, _26_cot, _26_obs, _27_org, _27_cop, _27_cot, _27_obs}
             rowCRED_RelDocumentosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCRED_RelDocumentosRow)
             Return rowCRED_RelDocumentosRow
@@ -5396,6 +5572,22 @@ Partial Public Class CreditoDS
             Me.column23_cop = MyBase.Columns("23_cop")
             Me.column23_cot = MyBase.Columns("23_cot")
             Me.column23_obs = MyBase.Columns("23_obs")
+            Me.column24_org = MyBase.Columns("24_org")
+            Me.column24_cop = MyBase.Columns("24_cop")
+            Me.column24_cot = MyBase.Columns("24_cot")
+            Me.column24_obs = MyBase.Columns("24_obs")
+            Me.column25_org = MyBase.Columns("25_org")
+            Me.column25_cop = MyBase.Columns("25_cop")
+            Me.column25_cot = MyBase.Columns("25_cot")
+            Me.column25_obs = MyBase.Columns("25_obs")
+            Me.column26_org = MyBase.Columns("26_org")
+            Me.column26_cop = MyBase.Columns("26_cop")
+            Me.column26_cot = MyBase.Columns("26_cot")
+            Me.column26_obs = MyBase.Columns("26_obs")
+            Me.column27_org = MyBase.Columns("27_org")
+            Me.column27_cop = MyBase.Columns("27_cop")
+            Me.column27_cot = MyBase.Columns("27_cot")
+            Me.column27_obs = MyBase.Columns("27_obs")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5797,6 +5989,70 @@ Partial Public Class CreditoDS
             Me.column23_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column23_obs")
             Me.column23_obs.ExtendedProperties.Add("Generator_UserColumnName", "23_obs")
             MyBase.Columns.Add(Me.column23_obs)
+            Me.column24_org = New Global.System.Data.DataColumn("24_org", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column24_org.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column24_org")
+            Me.column24_org.ExtendedProperties.Add("Generator_UserColumnName", "24_org")
+            MyBase.Columns.Add(Me.column24_org)
+            Me.column24_cop = New Global.System.Data.DataColumn("24_cop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column24_cop.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column24_cop")
+            Me.column24_cop.ExtendedProperties.Add("Generator_UserColumnName", "24_cop")
+            MyBase.Columns.Add(Me.column24_cop)
+            Me.column24_cot = New Global.System.Data.DataColumn("24_cot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column24_cot.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column24_cot")
+            Me.column24_cot.ExtendedProperties.Add("Generator_UserColumnName", "24_cot")
+            MyBase.Columns.Add(Me.column24_cot)
+            Me.column24_obs = New Global.System.Data.DataColumn("24_obs", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column24_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column24_obs")
+            Me.column24_obs.ExtendedProperties.Add("Generator_UserColumnName", "24_obs")
+            MyBase.Columns.Add(Me.column24_obs)
+            Me.column25_org = New Global.System.Data.DataColumn("25_org", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column25_org.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column25_org")
+            Me.column25_org.ExtendedProperties.Add("Generator_UserColumnName", "25_org")
+            MyBase.Columns.Add(Me.column25_org)
+            Me.column25_cop = New Global.System.Data.DataColumn("25_cop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column25_cop.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column25_cop")
+            Me.column25_cop.ExtendedProperties.Add("Generator_UserColumnName", "25_cop")
+            MyBase.Columns.Add(Me.column25_cop)
+            Me.column25_cot = New Global.System.Data.DataColumn("25_cot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column25_cot.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column25_cot")
+            Me.column25_cot.ExtendedProperties.Add("Generator_UserColumnName", "25_cot")
+            MyBase.Columns.Add(Me.column25_cot)
+            Me.column25_obs = New Global.System.Data.DataColumn("25_obs", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column25_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column25_obs")
+            Me.column25_obs.ExtendedProperties.Add("Generator_UserColumnName", "25_obs")
+            MyBase.Columns.Add(Me.column25_obs)
+            Me.column26_org = New Global.System.Data.DataColumn("26_org", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column26_org.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column26_org")
+            Me.column26_org.ExtendedProperties.Add("Generator_UserColumnName", "26_org")
+            MyBase.Columns.Add(Me.column26_org)
+            Me.column26_cop = New Global.System.Data.DataColumn("26_cop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column26_cop.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column26_cop")
+            Me.column26_cop.ExtendedProperties.Add("Generator_UserColumnName", "26_cop")
+            MyBase.Columns.Add(Me.column26_cop)
+            Me.column26_cot = New Global.System.Data.DataColumn("26_cot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column26_cot.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column26_cot")
+            Me.column26_cot.ExtendedProperties.Add("Generator_UserColumnName", "26_cot")
+            MyBase.Columns.Add(Me.column26_cot)
+            Me.column26_obs = New Global.System.Data.DataColumn("26_obs", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column26_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column26_obs")
+            Me.column26_obs.ExtendedProperties.Add("Generator_UserColumnName", "26_obs")
+            MyBase.Columns.Add(Me.column26_obs)
+            Me.column27_org = New Global.System.Data.DataColumn("27_org", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column27_org.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column27_org")
+            Me.column27_org.ExtendedProperties.Add("Generator_UserColumnName", "27_org")
+            MyBase.Columns.Add(Me.column27_org)
+            Me.column27_cop = New Global.System.Data.DataColumn("27_cop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column27_cop.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column27_cop")
+            Me.column27_cop.ExtendedProperties.Add("Generator_UserColumnName", "27_cop")
+            MyBase.Columns.Add(Me.column27_cop)
+            Me.column27_cot = New Global.System.Data.DataColumn("27_cot", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.column27_cot.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column27_cot")
+            Me.column27_cot.ExtendedProperties.Add("Generator_UserColumnName", "27_cot")
+            MyBase.Columns.Add(Me.column27_cot)
+            Me.column27_obs = New Global.System.Data.DataColumn("27_obs", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.column27_obs.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column27_obs")
+            Me.column27_obs.ExtendedProperties.Add("Generator_UserColumnName", "27_obs")
+            MyBase.Columns.Add(Me.column27_obs)
             Me.columnid_solicitud.AutoIncrement = true
             Me.columnid_solicitud.AutoIncrementSeed = -1
             Me.columnid_solicitud.AutoIncrementStep = -1
@@ -5838,6 +6094,10 @@ Partial Public Class CreditoDS
             Me.column21_obs.MaxLength = 2147483647
             Me.column22_obs.MaxLength = 2147483647
             Me.column23_obs.MaxLength = 2147483647
+            Me.column24_obs.MaxLength = 2147483647
+            Me.column25_obs.MaxLength = 2147483647
+            Me.column26_obs.MaxLength = 2147483647
+            Me.column27_obs.MaxLength = 2147483647
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15605,6 +15865,246 @@ Partial Public Class CreditoDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _24_org() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._24_orgColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '24_org' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._24_orgColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _24_cop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._24_copColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '24_cop' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._24_copColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _24_cot() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._24_cotColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '24_cot' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._24_cotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _24_obs() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._24_obsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '24_obs' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._24_obsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _25_org() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._25_orgColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '25_org' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._25_orgColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _25_cop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._25_copColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '25_cop' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._25_copColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _25_cot() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._25_cotColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '25_cot' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._25_cotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _25_obs() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._25_obsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '25_obs' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._25_obsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _26_org() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._26_orgColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '26_org' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._26_orgColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _26_cop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._26_copColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '26_cop' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._26_copColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _26_cot() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._26_cotColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '26_cot' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._26_cotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _26_obs() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._26_obsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '26_obs' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._26_obsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _27_org() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._27_orgColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '27_org' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._27_orgColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _27_cop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._27_copColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '27_cop' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._27_copColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _27_cot() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._27_cotColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '27_cot' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._27_cotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property _27_obs() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCRED_RelDocumentos._27_obsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '27_obs' de la tabla 'CRED_RelDocumentos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCRED_RelDocumentos._27_obsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsclienteNull() As Boolean
             Return Me.IsNull(Me.tableCRED_RelDocumentos.clienteColumn)
         End Function
@@ -16861,6 +17361,198 @@ Partial Public Class CreditoDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub Set_23_obsNull()
             Me(Me.tableCRED_RelDocumentos._23_obsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_24_orgNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._24_orgColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_24_orgNull()
+            Me(Me.tableCRED_RelDocumentos._24_orgColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_24_copNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._24_copColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_24_copNull()
+            Me(Me.tableCRED_RelDocumentos._24_copColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_24_cotNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._24_cotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_24_cotNull()
+            Me(Me.tableCRED_RelDocumentos._24_cotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_24_obsNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._24_obsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_24_obsNull()
+            Me(Me.tableCRED_RelDocumentos._24_obsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_25_orgNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._25_orgColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_25_orgNull()
+            Me(Me.tableCRED_RelDocumentos._25_orgColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_25_copNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._25_copColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_25_copNull()
+            Me(Me.tableCRED_RelDocumentos._25_copColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_25_cotNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._25_cotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_25_cotNull()
+            Me(Me.tableCRED_RelDocumentos._25_cotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_25_obsNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._25_obsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_25_obsNull()
+            Me(Me.tableCRED_RelDocumentos._25_obsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_26_orgNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._26_orgColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_26_orgNull()
+            Me(Me.tableCRED_RelDocumentos._26_orgColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_26_copNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._26_copColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_26_copNull()
+            Me(Me.tableCRED_RelDocumentos._26_copColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_26_cotNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._26_cotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_26_cotNull()
+            Me(Me.tableCRED_RelDocumentos._26_cotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_26_obsNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._26_obsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_26_obsNull()
+            Me(Me.tableCRED_RelDocumentos._26_obsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_27_orgNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._27_orgColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_27_orgNull()
+            Me(Me.tableCRED_RelDocumentos._27_orgColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_27_copNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._27_copColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_27_copNull()
+            Me(Me.tableCRED_RelDocumentos._27_copColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_27_cotNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._27_cotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_27_cotNull()
+            Me(Me.tableCRED_RelDocumentos._27_cotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Is_27_obsNull() As Boolean
+            Return Me.IsNull(Me.tableCRED_RelDocumentos._27_obsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Set_27_obsNull()
+            Me(Me.tableCRED_RelDocumentos._27_obsColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27230,6 +27922,22 @@ Namespace CreditoDSTableAdapters
             tableMapping.ColumnMappings.Add("23_cop", "23_cop")
             tableMapping.ColumnMappings.Add("23_cot", "23_cot")
             tableMapping.ColumnMappings.Add("23_obs", "23_obs")
+            tableMapping.ColumnMappings.Add("24_org", "24_org")
+            tableMapping.ColumnMappings.Add("24_cop", "24_cop")
+            tableMapping.ColumnMappings.Add("24_cot", "24_cot")
+            tableMapping.ColumnMappings.Add("24_obs", "24_obs")
+            tableMapping.ColumnMappings.Add("25_org", "25_org")
+            tableMapping.ColumnMappings.Add("25_cop", "25_cop")
+            tableMapping.ColumnMappings.Add("25_cot", "25_cot")
+            tableMapping.ColumnMappings.Add("25_obs", "25_obs")
+            tableMapping.ColumnMappings.Add("26_org", "26_org")
+            tableMapping.ColumnMappings.Add("26_cop", "26_cop")
+            tableMapping.ColumnMappings.Add("26_cot", "26_cot")
+            tableMapping.ColumnMappings.Add("26_obs", "26_obs")
+            tableMapping.ColumnMappings.Add("27_org", "27_org")
+            tableMapping.ColumnMappings.Add("27_cop", "27_cop")
+            tableMapping.ColumnMappings.Add("27_cot", "27_cot")
+            tableMapping.ColumnMappings.Add("27_obs", "27_obs")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
@@ -27246,7 +27954,9 @@ Namespace CreditoDSTableAdapters
                 "7_cot], [18_cot], [usuario], [n_suc], [observaciones], [user_id], [19_org], [19_"& _ 
                 "cop], [19_cot], [19_obs], [resguarda], [20_org], [20_cop], [20_cot], [20_obs], ["& _ 
                 "21_org], [21_cop], [21_cot], [21_obs], [22_org], [22_cop], [22_cot], [22_obs], ["& _ 
-                "23_org], [23_cop], [23_cot], [23_obs]) VALUES (@cliente, @no_cliente, @tipo_clie"& _ 
+                "23_org], [23_cop], [23_cot], [23_obs], [24_org], [24_cop], [24_cot], [24_obs], ["& _ 
+                "25_org], [25_cop], [25_cot], [25_obs], [26_org], [26_cop], [26_cot], [26_obs], ["& _ 
+                "27_org], [27_cop], [27_cot], [27_obs]) VALUES (@cliente, @no_cliente, @tipo_clie"& _ 
                 "nte, @sucursal, @tipo_credito, @fecha, @estatus, @analista, @p1, @p4, @p7, @p10,"& _ 
                 " @p13, @p16, @p19, @p22, @p25, @p28, @p31, @p34, @p37, @p40, @p43, @p46, @p49, @"& _ 
                 "p52, @p55, @p58, @p61, @p64, @p67, @p70, @p73, @p76, @p79, @p82, @p85, @p88, @p9"& _ 
@@ -27256,7 +27966,8 @@ Namespace CreditoDSTableAdapters
                 "p196, @p199, @p202, @p205, @p208, @p211, @p214, @usuario, @n_suc, @observaciones"& _ 
                 ", @user_id, @p217, @p220, @p223, @p226, @resguarda, @p229, @p232, @p235, @p238, "& _ 
                 "@p241, @p244, @p247, @p250, @p253, @p256, @p259, @p262, @p265, @p268, @p271, @p2"& _ 
-                "74)"
+                "74, @p277, @p280, @p283, @p286, @p289, @p292, @p295, @p298, @p301, @p304, @p307,"& _ 
+                " @p310, @p313, @p316, @p319, @p322)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cliente", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@no_cliente", Global.System.Data.SqlDbType.NChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "no_cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -27363,6 +28074,22 @@ Namespace CreditoDSTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p268", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "23_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p271", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "23_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p274", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "23_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p277", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "24_org", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p280", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "24_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p283", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "24_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p286", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "24_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p289", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "25_org", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p292", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "25_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p295", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "25_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p298", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "25_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p301", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "26_org", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p304", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "26_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p307", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "26_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p310", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "26_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p313", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_org", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p316", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_cop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p319", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_cot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p322", Global.System.Data.SqlDbType.Text, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "27_obs", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -27392,7 +28119,10 @@ Namespace CreditoDSTableAdapters
                 "ario, n_suc, observaciones, user_id, [19_org], [19_cop], [19_cot], [19_obs], res"& _ 
                 "guarda, [20_org], [20_cop], [20_cot], [20_obs], [21_org], [21_cop], [21_cot], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
                 "                         [21_obs], [22_org], [22_cop], [22_cot], [22_obs], [23_o"& _ 
-                "rg], [23_cop], [23_cot], [23_obs]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CRED_RelDocumentos"
+                "rg], [23_cop], [23_cot], [23_obs], [24_org], [24_cop], [24_cot], [24_obs], [25_o"& _ 
+                "rg], [25_cop], [25_cot], [25_obs], [26_org], [26_cop], [26_cot], [26_obs], [27_o"& _ 
+                "rg], [27_cop], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         [27_cot], [27_obs]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CR"& _ 
+                "ED_RelDocumentos"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -27403,7 +28133,9 @@ Namespace CreditoDSTableAdapters
                 "org], [18_cop], [18_cot], [18_obs], [18_org], [19_cop], [19_cot], [19_obs], [19_"& _ 
                 "org], [1_cop], [1_cot], [1_obs], [1_org], [20_cop], [20_cot], [20_obs], [20_org]"& _ 
                 ", [21_cop], [21_cot], [21_obs], [21_org], [22_cop], [22_cot], [22_obs], [22_org]"& _ 
-                ", [23_cop], [23_cot], [23_obs], [23_org], [2_cop], [2_cot], [2_obs], [2_org], [3"& _ 
+                ", [23_cop], [23_cot], [23_obs], [23_org], [24_cop], [24_cot], [24_obs], [24_org]"& _ 
+                ", [25_cop], [25_cot], [25_obs], [25_org], [26_cop], [26_cot], [26_obs], [26_org]"& _ 
+                ", [27_cop], [27_cot], [27_obs], [27_org], [2_cop], [2_cot], [2_obs], [2_org], [3"& _ 
                 "_cop], [3_cot], [3_obs], [3_org], [4_cop], [4_cot], [4_obs], [4_org], [5_cop], ["& _ 
                 "5_cot], [5_obs], [5_org], [6_cop], [6_cot], [6_obs], [6_org], [7_cop], [7_cot], "& _ 
                 "[7_obs], [7_org], [8_cop], [8_cot], [8_obs], [8_org], [9_cop], [9_cot], [9_obs],"& _ 
@@ -27421,7 +28153,9 @@ Namespace CreditoDSTableAdapters
                 "org], [18_cop], [18_cot], [18_obs], [18_org], [19_cop], [19_cot], [19_obs], [19_"& _ 
                 "org], [1_cop], [1_cot], [1_obs], [1_org], [20_cop], [20_cot], [20_obs], [20_org]"& _ 
                 ", [21_cop], [21_cot], [21_obs], [21_org], [22_cop], [22_cot], [22_obs], [22_org]"& _ 
-                ", [23_cop], [23_cot], [23_obs], [23_org], [2_cop], [2_cot], [2_obs], [2_org], [3"& _ 
+                ", [23_cop], [23_cot], [23_obs], [23_org], [24_cop], [24_cot], [24_obs], [24_org]"& _ 
+                ", [25_cop], [25_cot], [25_obs], [25_org], [26_cop], [26_cot], [26_obs], [26_org]"& _ 
+                ", [27_cop], [27_cot], [27_obs], [27_org], [2_cop], [2_cot], [2_obs], [2_org], [3"& _ 
                 "_cop], [3_cot], [3_obs], [3_org], [4_cop], [4_cot], [4_obs], [4_org], [5_cop], ["& _ 
                 "5_cot], [5_obs], [5_org], [6_cop], [6_cot], [6_obs], [6_org], [7_cop], [7_cot], "& _ 
                 "[7_obs], [7_org], [8_cop], [8_cot], [8_obs], [8_org], [9_cop], [9_cot], [9_obs],"& _ 
@@ -27657,7 +28391,23 @@ Namespace CreditoDSTableAdapters
                     ByVal p265 As Global.System.Nullable(Of Boolean),  _
                     ByVal p268 As Global.System.Nullable(Of Boolean),  _
                     ByVal p271 As Global.System.Nullable(Of Boolean),  _
-                    ByVal p274 As String) As Integer
+                    ByVal p274 As String,  _
+                    ByVal p277 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p280 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p283 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p286 As String,  _
+                    ByVal p289 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p292 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p295 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p298 As String,  _
+                    ByVal p301 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p304 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p307 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p310 As String,  _
+                    ByVal p313 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p316 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p319 As Global.System.Nullable(Of Boolean),  _
+                    ByVal p322 As String) As Integer
             If (cliente Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28182,6 +28932,86 @@ Namespace CreditoDSTableAdapters
                 Me.Adapter.InsertCommand.Parameters(104).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(104).Value = CType(p274,String)
+            End If
+            If (p277.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(105).Value = CType(p277.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(105).Value = Global.System.DBNull.Value
+            End If
+            If (p280.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(106).Value = CType(p280.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(106).Value = Global.System.DBNull.Value
+            End If
+            If (p283.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(107).Value = CType(p283.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(107).Value = Global.System.DBNull.Value
+            End If
+            If (p286 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(108).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(108).Value = CType(p286,String)
+            End If
+            If (p289.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(109).Value = CType(p289.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(109).Value = Global.System.DBNull.Value
+            End If
+            If (p292.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(110).Value = CType(p292.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(110).Value = Global.System.DBNull.Value
+            End If
+            If (p295.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(111).Value = CType(p295.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(111).Value = Global.System.DBNull.Value
+            End If
+            If (p298 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(112).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(112).Value = CType(p298,String)
+            End If
+            If (p301.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(113).Value = CType(p301.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(113).Value = Global.System.DBNull.Value
+            End If
+            If (p304.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(114).Value = CType(p304.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(114).Value = Global.System.DBNull.Value
+            End If
+            If (p307.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(115).Value = CType(p307.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(115).Value = Global.System.DBNull.Value
+            End If
+            If (p310 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(116).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(116).Value = CType(p310,String)
+            End If
+            If (p313.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(117).Value = CType(p313.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(117).Value = Global.System.DBNull.Value
+            End If
+            If (p316.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(118).Value = CType(p316.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(118).Value = Global.System.DBNull.Value
+            End If
+            If (p319.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(119).Value = CType(p319.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(119).Value = Global.System.DBNull.Value
+            End If
+            If (p322 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(120).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(120).Value = CType(p322,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

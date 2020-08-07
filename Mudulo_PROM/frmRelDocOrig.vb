@@ -54,7 +54,11 @@
                 chkb_19.Checked, chkb_cop_19.Checked, chk_cot19.Checked, txtObs_19.Text.Trim, cmbResguarda.Text.Trim, chkb_20.Checked, chkb_cop_20.Checked, chk_cot20.Checked, txtObs_20.Text.Trim, + _
                  chkb_21.Checked, chkb_cop_21.Checked, chk_cot21.Checked, txtObs_21.Text.Trim, + _
                  chkb_22.Checked, chkb_cop_22.Checked, chk_cot22.Checked, txtObs_22.Text.Trim, + _
-                 chkb_23.Checked, chkb_cop_23.Checked, chk_cot23.Checked, txtObs_23.Text.Trim)
+                 chkb_23.Checked, chkb_cop_23.Checked, chk_cot23.Checked, txtObs_23.Text.Trim, + _
+                 chkb_24.Checked, chkb_cop_24.Checked, chk_cot24.Checked, txtObs_24.Text.Trim, + _
+                 chkb_25.Checked, chkb_cop_25.Checked, chk_cot25.Checked, txtObs_25.Text.Trim, + _
+                 chkb_26.Checked, chkb_cop_26.Checked, chk_cot26.Checked, txtObs_26.Text.Trim, + _
+                 chkb_27.Checked, chkb_cop_27.Checked, chk_cot27.Checked, txtObs_27.Text.Trim)
 
                 If MsgBox("Datos guardados correctamente, ¿Desea imprimir el reporte?", MsgBoxStyle.YesNoCancel) = MsgBoxResult.Yes Then
                     Dim ultimoID As String = Me.CRED_RelDocumentosTableAdapter.UltimoID.ToString
@@ -207,9 +211,5 @@
 
     Private Sub cmbAnalista_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAnalista.SelectedIndexChanged
         cmbResguarda.Text = cmbAnalista.Text
-    End Sub
-
-    Private Sub TabPage3_Click(sender As Object, e As EventArgs) Handles TabPage3.Click
-
     End Sub
 End Class
