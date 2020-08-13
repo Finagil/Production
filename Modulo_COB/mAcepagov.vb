@@ -1394,9 +1394,15 @@ Module mAcepagov
         'Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nRecibo & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
         'Dim stmWriter As New StreamWriter(stmFactura, System.Text.Encoding.Default)
 
+        If Not Directory.Exists("C:\Facturas\") Then
+            Directory.CreateDirectory("C:\Facturas\")
+        End If
         Dim Ruta As String = "C:\Facturas\FACTURA_"
         If cSerie = "AB" Then
             Ruta = "C:\Facturas\AppBlanco\FACTURA_"
+            If Not Directory.Exists("C:\Facturas\AppBlanco\") Then
+                Directory.CreateDirectory("C:\Facturas\AppBlanco\")
+            End If
         End If
 
         Dim stmWriter As New StreamWriter(Ruta & cSerie & "_" & nRecibo & ".txt", False, System.Text.Encoding.Default)
