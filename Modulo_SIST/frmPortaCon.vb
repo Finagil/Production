@@ -787,14 +787,10 @@ Public Class frmPortaCon
             End If
 
         End While
-
         oArchivo.Close()
         oArchivo = Nothing
 
-        ' Después leo el archivo 13020203.TXT
-
         Try
-
             oArchivo = New StreamReader("C:\FILES\13020203.TXT")
 
             While (oArchivo.Peek() > -1)
@@ -862,17 +858,13 @@ Public Class frmPortaCon
 
             oArchivo.Close()
             oArchivo = Nothing
-
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
 
         ' Después leo el archivo 14010203.TXT
 
         Try
-
             oArchivo = New StreamReader("C:\FILES\14010203.TXT")
 
             While (oArchivo.Peek() > -1)
@@ -939,11 +931,8 @@ Public Class frmPortaCon
 
             oArchivo.Close()
             oArchivo = Nothing
-
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
 
         ' Después leo el archivo 14030203.TXT
@@ -1081,17 +1070,13 @@ Public Class frmPortaCon
 
             oArchivo.Close()
             oArchivo = Nothing
-
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
 
         ' Después leo el archivo 14010205.TXT
 
         Try
-
             oArchivo = New StreamReader("C:\FILES\14010205.TXT")
 
             While (oArchivo.Peek() > -1)
@@ -1158,12 +1143,82 @@ Public Class frmPortaCon
 
             oArchivo.Close()
             oArchivo = Nothing
-
         Catch eException As Exception
-
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
         End Try
+
+        Try
+            oArchivo = New StreamReader("C:\FILES\14030205.TXT")
+
+            While (oArchivo.Peek() > -1)
+
+                cRenglon = oArchivo.ReadLine()
+
+                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
+
+                    'cAnexo = Mid(cRenglon, 83, 10)
+                    cAnexo = Mid(cRenglon, 113, 10)
+                    myKeySearch(0) = cAnexo
+
+                    drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
+                    If drGeneral Is Nothing Then
+                        cNombreCliente = ""
+                        cTipoTasa = ""
+                        nDiferencial = 0
+                        nTasa = 0
+                        cProducto = ""
+                        cDescPlaza = ""
+                        cCopos = ""
+                        cDescPromotor = ""
+                        cFechaTerminacion = ""
+                    Else
+                        cNombreCliente = drGeneral("NombreCliente")
+                        cTipoTasa = drGeneral("Tipta")
+                        nDiferencial = drGeneral("Diferencial")
+                        nTasa = drGeneral("Tasas")
+                        cProducto = drGeneral("Tipar")
+                        cDescPlaza = drGeneral("DescPlaza")
+                        cCopos = drGeneral("Copos")
+                        cDescPromotor = drGeneral("DescPromotor")
+                        cFechaTerminacion = drGeneral("FechaTerminacion")
+                    End If
+
+                    nProvision = CDbl(Mid(cRenglon, 143, 24))
+
+                    drReporte = dtCR.Rows.Find(myKeySearch)
+                    If drReporte Is Nothing Then
+                        drReporte = dtCR.NewRow()
+                        drReporte("Anexo") = cAnexo
+                        drReporte("Nombre") = cNombreCliente
+                        drReporte("CarteraVigente") = 0
+                        drReporte("Provision") = nProvision
+                        drReporte("UxR") = 0
+                        drReporte("Total") = nProvision
+                        drReporte("TipoTasa") = cTipoTasa
+                        drReporte("Tasa") = nTasa
+                        drReporte("Diferencial") = nDiferencial
+                        drReporte("Producto") = cProducto
+                        drReporte("Plaza") = cDescPlaza
+                        drReporte("Código Postal") = cCopos
+                        drReporte("Promotor") = cDescPromotor
+                        drReporte("FechaTerminacion") = cFechaTerminacion
+                        dtCR.Rows.Add(drReporte)
+                    Else
+                        drReporte("Provision") += nProvision
+                        drReporte("Total") += nProvision
+                    End If
+
+                End If
+
+            End While
+
+            oArchivo.Close()
+            oArchivo = Nothing
+        Catch eException As Exception
+            MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
+        End Try
+
+
 
         'Try
         dtVencida.Select("total > 0")
@@ -1318,11 +1373,22 @@ Public Class frmPortaCon
                 cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
                 & "[Seguros],[Total],[TipoTasa],[Tasa],[Diferencial],[Producto],[Plaza],[CP],[Promotor],[FechaTerminacion],[TipoCartera]," _
                 & "[Mes],[AnexoSin])" _
-                & "VALUES ('88888/8888','" & TipoCartera.ToUpper & "'," & R & ",0" _
+                & "VALUES ('88888/8888','" & TipoCartera.ToUpper & "'," & CDec(R) & ",0" _
                 & ",0,0,0,0" _
-                & ",0," & R & ",'FIJA',0" _
+                & ",0," & CDec(R) & ",'FIJA',0" _
                 & ",0,'" & TipoCartera.ToUpper & "','ESTADO DE MEXICO','50070'" _
                 & ",'" & TipoCartera.ToUpper & "','" & fecha.ToString("MM/dd/yyyy") & "','" & TipoCartera.ToUpper & "','" & MesAux & "','" & AnexoSin & "')"
+                cm1.ExecuteNonQuery()
+
+                R = InputBox("FACTORAJE EXIGIBLE")
+                cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
+                & "[Seguros],[Total],[TipoTasa],[Tasa],[Diferencial],[Producto],[Plaza],[CP],[Promotor],[FechaTerminacion],[TipoCartera]," _
+                & "[Mes],[AnexoSin])" _
+                & "VALUES ('88888/8888','" & TipoCartera.ToUpper & "'," & CDec(R) & ",0" _
+                & ",0,0,0,0" _
+                & ",0," & CDec(R) & ",'FIJA',0" _
+                & ",0,'" & TipoCartera.ToUpper & "','ESTADO DE MEXICO','50070'" _
+                & ",'" & TipoCartera.ToUpper & "','" & fecha.ToString("MM/dd/yyyy") & "','EXIGIBLE','" & MesAux & "','" & AnexoSin & "')"
                 cm1.ExecuteNonQuery()
             Case "CESIÓN DE DERECHOS"
                 Dim R As String = InputBox("CESIONES")
@@ -1331,9 +1397,9 @@ Public Class frmPortaCon
                 cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
                 & "[Seguros],[Total],[TipoTasa],[Tasa],[Diferencial],[Producto],[Plaza],[CP],[Promotor],[FechaTerminacion],[TipoCartera]," _
                 & "[Mes],[AnexoSin])" _
-                & "VALUES ('99999/9999','" & TipoCartera.ToUpper & "'," & R & ",0" _
+                & "VALUES ('99999/9999','" & TipoCartera.ToUpper & "'," & CDec(R) & ",0" _
                 & ",0,0,0,0" _
-                & ",0," & R & ",'FIJA',0" _
+                & ",0," & CDec(R) & ",'FIJA',0" _
                 & ",0,'" & TipoCartera.ToUpper & "','ESTADO DE MEXICO','50070'" _
                 & ",'" & TipoCartera.ToUpper & "','" & fecha.ToString("MM/dd/yyyy") & "','" & TipoCartera.ToUpper & "','" & MesAux & "','" & AnexoSin & "')"
                 cm1.ExecuteNonQuery()
