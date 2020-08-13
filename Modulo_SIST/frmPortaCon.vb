@@ -725,16 +725,11 @@ Public Class frmPortaCon
         oArchivo = New StreamReader("C:\FILES\13010203.TXT")
 
         While (oArchivo.Peek() > -1)
-
             cRenglon = oArchivo.ReadLine()
-
             'If Mid(cRenglon, 45, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-            If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-                'cAnexo = Mid(cRenglon, 83, 10)
+            If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                 cAnexo = Mid(cRenglon, 113, 10)
                 myKeySearch(0) = cAnexo
-
                 drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                 If drGeneral Is Nothing Then
                     cNombreCliente = ""
@@ -757,10 +752,7 @@ Public Class frmPortaCon
                     cDescPromotor = drGeneral("DescPromotor")
                     cFechaTerminacion = drGeneral("FechaTerminacion")
                 End If
-
-                'nProvision = CDbl(Mid(cRenglon, 93, 24))
                 nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                 drReporte = dtAF.Rows.Find(myKeySearch)
                 If drReporte Is Nothing Then
                     drReporte = dtAF.NewRow()
@@ -783,26 +775,18 @@ Public Class frmPortaCon
                     drReporte("Provision") += nProvision
                     drReporte("Total") += nProvision
                 End If
-
             End If
-
         End While
         oArchivo.Close()
         oArchivo = Nothing
 
         Try
             oArchivo = New StreamReader("C:\FILES\13020203.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-                    'cAnexo = Mid(cRenglon, 83, 10)
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -814,7 +798,6 @@ Public Class frmPortaCon
                         cCopos = ""
                         cDescPromotor = ""
                         cFechaTerminacion = ""
-
                     Else
                         cNombreCliente = drGeneral("NombreCliente")
                         cTipoTasa = drGeneral("Tipta")
@@ -826,9 +809,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtAF.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtAF.NewRow()
@@ -851,11 +832,8 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
-
             oArchivo.Close()
             oArchivo = Nothing
         Catch eException As Exception
@@ -863,20 +841,14 @@ Public Class frmPortaCon
         End Try
 
         ' Después leo el archivo 14010203.TXT
-
         Try
             oArchivo = New StreamReader("C:\FILES\14010203.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     'cAnexo = Mid(cRenglon, 83, 10)
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -899,9 +871,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtCR.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtCR.NewRow()
@@ -924,11 +894,8 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
-
             oArchivo.Close()
             oArchivo = Nothing
         Catch eException As Exception
@@ -936,21 +903,13 @@ Public Class frmPortaCon
         End Try
 
         ' Después leo el archivo 14030203.TXT
-
         Try
-
             oArchivo = New StreamReader("C:\FILES\14030203.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-                    'cAnexo = Mid(cRenglon, 83, 10)
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -973,9 +932,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtCS.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtCS.NewRow()
@@ -998,24 +955,15 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
 
             oArchivo = New StreamReader("C:\FILES\14050203.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-
-                    'cAnexo = Mid(cRenglon, 83, 10)
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -1038,9 +986,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtCL.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtCL.NewRow()
@@ -1063,11 +1009,8 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
-
             oArchivo.Close()
             oArchivo = Nothing
         Catch eException As Exception
@@ -1075,20 +1018,13 @@ Public Class frmPortaCon
         End Try
 
         ' Después leo el archivo 14010205.TXT
-
         Try
             oArchivo = New StreamReader("C:\FILES\14010205.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-                    'cAnexo = Mid(cRenglon, 83, 10)
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -1111,9 +1047,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtCR.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtCR.NewRow()
@@ -1136,11 +1070,8 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
-
             oArchivo.Close()
             oArchivo = Nothing
         Catch eException As Exception
@@ -1149,17 +1080,11 @@ Public Class frmPortaCon
 
         Try
             oArchivo = New StreamReader("C:\FILES\14030205.TXT")
-
             While (oArchivo.Peek() > -1)
-
                 cRenglon = oArchivo.ReadLine()
-
-                If Mid(cRenglon, 60, 30) = "PROVISION DE INTERESES ACTIVOS" Then
-
-                    'cAnexo = Mid(cRenglon, 83, 10)
+                If IsNumeric(Mid(cRenglon, 143, 24).Trim) And Mid(cRenglon, 113, 10).Trim.Length = 10 Then 'SOLO CARGOS
                     cAnexo = Mid(cRenglon, 113, 10)
                     myKeySearch(0) = cAnexo
-
                     drGeneral = dsAgil.Tables("General").Rows.Find(myKeySearch)
                     If drGeneral Is Nothing Then
                         cNombreCliente = ""
@@ -1182,9 +1107,7 @@ Public Class frmPortaCon
                         cDescPromotor = drGeneral("DescPromotor")
                         cFechaTerminacion = drGeneral("FechaTerminacion")
                     End If
-
                     nProvision = CDbl(Mid(cRenglon, 143, 24))
-
                     drReporte = dtCR.Rows.Find(myKeySearch)
                     If drReporte Is Nothing Then
                         drReporte = dtCR.NewRow()
@@ -1207,19 +1130,13 @@ Public Class frmPortaCon
                         drReporte("Provision") += nProvision
                         drReporte("Total") += nProvision
                     End If
-
                 End If
-
             End While
-
             oArchivo.Close()
             oArchivo = Nothing
         Catch eException As Exception
             MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
         End Try
-
-
-
         'Try
         dtVencida.Select("total > 0")
 
