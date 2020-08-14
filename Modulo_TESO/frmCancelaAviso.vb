@@ -6,6 +6,7 @@ Imports System.Math
 Public Class frmCancelaAviso
     Dim ConPagos As Boolean
     Dim cAnexo As String
+    Dim cLetra As String
     Private Sub btnVerAviso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnVerAviso.Click
 
         ' Declaración de variables de conexión ADO .NET
@@ -178,7 +179,7 @@ Public Class frmCancelaAviso
             cTipar = drAnexo("Tipar")
             cFeven = drAnexo("Feven")
             EsAvio = drAnexo("EsAvio")
-
+            cLetra = drAnexo("Letra")
 
             ' Traigo las facturas que muestren adeudo a la fecha del aviso seleccionado
 
@@ -504,6 +505,14 @@ Public Class frmCancelaAviso
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If TaQUERY.AvisoPostAdelanto(cAnexo, cLetra) > 0 Then
+            MessageBox.Show("el Aviso " & txtAviso.Text & " tiene adelantos a capital posteriores y no se puede cancelar.", "Aviso con Adelantos aplicados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If TaQUERY.AvisoPostGenerado(cAnexo, cLetra) > 0 Then
+            MessageBox.Show("el Aviso " & txtAviso.Text & " avisos generados posteriores y no se puede cancelar.", "Aviso con avisos generados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         If ConPagos = True Then
             MessageBox.Show("el Aviso " & txtAviso.Text & " tiene pagos registrados y no se puede cancelar.", "Aviso con Pagos aplicados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
