@@ -10,6 +10,8 @@ Imports System.Deployment.Application
 Public Class frmAgil
     Inherits System.Windows.Forms.Form
     Dim USUARIOX As String
+    Friend WithEvents MenuItem1 As MenuItem
+    Friend WithEvents MenuItem83 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -390,6 +392,7 @@ Public Class frmAgil
         Me.mnuLayOutAvio = New System.Windows.Forms.MenuItem()
         Me.MnuFechaPago = New System.Windows.Forms.MenuItem()
         Me.MnuPagosAvio = New System.Windows.Forms.MenuItem()
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem()
         Me.mnuSeguros = New System.Windows.Forms.MenuItem()
         Me.mnuCaptSegu = New System.Windows.Forms.MenuItem()
         Me.MnuSEG1 = New System.Windows.Forms.MenuItem()
@@ -594,6 +597,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem83 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -932,7 +936,7 @@ Public Class frmAgil
         '
         Me.mnuTesoreria.Enabled = False
         Me.mnuTesoreria.Index = 3
-        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuFacturar, Me.mnuDepoRefe, Me.mnuLayOutAvio, Me.MnuFechaPago, Me.MnuPagosAvio})
+        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuFacturar, Me.mnuDepoRefe, Me.mnuLayOutAvio, Me.MnuFechaPago, Me.MnuPagosAvio, Me.MenuItem1})
         Me.mnuTesoreria.Text = "Tesorería"
         '
         'mnuRecupera
@@ -1019,6 +1023,12 @@ Public Class frmAgil
         Me.MnuPagosAvio.Enabled = False
         Me.MnuPagosAvio.Index = 10
         Me.MnuPagosAvio.Text = "Subir Pagos Avío"
+        '
+        'MenuItem1
+        '
+        Me.MenuItem1.Enabled = False
+        Me.MenuItem1.Index = 11
+        Me.MenuItem1.Text = "Cancelación de Avisos"
         '
         'mnuSeguros
         '
@@ -1113,7 +1123,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -2169,6 +2179,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem83
+        '
+        Me.MenuItem83.Index = 10
+        Me.MenuItem83.Text = "Cancelación de Avisos"
         '
         'frmAgil
         '
@@ -3670,4 +3685,13 @@ Public Class frmAgil
         newProc.Start()
     End Sub
 
+    Private Sub MenuItem1_Click(sender As Object, e As EventArgs) Handles MenuItem1.Click
+        Dim f As New frmCancelaAviso
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem83_Click(sender As Object, e As EventArgs) Handles MenuItem83.Click
+        Dim f As New frmCancelaAviso
+        f.Show()
+    End Sub
 End Class

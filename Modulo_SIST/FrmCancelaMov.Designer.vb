@@ -70,11 +70,6 @@ Partial Class FrmCancelaMov
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TxtAviso = New System.Windows.Forms.TextBox()
-        Me.Txtanexo2 = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Txtnum1 = New System.Windows.Forms.TextBox()
@@ -328,11 +323,6 @@ Partial Class FrmCancelaMov
         Me.GroupBox2.Controls.Add(Me.Label11)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.Label14)
-        Me.GroupBox2.Controls.Add(Me.Label9)
-        Me.GroupBox2.Controls.Add(Me.Button3)
-        Me.GroupBox2.Controls.Add(Me.TxtAviso)
-        Me.GroupBox2.Controls.Add(Me.Txtanexo2)
-        Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Button2)
         Me.GroupBox2.Controls.Add(Me.Txtnum1)
@@ -552,48 +542,6 @@ Partial Class FrmCancelaMov
         Me.Label14.Size = New System.Drawing.Size(37, 13)
         Me.Label14.TabIndex = 54
         Me.Label14.Text = "Anexo"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(94, 53)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(73, 13)
-        Me.Label9.TabIndex = 53
-        Me.Label9.Text = "Numero Aviso"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(177, 67)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(121, 23)
-        Me.Button3.TabIndex = 52
-        Me.Button3.Text = "Cancela Aviso"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'TxtAviso
-        '
-        Me.TxtAviso.Location = New System.Drawing.Point(97, 70)
-        Me.TxtAviso.Name = "TxtAviso"
-        Me.TxtAviso.Size = New System.Drawing.Size(74, 20)
-        Me.TxtAviso.TabIndex = 51
-        '
-        'Txtanexo2
-        '
-        Me.Txtanexo2.Location = New System.Drawing.Point(17, 70)
-        Me.Txtanexo2.MaxLength = 9
-        Me.Txtanexo2.Name = "Txtanexo2"
-        Me.Txtanexo2.Size = New System.Drawing.Size(74, 20)
-        Me.Txtanexo2.TabIndex = 50
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(17, 53)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(37, 13)
-        Me.Label12.TabIndex = 49
-        Me.Label12.Text = "Anexo"
         '
         'Label5
         '
@@ -896,11 +844,6 @@ Partial Class FrmCancelaMov
     Friend WithEvents Label11 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Button3 As Button
-    Friend WithEvents TxtAviso As TextBox
-    Friend WithEvents Txtanexo2 As TextBox
-    Friend WithEvents Label12 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Txtnum1 As TextBox

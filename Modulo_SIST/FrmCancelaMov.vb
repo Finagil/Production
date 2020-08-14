@@ -10,11 +10,6 @@ Public Class FrmCancelaMov
         MessageBox.Show("Movimiento Realizado", "Historia", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        TaQUERY.CancelaAviso(Txtanexo2.Text, TxtAviso.Text)
-        MessageBox.Show("Movimiento Realizado", "Avisos", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         TaQUERY.CancelaPago(TxtAnexo3.Text, Txtfecha3.Text, TxtNumFact3.Text, TxtFactura3.Text)
         MessageBox.Show("Movimiento Realizado", "Pago", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -142,7 +137,6 @@ Public Class FrmCancelaMov
     Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
         Try
             Dim ta As New GeneralDSTableAdapters.AviosXTableAdapter
-
             If ta.NoMovimientosEdoCta(TxtAnexoDel.Text, TxtCicloDel.Text) <= 0 Then
                 ta.BorraAnexoAV(TxtAnexoDel.Text, TxtCicloDel.Text)
                 MessageBox.Show("Anexo Borrado", "Avio", MessageBoxButtons.OK, MessageBoxIcon.Information)
