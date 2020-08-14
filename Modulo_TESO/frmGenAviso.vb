@@ -299,9 +299,9 @@ Public Class frmGenAviso
             dtAvisos.Columns.Add("Adeudo1", Type.GetType("System.String"))
 
             cnAgil.Open()
-
+            'Dim Result() As DataRow = dsAgil.Tables("Avisos").Select("factura = '425834'")
+            'For Each drAnexo In Result
             For Each drAnexo In dsAgil.Tables("Avisos").Rows
-
                 cAnexo = drAnexo("Anexo")
                 cCliente = drAnexo("Cliente")
                 cTipar = drAnexo("Tipar")
@@ -626,15 +626,14 @@ Public Class frmGenAviso
                 End If
                 taMail.Fill(tMail, cAnexo)
                 If tMail.Rows.Count > 0 Then
-                    oMsg_to = ""
-                    oMsg_CC = ""
+                    'oMsg_to = ""
+                    'oMsg_CC = ""
                     For Each rMail In tMail.Rows
                         If rMail.Correo1 > "" Then
                             oMsg_to += ";" & rMail.Correo1
                         End If
                         If rMail.Correo2 > "" Then
                             oMsg_CC += ";" & rMail.Correo2
-
                         End If
                     Next
                 End If
