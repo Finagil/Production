@@ -7,14 +7,16 @@ Public Class frmCancelaAviso
     Dim ConPagos As Boolean
     Dim cAnexo As String
     Dim cLetra As String
+    Dim bFacturado As Boolean
+    Dim FolioFiscal As String
+
     Private Sub btnVerAviso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnVerAviso.Click
-
-        ' Declaración de variables de conexión ADO .NET
-
+        LbfACTURA.Visible = False
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
+        Dim cm4 As New SqlCommand()
         Dim daAvisos As New SqlDataAdapter(cm1)
         Dim daFacturas As New SqlDataAdapter(cm2)
         Dim daUdis As New SqlDataAdapter(cm3)
@@ -115,7 +117,7 @@ Public Class frmCancelaAviso
         Else
 
             ' Creo una tabla Temporal donde almaceno los datos que formarán parte del reporte final
-
+            LbfACTURA.Visible = True
             dtAvisos.Columns.Add("RFC", Type.GetType("System.String"))
             dtAvisos.Columns.Add("Calle", Type.GetType("System.String"))
             dtAvisos.Columns.Add("Colonia", Type.GetType("System.String"))
@@ -173,7 +175,6 @@ Public Class frmCancelaAviso
             dtAvisos.Columns.Add("Adeudo1", Type.GetType("System.String"))
 
             drAnexo = dsAgil.Tables("Avisos").Rows(0)
-
             cAnexo = drAnexo("Anexo")
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
@@ -181,7 +182,21 @@ Public Class frmCancelaAviso
             EsAvio = drAnexo("EsAvio")
             cLetra = drAnexo("Letra")
 
-            ' Traigo las facturas que muestren adeudo a la fecha del aviso seleccionado
+            If drAnexo("FacturaCFDI") = 0 Then
+                LbfACTURA.ForeColor = SystemColors.HotTrack
+                LbfACTURA.Text = "SIN FACTURA"
+                bFacturado = False
+            Else
+                LbfACTURA.ForeColor = Color.Red
+                cm4.Connection = cnAgil
+                cm4.CommandText = "select guid from CFDI_Encabezado where [1_folio] = " & drAnexo("NoFacturaCFDI") & " and [27_Serie_Comprobante]= '" & drAnexo("SerieCFDI") & "'"
+                cnAgil.Open()
+                FolioFiscal = cm4.ExecuteScalar()
+                If IsNothing(FolioFiscal) Then FolioFiscal = "SIN FOLIO FISCAL"
+                cnAgil.Close()
+                LbfACTURA.Text = drAnexo("SerieCFDI").ToString.Trim & drAnexo("NoFacturaCFDI") & " - " & FolioFiscal
+                bFacturado = True
+            End If
 
             With cm2
                 .CommandType = CommandType.StoredProcedure
@@ -193,307 +208,305 @@ Public Class frmCancelaAviso
                 .Parameters(1).Value = cAnexo
             End With
 
-            ' Traigo todas las Udis
-
             With cm3
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "Traeudis1"
                 .Connection = cnAgil
             End With
 
-            ' Llenar el dataset lo cual abre y cierra la conexión
+            'Llenar el dataset lo cual abre y cierra la conexión
 
             daFacturas.Fill(dsAgil, "Facturas")
-            daUdis.Fill(dsAgil, "Udis")
+                daUdis.Fill(dsAgil, "Udis")
 
-            ' Creo el DataRowCollection de las Udis para poderlas enviar a la función que calcula los Moratorios
+                ' Creo el DataRowCollection de las Udis para poderlas enviar a la función que calcula los Moratorios
 
-            drUdis = dsAgil.Tables("Udis").Rows
+                drUdis = dsAgil.Tables("Udis").Rows
 
-            ' Creo el DataRowCollection de las facturas para poder enviar a la funcion que busca adeudos anterioes
+                ' Creo el DataRowCollection de las facturas para poder enviar a la funcion que busca adeudos anterioes
 
-            drFacturas = dsAgil.Tables("Facturas").Rows
+                drFacturas = dsAgil.Tables("Facturas").Rows
 
-            ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
-            ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
+                ' Esta es una nueva forma de calcular el plazo que implementé a partir del 17 de octubre de 2011
+                ' para determinar correctamente el plazo para frecuencias de pago diferentes a mensual
 
-            CuentaPagos(cAnexo)
+                CuentaPagos(cAnexo)
 
-            nSaldo = drAnexo("Saldo")
-            nSalse = drAnexo("Salse")
-            nSaldot = drAnexo("Saldot")
+                nSaldo = drAnexo("Saldo")
+                nSalse = drAnexo("Salse")
+                nSaldot = drAnexo("Saldot")
 
-            nTasa = drAnexo("nTasa")
-            nUdi1 = drAnexo("Udi1")
-            nUdi2 = drAnexo("Udi2")
+                nTasa = drAnexo("nTasa")
+                nUdi1 = drAnexo("Udi1")
+                nUdi2 = drAnexo("Udi2")
 
-            nBonifica = 0
-            nTasaBonificacion = 0
-            nBaseBonificacion = 0
-            nIvaBonificacion = 0
+                nBonifica = 0
+                nTasaBonificacion = 0
+                nBaseBonificacion = 0
+                nIvaBonificacion = 0
 
-            If drAnexo("ImporteFac") <> drAnexo("SaldoFac") Then
-                ConPagos = True
-            Else
-                ConPagos = False
-            End If
-
-            If cTipar = "P" Then
-
-                nCapeq = drAnexo("CapEq") + drAnexo("IntPr") + drAnexo("VarPr")
-                nIvacapital = 0
-                nIntEq = 0
-                nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr")
-
-            Else
-
-                nCapeq = drAnexo("Capeq")
-                nIvacapital = drAnexo("Ivacapital")
-                nIntEq = drAnexo("IntPr") + drAnexo("VarPr")
-                nIvaEq = drAnexo("Ivapr") 'ECT20141211 old
-                'nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr") ' se agrego por valetin
-
-                ' Esta es una nueva forma de determinar la descomposición de la Bonificación en Base e IVA a partir del 20 de octubre de 2011
-
-                nBonifica = drAnexo("Bonifica")
-                If nBonifica > 0 Then
-                    nTasaBonificacion = Round(nBonifica / nCapeq, 4)
-                    nBaseBonificacion = Round(nBonifica / (1 + nTasaBonificacion), 2)
-                    nIvaBonificacion = Round(nBonifica - nBaseBonificacion, 2)
-                    nBaseBonificacion = nBaseBonificacion * -1
-                    nIvaBonificacion = nIvaBonificacion * -1
+                If drAnexo("ImporteFac") <> drAnexo("SaldoFac") Then
+                    ConPagos = True
+                Else
+                    ConPagos = False
                 End If
 
-            End If
+                If cTipar = "P" Then
 
-            nRense = drAnexo("Rense")
-            nIntSe = drAnexo("Intse") + drAnexo("VarSe")
-            nIvaSe = drAnexo("Ivase")
+                    nCapeq = drAnexo("CapEq") + drAnexo("IntPr") + drAnexo("VarPr")
+                    nIvacapital = 0
+                    nIntEq = 0
+                    nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr")
 
-            nCapot = drAnexo("Capitalot")
-            nIntOt = drAnexo("Interesot") + drAnexo("VarOt")
-            nIvaOt = drAnexo("Ivaot")
+                Else
 
-            nSegVida = drAnexo("SeguroVida")
-            nImporteFega = drAnexo("ImporteFega")
+                    nCapeq = drAnexo("Capeq")
+                    nIvacapital = drAnexo("Ivacapital")
+                    nIntEq = drAnexo("IntPr") + drAnexo("VarPr")
+                    nIvaEq = drAnexo("Ivapr") 'ECT20141211 old
+                    'nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr") ' se agrego por valetin
 
-            nOpcion = 0
-            nIvaopc = 0
+                    ' Esta es una nueva forma de determinar la descomposición de la Bonificación en Base e IVA a partir del 20 de octubre de 2011
 
-            If Val(drAnexo("Letra")) = TaQUERY.UltimaLetra(cAnexo) Then
-                If Not IsDBNull(drAnexo("Opcion")) Then
-                    If cTipar = "P" Then
-                        nOpcion = drAnexo("Opcion") + drAnexo("IvaOpcion")
-                        nIvaopc = 0
-                    Else
-                        nOpcion = drAnexo("Opcion")
-                        nIvaopc = drAnexo("IvaOpcion")
+                    nBonifica = drAnexo("Bonifica")
+                    If nBonifica > 0 Then
+                        nTasaBonificacion = Round(nBonifica / nCapeq, 4)
+                        nBaseBonificacion = Round(nBonifica / (1 + nTasaBonificacion), 2)
+                        nIvaBonificacion = Round(nBonifica - nBaseBonificacion, 2)
+                        nBaseBonificacion = nBaseBonificacion * -1
+                        nIvaBonificacion = nIvaBonificacion * -1
+                    End If
+
+                End If
+
+                nRense = drAnexo("Rense")
+                nIntSe = drAnexo("Intse") + drAnexo("VarSe")
+                nIvaSe = drAnexo("Ivase")
+
+                nCapot = drAnexo("Capitalot")
+                nIntOt = drAnexo("Interesot") + drAnexo("VarOt")
+                nIvaOt = drAnexo("Ivaot")
+
+                nSegVida = drAnexo("SeguroVida")
+                nImporteFega = drAnexo("ImporteFega")
+
+                nOpcion = 0
+                nIvaopc = 0
+
+                If Val(drAnexo("Letra")) = TaQUERY.UltimaLetra(cAnexo) Then
+                    If Not IsDBNull(drAnexo("Opcion")) Then
+                        If cTipar = "P" Then
+                            nOpcion = drAnexo("Opcion") + drAnexo("IvaOpcion")
+                            nIvaopc = 0
+                        Else
+                            nOpcion = drAnexo("Opcion")
+                            nIvaopc = drAnexo("IvaOpcion")
+                        End If
                     End If
                 End If
+
+                nTotaleq = Round(nCapeq + nIvacapital - nBonifica + nIntEq + nIvaEq + nOpcion + nIvaopc, 2)
+                nTotalse = Round(nRense + nIntSe + nIvaSe, 2)
+                nTotalot = Round(nCapot + nIntOt + nIvaOt + nSegVida + nImporteFega, 2)
+                nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc), 2)
+
+                cLetras = Letras(nImpFac.ToString, drAnexo("Moneda"))
+
+                ' Creo la tabla con adeudos anteriores
+
+                Adanterior(dtAdeudos, drUdis, drFacturas, cFeven)
+                dsAgil.Tables.Add(dtAdeudos)
+                drAdeudos = dsAgil.Tables("Adeudos").Rows
+
+                ' Busco adeudos anteriores
+
+                drAdeudo = drAdeudos.Find(cAnexo)
+                nAdeudo = 0
+                nGranTotal = 0
+
+                If Not drAdeudo Is Nothing Then
+                    nAdeudo = drAdeudo("AdeudoAnt")
+                    nGranTotal = nImpFac + nAdeudo
+                End If
+
+                'Parte correspondiente a obtener Las cuentas para Depositos Referenciados
+
+                Dim nResultado As Decimal
+                Dim nSumaBanamex As Decimal
+                Dim nSumaBancomer As Decimal
+
+                Dim cRefBanamex As String
+                Dim cRefBanorte As String
+                Dim cRefBancomer As String
+
+                cRefBanamex = Mid(cAnexo, 1, 5) + Mid(cAnexo, 7, 3)
+                cRefBancomer = Mid(cAnexo, 2, 4) + Mid(cAnexo, 7, 3)
+                cRefBanorte = Mid(cAnexo, 2, 4) + Mid(cAnexo, 7, 3)
+
+                nSumaBanamex = 1235
+                nSumaBanamex += Val(Mid(cRefBanamex, 1, 1)) * 11
+                nSumaBanamex += Val(Mid(cRefBanamex, 2, 1)) * 13
+                nSumaBanamex += Val(Mid(cRefBanamex, 3, 1)) * 17
+                nSumaBanamex += Val(Mid(cRefBanamex, 4, 1)) * 19
+                nSumaBanamex += Val(Mid(cRefBanamex, 5, 1)) * 23
+                nSumaBanamex += Val(Mid(cRefBanamex, 6, 1)) * 29
+                nSumaBanamex += Val(Mid(cRefBanamex, 7, 1)) * 31
+                nSumaBanamex += Val(Mid(cRefBanamex, 8, 1)) * 37
+
+                nResultado = 99 - (nSumaBanamex Mod 97)
+                If nResultado > 9 Then
+                    cRefBanamex += nResultado.ToString
+                Else
+                    cRefBanamex += "-" + "0" + nResultado.ToString
+                End If
+
+                nSumaBancomer = 0
+                nResultado = Val(Mid(cRefBancomer, 1, 1)) * 2
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 2, 1)) * 1
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 3, 1)) * 2
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 4, 1)) * 1
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 5, 1)) * 2
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 6, 1)) * 1
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+                nResultado = Val(Mid(cRefBancomer, 7, 1)) * 2
+                If nResultado > 9 Then
+                    nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
+                Else
+                    nSumaBancomer += nResultado
+                End If
+
+                If nSumaBancomer > 60 Then
+                    nResultado = 70 - nSumaBancomer
+                ElseIf nSumaBancomer > 50 Then
+                    nResultado = 60 - nSumaBancomer
+                ElseIf nSumaBancomer > 40 Then
+                    nResultado = 50 - nSumaBancomer
+                ElseIf nSumaBancomer > 30 Then
+                    nResultado = 40 - nSumaBancomer
+                ElseIf nSumaBancomer > 20 Then
+                    nResultado = 30 - nSumaBancomer
+                ElseIf nSumaBancomer > 10 Then
+                    nResultado = 20 - nSumaBancomer
+                ElseIf nSumaBancomer > 0 Then
+                    nResultado = 10 - nSumaBancomer
+                Else
+                    nResultado = 0
+                End If
+
+                cRefBancomer += nResultado.ToString
+                cRefBanorte = cRefBancomer
+
+                drAviso = dtAvisos.NewRow()
+                drAviso("RFC") = drAnexo("RFC")
+                drAviso("Calle") = drAnexo("Calle")
+                drAviso("Colonia") = drAnexo("Colonia")
+                drAviso("Copos") = drAnexo("Copos")
+                drAviso("Deleg") = drAnexo("Delegacion")
+                drAviso("Descp") = drAnexo("Estado")
+                drAviso("Clien") = cCliente
+                drAviso("Factu") = nFactura
+                drAviso("Feven") = drAnexo("Feven")
+                drAviso("Anexo") = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 9)
+                drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & TaQUERY.UltimaLetra(drAnexo("Anexo"))
+                drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
+                drAviso("Dias") = drAnexo("Dias")
+                drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)
+                drAviso("Salse") = FormatNumber(nSalse.ToString, 2)
+                drAviso("Saldot") = FormatNumber(nSaldot.ToString, 2)
+                drAviso("Udi1") = FormatNumber(nUdi1.ToString, 6)
+                drAviso("Udi2") = FormatNumber(nUdi2.ToString, 6)
+                drAviso("Tipar") = drAnexo("Tipar")
+                drAviso("ImporteA") = FormatNumber(nCapeq.ToString, 2)
+                drAviso("ImporteB") = FormatNumber(nRense.ToString, 2)
+                drAviso("ImporteW") = FormatNumber(nCapot.ToString, 2)
+                drAviso("ImporteC") = FormatNumber((nCapeq + nRense + nCapot).ToString, 2)
+                If cTipar = "P" Then
+                    drAviso("ImporteD") = FormatNumber(nIvaEq.ToString, 2)
+                    drAviso("ImporteM") = FormatNumber(nIvaEq.ToString, 2)
+                    drAviso("ImporteO") = FormatNumber((nIvaEq + nIvaSe + nIvaOt).ToString, 2)
+                Else
+                    drAviso("ImporteD") = FormatNumber(-nBaseBonificacion.ToString, 2)
+                    drAviso("ImporteM") = FormatNumber(nIvaEq.ToString, 2)
+                    drAviso("ImporteO") = FormatNumber((nIvaEq + nIvaSe + nIvaOt).ToString, 2)
+                End If
+                drAviso("ImporteF") = FormatNumber(nIvacapital.ToString, 2)
+                drAviso("ImporteH") = FormatNumber(-nIvaBonificacion.ToString, 2)
+                drAviso("ImporteJ") = FormatNumber(nIntEq.ToString, 2)
+                drAviso("ImporteK") = FormatNumber(nIntSe.ToString, 2)
+                drAviso("ImporteL") = FormatNumber((nIntEq + nIntSe + nIntOt).ToString, 2)
+                drAviso("ImporteN") = FormatNumber(nIvaSe.ToString, 2)
+                drAviso("ImporteP") = FormatNumber(nOpcion.ToString, 2)
+                drAviso("ImporteR") = FormatNumber(nIvaopc.ToString, 2)
+                drAviso("ImporteT") = FormatNumber(nTotaleq.ToString, 2)
+                drAviso("ImporteU") = FormatNumber(nTotalse.ToString, 2)
+                drAviso("ImporteV") = FormatNumber((nTotaleq + nTotalse + nTotalot).ToString, 2)
+                drAviso("ImporteX") = FormatNumber(nIntOt.ToString, 2)
+                drAviso("ImporteY") = FormatNumber(nIvaOt.ToString, 2)
+                drAviso("ImporteZ") = FormatNumber(nTotalot.ToString, 2)
+                drAviso("Importe1A") = FormatNumber(nSegVida.ToString, 2)
+                drAviso("AdeudoAnt") = FormatNumber(nAdeudo.ToString, 2)
+                drAviso("GranTotal") = FormatNumber(nGranTotal.ToString, 2)
+                drAviso("ImporteFega") = FormatNumber(nImporteFega.ToString, 2)
+                If drAnexo("Tipar") = "R" Then
+                    drAviso("ImporteS") = FormatNumber(nImporteFega.ToString, 2)
+                End If
+                drAviso("Cusnam") = drAnexo("Descr")
+                drAviso("Monto") = cLetras
+                drAviso("Bancomer") = cRefBancomer
+                drAviso("Banamex") = cRefBanamex
+                drAviso("Banorte") = cRefBanorte
+                drAviso("Adeudo1") = Trim(drAnexo("Telef1"))
+                dtAvisos.Rows.Add(drAviso)
+
+                dsAgil.Tables.Remove("Avisos")
+                dsAgil.Tables.Add(dtAvisos)
+                'Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptImpreFac
+                'dsAgil.WriteXml("C:\Schema8.xml", XmlWriteMode.WriteSchema)
+                If cTipar <> "B" Then
+                    newrptImpreFac.SetDataSource(dsAgil)
+                    newrptImpreFac.SetParameterValue("EsAvio", EsAvio)
+                    CrystalReportViewer1.ReportSource = newrptImpreFac
+                Else
+                    newrptImpreFacFull.SetDataSource(dsAgil)
+                    newrptImpreFacFull.SetParameterValue("EsAvio", EsAvio)
+                    Dim CAD As String = SacaDatosVehiculo(cAnexo)
+                    newrptImpreFacFull.SetParameterValue("DatosVehiculo", CAD)
+                    CrystalReportViewer1.ReportSource = newrptImpreFacFull
+                End If
+                CrystalReportViewer1.Visible = True
+
             End If
 
-            nTotaleq = Round(nCapeq + nIvacapital - nBonifica + nIntEq + nIvaEq + nOpcion + nIvaopc, 2)
-            nTotalse = Round(nRense + nIntSe + nIvaSe, 2)
-            nTotalot = Round(nCapot + nIntOt + nIvaOt + nSegVida + nImporteFega, 2)
-            nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc), 2)
-
-            cLetras = Letras(nImpFac.ToString, drAnexo("Moneda"))
-
-            ' Creo la tabla con adeudos anteriores
-
-            Adanterior(dtAdeudos, drUdis, drFacturas, cFeven)
-            dsAgil.Tables.Add(dtAdeudos)
-            drAdeudos = dsAgil.Tables("Adeudos").Rows
-
-            ' Busco adeudos anteriores
-
-            drAdeudo = drAdeudos.Find(cAnexo)
-            nAdeudo = 0
-            nGranTotal = 0
-
-            If Not drAdeudo Is Nothing Then
-                nAdeudo = drAdeudo("AdeudoAnt")
-                nGranTotal = nImpFac + nAdeudo
-            End If
-
-            'Parte correspondiente a obtener Las cuentas para Depositos Referenciados
-
-            Dim nResultado As Decimal
-            Dim nSumaBanamex As Decimal
-            Dim nSumaBancomer As Decimal
-
-            Dim cRefBanamex As String
-            Dim cRefBanorte As String
-            Dim cRefBancomer As String
-
-            cRefBanamex = Mid(cAnexo, 1, 5) + Mid(cAnexo, 7, 3)
-            cRefBancomer = Mid(cAnexo, 2, 4) + Mid(cAnexo, 7, 3)
-            cRefBanorte = Mid(cAnexo, 2, 4) + Mid(cAnexo, 7, 3)
-
-            nSumaBanamex = 1235
-            nSumaBanamex += Val(Mid(cRefBanamex, 1, 1)) * 11
-            nSumaBanamex += Val(Mid(cRefBanamex, 2, 1)) * 13
-            nSumaBanamex += Val(Mid(cRefBanamex, 3, 1)) * 17
-            nSumaBanamex += Val(Mid(cRefBanamex, 4, 1)) * 19
-            nSumaBanamex += Val(Mid(cRefBanamex, 5, 1)) * 23
-            nSumaBanamex += Val(Mid(cRefBanamex, 6, 1)) * 29
-            nSumaBanamex += Val(Mid(cRefBanamex, 7, 1)) * 31
-            nSumaBanamex += Val(Mid(cRefBanamex, 8, 1)) * 37
-
-            nResultado = 99 - (nSumaBanamex Mod 97)
-            If nResultado > 9 Then
-                cRefBanamex += nResultado.ToString
-            Else
-                cRefBanamex += "-" + "0" + nResultado.ToString
-            End If
-
-            nSumaBancomer = 0
-            nResultado = Val(Mid(cRefBancomer, 1, 1)) * 2
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 2, 1)) * 1
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 3, 1)) * 2
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 4, 1)) * 1
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 5, 1)) * 2
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 6, 1)) * 1
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-            nResultado = Val(Mid(cRefBancomer, 7, 1)) * 2
-            If nResultado > 9 Then
-                nSumaBancomer += Val(Mid(nResultado.ToString, 1, 1)) + Val(Mid(nResultado.ToString, 2, 1))
-            Else
-                nSumaBancomer += nResultado
-            End If
-
-            If nSumaBancomer > 60 Then
-                nResultado = 70 - nSumaBancomer
-            ElseIf nSumaBancomer > 50 Then
-                nResultado = 60 - nSumaBancomer
-            ElseIf nSumaBancomer > 40 Then
-                nResultado = 50 - nSumaBancomer
-            ElseIf nSumaBancomer > 30 Then
-                nResultado = 40 - nSumaBancomer
-            ElseIf nSumaBancomer > 20 Then
-                nResultado = 30 - nSumaBancomer
-            ElseIf nSumaBancomer > 10 Then
-                nResultado = 20 - nSumaBancomer
-            ElseIf nSumaBancomer > 0 Then
-                nResultado = 10 - nSumaBancomer
-            Else
-                nResultado = 0
-            End If
-
-            cRefBancomer += nResultado.ToString
-            cRefBanorte = cRefBancomer
-
-            drAviso = dtAvisos.NewRow()
-            drAviso("RFC") = drAnexo("RFC")
-            drAviso("Calle") = drAnexo("Calle")
-            drAviso("Colonia") = drAnexo("Colonia")
-            drAviso("Copos") = drAnexo("Copos")
-            drAviso("Deleg") = drAnexo("Delegacion")
-            drAviso("Descp") = drAnexo("Estado")
-            drAviso("Clien") = cCliente
-            drAviso("Factu") = nFactura
-            drAviso("Feven") = drAnexo("Feven")
-            drAviso("Anexo") = Mid(drAnexo("Anexo"), 1, 5) & "/" & Mid(drAnexo("Anexo"), 6, 9)
-            drAviso("Letra") = (Val(drAnexo("Letra"))).ToString & " de " & TaQUERY.UltimaLetra(drAnexo("Anexo"))
-            drAviso("Tasa") = FormatNumber(nTasa.ToString, 4)
-            drAviso("Dias") = drAnexo("Dias")
-            drAviso("Saldo") = FormatNumber(nSaldo.ToString, 2)
-            drAviso("Salse") = FormatNumber(nSalse.ToString, 2)
-            drAviso("Saldot") = FormatNumber(nSaldot.ToString, 2)
-            drAviso("Udi1") = FormatNumber(nUdi1.ToString, 6)
-            drAviso("Udi2") = FormatNumber(nUdi2.ToString, 6)
-            drAviso("Tipar") = drAnexo("Tipar")
-            drAviso("ImporteA") = FormatNumber(nCapeq.ToString, 2)
-            drAviso("ImporteB") = FormatNumber(nRense.ToString, 2)
-            drAviso("ImporteW") = FormatNumber(nCapot.ToString, 2)
-            drAviso("ImporteC") = FormatNumber((nCapeq + nRense + nCapot).ToString, 2)
-            If cTipar = "P" Then
-                drAviso("ImporteD") = FormatNumber(nIvaEq.ToString, 2)
-                drAviso("ImporteM") = FormatNumber(nIvaEq.ToString, 2)
-                drAviso("ImporteO") = FormatNumber((nIvaEq + nIvaSe + nIvaOt).ToString, 2)
-            Else
-                drAviso("ImporteD") = FormatNumber(-nBaseBonificacion.ToString, 2)
-                drAviso("ImporteM") = FormatNumber(nIvaEq.ToString, 2)
-                drAviso("ImporteO") = FormatNumber((nIvaEq + nIvaSe + nIvaOt).ToString, 2)
-            End If
-            drAviso("ImporteF") = FormatNumber(nIvacapital.ToString, 2)
-            drAviso("ImporteH") = FormatNumber(-nIvaBonificacion.ToString, 2)
-            drAviso("ImporteJ") = FormatNumber(nIntEq.ToString, 2)
-            drAviso("ImporteK") = FormatNumber(nIntSe.ToString, 2)
-            drAviso("ImporteL") = FormatNumber((nIntEq + nIntSe + nIntOt).ToString, 2)
-            drAviso("ImporteN") = FormatNumber(nIvaSe.ToString, 2)
-            drAviso("ImporteP") = FormatNumber(nOpcion.ToString, 2)
-            drAviso("ImporteR") = FormatNumber(nIvaopc.ToString, 2)
-            drAviso("ImporteT") = FormatNumber(nTotaleq.ToString, 2)
-            drAviso("ImporteU") = FormatNumber(nTotalse.ToString, 2)
-            drAviso("ImporteV") = FormatNumber((nTotaleq + nTotalse + nTotalot).ToString, 2)
-            drAviso("ImporteX") = FormatNumber(nIntOt.ToString, 2)
-            drAviso("ImporteY") = FormatNumber(nIvaOt.ToString, 2)
-            drAviso("ImporteZ") = FormatNumber(nTotalot.ToString, 2)
-            drAviso("Importe1A") = FormatNumber(nSegVida.ToString, 2)
-            drAviso("AdeudoAnt") = FormatNumber(nAdeudo.ToString, 2)
-            drAviso("GranTotal") = FormatNumber(nGranTotal.ToString, 2)
-            drAviso("ImporteFega") = FormatNumber(nImporteFega.ToString, 2)
-            If drAnexo("Tipar") = "R" Then
-                drAviso("ImporteS") = FormatNumber(nImporteFega.ToString, 2)
-            End If
-            drAviso("Cusnam") = drAnexo("Descr")
-            drAviso("Monto") = cLetras
-            drAviso("Bancomer") = cRefBancomer
-            drAviso("Banamex") = cRefBanamex
-            drAviso("Banorte") = cRefBanorte
-            drAviso("Adeudo1") = Trim(drAnexo("Telef1"))
-            dtAvisos.Rows.Add(drAviso)
-
-            dsAgil.Tables.Remove("Avisos")
-            dsAgil.Tables.Add(dtAvisos)
-            'Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptImpreFac
-            'dsAgil.WriteXml("C:\Schema8.xml", XmlWriteMode.WriteSchema)
-            If cTipar <> "B" Then
-                newrptImpreFac.SetDataSource(dsAgil)
-                newrptImpreFac.SetParameterValue("EsAvio", EsAvio)
-                CrystalReportViewer1.ReportSource = newrptImpreFac
-            Else
-                newrptImpreFacFull.SetDataSource(dsAgil)
-                newrptImpreFacFull.SetParameterValue("EsAvio", EsAvio)
-                Dim CAD As String = SacaDatosVehiculo(cAnexo)
-                newrptImpreFacFull.SetParameterValue("DatosVehiculo", CAD)
-                CrystalReportViewer1.ReportSource = newrptImpreFacFull
-            End If
-            CrystalReportViewer1.Visible = True
-
-        End If
-
-        cnAgil.Dispose()
+            cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
         cm3.Dispose()
@@ -513,6 +526,10 @@ Public Class frmCancelaAviso
             MessageBox.Show("el Aviso " & txtAviso.Text & " avisos generados posteriores y no se puede cancelar.", "Aviso con avisos generados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
+        If FolioFiscal.ToUpper <> "CANCELADA" And bFacturado = True Then
+            MessageBox.Show("el Aviso " & txtAviso.Text & " esta facturado y no se puede cancelar", "Aviso con factura generada.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         If ConPagos = True Then
             MessageBox.Show("el Aviso " & txtAviso.Text & " tiene pagos registrados y no se puede cancelar.", "Aviso con Pagos aplicados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -522,4 +539,5 @@ Public Class frmCancelaAviso
         CrystalReportViewer1.Refresh()
         MessageBox.Show("Aviso cancelado", "Avisos", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
 End Class

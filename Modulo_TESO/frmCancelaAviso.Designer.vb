@@ -24,8 +24,8 @@ Partial Class frmCancelaAviso
         Me.lblInicio = New System.Windows.Forms.Label()
         Me.btnVerAviso = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.LbfACTURA = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'CrystalReportViewer1
@@ -33,7 +33,7 @@ Partial Class frmCancelaAviso
         Me.CrystalReportViewer1.ActiveViewIndex = -1
         Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(8, 54)
+        Me.CrystalReportViewer1.Location = New System.Drawing.Point(8, 50)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
         Me.CrystalReportViewer1.SelectionFormula = ""
         Me.CrystalReportViewer1.ShowCloseButton = False
@@ -85,15 +85,6 @@ Partial Class frmCancelaAviso
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'Label1
-        '
-        Me.Label1.Location = New System.Drawing.Point(990, 19)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(18, 20)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "."
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'Button1
         '
         Me.Button1.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -104,6 +95,18 @@ Partial Class frmCancelaAviso
         Me.Button1.Text = "Cancela Aviso"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'LbfACTURA
+        '
+        Me.LbfACTURA.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LbfACTURA.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.LbfACTURA.Location = New System.Drawing.Point(565, 23)
+        Me.LbfACTURA.Name = "LbfACTURA"
+        Me.LbfACTURA.Size = New System.Drawing.Size(451, 23)
+        Me.LbfACTURA.TabIndex = 10
+        Me.LbfACTURA.Text = "SIN FACTURA"
+        Me.LbfACTURA.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.LbfACTURA.Visible = False
+        '
         'frmCancelaAviso
         '
         Me.AcceptButton = Me.btnVerAviso
@@ -111,8 +114,8 @@ Partial Class frmCancelaAviso
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnSalir
         Me.ClientSize = New System.Drawing.Size(1024, 702)
+        Me.Controls.Add(Me.LbfACTURA)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnVerAviso)
         Me.Controls.Add(Me.lblInicio)
@@ -129,6 +132,6 @@ Partial Class frmCancelaAviso
     Friend WithEvents lblInicio As System.Windows.Forms.Label
     Friend WithEvents btnVerAviso As System.Windows.Forms.Button
     Friend WithEvents btnSalir As System.Windows.Forms.Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents LbfACTURA As Label
 End Class
