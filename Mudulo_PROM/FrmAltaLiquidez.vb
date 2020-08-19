@@ -370,8 +370,15 @@ Public Class FrmAltaLiquidez
 
     Private Sub LbAut_Click(sender As Object, e As EventArgs) Handles LbAut.Click
         Try
-            Dim id As Integer = InputBox("id")
-            Dim Fecha As Date = InputBox("Fecha Ingreso")
+            Dim id As Integer
+            Dim Fecha As Date
+            If IsNumeric(Combosol.Text) Then
+                id = Combosol.Text
+                Fecha = DTPIngreso.Value.ToShortDateString
+            Else
+                id = InputBox("id")
+                Fecha = InputBox("Fecha Ingreso")
+            End If
             Dim f As New FrmAltaLiquidezFinan
             f.GeneraCorreoAUTX(id, Fecha)
         Catch ex As Exception
