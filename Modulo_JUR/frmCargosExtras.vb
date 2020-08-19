@@ -82,17 +82,15 @@ Public Class frmCargosExtras
     End Sub
 
     Private Sub btnAdeudos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdeudos.Click
-
         If Not cbDeudores.SelectedValue Is Nothing Then
             GroupBox1.Visible = True
             cCliente = cbDeudores.SelectedValue.ToString()
             LlenaDatos()
         End If
-
     End Sub
 
     Private Sub LlenaDatos()
-        Me.FacturasTableAdapter.Fill(PromocionDS1.Facturas, Today.Date.ToString("yyyyMMdd"), cCliente)
+        Me.FacturasTableAdapter.FillByCargosExtras(PromocionDS1.Facturas, Today.Date.ToString("yyyyMMdd"), cCliente)
         dgvAdeudos.DataSource = PromocionDS1.Facturas
         dgvAdeudos.Columns(0).Width = 30         ' Anexo
         dgvAdeudos.Columns(1).Width = 20         ' Letra
@@ -115,10 +113,6 @@ Public Class frmCargosExtras
     End Sub
 
     Private Sub btnEditarAdeudo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarAdeudo.Click
-
-        ' Debo traerme el tipo de financiamiento, el tipo de cliente, la tasa (del contrato si no tiene adeudos o de la factura vencida),
-        ' la fecha de último pago (en el caso de las facturas vencidas)
-
         cAnexo = dgvAdeudos.Item(0, dgvAdeudos.CurrentRow.Index).Value
         cLetra = dgvAdeudos.Item(1, dgvAdeudos.CurrentRow.Index).Value
         cNombreCliente = dgvAdeudos.Item(2, dgvAdeudos.CurrentRow.Index).Value
