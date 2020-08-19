@@ -870,6 +870,7 @@ Public Class frmFiniquitoAP
         If CkAppBlanco.Checked = True Then
             nIDBlanco = CInt(TxtIdBlanco.Text)
             nFactura = nIDBlanco
+            cSerie = "AB"
         Else
             If cSerie = "A" Then
                 nIDSerieA = CInt(txtSerieA.Text)
@@ -2061,7 +2062,11 @@ Public Class frmFiniquitoAP
         dsImprimir.Tables.Add(dtNota)
 
         'Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
-        Dim stmWriter As New StreamWriter("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", False, System.Text.Encoding.Default)
+        Dim Ruta As String = "C:\Facturas\FACTURA_"
+        If CkAppBlanco.Checked = True Then
+            Ruta = "C:\Facturas\AppBlanco\FACTURA_"
+        End If
+        Dim stmWriter As New StreamWriter(Ruta & cSerie & "_" & nFactura & ".txt", False, System.Text.Encoding.Default)
 
         stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque)
 
