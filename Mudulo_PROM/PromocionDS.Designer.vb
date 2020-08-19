@@ -45559,7 +45559,7 @@ Namespace PromocionDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        SUBSTRING(Facturas.Anexo, 1, 5) + '/' + SUBSTRING(Facturas.Anexo, 6"& _ 
@@ -45588,6 +45588,34 @@ Namespace PromocionDSTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cFeven", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NVarChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        SUBSTRING(Facturas.Anexo, 1, 5) + '/' + SUBSTRING(Facturas.Anexo, 6"& _ 
+                ", 4) AS Contrato, Facturas.Letra, RTRIM(Clientes.Descr) AS [Nombre del Cliente],"& _ 
+                " Facturas.SaldoFac AS Adeudo, CuentasDomi.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Cuen"& _ 
+                "tasDomi.CuentaCLABE, CuentasDomi.NumTarjeta, CuentasDomi.CuentaEJE, CuentasDomi."& _ 
+                "TitularCta, Anexos.Referencia, Anexos.Autoriza, Clientes.Tipo, Anexos.Tipar, Fac"& _ 
+                "turas.Tasa, Facturas.Difer, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Facturas.Feven, Facturas."& _ 
+                "Fepag, Clientes.TasaIVACliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Facturas INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "              Clientes ON Facturas.Cliente = Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "                   CuentasDomi ON CuentasDomi.Anexo = Facturas.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Anexos.Anexo = Facturas.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(Facturas.Feven < @cFeven) AND (Anexos.Autoriza = 'S') AND (Facturas.SaldoFac > "& _ 
+                "0) AND (Facturas.Cliente = @Cliente)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        SUBSTRING(Anexos_1.An"& _ 
+                "exo, 1, 5) + '/' + SUBSTRING(Anexos_1.Anexo, 6, 4) AS Contrato, '' AS Letra, RTR"& _ 
+                "IM(Clientes_1.Descr) AS [Nombre del Cliente], 0 AS Adeudo, CuentasDomi_1.Banco, "& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CuentasDomi_1.CuentaCLABE, CuentasDomi_1.NumTarjeta, "& _ 
+                "CuentasDomi_1.CuentaEJE, CuentasDomi_1.TitularCta, Anexos_1.Referencia, Anexos_1"& _ 
+                ".Autoriza, Clientes_1.Tipo, Anexos_1.Tipar, 0 AS Tasa, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  0 AS Difer, CONVERT(VARCHAR(8), GETDATE(), 112) AS Feven, CONVERT(VARCHAR(8), "& _ 
+                "GETDATE(), 112) AS Fepag, 0 AS TasaIVACliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Anexos AS Anexos_"& _ 
+                "1 INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes AS Clientes_1 ON Anexos_1.Client"& _ 
+                "e = Clientes_1.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CuentasDomi AS Cuent"& _ 
+                "asDomi_1 ON CuentasDomi_1.Anexo = Anexos_1.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos_1.Flcan ="& _ 
+                " 'A' or Anexos_1.Flcan = 'W') AND (Anexos_1.Cliente = @Cliente) AND (Anexos_1.Au"& _ 
+                "toriza = 'S')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Contrato, Facturas.Letra"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cFeven", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "Feven", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NVarChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -45619,6 +45647,50 @@ Namespace PromocionDSTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData(ByVal cFeven As String, ByVal Cliente As String) As PromocionDS.FacturasDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (cFeven Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cFeven,String)
+            End If
+            If (Cliente Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Cliente,String)
+            End If
+            Dim dataTable As PromocionDS.FacturasDataTable = New PromocionDS.FacturasDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByCargosExtras(ByVal dataTable As PromocionDS.FacturasDataTable, ByVal cFeven As String, ByVal Cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (cFeven Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cFeven,String)
+            End If
+            If (Cliente Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Cliente,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByCargosExtras(ByVal cFeven As String, ByVal Cliente As String) As PromocionDS.FacturasDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (cFeven Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
