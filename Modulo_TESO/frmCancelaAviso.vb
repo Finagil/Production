@@ -185,6 +185,7 @@ Public Class frmCancelaAviso
             If drAnexo("FacturaCFDI") = 0 Then
                 LbfACTURA.ForeColor = SystemColors.HotTrack
                 LbfACTURA.Text = "SIN FACTURA"
+                FolioFiscal = "SIN FACTURA"
                 bFacturado = False
             Else
                 LbfACTURA.ForeColor = Color.Red
