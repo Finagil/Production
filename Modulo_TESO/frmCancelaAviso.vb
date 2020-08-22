@@ -536,6 +536,7 @@ Public Class frmCancelaAviso
             Exit Sub
         End If
         TaQUERY.CancelaAviso(cAnexo, txtAviso.Text)
+        BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "CancelaAvisos", System.Environment.MachineName, cAnexo & "-" & txtAviso.Text)
         CrystalReportViewer1.ReportSource = Nothing
         CrystalReportViewer1.Refresh()
         MessageBox.Show("Aviso cancelado", "Avisos", MessageBoxButtons.OK, MessageBoxIcon.Information)

@@ -106,7 +106,7 @@
             End If
             Me.CREDLineasCreditoBindingSource.Current("FechaModif") = Date.Now
             Me.CREDLineasCreditoBindingSource.EndEdit()
-            GeneraCorreo(True)
+            If CmbEstatus.Text <> "PENDIENTE" Then GeneraCorreo(True)
             Me.CRED_LineasCreditoTableAdapter.Update(Me.CreditoDS.CRED_LineasCredito)
             SacaLineas()
 
@@ -132,8 +132,8 @@
                     Asunto = "Linea AUTORIZADA por CREDITO: " & CmbCliente.Text
                 Case "RECHAZADO"
                     Asunto = "Linea RECHAZADA: " & CmbCliente.Text
-                    'Case "PENDIENTE"
-                    'Asunto = "Contrato Liberado con pendientes: " & CmbAnexos.Text
+                Case "PENDIENTE"
+                    Asunto = "Linea PENDIENTE: " & CmbCliente.Text
             End Select
         End If
         Dim Mensaje As String = ""
