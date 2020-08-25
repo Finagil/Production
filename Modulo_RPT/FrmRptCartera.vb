@@ -248,7 +248,7 @@ Public Class FrmRptCartera
                 Anexo = r.AnexoCon
             Next
 
-            ProcesaFACTORAJE() ' FACTORAJE
+            'ProcesaFACTORAJE() ' FACTORAJE
 
             taRpt.Update(ReportesDS.CarteraExigibleRPT)
         End If

@@ -287,7 +287,7 @@ Public Class FrmRptCarteraVEN
                 Anexo = r.AnexoCon & r.Ciclo
             Next
 
-            ProcesaFACTORAJE(DTPFecha.Value) ' FACTORAJE
+            'ProcesaFACTORAJE(DTPFecha.Value) ' FACTORAJE
 
             Dim EstatusAUX As String = ESTATUS
             For Each rr In ReportesDS.CarteraVencidaRPT.Rows
