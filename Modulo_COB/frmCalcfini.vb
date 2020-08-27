@@ -1685,7 +1685,7 @@ Public Class frmCalcfini
         ' Descomentar la siguiente línea en caso de que se deseara modificar el reporte rptFiniquito
         ' dsImprimir.WriteXml("C:\Schema25.xml", XmlWriteMode.WriteSchema)
 
-        If cLiquidez = "S" Then
+        If cTipar = "L" Then
             newrptFiniquitoL.SetDataSource(dsImprimir)
 
             cReportTitle = "TOLUCA, ESTADO DE MEXICO A " & Mes(cFecha)
