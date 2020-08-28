@@ -1493,7 +1493,7 @@ Public Class frmCaptValo
         End If
 
         If ctipar <> "L" Then
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & cSucursal, Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, cSucursal, Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
 

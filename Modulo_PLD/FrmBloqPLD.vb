@@ -57,27 +57,19 @@
         Dim Mensaje As String = ""
         Select Case Tipo.ToUpper
             Case "AUTORIZACION"
-                'Para = TxtPromoMail.Text.Trim & ";" & TxtAnalistaCorreo.Text & ";" & TxtmailSUB.Text
                 Asunto = "Autorización de PLD - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "El cliente " & CmbClientes.Text.Trim & " cuenta con su expediente completo de PLD, por lo que puede seguir el proceso de formalización de contrato.<br>"
                 Mensaje += "<BR>Esta autorización expira el día " & DPTvigencia.Value.ToShortDateString & ".<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
-
             Case "EXPEDIENTE"
-                'Para = TxtPromoMail.Text.Trim & ";ecacerest@finagil.com.mx;" & TxtAnalistaCorreo.Text
                 Asunto = "Expediente de PLD incompleto - Cliente: " & CmbClientes.Text.Trim
                 Mensaje = "<BR>Favor de completar el expediente del cliente  " & CmbClientes.Text.Trim & ", ya que no cuenta con la documentación necesaria.<br>"
                 Mensaje += "<BR>Comentarios: <BR>" & TxtComent.Text.Trim
         End Select
-        Dim sUC As String = ClientesBindingSource.Current("Sub")
-        Select Case sUC
-            Case "sub_NAVOJOA"
-                Para = ";mlopezb@finagil.com.mx;martin.beltran@finagil.com.mx;"
-            Case "sub_MEXICALI"
-                Para += ";sduarte@finagil.com.mx;martin.beltran@finagil.com.mx;"
-        End Select
+
+        Dim sUC As String = ClientesBindingSource.Current("sucursal")
         MandaCorreo(De, Para, Asunto, Mensaje)
-        MandaCorreoFase(De, "ASIST_" & Mid(sUC, 5, sUC.Length), Asunto, Mensaje)
+        MandaCorreoFase(De, Mid(sUC, 5, sUC.Length), Asunto, Mensaje)
         MandaCorreoFase(De, "MESA_CONTROL", Asunto, Mensaje)
         MandaCorreoFase(De, "PLD", Asunto, Mensaje)
     End Sub

@@ -117,7 +117,7 @@
 
         If Me.SEGLiberacionesMCBindingSource.Current("Ciclo").ToString.Trim = "" Then ' no es avío
             MandaCorreoPROMO(Me.SEGLiberacionesMCBindingSource.Current("Anexo"), Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
@@ -184,7 +184,7 @@
 
         If r.Ciclo.ToString.Trim = "" Then ' no es avío
             MandaCorreoPROMO(r.Anexo, Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosSEGBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, AnexosSEGBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, AnexosSEGBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
@@ -253,7 +253,7 @@
 
         If Me.SEGLiberacionesMCBindingSource1.Current("Ciclo").ToString.Trim = "" Then ' no es avío
             MandaCorreoPROMO(Me.SEGLiberacionesMCBindingSource1.Current("Anexo"), Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & Me.VWLiberacionesMCBindingSource1.Current("Nombre_Sucursal"), Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource1.Current("Nombre_Sucursal"), Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource1.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If

@@ -108,7 +108,7 @@
 
         If Me.JURLiberacionesMCBindingSource.Current("Ciclo").ToString.Trim = "" Then ' no es avío
             MandaCorreoPROMO(Me.JURLiberacionesMCBindingSource.Current("Anexo"), Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         Else
             MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
             MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)

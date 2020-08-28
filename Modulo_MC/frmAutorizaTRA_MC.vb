@@ -1401,7 +1401,7 @@ Public Class frmAutorizaTRA_MC
         If AnexosLiberacionBindingSource.Current("Tipar") = "L" Then
             MandaCorreoFase(UsuarioGlobalCorreo, "LIQUIDEZ", Asunto, Mensaje)
         Else
-            MandaCorreoFase(UsuarioGlobalCorreo, "ASIST_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
+            MandaCorreoFase(UsuarioGlobalCorreo, AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
         End If
         MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
         If CkJur.Checked = True Then MandaCorreoFase(UsuarioGlobalCorreo, "JUR_" & AnexosLiberacionBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
