@@ -26,6 +26,7 @@
         Dim ta1 As New ReestructDSTableAdapters.CambiosAnexosTableAdapter
         ta.Insert(Anexo, Ciclo, ComboBox1.SelectedValue, FECHA_APLICACION, UsuarioGlobal)
         If NvoEstatus = "VENCIDA" Then
+            ta1.DeleteReestructura(Anexo, Ciclo)
             ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
         End If
         ta1.CambiaAnexoTRA(NvoReestructura, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), ComboBox1.SelectedValue)

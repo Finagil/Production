@@ -22,6 +22,7 @@
             Exit Sub
         End If
         Me.AviosREESTTableAdapter.CambioPlazoAV(DateTimePicker1.Value.ToString("yyyyMMdd"), True, IIf(NvoEstatus = "VIGENTE", "", NvoEstatus), Anexo, Ciclo)
+        ta1.DeleteReestructura(Anexo, Ciclo)
         ta1.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
 
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)

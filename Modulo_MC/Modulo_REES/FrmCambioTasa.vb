@@ -76,6 +76,7 @@
             CambiaInteresTabla()
         End If
         If NvoEstatus = "VENCIDA" Then
+            ta.DeleteReestructura(Anexo, Ciclo)
             ta.VencidaXReestructura(Anexo, Ciclo, FECHA_APLICACION)
         End If
         MessageBox.Show("Datos actualizados", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information)

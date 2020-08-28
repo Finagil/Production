@@ -1376,10 +1376,8 @@ Public Class frmAcepagoIVF
                         If TaQUERY.SacaEstatusContable(cAnexo) = "VENCIDA" Then
                             If TaQUERY.EsReestructura(cAnexo) <> "S" Then ' no es restructura
                                 If TaQUERY.SaldoEnFacturasFecha(cAnexo, FECHA_APLICACION.ToString("yyyyMMdd")) = 0 Then
-                                    ta1.Fill(t, cAnexo, "", True)
-                                    If t.Rows.Count <= 0 Then
-                                        ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
-                                    End If
+                                    ta1.DeleteRegreso(cAnexo, "", True)
+                                    ta1.Insert(cAnexo, "", FECHA_APLICACION.Date, True)
                                 End If
                             Else ' es reestructura
                                 If PagoSostenido(cAnexo) = True Then
