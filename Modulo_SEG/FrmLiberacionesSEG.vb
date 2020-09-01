@@ -80,7 +80,7 @@
             Me.SegurosDS.SEG_LiberacionesMC.Clear()
             If RadioAV.Checked Then
                 Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
-                Me.VW_LiberacionesMCTableAdapter.FillAV1(Me.SegurosDS.VW_LiberacionesMC)
+                Me.VW_LiberacionesMCTableAdapter.FillAV1(Me.SegurosDS1.VW_LiberacionesMC)
             Else
                 Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
                 Me.VW_LiberacionesMCTableAdapter.FillTRA1(Me.SegurosDS1.VW_LiberacionesMC)
@@ -215,7 +215,7 @@
             If Me.SegurosDS1.VW_LiberacionesMC.Rows.Count > 0 Then
                 Me.VWLiberacionesMCBindingSource1.Position = x
             End If
-            Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
+            Me.VW_LiberacionesMCTableAdapter.FillTRA1(Me.SegurosDS1.VW_LiberacionesMC)
         End If
     End Sub
 
