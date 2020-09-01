@@ -64,7 +64,7 @@
             r.usuario = UsuarioGlobal & "1"
             r.Notas = ""
             Me.SegurosDS.SEG_LiberacionesMC.AddSEG_LiberacionesMCRow(r)
-            GeneraCorreo1(r)
+            GeneraCorreo1(r, Me.AnexosSEGBindingSource.Current("CicloPagare"))
             Guardar()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -100,6 +100,7 @@
         End If
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & Me.VWLiberacionesMCBindingSource.Current("Descr") & "<br>"
+        Mensaje += "Ciclo: " & Me.VWLiberacionesMCBindingSource.Current("CicloPagare") & "<br>"
         Mensaje += "Contrato: " & Me.VWLiberacionesMCBindingSource.Current("AnexoCon") & "<br>"
         If Libera = True Then
             Mensaje += "Estatus: LIBERADO <br>"
@@ -171,10 +172,11 @@
         Guardar()
     End Sub
 
-    Sub GeneraCorreo1(ByRef r As SegurosDS.SEG_LiberacionesMCRow)
+    Sub GeneraCorreo1(ByRef r As SegurosDS.SEG_LiberacionesMCRow, Ciclo As String)
         Dim Asunto As String = "Solicitud de SEGUROS: " & CmbAnexo.Text
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & CmbClientes.Text & "<br>"
+        Mensaje += "Ciclo: " & Ciclo & "<br>"
         Mensaje += "Contrato: " & CmbAnexo.Text & "<br>"
         Mensaje += "Estatus: INFORMACION SOLICITADA <br>"
         Mensaje += "Estimado promotor, solicitamos el envío de la hoja de resolución y/o autorización de crédito, para revisar las condiciones del seguro en caso de proceder el seguro :<br> "
@@ -244,6 +246,7 @@
         Dim Asunto As String = "Solicitud de SEGUROS: " & Me.VWLiberacionesMCBindingSource1.Current("AnexoCon")
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & Me.VWLiberacionesMCBindingSource1.Current("Descr") & "<br>"
+        Mensaje += "Ciclo: " & Me.VWLiberacionesMCBindingSource1.Current("CicloPagare") & "<br>"
         Mensaje += "Contrato: " & Me.VWLiberacionesMCBindingSource1.Current("AnexoCon") & "<br>"
         Mensaje += "Estatus: INFORMACION SOLICITADA SIN RESPUESTA <br>"
         Mensaje += "Estimado promotor, solicitamos el envío de la hoja de resolución y/o autorización de crédito, para revisar las condiciones del seguro en caso de proceder el seguro :<br> "
