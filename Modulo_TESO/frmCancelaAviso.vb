@@ -9,6 +9,8 @@ Public Class frmCancelaAviso
     Dim cLetra As String
     Dim bFacturado As Boolean
     Dim FolioFiscal As String
+    Dim cTipar As String = ""
+    Dim cFeven As String = ""
 
     Private Sub btnVerAviso_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnVerAviso.Click
         LbfACTURA.Visible = False
@@ -34,9 +36,7 @@ Public Class frmCancelaAviso
         ' Declaración de variables de datos
 
         Dim cCliente As String = ""
-        Dim cFeven As String = ""
         Dim cLetras As String = ""
-        Dim cTipar As String = ""
         Dim nAdeudo As Decimal = 0
         Dim nBaseBonificacion As Decimal = 0
         Dim nBonifica As Decimal = 0
@@ -519,6 +519,23 @@ Public Class frmCancelaAviso
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If TaQUERY.SacaPermisoModulo("CANCELA_AVISO", UsuarioGlobal) <= 0 Then
+            If cTipar = "L" Then
+                If TaQUERY.SacaPermisoModulo("CANCELA_AVISO_LQ", UsuarioGlobal) <= 0 Then
+                    MessageBox.Show("No tienes permiso para cancelar avisos de Liquidez Inmediata.", "Cancelación de Avisos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                Else
+                    If FECHA_APLICACION > CTOD(cFeven) Then
+                        MessageBox.Show("La fecha de vencimiento del Aviso es anterior a la fecha de aplicacion.", "Cancelación de Avisos LQ.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
+                    End If
+                End If
+            Else
+                MessageBox.Show("No tienes permiso para cancelar avisos.", "Cancelación de Avisos.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+        End If
+
         If TaQUERY.AvisoPostAdelanto(cAnexo, cLetra) > 0 Then
             MessageBox.Show("el Aviso " & txtAviso.Text & " tiene adelantos a capital posteriores y no se puede cancelar.", "Aviso con Adelantos aplicados.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
