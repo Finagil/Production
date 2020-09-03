@@ -2494,21 +2494,6 @@ Public Class frmAgil
         newfrmActuaUdis.Show()
     End Sub
 
-    Private Sub mnuGeneFac_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        Dim newfrmGeneFact As New frmGeneFact()
-        newfrmGeneFact.Show()
-    End Sub
-
-    Private Sub mnuCifrasDCI_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        Dim newCifrascon As New frmCifrasCont()
-        newCifrascon.Show()
-    End Sub
-
-    Private Sub mnuGenAviso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim newfrmGenAviso As New frmGenAviso()
-        newfrmGenAviso.Show()
-    End Sub
-
     Private Sub mnuECPorAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuECPorAnexo.Click
         Dim newfrmPideContrato As New frmPideContrato("mnuImprCert")
         newfrmPideContrato.Show()
@@ -3412,10 +3397,6 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-    Private Sub mnuRegenera_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub MenuItem42_Click(sender As Object, e As EventArgs) Handles MenuItem42.Click
         Dim f As New frmCargaListaNegra
         f.Show()
@@ -3651,6 +3632,21 @@ Public Class frmAgil
     Private Sub MenuItem83_Click(sender As Object, e As EventArgs) Handles MenuItem83.Click
         Dim f As New frmCancelaAviso
         f.Show()
+    End Sub
+
+    Private Sub MenuItem88_Click(sender As Object, e As EventArgs) Handles MenuItem88.Click
+        Dim newfrmGenAviso As New frmGenAviso()
+        newfrmGenAviso.Show()
+    End Sub
+
+    Private Sub MenuItem87_Click(sender As Object, e As EventArgs) Handles MenuItem87.Click
+        Dim newCifrascon As New frmCifrasCont()
+        newCifrascon.Show()
+    End Sub
+
+    Private Sub MenuItem86_Click(sender As Object, e As EventArgs) Handles MenuItem86.Click
+        Dim newfrmGeneFact As New frmGeneFact()
+        newfrmGeneFact.Show()
     End Sub
 
 End Class

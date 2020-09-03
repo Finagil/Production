@@ -1215,29 +1215,19 @@ Public Class frmGeneFact
                     Facturas.BloqueaFactura(nFactura)
                 End If
 
-
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
-
                 If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(cAnexo)) Then
-                    strUpdate = "UPDATE Opciones SET Exigible = '" & "S'"
-                    strUpdate = strUpdate & " WHERE Anexo = '" & aFactura.Anexo & "'"
+                    strUpdate = "UPDATE Opciones SET Exigible = 'S' WHERE Anexo = '" & aFactura.Anexo & "'"
                     cm1 = New SqlCommand(strUpdate, cnAgil)
                     cm1.ExecuteNonQuery()
-                    '#ECT esto es para mandar avisos AP a Avelina en ves del Cliente
-                    If Facturas.TipoAnexo(aFactura.Anexo) = "P" Then
-                        'Facturas.BloqueaFactura(nFactura) ' YA NO APLICA, YA SE CALCULA EL RESIDUAL EN AUTOMATICO
-                    End If
                 End If
 
             Catch eException As Exception
                 MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-
             End Try
-
         Next
 
         ' Actualización de la tabla Llaves
-
         strUpdate = "UPDATE Llaves SET IDFactura = " & nFactura
         cm1 = New SqlCommand(strUpdate, cnAgil)
         cm1.ExecuteNonQuery()
