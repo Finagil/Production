@@ -1216,7 +1216,7 @@ Public Class frmGeneFact
                 End If
 
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
-                If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(cAnexo)) Then
+                If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(cAnexo)) And cTipar <> "B" Then
                     strUpdate = "UPDATE Opciones SET Exigible = 'S' WHERE Anexo = '" & aFactura.Anexo & "'"
                     cm1 = New SqlCommand(strUpdate, cnAgil)
                     cm1.ExecuteNonQuery()
