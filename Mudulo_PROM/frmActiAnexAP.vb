@@ -5679,7 +5679,7 @@ Public Class frmActiAnexAP
             ta.Fill(t, Anexo)
             If t.Rows.Count <= 0 Then
                 Dim Comentario As String = InputBox("Favor de poner sus comentarios para el área de Riegos.", "Autorización de Tasas Especiales", "Comentario")
-                If InStr(Comentario.ToUpper, "COVID19") Then
+                If InStr(Comentario.ToUpper, "COVID19") Or InStr(Comentario.ToUpper, "COVID 19") Then
                     If cTipta = "7" Then
                         ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "COVID19", "COVID19", TasaPol, nTasasAux + nDifer, True, True, "AUTOMATICO", False, FirmaProm, "AUTOMATICO", "AUTOMATICO", "", Date.Now, True, 0)
                     Else
