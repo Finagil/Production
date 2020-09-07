@@ -300,9 +300,6 @@ Public Class frmAdelanto
 
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
-            If taAux.EsLiquidez(cAnexo) Then
-                cTipar = "L"
-            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fechacon")
             cTipta = drAnexo("Tipta")

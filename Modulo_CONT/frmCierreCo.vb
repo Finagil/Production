@@ -908,10 +908,7 @@ Public Class frmCierreCo
         cnAgil.Open()
         For Each drRegistro In dsAgil.Tables("Hisgin").Rows
             If drRegistro("Imp") <> 0 Then
-                If TaAuxCont.EsLiquidez(drRegistro("Anexo")) > 0 Then
-                    drRegistro("Catal") = "L"
-                End If
-                    strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
+                strInsert = "INSERT INTO CONT_Auxiliar(Cve, Anexo, Imp, Tipar, Coa, Fecha, Tipmov, Banco, Concepto, Segmento, Grupo)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & drRegistro("Cve") & "', '"
                 strInsert = strInsert & drRegistro("Anexo") & "', '"
@@ -1101,9 +1098,6 @@ Public Class frmCierreCo
             cFinse = drAnexo("Finse")
             cFondeo = drAnexo("Fondeo")
             cTipar = drAnexo("Tipar")
-            If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
-                cTipar = "L"
-            End If
             cFechacon = drAnexo("Fechacon")
             cFecha_Pago = drAnexo("Fecha_Pago")
             cForca = drAnexo("Forca")
@@ -2420,9 +2414,6 @@ Public Class frmCierreCo
 
             cAnexo = drFactura("Anexo")
             cTipar = drFactura("Tipar")
-            If drFactura("LiquidezInmediata") = True And cTipar = "S" Then
-                cTipar = "L"
-            End If
             nLetra = CInt(drFactura("Letra"))
             cFeven = drFactura("Feven")
             nIntPr = drFactura("IntPr")

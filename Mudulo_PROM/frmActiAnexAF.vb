@@ -223,7 +223,6 @@ Public Class frmActiAnexAF
     Dim nRD As Decimal
     Dim nDG As Decimal
     Dim nAmortizaciones As Decimal
-    Dim bLiquidez As Boolean = False
     Dim cEmpresa As String = ""
     Dim nPorcoTope As Decimal = 2
     Dim nUdi As Decimal = 0
@@ -3724,7 +3723,6 @@ Public Class frmActiAnexAF
             nServicio = drAnexo("Servicio")
             nIVAServicio = drAnexo("IVAServicio")
             cAplicaCobertura = drAnexo("Cobertura")
-            bLiquidez = drAnexo("LiquidezInmediata")
             cEmpresa = drAnexo("CNEmpresa")
             nAmortizaciones = drAnexo("Amortizaciones")
             cSegVida = drAnexo("SegVida")
@@ -5947,7 +5945,7 @@ Public Class frmActiAnexAF
             nDiferAux = 0
             nTasas = 15
         End If
-        If bLiquidez = True Then
+        If cTipar = "L" Then
             nPorcoTope = 0
 
             Dim Meses As Integer = 0

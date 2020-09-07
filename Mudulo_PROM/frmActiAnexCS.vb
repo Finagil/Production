@@ -223,7 +223,6 @@ Public Class frmActiAnexCS
     Dim nRD As Decimal
     Dim nDG As Decimal
     Dim nAmortizaciones As Decimal
-    Dim bLiquidez As Boolean = False
     Dim cEmpresa As String = ""
     Dim cPlanta As String = ""
     Dim nPorcoTope As Decimal = 2
@@ -755,11 +754,7 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                        End If
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "HOJA DE DISPOSICION DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1130,11 +1125,7 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                        End If
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "PAGARE DE CREDITO SIMPLE Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -1645,14 +1636,8 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                            cReca = "1907-439-029254/01-01329-0318 "
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                            cReca = "1907-439-029236/01-01233-0318 "
-                        End If
-
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -2355,13 +2340,8 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                            cReca = "1907-439-029254/01-01329-0318 "
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                            cReca = "1907-439-029236/01-01233-0318 "
-                        End If
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO A del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -2651,13 +2631,8 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                            cReca = "1907-439-029254/01-01329-0318 "
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                            cReca = "1907-439-029236/01-01233-0318 "
-                        End If
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO B del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -2804,13 +2779,8 @@ Public Class frmActiAnexCS
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                     If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                        If bLiquidez = True Then
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                            cReca = "1907-439-029254/01-01329-0318 "
-                        Else
-                            .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                            cReca = "1907-439-029236/01-01233-0318 "
-                        End If
+                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                        cReca = "1907-439-029236/01-01233-0318 "
                     End If
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "ANEXO C del Contrato No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
@@ -3018,13 +2988,8 @@ Public Class frmActiAnexCS
             With oWordDoc.Sections(1)
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
                 If Round(nMtoFin / nUdi, 2) < nVMUdi Then
-                    If bLiquidez = True Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                        cReca = "1907-439-029254/01-01329-0318 "
-                    Else
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                        cReca = "1907-439-029236/01-01233-0318 "
-                    End If
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                    cReca = "1907-439-029236/01-01233-0318 "
                 End If
                 .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "RATIFICACION DEL CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
             End With
@@ -3343,7 +3308,6 @@ Public Class frmActiAnexCS
             nServicio = drAnexo("Servicio")
             nIVAServicio = drAnexo("IVAServicio")
             cAplicaCobertura = drAnexo("Cobertura")
-            bLiquidez = drAnexo("LiquidezInmediata")
             cEmpresa = drAnexo("CNEmpresa")
             cPlanta = drAnexo("CNPlanta")
             nAmortizaciones = drAnexo("Amortizaciones")
@@ -3362,13 +3326,9 @@ Public Class frmActiAnexCS
             End If
         Next
 
-        If bLiquidez = True Then
-            BtnCarta.Enabled = True
-            BtnAdenda.Enabled = True
-        Else
-            BtnCarta.Enabled = False
-            BtnAdenda.Enabled = False
-        End If
+        BtnCarta.Enabled = False
+        BtnAdenda.Enabled = False
+
         If cTipar = "B" And nMensu = 0 Then
             MessageBox.Show("El contrato FULL SERVICE No tiene cargada la mensualidad", "FULL SERVICE", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Dispose()
@@ -4434,13 +4394,8 @@ Public Class frmActiAnexCS
             Else
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    If bLiquidez = True Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                        cReca = "1907-439-029254/01-01329-0318 "
-                    Else
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                        cReca = "1907-439-029236/01-01233-0318 "
-                    End If
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                    cReca = "1907-439-029236/01-01233-0318 "
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
@@ -4850,13 +4805,8 @@ Public Class frmActiAnexCS
             Else
                 With oWordDoc.Sections(1)
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InlineShapes.AddPicture(LOGO_PATH)
-                    If bLiquidez = True Then
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029254/01-01329-0318 ")
-                        cReca = "1907-439-029254/01-01329-0318 "
-                    Else
-                        .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
-                        cReca = "1907-439-029236/01-01233-0318 "
-                    End If
+                    .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "No. RECA 1907-439-029236/01-01233-0318 ")
+                    cReca = "1907-439-029236/01-01233-0318 "
                     .Headers(Word.WdHeaderFooterIndex.wdHeaderFooterPrimary).Range.InsertAfter(Chr(13) & "CONTRATO DE CREDITO SIMPLE No. " & Trim(Mid(cAnexo, 1, 5) & "/" & Mid(cAnexo, 7, 4)))
                 End With
             End If
@@ -5574,140 +5524,107 @@ Public Class frmActiAnexCS
             nDiferAux = 0
             nTasas = 15
         End If
-        If bLiquidez = True Then
-            nPorcoTope = 0
 
-            Dim Meses As Integer = 0
-            Dim dias As Integer = TaQUERY.DiasEntreVecimientos(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
-            Select Case dias
-                Case 7
-                    Meses = TaQUERY.SemanasMeses(nAmortizaciones)
-                Case 14
-                    Meses = TaQUERY.CatorcenasMeses(nAmortizaciones)
-                Case 15 To 20
-                    Meses = TaQUERY.QuincenasMeses(nAmortizaciones)
-                Case Is > 20
-                    Meses = nAmortizaciones
-            End Select
-            Select Case Meses
-                Case Is <= 8
-                    nTasas = 25
-                Case Else
-                    nTasas = 25
-            End Select
-            If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA" And cPlanta.Trim = "FINAGIL NAVOJOA") Then
-                nTasas = 14
-            ElseIf cEmpresa.Trim = "CREDITARIA" Then
-                nTasas = 25
+        Dim cnAgil As New SqlConnection(strConn)
+        Dim cm1 As New SqlCommand()
+        Dim cm7 As New SqlCommand()
+        Dim daTasasAplicables As New SqlDataAdapter(cm1)
+        Dim daPeriodos As New SqlDataAdapter(cm7)
+        Dim dsAgil As New DataSet()
+        Dim drPeriodo As DataRow
+        Dim nPeriodo As Decimal = 0
+
+        With cm7
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT Periodo, FechaInip, FechaFinp, Vigente FROM PeriodoTasas where FechaInip <= '" & cFechacon & "' and FechaFinp >= '" & cFechacon & "' Order by Periodo"
+            .Connection = cnAgil
+        End With
+
+        daPeriodos.Fill(dsAgil, "Periodos")
+
+        For Each drPeriodo In dsAgil.Tables("Periodos").Rows
+            If drPeriodo("Vigente") = "S" Then
+                'cFechaInip = drPeriodo("FechaInip")
+                'cFechaFinp = drPeriodo("FechaFinp")
+            ElseIf drPeriodo("Vigente") = "N" Then
+                'cFechaInip1 = drPeriodo("FechaInip")
+                'cFechaFinp1 = drPeriodo("FechaFinp")
             End If
-            If cTipta = "7" Then
-                nDifer = 0
-            End If
+            nPeriodo = drPeriodo("Periodo")
+        Next
 
-        Else
+        With cm1
+            .CommandType = CommandType.StoredProcedure
+            .CommandText = "TasasAplicables1"
+            .Connection = cnAgil
+            .Parameters.Add("@TipoCredito", SqlDbType.NVarChar)
+            .Parameters(0).Value = "AFsinIVA"
+            .Parameters.Add("@Periodo", SqlDbType.NVarChar)
+            .Parameters(1).Value = nPeriodo
+            .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
+            .Parameters(2).Value = "ACTIVA PROPIOS"
+        End With
 
-            Dim cnAgil As New SqlConnection(strConn)
-            Dim cm1 As New SqlCommand()
-            Dim cm7 As New SqlCommand()
-            Dim daTasasAplicables As New SqlDataAdapter(cm1)
-            Dim daPeriodos As New SqlDataAdapter(cm7)
-            Dim dsAgil As New DataSet()
-            Dim drPeriodo As DataRow
-            Dim nPeriodo As Decimal = 0
+        ' Llenar el DataSet lo cual abre y cierra la conexión
 
-            With cm7
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Periodo, FechaInip, FechaFinp, Vigente FROM PeriodoTasas where FechaInip <= '" & cFechacon & "' and FechaFinp >= '" & cFechacon & "' Order by Periodo"
-                .Connection = cnAgil
-            End With
+        daTasasAplicables.Fill(dsAgil, "AFsinIVA")
 
-            daPeriodos.Fill(dsAgil, "Periodos")
+        ' Ahora defino el segundo tipo de crédito
 
-            For Each drPeriodo In dsAgil.Tables("Periodos").Rows
-                If drPeriodo("Vigente") = "S" Then
-                    'cFechaInip = drPeriodo("FechaInip")
-                    'cFechaFinp = drPeriodo("FechaFinp")
-                ElseIf drPeriodo("Vigente") = "N" Then
-                    'cFechaInip1 = drPeriodo("FechaInip")
-                    'cFechaFinp1 = drPeriodo("FechaFinp")
-                End If
-                nPeriodo = drPeriodo("Periodo")
-            Next
+        cm1.Parameters(0).Value = "AFconIVA"
+        daTasasAplicables.Fill(dsAgil, "AFconIVA")
 
-            With cm1
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "TasasAplicables1"
-                .Connection = cnAgil
-                .Parameters.Add("@TipoCredito", SqlDbType.NVarChar)
-                .Parameters(0).Value = "AFsinIVA"
-                .Parameters.Add("@Periodo", SqlDbType.NVarChar)
-                .Parameters(1).Value = nPeriodo
-                .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
-                .Parameters(2).Value = "ACTIVA PROPIOS"
-            End With
+        ' Ahora defino el tercer tipo de crédito
 
-            ' Llenar el DataSet lo cual abre y cierra la conexión
+        cm1.Parameters(0).Value = "AP"
+        daTasasAplicables.Fill(dsAgil, "AP")
 
-            daTasasAplicables.Fill(dsAgil, "AFsinIVA")
+        cm1.Parameters(0).Value = "TVAP"
+        daTasasAplicables.Fill(dsAgil, "TVAP")
 
-            ' Ahora defino el segundo tipo de crédito
+        ' Ahora defino el cuarto tipo de crédito
 
-            cm1.Parameters(0).Value = "AFconIVA"
-            daTasasAplicables.Fill(dsAgil, "AFconIVA")
+        cm1.Parameters(0).Value = "CR"
+        daTasasAplicables.Fill(dsAgil, "CR")
 
-            ' Ahora defino el tercer tipo de crédito
+        cm1.Parameters(0).Value = "TVCR"
+        daTasasAplicables.Fill(dsAgil, "TVCR")
 
-            cm1.Parameters(0).Value = "AP"
-            daTasasAplicables.Fill(dsAgil, "AP")
+        cm1.Parameters(0).Value = "CS"
+        daTasasAplicables.Fill(dsAgil, "CS")
 
-            cm1.Parameters(0).Value = "TVAP"
-            daTasasAplicables.Fill(dsAgil, "TVAP")
+        ' Ahora defino el quinto tipo de crédito
 
-            ' Ahora defino el cuarto tipo de crédito
+        cm1.Parameters(0).Value = "TVAFsinIVA"
+        daTasasAplicables.Fill(dsAgil, "TVAFsinIVA")
 
-            cm1.Parameters(0).Value = "CR"
-            daTasasAplicables.Fill(dsAgil, "CR")
+        ' Ahora defino el sexto tipo de crédito
 
-            cm1.Parameters(0).Value = "TVCR"
-            daTasasAplicables.Fill(dsAgil, "TVCR")
+        cm1.Parameters(0).Value = "TVAFconIVA"
+        daTasasAplicables.Fill(dsAgil, "TVAFconIVA")
 
-            cm1.Parameters(0).Value = "CS"
-            daTasasAplicables.Fill(dsAgil, "CS")
-
-            ' Ahora defino el quinto tipo de crédito
-
-            cm1.Parameters(0).Value = "TVAFsinIVA"
-            daTasasAplicables.Fill(dsAgil, "TVAFsinIVA")
-
-            ' Ahora defino el sexto tipo de crédito
-
-            cm1.Parameters(0).Value = "TVAFconIVA"
-            daTasasAplicables.Fill(dsAgil, "TVAFconIVA")
-
-            cm1.Parameters(0).Value = "TVCS"
-            daTasasAplicables.Fill(dsAgil, "TVCS")
+        cm1.Parameters(0).Value = "TVCS"
+        daTasasAplicables.Fill(dsAgil, "TVCS")
 
 
-            Dim nDGX As Decimal = nDG
-            'If nRD = 5 Then nDGX = 1
-            'If nRD = 10 Then nDGX = 2
-            'If nRD = 15 Then nDGX = 3
+        Dim nDGX As Decimal = nDG
+        'If nRD = 5 Then nDGX = 1
+        'If nRD = 10 Then nDGX = 2
+        'If nRD = 15 Then nDGX = 3
 
-            If nDG = 5 Then nDGX = 1
-            If nDG = 10 Then nDGX = 2
-            If nDG = 15 Then nDGX = 3
+        If nDG = 5 Then nDGX = 1
+        If nDG = 10 Then nDGX = 2
+        If nDG = 15 Then nDGX = 3
 
-            Dim DepG, RenD As Boolean
-            If nDGX > 0 Then DepG = True
-            If nRD > 0 Then RenD = True
+        Dim DepG, RenD As Boolean
+        If nDGX > 0 Then DepG = True
+        If nRD > 0 Then RenD = True
 
-            If cTipta <> "7" Then
-                nDiferAux = 0
-            End If
-
-            TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cContrato), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
+        If cTipta <> "7" Then
+            nDiferAux = 0
         End If
 
+        TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cContrato), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
         SacaTasaPol = (nTasas + nDiferAux)
     End Function
 

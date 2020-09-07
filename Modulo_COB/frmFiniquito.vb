@@ -249,9 +249,6 @@ Public Class frmFiniquito
             cCliente = drAnexo("Cliente")
             cFlcan = drAnexo("Flcan")
             cTipar = drAnexo("Tipar")
-            If taAux.EsLiquidez(cAnexo) Then
-                cTipar = "L"
-            End If
             cFondeo = drAnexo("Fondeo")
             cFechacon = drAnexo("Fecha_pago")
             cTipta = drAnexo("Tipta")

@@ -223,7 +223,6 @@ Public Class frmActiAnexCR
     Dim nRD As Decimal
     Dim nDG As Decimal
     Dim nAmortizaciones As Decimal
-    Dim bLiquidez As Boolean = False
     Dim cEmpresa As String = ""
     Dim nPorcoTope As Decimal = 2
     Dim nUdi As Decimal = 0
@@ -3580,7 +3579,6 @@ Public Class frmActiAnexCR
             nServicio = drAnexo("Servicio")
             nIVAServicio = drAnexo("IVAServicio")
             cAplicaCobertura = drAnexo("Cobertura")
-            bLiquidez = drAnexo("LiquidezInmediata")
             cEmpresa = drAnexo("CNEmpresa")
             nAmortizaciones = drAnexo("Amortizaciones")
             cSegVida = drAnexo("SegVida")
@@ -5814,137 +5812,107 @@ Public Class frmActiAnexCR
             nDiferAux = 0
             nTasas = 15
         End If
-        If bLiquidez = True Then
-            nPorcoTope = 0
 
-            Dim Meses As Integer = 0
-            Dim dias As Integer = TaQUERY.DiasEntreVecimientos(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
-            Select Case dias
-                Case 7
-                    Meses = TaQUERY.SemanasMeses(nAmortizaciones)
-                Case 14
-                    Meses = TaQUERY.CatorcenasMeses(nAmortizaciones)
-                Case 15 To 20
-                    Meses = TaQUERY.QuincenasMeses(nAmortizaciones)
-                Case Is > 20
-                    Meses = nAmortizaciones
-            End Select
-            Select Case Meses
-                Case Is <= 8
-                    nTasas = 25
-                Case Else
-                    nTasas = 25
-            End Select
-            If cEmpresa.Trim = "SERVICIOS ARFIN" Or (cEmpresa.Trim = "MOFESA") Then
-                nTasas = 14
-            ElseIf cEmpresa.Trim = "CREDITARIA" Then
-                nTasas = 25
+        Dim cnAgil As New SqlConnection(strConn)
+        Dim cm1 As New SqlCommand()
+        Dim cm7 As New SqlCommand()
+        Dim daTasasAplicables As New SqlDataAdapter(cm1)
+        Dim daPeriodos As New SqlDataAdapter(cm7)
+        Dim dsAgil As New DataSet()
+        Dim drPeriodo As DataRow
+        Dim nPeriodo As Decimal = 0
+
+        With cm7
+            .CommandType = CommandType.Text
+            .CommandText = "SELECT Periodo, FechaInip, FechaFinp, Vigente FROM PeriodoTasas where FechaInip <= '" & cFechacon & "' and FechaFinp >= '" & cFechacon & "' Order by Periodo"
+            .Connection = cnAgil
+        End With
+
+        daPeriodos.Fill(dsAgil, "Periodos")
+
+        For Each drPeriodo In dsAgil.Tables("Periodos").Rows
+            If drPeriodo("Vigente") = "S" Then
+                'cFechaInip = drPeriodo("FechaInip")
+                'cFechaFinp = drPeriodo("FechaFinp")
+            ElseIf drPeriodo("Vigente") = "N" Then
+                'cFechaInip1 = drPeriodo("FechaInip")
+                'cFechaFinp1 = drPeriodo("FechaFinp")
             End If
-            nDifer = 0
-        Else
+            nPeriodo = drPeriodo("Periodo")
+        Next
 
-            Dim cnAgil As New SqlConnection(strConn)
-            Dim cm1 As New SqlCommand()
-            Dim cm7 As New SqlCommand()
-            Dim daTasasAplicables As New SqlDataAdapter(cm1)
-            Dim daPeriodos As New SqlDataAdapter(cm7)
-            Dim dsAgil As New DataSet()
-            Dim drPeriodo As DataRow
-            Dim nPeriodo As Decimal = 0
+        With cm1
+            .CommandType = CommandType.StoredProcedure
+            .CommandText = "TasasAplicables1"
+            .Connection = cnAgil
+            .Parameters.Add("@TipoCredito", SqlDbType.NVarChar)
+            .Parameters(0).Value = "AFsinIVA"
+            .Parameters.Add("@Periodo", SqlDbType.NVarChar)
+            .Parameters(1).Value = nPeriodo
+            .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
+            .Parameters(2).Value = "ACTIVA PROPIOS"
+        End With
 
-            With cm7
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT Periodo, FechaInip, FechaFinp, Vigente FROM PeriodoTasas where FechaInip <= '" & cFechacon & "' and FechaFinp >= '" & cFechacon & "' Order by Periodo"
-                .Connection = cnAgil
-            End With
+        ' Llenar el DataSet lo cual abre y cierra la conexión
 
-            daPeriodos.Fill(dsAgil, "Periodos")
+        daTasasAplicables.Fill(dsAgil, "AFsinIVA")
 
-            For Each drPeriodo In dsAgil.Tables("Periodos").Rows
-                If drPeriodo("Vigente") = "S" Then
-                    'cFechaInip = drPeriodo("FechaInip")
-                    'cFechaFinp = drPeriodo("FechaFinp")
-                ElseIf drPeriodo("Vigente") = "N" Then
-                    'cFechaInip1 = drPeriodo("FechaInip")
-                    'cFechaFinp1 = drPeriodo("FechaFinp")
-                End If
-                nPeriodo = drPeriodo("Periodo")
-            Next
+        ' Ahora defino el segundo tipo de crédito
 
-            With cm1
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "TasasAplicables1"
-                .Connection = cnAgil
-                .Parameters.Add("@TipoCredito", SqlDbType.NVarChar)
-                .Parameters(0).Value = "AFsinIVA"
-                .Parameters.Add("@Periodo", SqlDbType.NVarChar)
-                .Parameters(1).Value = nPeriodo
-                .Parameters.Add("@TipoTasa", SqlDbType.NVarChar)
-                .Parameters(2).Value = "ACTIVA PROPIOS"
-            End With
+        cm1.Parameters(0).Value = "AFconIVA"
+        daTasasAplicables.Fill(dsAgil, "AFconIVA")
 
-            ' Llenar el DataSet lo cual abre y cierra la conexión
+        ' Ahora defino el tercer tipo de crédito
 
-            daTasasAplicables.Fill(dsAgil, "AFsinIVA")
+        cm1.Parameters(0).Value = "AP"
+        daTasasAplicables.Fill(dsAgil, "AP")
 
-            ' Ahora defino el segundo tipo de crédito
+        cm1.Parameters(0).Value = "TVAP"
+        daTasasAplicables.Fill(dsAgil, "TVAP")
 
-            cm1.Parameters(0).Value = "AFconIVA"
-            daTasasAplicables.Fill(dsAgil, "AFconIVA")
+        ' Ahora defino el cuarto tipo de crédito
 
-            ' Ahora defino el tercer tipo de crédito
+        cm1.Parameters(0).Value = "CR"
+        daTasasAplicables.Fill(dsAgil, "CR")
 
-            cm1.Parameters(0).Value = "AP"
-            daTasasAplicables.Fill(dsAgil, "AP")
+        cm1.Parameters(0).Value = "TVCR"
+        daTasasAplicables.Fill(dsAgil, "TVCR")
 
-            cm1.Parameters(0).Value = "TVAP"
-            daTasasAplicables.Fill(dsAgil, "TVAP")
+        cm1.Parameters(0).Value = "CS"
+        daTasasAplicables.Fill(dsAgil, "CS")
 
-            ' Ahora defino el cuarto tipo de crédito
+        ' Ahora defino el quinto tipo de crédito
 
-            cm1.Parameters(0).Value = "CR"
-            daTasasAplicables.Fill(dsAgil, "CR")
+        cm1.Parameters(0).Value = "TVAFsinIVA"
+        daTasasAplicables.Fill(dsAgil, "TVAFsinIVA")
 
-            cm1.Parameters(0).Value = "TVCR"
-            daTasasAplicables.Fill(dsAgil, "TVCR")
+        ' Ahora defino el sexto tipo de crédito
 
-            cm1.Parameters(0).Value = "CS"
-            daTasasAplicables.Fill(dsAgil, "CS")
+        cm1.Parameters(0).Value = "TVAFconIVA"
+        daTasasAplicables.Fill(dsAgil, "TVAFconIVA")
 
-            ' Ahora defino el quinto tipo de crédito
-
-            cm1.Parameters(0).Value = "TVAFsinIVA"
-            daTasasAplicables.Fill(dsAgil, "TVAFsinIVA")
-
-            ' Ahora defino el sexto tipo de crédito
-
-            cm1.Parameters(0).Value = "TVAFconIVA"
-            daTasasAplicables.Fill(dsAgil, "TVAFconIVA")
-
-            cm1.Parameters(0).Value = "TVCS"
-            daTasasAplicables.Fill(dsAgil, "TVCS")
+        cm1.Parameters(0).Value = "TVCS"
+        daTasasAplicables.Fill(dsAgil, "TVCS")
 
 
-            Dim nDGX As Decimal = nDG
-            'If nRD = 5 Then nDGX = 1
-            'If nRD = 10 Then nDGX = 2
-            'If nRD = 15 Then nDGX = 3
+        Dim nDGX As Decimal = nDG
+        'If nRD = 5 Then nDGX = 1
+        'If nRD = 10 Then nDGX = 2
+        'If nRD = 15 Then nDGX = 3
 
-            If nDG = 5 Then nDGX = 1
-            If nDG = 10 Then nDGX = 2
-            If nDG = 15 Then nDGX = 3
+        If nDG = 5 Then nDGX = 1
+        If nDG = 10 Then nDGX = 2
+        If nDG = 15 Then nDGX = 3
 
-            Dim DepG, RenD As Boolean
-            If nDGX > 0 Then DepG = True
-            If nRD > 0 Then RenD = True
+        Dim DepG, RenD As Boolean
+        If nDGX > 0 Then DepG = True
+        If nRD > 0 Then RenD = True
 
-            If cTipta <> "7" Then
-                nDiferAux = 0
-            End If
-
-            TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cContrato), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
+        If cTipta <> "7" Then
+            nDiferAux = 0
         End If
 
+        TasaAplicable(cTipar, cTipta, TaQUERY.PlazoEnMeses(cContrato), nIvaEq, RenD, nRD, DepG, nDGX, dsAgil, nTasas, nDiferAux, nPorop)
         SacaTasaPol = (nTasas + nDiferAux)
     End Function
 

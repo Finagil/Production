@@ -402,9 +402,6 @@ Module CONT_Global
                 ' Solamente provisionarán intereses los contratos activos que no estén Castigados
 
                 cTipar = drAnexo("Tipar")
-                If drAnexo("LiquidezInmediata") = True And cTipar = "S" Then
-                    cTipar = "L"
-                End If
                 cFechacon = drAnexo("Fechacon")
                 cFechaPago = drAnexo("Fecha_pago")
                 cFvenc = drAnexo("Fvenc")

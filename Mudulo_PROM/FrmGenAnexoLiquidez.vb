@@ -33,7 +33,7 @@ Public Class FrmGenAnexoLiquidez
             strInsert = "INSERT INTO Anexos(Anexo, Flcan, Cliente, ImpEq, Plazo, IvaEq, Porieq, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, Tipar, 
                                 Forca, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Mensu, RD, ImpDG, 
                                 IvaDG,Derechos, FondoReserva, Prenda, Autoriza, PagaEmp, CNom, TipoFrecuencia, ValorFrecuencia, Amortizaciones, CNEmpresa, CNPlanta, DG, 
-                                AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,LiquidezInmediata,PorcReserva,IvaAnexo,Id_ActividadInegi)"
+                                AplicaFEGA, EsAvio, ContratoMarco, TasaIvaCapital, Automovil, Taspen, SeguroVida, Cobertura, GHipotec, porcFega,PorcReserva,IvaAnexo,Id_ActividadInegi)"
             strInsert += " VALUES ('" & AnexoNuevo & "', 'S', '"
             strInsert += Me.LineasLQBindingSource.Current("NoCliente") & "', '"
             strInsert += CDec(TextMonto.Text) & "', '"
@@ -46,7 +46,7 @@ Public Class FrmGenAnexoLiquidez
             strInsert += Me.LineasLQBindingSource.Current("NomCorto") & "', '"
             strInsert += Me.LineasLQBindingSource.Current("Planta") & "', '"
             strInsert += "0','S',0,'" & ContratoMarco & "','','N',"
-            strInsert += "0," & PORC_SEG & ", 'N', 'N', 0, 1, 0.3,0,2)"
+            strInsert += "0," & PORC_SEG & ", 'N', 'N', 0, .3,0,2)"
             cm1 = New SqlCommand(strInsert, cnAgil)
             cm1.ExecuteNonQuery()
             TaQUERY.UpdatePromoActualAnexos()
