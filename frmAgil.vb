@@ -16,6 +16,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem86 As MenuItem
     Friend WithEvents MenuItem87 As MenuItem
     Friend WithEvents MenuItem88 As MenuItem
+    Friend WithEvents MenuItem84 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -588,6 +589,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem84 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2101,7 +2103,7 @@ Public Class frmAgil
         '
         Me.MnuFira.Enabled = False
         Me.MnuFira.Index = 14
-        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE})
+        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE, Me.MenuItem84})
         Me.MnuFira.Text = "Oper. FIRA"
         '
         'MnuAutoAviCRE
@@ -2146,6 +2148,12 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem84
+        '
+        Me.MenuItem84.Enabled = False
+        Me.MenuItem84.Index = 1
+        Me.MenuItem84.Text = "Seguimiento de Crédito"
         '
         'frmAgil
         '
@@ -3649,4 +3657,8 @@ Public Class frmAgil
         newfrmGeneFact.Show()
     End Sub
 
+    Private Sub MenuItem84_Click(sender As Object, e As EventArgs) Handles MenuItem84.Click
+        Dim f As New FrmSeguimientoCRED
+        f.Show()
+    End Sub
 End Class
