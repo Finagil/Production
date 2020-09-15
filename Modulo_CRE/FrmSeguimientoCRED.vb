@@ -315,7 +315,7 @@ Public Class FrmSeguimientoCRED
             Case "PendienteBack_Analist"
                 Asunto = "Seguimiento regresado a pendiente por " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
             Case "PendienteBack"
                 Asunto = "Seguimiento regresado a pendiente por auditor: " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
@@ -324,11 +324,11 @@ Public Class FrmSeguimientoCRED
                 Else
                     MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 End If
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
             Case "Pendiente"
                 Asunto = "Asignación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
             Case "En Vobo"
                 Asunto = "Se requiere Visto Bueno de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 If Me.CREDSeguimientoBindingSource.Current("Analista") <> Me.UsuariosFinagilBindingSource.Current("id_usuario") Then
@@ -336,7 +336,7 @@ Public Class FrmSeguimientoCRED
                 Else
                     MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 End If
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
             Case "En Liberación"
                 If UsuarioGlobalDepto = "MESA DE CONTROL" Then
                     Me.CRED_SeguimientoTableAdapter.Liberar(CmbCompromisos.SelectedValue)
@@ -347,11 +347,11 @@ Public Class FrmSeguimientoCRED
                     Else
                         MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                     End If
-                    MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                    MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
                 Else
                     Asunto = "Se requiere liberación del Auditor: " & Me.ContClie1BindingSource.Current("Descr")
                     MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
-                    MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                    MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
                 End If
             Case "Liberado"
                 Asunto = "Liberación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
@@ -361,12 +361,12 @@ Public Class FrmSeguimientoCRED
                 Else
                     MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Analista"), Asunto, Mensaje)
                 End If
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
             Case "Cancelado"
                 Asunto = "Cancelación de Seguimiento de " & Me.CREDSeguimientoBindingSource.Current("Tipo") & ": " & Me.ContClie1BindingSource.Current("Descr")
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Asignado"), Asunto, Mensaje)
                 MandaCorreoUser(DE, Me.CREDSeguimientoBindingSource.Current("Auditor"), Asunto, Mensaje)
-                MandaCorreoUser(DE, "ecacerest@finagil.com.mx", Asunto, Mensaje)
+                MandaCorreoFase(DE, "SISTEMAS", Asunto, Mensaje)
         End Select
     End Sub
 
@@ -384,13 +384,15 @@ Public Class FrmSeguimientoCRED
                 Dim procID As Integer
                 Dim newProc As Diagnostics.Process
                 newProc = Diagnostics.Process.Start(Archivo)
-                procID = newProc.Id
-                Dim procEC As Integer = -1
-                If newProc.HasExited Then
-                    procEC = newProc.ExitCode
+                If Not IsNothing(newProc) Then
+                    procID = newProc.Id
+                    Dim procEC As Integer = -1
+                    If newProc.HasExited Then
+                        procEC = newProc.ExitCode
+                    End If
+                    newProc.Close()
+                    newProc.Dispose()
                 End If
-                newProc.Close()
-                newProc.Dispose()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error " & Archivo, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
