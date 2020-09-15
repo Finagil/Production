@@ -70,7 +70,7 @@ Public Class frmPortaCon
         Dim cTipoTasa As String = ""
         Dim cNombreCliente As String = ""
         Dim cFechaTerminacion As String = ""
-
+        Dim EXIGIBLE_FACTORAJE, CARTERA_FACTORAJE, AFORO As Decimal
         cFecha = DTOC(dtpProcesar.Value)
 
         ' Primero creo las 7 tablas que serán la base del reporte
@@ -322,8 +322,17 @@ Public Class frmPortaCon
 
                 cTabla = ""
                 If IsNumeric(Trim(Mid(cRenglon, 190, 24))) Then tot = CDbl(Mid(cRenglon, 190, 24)) Else tot = 0
-                If (Mid(cRenglon, 21, 4) <> "0000" And tot > 0) Or (Mid(cRenglon, 5, 10) = "1351-17-01" And Mid(cRenglon, 16, 9) <> "0000-0000") Then
 
+                Select Case Mid(cRenglon, 5, 20)
+                    Case "1317-02-03-0000-0000"
+                        EXIGIBLE_FACTORAJE = CDbl(Mid(cRenglon, 190, 24))
+                    Case "1317-00-00-0000-0000"
+                        CARTERA_FACTORAJE = CDbl(Mid(cRenglon, 190, 24))
+                    Case "2625-00-00-0000-0000"
+                        AFORO = CDbl(Mid(cRenglon, 190, 24))
+                End Select
+
+                If (Mid(cRenglon, 21, 4) <> "0000" And tot > 0) Or (Mid(cRenglon, 5, 10) = "1351-17-01" And Mid(cRenglon, 16, 9) <> "0000-0000") Then
                     cAnexo = "0" & Mid(cRenglon, 16, 4) & "/" & Mid(cRenglon, 21, 4)
                     myKeySearch(0) = cAnexo
 
@@ -342,7 +351,7 @@ Public Class frmPortaCon
                     nCarteraExigible = 0
 
                     Select Case Mid(cRenglon, 5, 10)
-                        Case "1351-01-01"               ' Capital Exigible Vencido de Bienes al Comercio
+                                                Case "1351-01-01"               ' Capital Exigible Vencido de Bienes al Comercio
                             cTabla = "Vencida"
                             nCapitalExigibleVencido = CDbl(Mid(cRenglon, 190, 24))
                         Case "1351-01-02"               ' Saldo Insoluto Vencido de Bienes al Comercio
@@ -1149,8 +1158,9 @@ Public Class frmPortaCon
         CargaDatos(dtCC, "CUENTA CORRIENTE")
         CargaDatos(dtSeguros, "SEGUROS")
         CargaDatos(dtExigible, "EXIGIBLE")
-        CargaDatos(dtExigible, "FACTORAJE FINANCIERO")
-        CargaDatos(dtExigible, "CESIÓN DE DERECHOS")
+        CargaDatos(dtExigible, "FACTORAJE FINANCIERO", CARTERA_FACTORAJE - EXIGIBLE_FACTORAJE - AFORO)
+        CargaDatos(dtExigible, "FACTORAJE FINANCIERO EXIGIBLE", EXIGIBLE_FACTORAJE)
+        CargaDatos(dtExigible, "CESIÓN DE DERECHOS", 0)
 
 
         dgvVencida.DataSource = dtVencida
@@ -1172,7 +1182,7 @@ Public Class frmPortaCon
         Me.Close()
     End Sub
 
-    Sub CargaDatos(ByRef T As DataTable, ByVal TipoCartera As String)
+    Sub CargaDatos(ByRef T As DataTable, ByVal TipoCartera As String, Optional IMPORTE As Decimal = 0)
         Dim strConnX As String = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & CmbDB.Text & "; User ID=User_PRO; pwd=User_PRO2015"
         Dim cnAgil As New SqlConnection(strConnX)
         Dim cm1 As New SqlCommand()
@@ -1284,7 +1294,7 @@ Public Class frmPortaCon
                     cm1.ExecuteNonQuery()
                 Next
             Case "FACTORAJE FINANCIERO"
-                Dim R As String = InputBox("FACTORAJE")
+                Dim R As String = IMPORTE
                 fecha = dtpProcesar.Value
                 AnexoSin = "888888888"
                 cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
@@ -1296,8 +1306,10 @@ Public Class frmPortaCon
                 & ",0,'" & TipoCartera.ToUpper & "','ESTADO DE MEXICO','50070'" _
                 & ",'" & TipoCartera.ToUpper & "','" & fecha.ToString("MM/dd/yyyy") & "','" & TipoCartera.ToUpper & "','" & MesAux & "','" & AnexoSin & "')"
                 cm1.ExecuteNonQuery()
-
-                R = InputBox("FACTORAJE EXIGIBLE")
+            Case "FACTORAJE FINANCIERO EXIGIBLE"
+                TipoCartera = "FACTORAJE FINANCIERO"
+                fecha = dtpProcesar.Value
+                Dim R As String = IMPORTE
                 cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
                 & "[Seguros],[Total],[TipoTasa],[Tasa],[Diferencial],[Producto],[Plaza],[CP],[Promotor],[FechaTerminacion],[TipoCartera]," _
                 & "[Mes],[AnexoSin])" _
@@ -1308,7 +1320,7 @@ Public Class frmPortaCon
                 & ",'" & TipoCartera.ToUpper & "','" & fecha.ToString("MM/dd/yyyy") & "','EXIGIBLE','" & MesAux & "','" & AnexoSin & "')"
                 cm1.ExecuteNonQuery()
             Case "CESIÓN DE DERECHOS"
-                Dim R As String = InputBox("CESIONES")
+                Dim R As String = IMPORTE
                 fecha = dtpProcesar.Value
                 AnexoSin = "999999999"
                 cm1.CommandText = "INSERT INTO CONT_Mezcla ([Anexo],[Nombre],[CapitalCartera],[Provision],[UxR],[SaldoInsoluto],[Interes],[OtrosAdeudos]," _
@@ -1386,5 +1398,9 @@ Public Class frmPortaCon
 
         Cursor.Current = Cursors.Default
         MessageBox.Show("Generación Termianda", "Provisión de Interes", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
     End Sub
 End Class
