@@ -5412,6 +5412,8 @@ Public Class frmActiAnexCS
                     RevisaTasa = True
                     MessageBox.Show("Este contrato requiere confirmación de Porcentaje de Reservas (Riesgos)", "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
+                    If TIRactiva = 0 And cFechacon > "20200525" Then TIRactiva = CalculaTIR_ACTIVA(cAnexo)
+                    If TIRpasiva = 0 And cFechacon > "20200525" Then TIRpasiva = CalculaTIR_PASIVA(cAnexo)
                     Dim Indicadores As String = "TIR.ACTIVO " & TIRactiva.ToString("p4") & "% TIR.PASIVO " & TIRpasiva.ToString("p4") & "% DIF TIR " & CDec(TIRactiva - TIRpasiva).ToString("p4") & "%"
                     If cTipta = "7" Then
                         ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, False, PorcReserva)
