@@ -1517,10 +1517,11 @@ Public Class frmModiGene
             End If
 
             'cPlaza = drCodigo("Estado")
-            Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, txtEstado.Text.Trim, txtDelegacion.Text.Trim)
-
+            Try
+                Me.ClavesFIRATableAdapter.Fill(Me.PromocionDS.ClavesFira, EstadoInegi.Trim, txtDelegacion.Text)
+            Catch ex As Exception
+            End Try
         Else
-
             ' Código Postal inexistente
             Me.PromocionDS.ClavesFira.Clear()
             lblCopos.Text = "Código Postal inexistente, favor de revisarlo"
