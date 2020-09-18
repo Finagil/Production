@@ -688,22 +688,37 @@ Public Class frmImpCtoAvio
                     cPrimera = " Dicho monto se otorgara por cada ciclo o periodo productivo autorizado a favor del productor acreditado quien acepta el crédito."
                     cSegunda = Chr(10) & Chr(10) & "SEGUNDA.- PLAZO DEL CREDITO. El crédito mencionado en la clausula primera se otorgara por un plazo de tres años, contados a partir de la fecha de la primera disposición del primer ciclo del periodo productivo."
                 End If
-            ElseIf cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+            ElseIf cSucursal = "04" Or cSucursal = "09" Then
                 cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
-                        cLugar = "Mexicali, Baja California"
-                        cTestigos = "DECLARA EL TESTIGO LLAMARSE JANETH IBARRA BIBIANO, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIO DE LA CIUDAD DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL  28 DE ABRIL DE 1986, CON R.F.C. IABJ860428TP8. "
-                        cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE DAIEL RENTERIA, DE PROFESION LICENCIADO EN ADMINISTRACION, ORIGINARIO DE ENSENADA, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 15 DE OCTUBRE DE 1959, CON R.F.C. REDA591015HU8."
-                        cFirmaTestigo1 = "LIC. JANETH IBARRA BIBIANO"
-                        cFirmaTestigo2 = "LIC DANIEL RENTERIA"
+                cLugar = "Mexicali, Baja California"
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE ESTEFANÍA VERÓNICA ACOSTA GONZÁLEZ, DE PROFESION LICENCIADA EN DERECHO, ORIGINARIA DE MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 23 DE DICIEMBRE DE 1992, CON DOMICILIO EN AVENIDA ARMENIA NÚMERO 312, PRIVADA CAMPESTRE 2, CODIGO POSTAL 21383, CON R.F.C. AOGE921223KD9. "
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JORGE FAVELA CONTRERAS, DE PROFESION INGENIERO EN EL SECTOR FINANCIERO, ORIGINARIO DE LA ROSITA VIESCA COAHUILA, LUGAR DONDE NACIO EL 29 DE NOVIEMBRE DE 1962, CON DOMICILIO EN AVENIDA LAGO MAINDOBE NÚMERO 866, FRACCIONAMIENTO JARDINES DEL LAGO, CODIGO POSTAL 21330, CON R.F.C. FACJ621129FN1."
+                cFirmaTestigo1 = "LIC. ESTEFANÍA VERÓNICA ACOSTA GONZÁLEZ"
+                cFirmaTestigo2 = "ING. JORGE FAVELA CONTRERAS"
 
 
-                        cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
-                        If cSemilla = "C" Then
-                            cOtros = "CIANO-OL"
-                        Else
-                            cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
-                        End If
-                    ElseIf cSucursal = "05" Then
+                cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
+                If cSemilla = "C" Then
+                    cOtros = "CIANO-OL"
+                Else
+                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
+                End If
+            ElseIf cSucursal = "08" Then
+                cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
+                cLugar = "Mexicali, Baja California"
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE JUDITH MELISSA CHAVEZ SALCIDO, OCUPACION ANALISTA ADMINISTRATIVO, ORIGINARIO DE CIUDAD MORELOS, MEXICALI, BAJA CALIFORNIA, DONDE NACIO EL 24 DE NOVIEMBRE DE 1983, ESTADO CIVIL SOLTERA, CON DOMICILIO EN AVENIDA ALBERTO ZAVALA PEREZ, SIN NUMERO, EJIDO LAZARO CARDENAS, MEXICALI, BAJA CALIFORNIA, CON R.F.C. CASJ831124667. "
+                cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE LUIS ENRIQUE RIVAS GOMEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DEL EJIDO COLIMA, MEXICALI, BAJA CALIFORNIA, LUGAR DONDE NACIO EL 24 DE SEPTIEMBRE DE 1983, ESTADO CIVIL CASADO, BAJO REGIMEN DE SOCIEDAD CONYUGAL, CON DOMICILIO CONOCIDO, EJIDO COLIMA, MEXICALI, BAJA CALIFORNIA, CON R.F.C. RIGL8309244F4."
+                cFirmaTestigo1 = "C. JUDITH MELISSA CHAVEZ SALCIDO"
+                cFirmaTestigo2 = "ING. LUIS ENRIQUE RIVAS GOMEZ"
+
+
+                cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
+                If cSemilla = "C" Then
+                    cOtros = "CIANO-OL"
+                Else
+                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
+                End If
+            ElseIf cSucursal = "05" Then
                 cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA "
                 cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
                         cC_Venta = "Lo anterior en base al "
