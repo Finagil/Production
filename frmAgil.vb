@@ -17,6 +17,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem87 As MenuItem
     Friend WithEvents MenuItem88 As MenuItem
     Friend WithEvents MenuItem84 As MenuItem
+    Friend WithEvents MenuItem89 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -581,6 +582,7 @@ Public Class frmAgil
         Me.MenuItem41 = New System.Windows.Forms.MenuItem()
         Me.MnuFira = New System.Windows.Forms.MenuItem()
         Me.MnuAutoAviCRE = New System.Windows.Forms.MenuItem()
+        Me.MenuItem84 = New System.Windows.Forms.MenuItem()
         Me.mnuSalir = New System.Windows.Forms.MenuItem()
         Me.PendientesORGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -589,7 +591,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem84 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem89 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2103,7 +2105,7 @@ Public Class frmAgil
         '
         Me.MnuFira.Enabled = False
         Me.MnuFira.Index = 14
-        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE, Me.MenuItem84})
+        Me.MnuFira.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuAutoAviCRE, Me.MenuItem84, Me.MenuItem89})
         Me.MnuFira.Text = "Oper. FIRA"
         '
         'MnuAutoAviCRE
@@ -2111,6 +2113,12 @@ Public Class frmAgil
         Me.MnuAutoAviCRE.Enabled = False
         Me.MnuAutoAviCRE.Index = 0
         Me.MnuAutoAviCRE.Text = "Descuentos de Avío"
+        '
+        'MenuItem84
+        '
+        Me.MenuItem84.Enabled = False
+        Me.MenuItem84.Index = 1
+        Me.MenuItem84.Text = "Seguimiento de Crédito"
         '
         'mnuSalir
         '
@@ -2149,11 +2157,11 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem84
+        'MenuItem89
         '
-        Me.MenuItem84.Enabled = False
-        Me.MenuItem84.Index = 1
-        Me.MenuItem84.Text = "Seguimiento de Crédito"
+        Me.MenuItem89.Enabled = False
+        Me.MenuItem89.Index = 2
+        Me.MenuItem89.Text = "Reporte de Cobranza FIRA"
         '
         'frmAgil
         '
@@ -3659,6 +3667,11 @@ Public Class frmAgil
 
     Private Sub MenuItem84_Click(sender As Object, e As EventArgs) Handles MenuItem84.Click
         Dim f As New FrmSeguimientoCRED
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem89_Click(sender As Object, e As EventArgs) Handles MenuItem89.Click
+        Dim f As New frmRepcobraFIRA
         f.Show()
     End Sub
 End Class
