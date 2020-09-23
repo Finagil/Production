@@ -579,7 +579,7 @@ Public Class frmGeneFact
                     nResidual = Round(nResidual / (1 + (nTasaIVACliente / 100)), 2)
                     Dim nResidualIva As Decimal = Round(nResidual * (nTasaIVACliente / 100), 2)
                     tx.Insert(cAnexo, nResidual, nResidualIva, nTasaIVACliente / 100, "S", "N")
-                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada AP " & aFactura.Anexo, nLetra & "-" & TaQUERY.UltimaLetra(cAnexo))
+                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada AP " & cAnexo, nLetra & "-" & TaQUERY.UltimaLetra(cAnexo))
                 End If
 
 
