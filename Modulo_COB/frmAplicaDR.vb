@@ -280,6 +280,7 @@ Public Class frmAplicaDR
         Dim i As Integer = 0
         Dim nRecibo As Decimal = 0
         Dim NoGrupo As Decimal
+        Dim Aux As String
 
         cFechaAplicacion = DTOC(FECHA_APLICACION)
 
@@ -336,6 +337,13 @@ Public Class frmAplicaDR
 
                 If DataGridView1.Rows(i).Cells(7).Value < 0 Then ' se registra saldo a Favor
                     taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
+                    Aux = "Usuario:" & UsuarioGlobal & "<br>"
+                    Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
+                    Aux += "Saldo Aplicado:" & Abs(DataGridView1.Rows(i).Cells(5).Value) & "<br>"
+                    Aux += "Adeudo:" & Abs(DataGridView1.Rows(i).Cells(6).Value) & "<br>"
+                    Aux += "Saldo a Favor:" & Abs(DataGridView1.Rows(i).Cells(7).Value) & "<br>"
+                    Aux += "Instrumento Monetario:" & InstrumentoMonetario & "<br>"
+                    MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "Saldo a Favor: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
                 End If
 
                 cFechaPago = Mid(DataGridView1.Rows(i).Cells(1).Value, 7, 4) + Mid(DataGridView1.Rows(i).Cells(1).Value, 4, 2) + Mid(DataGridView1.Rows(i).Cells(1).Value, 1, 2)
@@ -478,6 +486,13 @@ Public Class frmAplicaDR
                         If (nMoratorios + nIvaMoratorios) > 0 And nImporte > 0 Then ' si pasa por esta parte es por que el deposito no alcanza para los moratorios y ya no debe continuar con las aplicaciones #ECT 20151029
                             ' se registra saldo a Favor
                             taFavor.Insert(cAnexo, "", nImporte, UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
+                            Aux = "Usuario:" & UsuarioGlobal & "<br>"
+                            Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
+                            Aux += "Saldo Aplicado:" & Abs(DataGridView1.Rows(i).Cells(5).Value) & "<br>"
+                            Aux += "Adeudo:" & Abs(DataGridView1.Rows(i).Cells(6).Value) & "<br>"
+                            Aux += "Saldo a Favor:" & Abs(DataGridView1.Rows(i).Cells(7).Value) & "<br>"
+                            Aux += "Instrumento Monetario:" & InstrumentoMonetario & "<br>"
+                            MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "Saldo a Favor Moras: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
                             Exit For ' no aplica el movimiento por que no cobre los moratorios
                         End If
                     End If

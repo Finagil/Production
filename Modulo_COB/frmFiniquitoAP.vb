@@ -25,7 +25,7 @@ Public Class frmFiniquitoAP
     End Sub
 
     ' Declaración de variables de datos de alcance privado
-
+    Dim Aux As String
     Dim cSerie As String = ""
     Dim cSucursal As String = ""
     Dim nFactura As Decimal = 0
@@ -1933,6 +1933,13 @@ Public Class frmFiniquitoAP
         If Round(nImportePago, 2) - Round(nPagoTotal, 2) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
             Dim taFavor As New ContaDSTableAdapters.CONT_SaldosFavorTableAdapter
             taFavor.Insert(cAnexo, "", Round(nImportePago, 2) - Round(nPagoTotal, 2), UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
+            Aux = "Usuario:" & UsuarioGlobal & "<br>"
+            Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
+            aux += "nImportePago:" & nImportePago & "<br>"
+            aux += "nPagoTotal:" & nPagoTotal & "<br>"
+            aux += "Saldo a Favor:" & Round(nImportePago, 2) - Round(nPagoTotal, 2) & "<br>"
+            aux += "Instrumento Monetario:" & CmbInstruMon.SelectedValue & "<br>"
+            MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "Finiquito AP Saldo a Favor: " & cAnexo, aux)
         End If
 
         cm7 = New SqlCommand(strUpdate, cnAgil)

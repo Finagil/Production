@@ -6,7 +6,6 @@ Imports System.Data.SqlClient
 Imports System.Math
 
 Public Class frmAcepagoIVF
-
     Inherits System.Windows.Forms.Form
 
 #Region " Windows Form Designer generated code "
@@ -490,7 +489,7 @@ Public Class frmAcepagoIVF
 #End Region
 
     ' Declaración de variables de conexión ADO .NET de alcance Privado
-
+    Dim Aux As String
     Dim dtMovimientos As New DataTable("Movimientos")
 
     ' Declaración de variables de datos de alcance Privado
@@ -1457,6 +1456,11 @@ Public Class frmAcepagoIVF
 
             If Val(txtMontoPagado.Text) > 0 Then ' SE REGISTRA EL SALDO A FAVOR 
                 taFavor.Insert(cAnexo, "", txtMontoPagado.Text, UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
+                Aux = "Usuario:" & UsuarioGlobal & "<br>"
+                Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
+                Aux += "Saldo a Favor:" & (txtMontoPagado.Text) & "<br>"
+                Aux += "Instrumento Monetario:" & CmbInstruMon.SelectedValue & "<br>"
+                MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "AP Manual Saldo a Favor: " & cAnexo, Aux)
             End If
 
             Me.Close()

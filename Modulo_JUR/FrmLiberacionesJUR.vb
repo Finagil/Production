@@ -89,7 +89,7 @@
         End If
         Dim Mensaje As String = ""
         Mensaje += "Cliente: " & Me.VWLiberacionesMCBindingSource.Current("Descr") & "<br>"
-        Mensaje += "Ciclo: " & Me.VWLiberacionesMCBindingSource.Current("Ciclo") & "<br>"
+        Mensaje += "Ciclo: " & Me.VWLiberacionesMCBindingSource.Current("CicloPagare") & "<br>"
         Mensaje += "Contrato: " & Me.VWLiberacionesMCBindingSource.Current("AnexoCon") & "<br>"
         Mensaje += "Sucursal: " & Me.VWLiberacionesMCBindingSource.Current("Nombre_Sucursal") & "<br>"
         Mensaje += "Promotor: " & Me.VWLiberacionesMCBindingSource.Current("Nombre_Promotor") & "<br>"
