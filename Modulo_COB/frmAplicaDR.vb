@@ -335,7 +335,7 @@ Public Class frmAplicaDR
                 ' contrato que adeude más de una letra por lo que debe aplicar el pago en forma
                 ' individualizada
 
-                If DataGridView1.Rows(i).Cells(7).Value < 0 Then ' se registra saldo a Favor
+                If DataGridView1.Rows(i).Cells(7).Value < 0 And DataGridView1.Rows(i).Cells(6).Value > 0 Then ' se registra saldo a Favor cuando tenga saldo a favor y exista adeudo en rentas
                     taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
                     Aux = "Usuario:" & UsuarioGlobal & "<br>"
                     Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
@@ -343,7 +343,7 @@ Public Class frmAplicaDR
                     Aux += "Adeudo:" & Abs(DataGridView1.Rows(i).Cells(6).Value) & "<br>"
                     Aux += "Saldo a Favor:" & Abs(DataGridView1.Rows(i).Cells(7).Value) & "<br>"
                     Aux += "Instrumento Monetario:" & InstrumentoMonetario & "<br>"
-                    MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "Saldo a Favor: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
+                    MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "DR Saldo a Favor: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
                 End If
 
                 cFechaPago = Mid(DataGridView1.Rows(i).Cells(1).Value, 7, 4) + Mid(DataGridView1.Rows(i).Cells(1).Value, 4, 2) + Mid(DataGridView1.Rows(i).Cells(1).Value, 1, 2)
