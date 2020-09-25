@@ -5666,7 +5666,7 @@ Public Class frmActiAnexCL
                 Else
                     If TIRactiva = 0 And cFechacon > "20200525" Then TIRactiva = CalculaTIR_ACTIVA(cAnexo)
                     If TIRpasiva = 0 And cFechacon > "20200525" Then TIRpasiva = CalculaTIR_PASIVA(cAnexo)
-                    Dim Indicadores As String = "TIR.ACTIVO " & TIRactiva.ToString("p4") & "% TIR.PASIVO " & TIRpasiva.ToString("p4") & "% DIF TIR " & CDec(TIRactiva - TIRpasiva).ToString("p4") & "%"
+                    Dim Indicadores As String = "TIR.ACTIVO " & (TIRactiva / 100).ToString("p4") & "% TIR.PASIVO " & TIRpasiva.ToString("p4") & "% DIF TIR " & CDec(TIRactiva - TIRpasiva) / 100.ToString("p4") & "%"
                     If cTipta = "7" Then
                         ta.Insert(Anexo, Mid(Comentario.ToUpper, 1, 400), "", Indicadores, TasaPol, nTasasAux + nDifer, False, False, "", False, FirmaProm, "", "", "", Date.Now, True, 0)
                     Else
