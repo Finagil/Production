@@ -75,6 +75,8 @@ Partial Public Class ProductionDataSet
     
     Private tableVw_BuroMonitorPM_Fira_PI As Vw_BuroMonitorPM_Fira_PIDataTable
     
+    Private tableAnexos2 As Anexos2DataTable
+    
     Private tableTdetalle As TdetalleDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
@@ -180,6 +182,9 @@ Partial Public Class ProductionDataSet
             End If
             If (Not (ds.Tables("Vw_BuroMonitorPM_Fira_PI")) Is Nothing) Then
                 MyBase.Tables.Add(New Vw_BuroMonitorPM_Fira_PIDataTable(ds.Tables("Vw_BuroMonitorPM_Fira_PI")))
+            End If
+            If (Not (ds.Tables("Anexos2")) Is Nothing) Then
+                MyBase.Tables.Add(New Anexos2DataTable(ds.Tables("Anexos2")))
             End If
             If (Not (ds.Tables("Tdetalle")) Is Nothing) Then
                 MyBase.Tables.Add(New TdetalleDataTable(ds.Tables("Tdetalle")))
@@ -455,6 +460,16 @@ Partial Public Class ProductionDataSet
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Anexos2() As Anexos2DataTable
+        Get
+            Return Me.tableAnexos2
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property Tdetalle() As TdetalleDataTable
         Get
             Return Me.tableTdetalle
@@ -602,6 +617,9 @@ Partial Public Class ProductionDataSet
             End If
             If (Not (ds.Tables("Vw_BuroMonitorPM_Fira_PI")) Is Nothing) Then
                 MyBase.Tables.Add(New Vw_BuroMonitorPM_Fira_PIDataTable(ds.Tables("Vw_BuroMonitorPM_Fira_PI")))
+            End If
+            If (Not (ds.Tables("Anexos2")) Is Nothing) Then
+                MyBase.Tables.Add(New Anexos2DataTable(ds.Tables("Anexos2")))
             End If
             If (Not (ds.Tables("Tdetalle")) Is Nothing) Then
                 MyBase.Tables.Add(New TdetalleDataTable(ds.Tables("Tdetalle")))
@@ -788,6 +806,12 @@ Partial Public Class ProductionDataSet
                 Me.tableVw_BuroMonitorPM_Fira_PI.InitVars
             End If
         End If
+        Me.tableAnexos2 = CType(MyBase.Tables("Anexos2"),Anexos2DataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableAnexos2) Is Nothing) Then
+                Me.tableAnexos2.InitVars
+            End If
+        End If
         Me.tableTdetalle = CType(MyBase.Tables("Tdetalle"),TdetalleDataTable)
         If (initTable = true) Then
             If (Not (Me.tableTdetalle) Is Nothing) Then
@@ -854,6 +878,8 @@ Partial Public Class ProductionDataSet
         MyBase.Tables.Add(Me.tableVw_BuroMonitorPFAE_Fira_PI)
         Me.tableVw_BuroMonitorPM_Fira_PI = New Vw_BuroMonitorPM_Fira_PIDataTable()
         MyBase.Tables.Add(Me.tableVw_BuroMonitorPM_Fira_PI)
+        Me.tableAnexos2 = New Anexos2DataTable()
+        MyBase.Tables.Add(Me.tableAnexos2)
         Me.tableTdetalle = New TdetalleDataTable()
         MyBase.Tables.Add(Me.tableTdetalle)
     End Sub
@@ -1010,6 +1036,12 @@ Partial Public Class ProductionDataSet
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeAnexos2() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeTdetalle() As Boolean
         Return false
     End Function
@@ -1146,6 +1178,9 @@ Partial Public Class ProductionDataSet
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub Vw_BuroMonitorPM_Fira_PIRowChangeEventHandler(ByVal sender As Object, ByVal e As Vw_BuroMonitorPM_Fira_PIRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub Anexos2RowChangeEventHandler(ByVal sender As Object, ByVal e As Anexos2RowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub TdetalleRowChangeEventHandler(ByVal sender As Object, ByVal e As TdetalleRowChangeEvent)
@@ -13899,6 +13934,2713 @@ Partial Public Class ProductionDataSet
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class Anexos2DataTable
+        Inherits Global.System.Data.TypedTableBase(Of Anexos2Row)
+        
+        Private columnAnexo As Global.System.Data.DataColumn
+        
+        Private columnFlcan As Global.System.Data.DataColumn
+        
+        Private columnVencida As Global.System.Data.DataColumn
+        
+        Private columnGarantia As Global.System.Data.DataColumn
+        
+        Private columnReferencia As Global.System.Data.DataColumn
+        
+        Private columnCliente As Global.System.Data.DataColumn
+        
+        Private columnImpeq As Global.System.Data.DataColumn
+        
+        Private columnSegeq As Global.System.Data.DataColumn
+        
+        Private columnFinse As Global.System.Data.DataColumn
+        
+        Private columnPlazo As Global.System.Data.DataColumn
+        
+        Private columnPlaseg As Global.System.Data.DataColumn
+        
+        Private columnIvaeq As Global.System.Data.DataColumn
+        
+        Private columnIvase As Global.System.Data.DataColumn
+        
+        Private columnPorieq As Global.System.Data.DataColumn
+        
+        Private columnPorInt As Global.System.Data.DataColumn
+        
+        Private columnAmorin As Global.System.Data.DataColumn
+        
+        Private columnIvaAmorin As Global.System.Data.DataColumn
+        
+        Private columnTippe As Global.System.Data.DataColumn
+        
+        Private columnTipta As Global.System.Data.DataColumn
+        
+        Private columnTasas As Global.System.Data.DataColumn
+        
+        Private columnDifer As Global.System.Data.DataColumn
+        
+        Private columnAcumulaIntereses As Global.System.Data.DataColumn
+        
+        Private columnTipar As Global.System.Data.DataColumn
+        
+        Private columnForca As Global.System.Data.DataColumn
+        
+        Private columnTipmen As Global.System.Data.DataColumn
+        
+        Private columnRtasD As Global.System.Data.DataColumn
+        
+        Private columnImpRD As Global.System.Data.DataColumn
+        
+        Private columnIvaRD As Global.System.Data.DataColumn
+        
+        Private columnPorco As Global.System.Data.DataColumn
+        
+        Private columnComis As Global.System.Data.DataColumn
+        
+        Private columnPorop As Global.System.Data.DataColumn
+        
+        Private columnFechacon As Global.System.Data.DataColumn
+        
+        Private columnFvenc As Global.System.Data.DataColumn
+        
+        Private columnFondeo As Global.System.Data.DataColumn
+        
+        Private columnDepNafin As Global.System.Data.DataColumn
+        
+        Private columnCritas As Global.System.Data.DataColumn
+        
+        Private columnTipeq As Global.System.Data.DataColumn
+        
+        Private columnGastos As Global.System.Data.DataColumn
+        
+        Private columnIvaGastos As Global.System.Data.DataColumn
+        
+        Private columnTipmon As Global.System.Data.DataColumn
+        
+        Private columnMensu As Global.System.Data.DataColumn
+        
+        Private columnTasmor As Global.System.Data.DataColumn
+        
+        Private columnTaspen As Global.System.Data.DataColumn
+        
+        Private columnDoc1 As Global.System.Data.DataColumn
+        
+        Private columnDoc2 As Global.System.Data.DataColumn
+        
+        Private columnDoc3 As Global.System.Data.DataColumn
+        
+        Private columnPrendaria As Global.System.Data.DataColumn
+        
+        Private columnPrenda As Global.System.Data.DataColumn
+        
+        Private columnObserva As Global.System.Data.DataColumn
+        
+        Private columnFechafin As Global.System.Data.DataColumn
+        
+        Private columnFactor As Global.System.Data.DataColumn
+        
+        Private columnPiso As Global.System.Data.DataColumn
+        
+        Private columnTecho As Global.System.Data.DataColumn
+        
+        Private columnTasamax As Global.System.Data.DataColumn
+        
+        Private columnAdeudo As Global.System.Data.DataColumn
+        
+        Private columnRD As Global.System.Data.DataColumn
+        
+        Private columnImpDG As Global.System.Data.DataColumn
+        
+        Private columnIvaDG As Global.System.Data.DataColumn
+        
+        Private columnDerechos As Global.System.Data.DataColumn
+        
+        Private columnDG As Global.System.Data.DataColumn
+        
+        Private columnGHipotec As Global.System.Data.DataColumn
+        
+        Private columnLugar As Global.System.Data.DataColumn
+        
+        Private columnNotaria As Global.System.Data.DataColumn
+        
+        Private columnEscritura As Global.System.Data.DataColumn
+        
+        Private columnScaneo As Global.System.Data.DataColumn
+        
+        Private columnArchivo As Global.System.Data.DataColumn
+        
+        Private columnServicio As Global.System.Data.DataColumn
+        
+        Private columnIVAServicio As Global.System.Data.DataColumn
+        
+        Private columnFecha_Pago As Global.System.Data.DataColumn
+        
+        Private columnCobertura As Global.System.Data.DataColumn
+        
+        Private columnPagos As Global.System.Data.DataColumn
+        
+        Private columnTipoFrecuencia As Global.System.Data.DataColumn
+        
+        Private columnValorFrecuencia As Global.System.Data.DataColumn
+        
+        Private columnAmortizaciones As Global.System.Data.DataColumn
+        
+        Private columnBanco As Global.System.Data.DataColumn
+        
+        Private columnCuentaCLABE As Global.System.Data.DataColumn
+        
+        Private columnAutoriza As Global.System.Data.DataColumn
+        
+        Private columnTitular As Global.System.Data.DataColumn
+        
+        Private columnidCredito As Global.System.Data.DataColumn
+        
+        Private columnMinds As Global.System.Data.DataColumn
+        
+        Private columnDescr As Global.System.Data.DataColumn
+        
+        Private columnTipo As Global.System.Data.DataColumn
+        
+        Private columnSucursal As Global.System.Data.DataColumn
+        
+        Private columnPromo As Global.System.Data.DataColumn
+        
+        Private columnGestor As Global.System.Data.DataColumn
+        
+        Private columnCalle As Global.System.Data.DataColumn
+        
+        Private columnColonia As Global.System.Data.DataColumn
+        
+        Private columnDelegacion As Global.System.Data.DataColumn
+        
+        Private columnCopos As Global.System.Data.DataColumn
+        
+        Private columnTelef1 As Global.System.Data.DataColumn
+        
+        Private columnTelef2 As Global.System.Data.DataColumn
+        
+        Private columnTelef3 As Global.System.Data.DataColumn
+        
+        Private columnFax As Global.System.Data.DataColumn
+        
+        Private columnFecha1 As Global.System.Data.DataColumn
+        
+        Private columnGiro As Global.System.Data.DataColumn
+        
+        Private columnPlaza As Global.System.Data.DataColumn
+        
+        Private columnRFC As Global.System.Data.DataColumn
+        
+        Private columnCURP As Global.System.Data.DataColumn
+        
+        Private columnEMail1 As Global.System.Data.DataColumn
+        
+        Private columnEMail2 As Global.System.Data.DataColumn
+        
+        Private columnCuentaBancomer As Global.System.Data.DataColumn
+        
+        Private columnGeneClie As Global.System.Data.DataColumn
+        
+        Private columnNomrepr As Global.System.Data.DataColumn
+        
+        Private columnGenerepr As Global.System.Data.DataColumn
+        
+        Private columnPoderepr As Global.System.Data.DataColumn
+        
+        Private columnNomrepr2 As Global.System.Data.DataColumn
+        
+        Private columnGenerep2 As Global.System.Data.DataColumn
+        
+        Private columnPoderep2 As Global.System.Data.DataColumn
+        
+        Private columnCoac As Global.System.Data.DataColumn
+        
+        Private columnTipcoac As Global.System.Data.DataColumn
+        
+        Private columnNomcoac As Global.System.Data.DataColumn
+        
+        Private columnGenecoac As Global.System.Data.DataColumn
+        
+        Private columnNomrcoac As Global.System.Data.DataColumn
+        
+        Private columnGenercoa As Global.System.Data.DataColumn
+        
+        Private columnPodercoa As Global.System.Data.DataColumn
+        
+        Private columnObli As Global.System.Data.DataColumn
+        
+        Private columnTipoObli As Global.System.Data.DataColumn
+        
+        Private columnNomObli As Global.System.Data.DataColumn
+        
+        Private columnGeneObli As Global.System.Data.DataColumn
+        
+        Private columnNomrObl As Global.System.Data.DataColumn
+        
+        Private columnGenerObl As Global.System.Data.DataColumn
+        
+        Private columnPoderObl As Global.System.Data.DataColumn
+        
+        Private columnAval1 As Global.System.Data.DataColumn
+        
+        Private columnTipaval1 As Global.System.Data.DataColumn
+        
+        Private columnNomaval1 As Global.System.Data.DataColumn
+        
+        Private columnGeneava1 As Global.System.Data.DataColumn
+        
+        Private columnNomrava1 As Global.System.Data.DataColumn
+        
+        Private columnGenerav1 As Global.System.Data.DataColumn
+        
+        Private columnPoderav1 As Global.System.Data.DataColumn
+        
+        Private columnAval2 As Global.System.Data.DataColumn
+        
+        Private columnTipaval2 As Global.System.Data.DataColumn
+        
+        Private columnNomaval2 As Global.System.Data.DataColumn
+        
+        Private columnGeneAva2 As Global.System.Data.DataColumn
+        
+        Private columnNomrava2 As Global.System.Data.DataColumn
+        
+        Private columnGenerav2 As Global.System.Data.DataColumn
+        
+        Private columnPoderav2 As Global.System.Data.DataColumn
+        
+        Private columnAgrupa As Global.System.Data.DataColumn
+        
+        Private columnSegVida As Global.System.Data.DataColumn
+        
+        Private columnTasaIVACliente As Global.System.Data.DataColumn
+        
+        Private columnCuentadePago1 As Global.System.Data.DataColumn
+        
+        Private columnFormadePago1 As Global.System.Data.DataColumn
+        
+        Private columnCuentadePago2 As Global.System.Data.DataColumn
+        
+        Private columnFormadePago2 As Global.System.Data.DataColumn
+        
+        Private columnCuentadePago3 As Global.System.Data.DataColumn
+        
+        Private columnFormadePago3 As Global.System.Data.DataColumn
+        
+        Private columnCuentadePago4 As Global.System.Data.DataColumn
+        
+        Private columnFormadePago4 As Global.System.Data.DataColumn
+        
+        Private columnNombreCliente As Global.System.Data.DataColumn
+        
+        Private columnApellidoPaterno As Global.System.Data.DataColumn
+        
+        Private columnApellidoMaterno As Global.System.Data.DataColumn
+        
+        Private columnGenero As Global.System.Data.DataColumn
+        
+        Private columnsiebel As Global.System.Data.DataColumn
+        
+        Private columnAnexoCon As Global.System.Data.DataColumn
+        
+        Private columnTipoCredito As Global.System.Data.DataColumn
+        
+        Private columnMontoFinanciado As Global.System.Data.DataColumn
+        
+        Private columnPrimera As Global.System.Data.DataColumn
+        
+        Private columnUltima As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Anexos2"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AnexoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FlcanColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFlcan
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property VencidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVencida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GarantiaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGarantia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ReferenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReferencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ClienteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCliente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ImpeqColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImpeq
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SegeqColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSegeq
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FinseColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFinse
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PlazoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPlazo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PlasegColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPlaseg
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaeqColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvaeq
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaseColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvase
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PorieqColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorieq
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PorIntColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorInt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AmorinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmorin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaAmorinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvaAmorin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TippeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTippe
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TiptaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DiferColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDifer
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AcumulaInteresesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAcumulaIntereses
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TiparColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ForcaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnForca
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipmenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipmen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RtasDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRtasD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ImpRDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImpRD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaRDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvaRD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PorcoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorco
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ComisColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnComis
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PoropColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPorop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaconColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechacon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FvencColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFvenc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FondeoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFondeo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DepNafinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDepNafin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CritasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCritas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipeqColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipeq
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GastosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGastos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaGastosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvaGastos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipmonColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipmon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MensuColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMensu
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasmorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasmor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TaspenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTaspen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Doc1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDoc1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Doc2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDoc2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Doc3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDoc3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PrendariaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrendaria
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PrendaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrenda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ObservaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnObserva
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechafinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechafin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FactorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFactor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PisoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPiso
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TechoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTecho
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasamaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasamax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AdeudoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAdeudo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ImpDGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImpDG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IvaDGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIvaDG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DerechosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDerechos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GHipotecColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGHipotec
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property LugarColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLugar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NotariaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNotaria
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property EscrituraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEscritura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ScaneoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnScaneo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ArchivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnArchivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ServicioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnServicio
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IVAServicioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIVAServicio
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Fecha_PagoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFecha_Pago
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CoberturaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCobertura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PagosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPagos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoFrecuenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoFrecuencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ValorFrecuenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnValorFrecuencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AmortizacionesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAmortizaciones
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BancoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBanco
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentaCLABEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentaCLABE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AutorizaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAutoriza
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TitularColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTitular
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idCreditoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidCredito
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MindsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMinds
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DescrColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SucursalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSucursal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PromoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPromo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GestorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGestor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CalleColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCalle
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ColoniaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColonia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DelegacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDelegacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CoposColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCopos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Telef1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelef1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Telef2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelef2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Telef3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTelef3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Fecha1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFecha1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GiroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGiro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PlazaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPlaza
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RFCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRFC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CURPColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCURP
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property EMail1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEMail1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property EMail2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEMail2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentaBancomerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentaBancomer
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GeneClieColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGeneClie
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NomreprColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrepr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GenereprColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenerepr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PodereprColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPoderepr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nomrepr2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrepr2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Generep2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenerep2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Poderep2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPoderep2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CoacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCoac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipcoacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipcoac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NomcoacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomcoac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GenecoacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenecoac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NomrcoacColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrcoac
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GenercoaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenercoa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PodercoaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPodercoa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ObliColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnObli
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoObliColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoObli
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NomObliColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomObli
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GeneObliColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGeneObli
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NomrOblColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrObl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GenerOblColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenerObl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PoderOblColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPoderObl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Aval1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAval1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Tipaval1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipaval1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nomaval1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomaval1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Geneava1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGeneava1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nomrava1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrava1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Generav1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenerav1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Poderav1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPoderav1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Aval2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAval2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Tipaval2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipaval2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nomaval2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomaval2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GeneAva2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGeneAva2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Nomrava2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNomrava2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Generav2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenerav2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Poderav2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPoderav2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AgrupaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAgrupa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SegVidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSegVida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TasaIVAClienteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTasaIVACliente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentadePago1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentadePago1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormadePago1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormadePago1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentadePago2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentadePago2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormadePago2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormadePago2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentadePago3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentadePago3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormadePago3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormadePago3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentadePago4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentadePago4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FormadePago4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFormadePago4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NombreClienteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNombreCliente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ApellidoPaternoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnApellidoPaterno
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ApellidoMaternoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnApellidoMaterno
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property GeneroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGenero
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property siebelColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsiebel
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AnexoConColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexoCon
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoCreditoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoCredito
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MontoFinanciadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMontoFinanciado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property PrimeraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrimera
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UltimaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUltima
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As Anexos2Row
+            Get
+                Return CType(Me.Rows(index),Anexos2Row)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event Anexos2RowChanging As Anexos2RowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event Anexos2RowChanged As Anexos2RowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event Anexos2RowDeleting As Anexos2RowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event Anexos2RowDeleted As Anexos2RowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddAnexos2Row(ByVal row As Anexos2Row)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddAnexos2Row( _
+                    ByVal Anexo As String,  _
+                    ByVal Flcan As String,  _
+                    ByVal Vencida As String,  _
+                    ByVal Garantia As String,  _
+                    ByVal Referencia As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal Impeq As Decimal,  _
+                    ByVal Segeq As Decimal,  _
+                    ByVal Finse As String,  _
+                    ByVal Plazo As Short,  _
+                    ByVal Plaseg As Byte,  _
+                    ByVal Ivaeq As Decimal,  _
+                    ByVal Ivase As Decimal,  _
+                    ByVal Porieq As Decimal,  _
+                    ByVal PorInt As Decimal,  _
+                    ByVal Amorin As Decimal,  _
+                    ByVal IvaAmorin As Decimal,  _
+                    ByVal Tippe As String,  _
+                    ByVal Tipta As String,  _
+                    ByVal Tasas As Decimal,  _
+                    ByVal Difer As Decimal,  _
+                    ByVal AcumulaIntereses As String,  _
+                    ByVal Tipar As String,  _
+                    ByVal Forca As String,  _
+                    ByVal Tipmen As String,  _
+                    ByVal RtasD As Byte,  _
+                    ByVal ImpRD As Decimal,  _
+                    ByVal IvaRD As Decimal,  _
+                    ByVal Porco As Decimal,  _
+                    ByVal Comis As Decimal,  _
+                    ByVal Porop As Decimal,  _
+                    ByVal Fechacon As String,  _
+                    ByVal Fvenc As String,  _
+                    ByVal Fondeo As String,  _
+                    ByVal DepNafin As Decimal,  _
+                    ByVal Critas As String,  _
+                    ByVal Tipeq As String,  _
+                    ByVal Gastos As Decimal,  _
+                    ByVal IvaGastos As Decimal,  _
+                    ByVal Tipmon As String,  _
+                    ByVal Mensu As Decimal,  _
+                    ByVal Tasmor As Decimal,  _
+                    ByVal Taspen As Decimal,  _
+                    ByVal Doc1 As String,  _
+                    ByVal Doc2 As String,  _
+                    ByVal Doc3 As String,  _
+                    ByVal Prendaria As String,  _
+                    ByVal Prenda As String,  _
+                    ByVal Observa As String,  _
+                    ByVal Fechafin As String,  _
+                    ByVal Factor As Decimal,  _
+                    ByVal Piso As Decimal,  _
+                    ByVal Techo As Decimal,  _
+                    ByVal Tasamax As Decimal,  _
+                    ByVal Adeudo As String,  _
+                    ByVal RD As Byte,  _
+                    ByVal ImpDG As Decimal,  _
+                    ByVal IvaDG As Decimal,  _
+                    ByVal Derechos As Decimal,  _
+                    ByVal DG As Byte,  _
+                    ByVal GHipotec As String,  _
+                    ByVal Lugar As String,  _
+                    ByVal Notaria As String,  _
+                    ByVal Escritura As String,  _
+                    ByVal Scaneo As String,  _
+                    ByVal Archivo As String,  _
+                    ByVal Servicio As Decimal,  _
+                    ByVal IVAServicio As Decimal,  _
+                    ByVal Fecha_Pago As String,  _
+                    ByVal Cobertura As String,  _
+                    ByVal Pagos As Byte,  _
+                    ByVal TipoFrecuencia As String,  _
+                    ByVal ValorFrecuencia As Byte,  _
+                    ByVal Amortizaciones As Byte,  _
+                    ByVal Banco As String,  _
+                    ByVal CuentaCLABE As String,  _
+                    ByVal Autoriza As String,  _
+                    ByVal Titular As String,  _
+                    ByVal idCredito As String,  _
+                    ByVal Minds As Boolean,  _
+                    ByVal Descr As String,  _
+                    ByVal Tipo As String,  _
+                    ByVal Sucursal As String,  _
+                    ByVal Promo As String,  _
+                    ByVal Gestor As String,  _
+                    ByVal Calle As String,  _
+                    ByVal Colonia As String,  _
+                    ByVal Delegacion As String,  _
+                    ByVal Copos As String,  _
+                    ByVal Telef1 As String,  _
+                    ByVal Telef2 As String,  _
+                    ByVal Telef3 As String,  _
+                    ByVal Fax As String,  _
+                    ByVal Fecha1 As String,  _
+                    ByVal Giro As String,  _
+                    ByVal Plaza As String,  _
+                    ByVal RFC As String,  _
+                    ByVal CURP As String,  _
+                    ByVal EMail1 As String,  _
+                    ByVal EMail2 As String,  _
+                    ByVal CuentaBancomer As String,  _
+                    ByVal GeneClie As String,  _
+                    ByVal Nomrepr As String,  _
+                    ByVal Generepr As String,  _
+                    ByVal Poderepr As String,  _
+                    ByVal Nomrepr2 As String,  _
+                    ByVal Generep2 As String,  _
+                    ByVal Poderep2 As String,  _
+                    ByVal Coac As String,  _
+                    ByVal Tipcoac As String,  _
+                    ByVal Nomcoac As String,  _
+                    ByVal Genecoac As String,  _
+                    ByVal Nomrcoac As String,  _
+                    ByVal Genercoa As String,  _
+                    ByVal Podercoa As String,  _
+                    ByVal Obli As String,  _
+                    ByVal TipoObli As String,  _
+                    ByVal NomObli As String,  _
+                    ByVal GeneObli As String,  _
+                    ByVal NomrObl As String,  _
+                    ByVal GenerObl As String,  _
+                    ByVal PoderObl As String,  _
+                    ByVal Aval1 As String,  _
+                    ByVal Tipaval1 As String,  _
+                    ByVal Nomaval1 As String,  _
+                    ByVal Geneava1 As String,  _
+                    ByVal Nomrava1 As String,  _
+                    ByVal Generav1 As String,  _
+                    ByVal Poderav1 As String,  _
+                    ByVal Aval2 As String,  _
+                    ByVal Tipaval2 As String,  _
+                    ByVal Nomaval2 As String,  _
+                    ByVal GeneAva2 As String,  _
+                    ByVal Nomrava2 As String,  _
+                    ByVal Generav2 As String,  _
+                    ByVal Poderav2 As String,  _
+                    ByVal Agrupa As String,  _
+                    ByVal SegVida As String,  _
+                    ByVal TasaIVACliente As Decimal,  _
+                    ByVal CuentadePago1 As String,  _
+                    ByVal FormadePago1 As String,  _
+                    ByVal CuentadePago2 As String,  _
+                    ByVal FormadePago2 As String,  _
+                    ByVal CuentadePago3 As String,  _
+                    ByVal FormadePago3 As String,  _
+                    ByVal CuentadePago4 As String,  _
+                    ByVal FormadePago4 As String,  _
+                    ByVal NombreCliente As String,  _
+                    ByVal ApellidoPaterno As String,  _
+                    ByVal ApellidoMaterno As String,  _
+                    ByVal Genero As String,  _
+                    ByVal siebel As Boolean,  _
+                    ByVal AnexoCon As String,  _
+                    ByVal TipoCredito As String,  _
+                    ByVal MontoFinanciado As Decimal,  _
+                    ByVal Primera As String,  _
+                    ByVal Ultima As String) As Anexos2Row
+            Dim rowAnexos2Row As Anexos2Row = CType(Me.NewRow,Anexos2Row)
+            Dim columnValuesArray() As Object = New Object() {Anexo, Flcan, Vencida, Garantia, Referencia, Cliente, Impeq, Segeq, Finse, Plazo, Plaseg, Ivaeq, Ivase, Porieq, PorInt, Amorin, IvaAmorin, Tippe, Tipta, Tasas, Difer, AcumulaIntereses, Tipar, Forca, Tipmen, RtasD, ImpRD, IvaRD, Porco, Comis, Porop, Fechacon, Fvenc, Fondeo, DepNafin, Critas, Tipeq, Gastos, IvaGastos, Tipmon, Mensu, Tasmor, Taspen, Doc1, Doc2, Doc3, Prendaria, Prenda, Observa, Fechafin, Factor, Piso, Techo, Tasamax, Adeudo, RD, ImpDG, IvaDG, Derechos, DG, GHipotec, Lugar, Notaria, Escritura, Scaneo, Archivo, Servicio, IVAServicio, Fecha_Pago, Cobertura, Pagos, TipoFrecuencia, ValorFrecuencia, Amortizaciones, Banco, CuentaCLABE, Autoriza, Titular, idCredito, Minds, Descr, Tipo, Sucursal, Promo, Gestor, Calle, Colonia, Delegacion, Copos, Telef1, Telef2, Telef3, Fax, Fecha1, Giro, Plaza, RFC, CURP, EMail1, EMail2, CuentaBancomer, GeneClie, Nomrepr, Generepr, Poderepr, Nomrepr2, Generep2, Poderep2, Coac, Tipcoac, Nomcoac, Genecoac, Nomrcoac, Genercoa, Podercoa, Obli, TipoObli, NomObli, GeneObli, NomrObl, GenerObl, PoderObl, Aval1, Tipaval1, Nomaval1, Geneava1, Nomrava1, Generav1, Poderav1, Aval2, Tipaval2, Nomaval2, GeneAva2, Nomrava2, Generav2, Poderav2, Agrupa, SegVida, TasaIVACliente, CuentadePago1, FormadePago1, CuentadePago2, FormadePago2, CuentadePago3, FormadePago3, CuentadePago4, FormadePago4, NombreCliente, ApellidoPaterno, ApellidoMaterno, Genero, siebel, AnexoCon, TipoCredito, MontoFinanciado, Primera, Ultima}
+            rowAnexos2Row.ItemArray = columnValuesArray
+            Me.Rows.Add(rowAnexos2Row)
+            Return rowAnexos2Row
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByAnexo(ByVal Anexo As String) As Anexos2Row
+            Return CType(Me.Rows.Find(New Object() {Anexo}),Anexos2Row)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As Anexos2DataTable = CType(MyBase.Clone,Anexos2DataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New Anexos2DataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnAnexo = MyBase.Columns("Anexo")
+            Me.columnFlcan = MyBase.Columns("Flcan")
+            Me.columnVencida = MyBase.Columns("Vencida")
+            Me.columnGarantia = MyBase.Columns("Garantia")
+            Me.columnReferencia = MyBase.Columns("Referencia")
+            Me.columnCliente = MyBase.Columns("Cliente")
+            Me.columnImpeq = MyBase.Columns("Impeq")
+            Me.columnSegeq = MyBase.Columns("Segeq")
+            Me.columnFinse = MyBase.Columns("Finse")
+            Me.columnPlazo = MyBase.Columns("Plazo")
+            Me.columnPlaseg = MyBase.Columns("Plaseg")
+            Me.columnIvaeq = MyBase.Columns("Ivaeq")
+            Me.columnIvase = MyBase.Columns("Ivase")
+            Me.columnPorieq = MyBase.Columns("Porieq")
+            Me.columnPorInt = MyBase.Columns("PorInt")
+            Me.columnAmorin = MyBase.Columns("Amorin")
+            Me.columnIvaAmorin = MyBase.Columns("IvaAmorin")
+            Me.columnTippe = MyBase.Columns("Tippe")
+            Me.columnTipta = MyBase.Columns("Tipta")
+            Me.columnTasas = MyBase.Columns("Tasas")
+            Me.columnDifer = MyBase.Columns("Difer")
+            Me.columnAcumulaIntereses = MyBase.Columns("AcumulaIntereses")
+            Me.columnTipar = MyBase.Columns("Tipar")
+            Me.columnForca = MyBase.Columns("Forca")
+            Me.columnTipmen = MyBase.Columns("Tipmen")
+            Me.columnRtasD = MyBase.Columns("RtasD")
+            Me.columnImpRD = MyBase.Columns("ImpRD")
+            Me.columnIvaRD = MyBase.Columns("IvaRD")
+            Me.columnPorco = MyBase.Columns("Porco")
+            Me.columnComis = MyBase.Columns("Comis")
+            Me.columnPorop = MyBase.Columns("Porop")
+            Me.columnFechacon = MyBase.Columns("Fechacon")
+            Me.columnFvenc = MyBase.Columns("Fvenc")
+            Me.columnFondeo = MyBase.Columns("Fondeo")
+            Me.columnDepNafin = MyBase.Columns("DepNafin")
+            Me.columnCritas = MyBase.Columns("Critas")
+            Me.columnTipeq = MyBase.Columns("Tipeq")
+            Me.columnGastos = MyBase.Columns("Gastos")
+            Me.columnIvaGastos = MyBase.Columns("IvaGastos")
+            Me.columnTipmon = MyBase.Columns("Tipmon")
+            Me.columnMensu = MyBase.Columns("Mensu")
+            Me.columnTasmor = MyBase.Columns("Tasmor")
+            Me.columnTaspen = MyBase.Columns("Taspen")
+            Me.columnDoc1 = MyBase.Columns("Doc1")
+            Me.columnDoc2 = MyBase.Columns("Doc2")
+            Me.columnDoc3 = MyBase.Columns("Doc3")
+            Me.columnPrendaria = MyBase.Columns("Prendaria")
+            Me.columnPrenda = MyBase.Columns("Prenda")
+            Me.columnObserva = MyBase.Columns("Observa")
+            Me.columnFechafin = MyBase.Columns("Fechafin")
+            Me.columnFactor = MyBase.Columns("Factor")
+            Me.columnPiso = MyBase.Columns("Piso")
+            Me.columnTecho = MyBase.Columns("Techo")
+            Me.columnTasamax = MyBase.Columns("Tasamax")
+            Me.columnAdeudo = MyBase.Columns("Adeudo")
+            Me.columnRD = MyBase.Columns("RD")
+            Me.columnImpDG = MyBase.Columns("ImpDG")
+            Me.columnIvaDG = MyBase.Columns("IvaDG")
+            Me.columnDerechos = MyBase.Columns("Derechos")
+            Me.columnDG = MyBase.Columns("DG")
+            Me.columnGHipotec = MyBase.Columns("GHipotec")
+            Me.columnLugar = MyBase.Columns("Lugar")
+            Me.columnNotaria = MyBase.Columns("Notaria")
+            Me.columnEscritura = MyBase.Columns("Escritura")
+            Me.columnScaneo = MyBase.Columns("Scaneo")
+            Me.columnArchivo = MyBase.Columns("Archivo")
+            Me.columnServicio = MyBase.Columns("Servicio")
+            Me.columnIVAServicio = MyBase.Columns("IVAServicio")
+            Me.columnFecha_Pago = MyBase.Columns("Fecha_Pago")
+            Me.columnCobertura = MyBase.Columns("Cobertura")
+            Me.columnPagos = MyBase.Columns("Pagos")
+            Me.columnTipoFrecuencia = MyBase.Columns("TipoFrecuencia")
+            Me.columnValorFrecuencia = MyBase.Columns("ValorFrecuencia")
+            Me.columnAmortizaciones = MyBase.Columns("Amortizaciones")
+            Me.columnBanco = MyBase.Columns("Banco")
+            Me.columnCuentaCLABE = MyBase.Columns("CuentaCLABE")
+            Me.columnAutoriza = MyBase.Columns("Autoriza")
+            Me.columnTitular = MyBase.Columns("Titular")
+            Me.columnidCredito = MyBase.Columns("idCredito")
+            Me.columnMinds = MyBase.Columns("Minds")
+            Me.columnDescr = MyBase.Columns("Descr")
+            Me.columnTipo = MyBase.Columns("Tipo")
+            Me.columnSucursal = MyBase.Columns("Sucursal")
+            Me.columnPromo = MyBase.Columns("Promo")
+            Me.columnGestor = MyBase.Columns("Gestor")
+            Me.columnCalle = MyBase.Columns("Calle")
+            Me.columnColonia = MyBase.Columns("Colonia")
+            Me.columnDelegacion = MyBase.Columns("Delegacion")
+            Me.columnCopos = MyBase.Columns("Copos")
+            Me.columnTelef1 = MyBase.Columns("Telef1")
+            Me.columnTelef2 = MyBase.Columns("Telef2")
+            Me.columnTelef3 = MyBase.Columns("Telef3")
+            Me.columnFax = MyBase.Columns("Fax")
+            Me.columnFecha1 = MyBase.Columns("Fecha1")
+            Me.columnGiro = MyBase.Columns("Giro")
+            Me.columnPlaza = MyBase.Columns("Plaza")
+            Me.columnRFC = MyBase.Columns("RFC")
+            Me.columnCURP = MyBase.Columns("CURP")
+            Me.columnEMail1 = MyBase.Columns("EMail1")
+            Me.columnEMail2 = MyBase.Columns("EMail2")
+            Me.columnCuentaBancomer = MyBase.Columns("CuentaBancomer")
+            Me.columnGeneClie = MyBase.Columns("GeneClie")
+            Me.columnNomrepr = MyBase.Columns("Nomrepr")
+            Me.columnGenerepr = MyBase.Columns("Generepr")
+            Me.columnPoderepr = MyBase.Columns("Poderepr")
+            Me.columnNomrepr2 = MyBase.Columns("Nomrepr2")
+            Me.columnGenerep2 = MyBase.Columns("Generep2")
+            Me.columnPoderep2 = MyBase.Columns("Poderep2")
+            Me.columnCoac = MyBase.Columns("Coac")
+            Me.columnTipcoac = MyBase.Columns("Tipcoac")
+            Me.columnNomcoac = MyBase.Columns("Nomcoac")
+            Me.columnGenecoac = MyBase.Columns("Genecoac")
+            Me.columnNomrcoac = MyBase.Columns("Nomrcoac")
+            Me.columnGenercoa = MyBase.Columns("Genercoa")
+            Me.columnPodercoa = MyBase.Columns("Podercoa")
+            Me.columnObli = MyBase.Columns("Obli")
+            Me.columnTipoObli = MyBase.Columns("TipoObli")
+            Me.columnNomObli = MyBase.Columns("NomObli")
+            Me.columnGeneObli = MyBase.Columns("GeneObli")
+            Me.columnNomrObl = MyBase.Columns("NomrObl")
+            Me.columnGenerObl = MyBase.Columns("GenerObl")
+            Me.columnPoderObl = MyBase.Columns("PoderObl")
+            Me.columnAval1 = MyBase.Columns("Aval1")
+            Me.columnTipaval1 = MyBase.Columns("Tipaval1")
+            Me.columnNomaval1 = MyBase.Columns("Nomaval1")
+            Me.columnGeneava1 = MyBase.Columns("Geneava1")
+            Me.columnNomrava1 = MyBase.Columns("Nomrava1")
+            Me.columnGenerav1 = MyBase.Columns("Generav1")
+            Me.columnPoderav1 = MyBase.Columns("Poderav1")
+            Me.columnAval2 = MyBase.Columns("Aval2")
+            Me.columnTipaval2 = MyBase.Columns("Tipaval2")
+            Me.columnNomaval2 = MyBase.Columns("Nomaval2")
+            Me.columnGeneAva2 = MyBase.Columns("GeneAva2")
+            Me.columnNomrava2 = MyBase.Columns("Nomrava2")
+            Me.columnGenerav2 = MyBase.Columns("Generav2")
+            Me.columnPoderav2 = MyBase.Columns("Poderav2")
+            Me.columnAgrupa = MyBase.Columns("Agrupa")
+            Me.columnSegVida = MyBase.Columns("SegVida")
+            Me.columnTasaIVACliente = MyBase.Columns("TasaIVACliente")
+            Me.columnCuentadePago1 = MyBase.Columns("CuentadePago1")
+            Me.columnFormadePago1 = MyBase.Columns("FormadePago1")
+            Me.columnCuentadePago2 = MyBase.Columns("CuentadePago2")
+            Me.columnFormadePago2 = MyBase.Columns("FormadePago2")
+            Me.columnCuentadePago3 = MyBase.Columns("CuentadePago3")
+            Me.columnFormadePago3 = MyBase.Columns("FormadePago3")
+            Me.columnCuentadePago4 = MyBase.Columns("CuentadePago4")
+            Me.columnFormadePago4 = MyBase.Columns("FormadePago4")
+            Me.columnNombreCliente = MyBase.Columns("NombreCliente")
+            Me.columnApellidoPaterno = MyBase.Columns("ApellidoPaterno")
+            Me.columnApellidoMaterno = MyBase.Columns("ApellidoMaterno")
+            Me.columnGenero = MyBase.Columns("Genero")
+            Me.columnsiebel = MyBase.Columns("siebel")
+            Me.columnAnexoCon = MyBase.Columns("AnexoCon")
+            Me.columnTipoCredito = MyBase.Columns("TipoCredito")
+            Me.columnMontoFinanciado = MyBase.Columns("MontoFinanciado")
+            Me.columnPrimera = MyBase.Columns("Primera")
+            Me.columnUltima = MyBase.Columns("Ultima")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnAnexo = New Global.System.Data.DataColumn("Anexo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexo)
+            Me.columnFlcan = New Global.System.Data.DataColumn("Flcan", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFlcan)
+            Me.columnVencida = New Global.System.Data.DataColumn("Vencida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVencida)
+            Me.columnGarantia = New Global.System.Data.DataColumn("Garantia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGarantia)
+            Me.columnReferencia = New Global.System.Data.DataColumn("Referencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReferencia)
+            Me.columnCliente = New Global.System.Data.DataColumn("Cliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCliente)
+            Me.columnImpeq = New Global.System.Data.DataColumn("Impeq", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImpeq)
+            Me.columnSegeq = New Global.System.Data.DataColumn("Segeq", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSegeq)
+            Me.columnFinse = New Global.System.Data.DataColumn("Finse", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFinse)
+            Me.columnPlazo = New Global.System.Data.DataColumn("Plazo", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPlazo)
+            Me.columnPlaseg = New Global.System.Data.DataColumn("Plaseg", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPlaseg)
+            Me.columnIvaeq = New Global.System.Data.DataColumn("Ivaeq", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvaeq)
+            Me.columnIvase = New Global.System.Data.DataColumn("Ivase", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvase)
+            Me.columnPorieq = New Global.System.Data.DataColumn("Porieq", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorieq)
+            Me.columnPorInt = New Global.System.Data.DataColumn("PorInt", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorInt)
+            Me.columnAmorin = New Global.System.Data.DataColumn("Amorin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmorin)
+            Me.columnIvaAmorin = New Global.System.Data.DataColumn("IvaAmorin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvaAmorin)
+            Me.columnTippe = New Global.System.Data.DataColumn("Tippe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTippe)
+            Me.columnTipta = New Global.System.Data.DataColumn("Tipta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipta)
+            Me.columnTasas = New Global.System.Data.DataColumn("Tasas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasas)
+            Me.columnDifer = New Global.System.Data.DataColumn("Difer", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDifer)
+            Me.columnAcumulaIntereses = New Global.System.Data.DataColumn("AcumulaIntereses", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAcumulaIntereses)
+            Me.columnTipar = New Global.System.Data.DataColumn("Tipar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipar)
+            Me.columnForca = New Global.System.Data.DataColumn("Forca", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnForca)
+            Me.columnTipmen = New Global.System.Data.DataColumn("Tipmen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipmen)
+            Me.columnRtasD = New Global.System.Data.DataColumn("RtasD", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRtasD)
+            Me.columnImpRD = New Global.System.Data.DataColumn("ImpRD", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImpRD)
+            Me.columnIvaRD = New Global.System.Data.DataColumn("IvaRD", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvaRD)
+            Me.columnPorco = New Global.System.Data.DataColumn("Porco", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorco)
+            Me.columnComis = New Global.System.Data.DataColumn("Comis", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnComis)
+            Me.columnPorop = New Global.System.Data.DataColumn("Porop", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPorop)
+            Me.columnFechacon = New Global.System.Data.DataColumn("Fechacon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechacon)
+            Me.columnFvenc = New Global.System.Data.DataColumn("Fvenc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFvenc)
+            Me.columnFondeo = New Global.System.Data.DataColumn("Fondeo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFondeo)
+            Me.columnDepNafin = New Global.System.Data.DataColumn("DepNafin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDepNafin)
+            Me.columnCritas = New Global.System.Data.DataColumn("Critas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCritas)
+            Me.columnTipeq = New Global.System.Data.DataColumn("Tipeq", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipeq)
+            Me.columnGastos = New Global.System.Data.DataColumn("Gastos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGastos)
+            Me.columnIvaGastos = New Global.System.Data.DataColumn("IvaGastos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvaGastos)
+            Me.columnTipmon = New Global.System.Data.DataColumn("Tipmon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipmon)
+            Me.columnMensu = New Global.System.Data.DataColumn("Mensu", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMensu)
+            Me.columnTasmor = New Global.System.Data.DataColumn("Tasmor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasmor)
+            Me.columnTaspen = New Global.System.Data.DataColumn("Taspen", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTaspen)
+            Me.columnDoc1 = New Global.System.Data.DataColumn("Doc1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDoc1)
+            Me.columnDoc2 = New Global.System.Data.DataColumn("Doc2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDoc2)
+            Me.columnDoc3 = New Global.System.Data.DataColumn("Doc3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDoc3)
+            Me.columnPrendaria = New Global.System.Data.DataColumn("Prendaria", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrendaria)
+            Me.columnPrenda = New Global.System.Data.DataColumn("Prenda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrenda)
+            Me.columnObserva = New Global.System.Data.DataColumn("Observa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnObserva)
+            Me.columnFechafin = New Global.System.Data.DataColumn("Fechafin", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechafin)
+            Me.columnFactor = New Global.System.Data.DataColumn("Factor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFactor)
+            Me.columnPiso = New Global.System.Data.DataColumn("Piso", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPiso)
+            Me.columnTecho = New Global.System.Data.DataColumn("Techo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTecho)
+            Me.columnTasamax = New Global.System.Data.DataColumn("Tasamax", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasamax)
+            Me.columnAdeudo = New Global.System.Data.DataColumn("Adeudo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAdeudo)
+            Me.columnRD = New Global.System.Data.DataColumn("RD", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRD)
+            Me.columnImpDG = New Global.System.Data.DataColumn("ImpDG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImpDG)
+            Me.columnIvaDG = New Global.System.Data.DataColumn("IvaDG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIvaDG)
+            Me.columnDerechos = New Global.System.Data.DataColumn("Derechos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDerechos)
+            Me.columnDG = New Global.System.Data.DataColumn("DG", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDG)
+            Me.columnGHipotec = New Global.System.Data.DataColumn("GHipotec", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGHipotec)
+            Me.columnLugar = New Global.System.Data.DataColumn("Lugar", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLugar)
+            Me.columnNotaria = New Global.System.Data.DataColumn("Notaria", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNotaria)
+            Me.columnEscritura = New Global.System.Data.DataColumn("Escritura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEscritura)
+            Me.columnScaneo = New Global.System.Data.DataColumn("Scaneo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnScaneo)
+            Me.columnArchivo = New Global.System.Data.DataColumn("Archivo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnArchivo)
+            Me.columnServicio = New Global.System.Data.DataColumn("Servicio", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnServicio)
+            Me.columnIVAServicio = New Global.System.Data.DataColumn("IVAServicio", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIVAServicio)
+            Me.columnFecha_Pago = New Global.System.Data.DataColumn("Fecha_Pago", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFecha_Pago)
+            Me.columnCobertura = New Global.System.Data.DataColumn("Cobertura", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCobertura)
+            Me.columnPagos = New Global.System.Data.DataColumn("Pagos", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPagos)
+            Me.columnTipoFrecuencia = New Global.System.Data.DataColumn("TipoFrecuencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoFrecuencia)
+            Me.columnValorFrecuencia = New Global.System.Data.DataColumn("ValorFrecuencia", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnValorFrecuencia)
+            Me.columnAmortizaciones = New Global.System.Data.DataColumn("Amortizaciones", GetType(Byte), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAmortizaciones)
+            Me.columnBanco = New Global.System.Data.DataColumn("Banco", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBanco)
+            Me.columnCuentaCLABE = New Global.System.Data.DataColumn("CuentaCLABE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentaCLABE)
+            Me.columnAutoriza = New Global.System.Data.DataColumn("Autoriza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAutoriza)
+            Me.columnTitular = New Global.System.Data.DataColumn("Titular", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTitular)
+            Me.columnidCredito = New Global.System.Data.DataColumn("idCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidCredito)
+            Me.columnMinds = New Global.System.Data.DataColumn("Minds", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMinds)
+            Me.columnDescr = New Global.System.Data.DataColumn("Descr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescr)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
+            Me.columnSucursal = New Global.System.Data.DataColumn("Sucursal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSucursal)
+            Me.columnPromo = New Global.System.Data.DataColumn("Promo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPromo)
+            Me.columnGestor = New Global.System.Data.DataColumn("Gestor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGestor)
+            Me.columnCalle = New Global.System.Data.DataColumn("Calle", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCalle)
+            Me.columnColonia = New Global.System.Data.DataColumn("Colonia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColonia)
+            Me.columnDelegacion = New Global.System.Data.DataColumn("Delegacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDelegacion)
+            Me.columnCopos = New Global.System.Data.DataColumn("Copos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCopos)
+            Me.columnTelef1 = New Global.System.Data.DataColumn("Telef1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelef1)
+            Me.columnTelef2 = New Global.System.Data.DataColumn("Telef2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelef2)
+            Me.columnTelef3 = New Global.System.Data.DataColumn("Telef3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTelef3)
+            Me.columnFax = New Global.System.Data.DataColumn("Fax", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFax)
+            Me.columnFecha1 = New Global.System.Data.DataColumn("Fecha1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFecha1)
+            Me.columnGiro = New Global.System.Data.DataColumn("Giro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGiro)
+            Me.columnPlaza = New Global.System.Data.DataColumn("Plaza", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPlaza)
+            Me.columnRFC = New Global.System.Data.DataColumn("RFC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRFC)
+            Me.columnCURP = New Global.System.Data.DataColumn("CURP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCURP)
+            Me.columnEMail1 = New Global.System.Data.DataColumn("EMail1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEMail1)
+            Me.columnEMail2 = New Global.System.Data.DataColumn("EMail2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEMail2)
+            Me.columnCuentaBancomer = New Global.System.Data.DataColumn("CuentaBancomer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentaBancomer)
+            Me.columnGeneClie = New Global.System.Data.DataColumn("GeneClie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGeneClie)
+            Me.columnNomrepr = New Global.System.Data.DataColumn("Nomrepr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrepr)
+            Me.columnGenerepr = New Global.System.Data.DataColumn("Generepr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenerepr)
+            Me.columnPoderepr = New Global.System.Data.DataColumn("Poderepr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPoderepr)
+            Me.columnNomrepr2 = New Global.System.Data.DataColumn("Nomrepr2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrepr2)
+            Me.columnGenerep2 = New Global.System.Data.DataColumn("Generep2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenerep2)
+            Me.columnPoderep2 = New Global.System.Data.DataColumn("Poderep2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPoderep2)
+            Me.columnCoac = New Global.System.Data.DataColumn("Coac", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCoac)
+            Me.columnTipcoac = New Global.System.Data.DataColumn("Tipcoac", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipcoac)
+            Me.columnNomcoac = New Global.System.Data.DataColumn("Nomcoac", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomcoac)
+            Me.columnGenecoac = New Global.System.Data.DataColumn("Genecoac", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenecoac)
+            Me.columnNomrcoac = New Global.System.Data.DataColumn("Nomrcoac", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrcoac)
+            Me.columnGenercoa = New Global.System.Data.DataColumn("Genercoa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenercoa)
+            Me.columnPodercoa = New Global.System.Data.DataColumn("Podercoa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPodercoa)
+            Me.columnObli = New Global.System.Data.DataColumn("Obli", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnObli)
+            Me.columnTipoObli = New Global.System.Data.DataColumn("TipoObli", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoObli)
+            Me.columnNomObli = New Global.System.Data.DataColumn("NomObli", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomObli)
+            Me.columnGeneObli = New Global.System.Data.DataColumn("GeneObli", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGeneObli)
+            Me.columnNomrObl = New Global.System.Data.DataColumn("NomrObl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrObl)
+            Me.columnGenerObl = New Global.System.Data.DataColumn("GenerObl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenerObl)
+            Me.columnPoderObl = New Global.System.Data.DataColumn("PoderObl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPoderObl)
+            Me.columnAval1 = New Global.System.Data.DataColumn("Aval1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAval1)
+            Me.columnTipaval1 = New Global.System.Data.DataColumn("Tipaval1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipaval1)
+            Me.columnNomaval1 = New Global.System.Data.DataColumn("Nomaval1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomaval1)
+            Me.columnGeneava1 = New Global.System.Data.DataColumn("Geneava1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGeneava1)
+            Me.columnNomrava1 = New Global.System.Data.DataColumn("Nomrava1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrava1)
+            Me.columnGenerav1 = New Global.System.Data.DataColumn("Generav1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenerav1)
+            Me.columnPoderav1 = New Global.System.Data.DataColumn("Poderav1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPoderav1)
+            Me.columnAval2 = New Global.System.Data.DataColumn("Aval2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAval2)
+            Me.columnTipaval2 = New Global.System.Data.DataColumn("Tipaval2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipaval2)
+            Me.columnNomaval2 = New Global.System.Data.DataColumn("Nomaval2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomaval2)
+            Me.columnGeneAva2 = New Global.System.Data.DataColumn("GeneAva2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGeneAva2)
+            Me.columnNomrava2 = New Global.System.Data.DataColumn("Nomrava2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNomrava2)
+            Me.columnGenerav2 = New Global.System.Data.DataColumn("Generav2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenerav2)
+            Me.columnPoderav2 = New Global.System.Data.DataColumn("Poderav2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPoderav2)
+            Me.columnAgrupa = New Global.System.Data.DataColumn("Agrupa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAgrupa)
+            Me.columnSegVida = New Global.System.Data.DataColumn("SegVida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSegVida)
+            Me.columnTasaIVACliente = New Global.System.Data.DataColumn("TasaIVACliente", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTasaIVACliente)
+            Me.columnCuentadePago1 = New Global.System.Data.DataColumn("CuentadePago1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentadePago1)
+            Me.columnFormadePago1 = New Global.System.Data.DataColumn("FormadePago1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormadePago1)
+            Me.columnCuentadePago2 = New Global.System.Data.DataColumn("CuentadePago2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentadePago2)
+            Me.columnFormadePago2 = New Global.System.Data.DataColumn("FormadePago2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormadePago2)
+            Me.columnCuentadePago3 = New Global.System.Data.DataColumn("CuentadePago3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentadePago3)
+            Me.columnFormadePago3 = New Global.System.Data.DataColumn("FormadePago3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormadePago3)
+            Me.columnCuentadePago4 = New Global.System.Data.DataColumn("CuentadePago4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentadePago4)
+            Me.columnFormadePago4 = New Global.System.Data.DataColumn("FormadePago4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFormadePago4)
+            Me.columnNombreCliente = New Global.System.Data.DataColumn("NombreCliente", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombreCliente)
+            Me.columnApellidoPaterno = New Global.System.Data.DataColumn("ApellidoPaterno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnApellidoPaterno)
+            Me.columnApellidoMaterno = New Global.System.Data.DataColumn("ApellidoMaterno", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnApellidoMaterno)
+            Me.columnGenero = New Global.System.Data.DataColumn("Genero", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGenero)
+            Me.columnsiebel = New Global.System.Data.DataColumn("siebel", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsiebel)
+            Me.columnAnexoCon = New Global.System.Data.DataColumn("AnexoCon", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexoCon)
+            Me.columnTipoCredito = New Global.System.Data.DataColumn("TipoCredito", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoCredito)
+            Me.columnMontoFinanciado = New Global.System.Data.DataColumn("MontoFinanciado", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMontoFinanciado)
+            Me.columnPrimera = New Global.System.Data.DataColumn("Primera", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrimera)
+            Me.columnUltima = New Global.System.Data.DataColumn("Ultima", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUltima)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAnexo}, true))
+            Me.columnAnexo.AllowDBNull = false
+            Me.columnAnexo.Unique = true
+            Me.columnAnexo.MaxLength = 9
+            Me.columnFlcan.AllowDBNull = false
+            Me.columnFlcan.MaxLength = 1
+            Me.columnVencida.AllowDBNull = false
+            Me.columnVencida.MaxLength = 1
+            Me.columnGarantia.AllowDBNull = false
+            Me.columnGarantia.MaxLength = 3
+            Me.columnReferencia.AllowDBNull = false
+            Me.columnReferencia.MaxLength = 1
+            Me.columnCliente.AllowDBNull = false
+            Me.columnCliente.MaxLength = 5
+            Me.columnImpeq.AllowDBNull = false
+            Me.columnSegeq.AllowDBNull = false
+            Me.columnFinse.AllowDBNull = false
+            Me.columnFinse.MaxLength = 1
+            Me.columnPlazo.AllowDBNull = false
+            Me.columnPlaseg.AllowDBNull = false
+            Me.columnIvaeq.AllowDBNull = false
+            Me.columnIvase.AllowDBNull = false
+            Me.columnPorieq.AllowDBNull = false
+            Me.columnPorInt.AllowDBNull = false
+            Me.columnAmorin.AllowDBNull = false
+            Me.columnIvaAmorin.AllowDBNull = false
+            Me.columnTippe.AllowDBNull = false
+            Me.columnTippe.MaxLength = 2
+            Me.columnTipta.AllowDBNull = false
+            Me.columnTipta.MaxLength = 1
+            Me.columnTasas.AllowDBNull = false
+            Me.columnDifer.AllowDBNull = false
+            Me.columnAcumulaIntereses.AllowDBNull = false
+            Me.columnAcumulaIntereses.MaxLength = 2
+            Me.columnTipar.AllowDBNull = false
+            Me.columnTipar.MaxLength = 1
+            Me.columnForca.AllowDBNull = false
+            Me.columnForca.MaxLength = 1
+            Me.columnTipmen.AllowDBNull = false
+            Me.columnTipmen.MaxLength = 1
+            Me.columnRtasD.AllowDBNull = false
+            Me.columnImpRD.AllowDBNull = false
+            Me.columnIvaRD.AllowDBNull = false
+            Me.columnPorco.AllowDBNull = false
+            Me.columnComis.AllowDBNull = false
+            Me.columnPorop.AllowDBNull = false
+            Me.columnFechacon.AllowDBNull = false
+            Me.columnFechacon.MaxLength = 8
+            Me.columnFvenc.AllowDBNull = false
+            Me.columnFvenc.MaxLength = 8
+            Me.columnFondeo.AllowDBNull = false
+            Me.columnFondeo.MaxLength = 2
+            Me.columnDepNafin.AllowDBNull = false
+            Me.columnCritas.AllowDBNull = false
+            Me.columnCritas.MaxLength = 2
+            Me.columnTipeq.AllowDBNull = false
+            Me.columnTipeq.MaxLength = 1
+            Me.columnGastos.AllowDBNull = false
+            Me.columnIvaGastos.AllowDBNull = false
+            Me.columnTipmon.AllowDBNull = false
+            Me.columnTipmon.MaxLength = 2
+            Me.columnMensu.AllowDBNull = false
+            Me.columnTasmor.AllowDBNull = false
+            Me.columnTaspen.AllowDBNull = false
+            Me.columnDoc1.AllowDBNull = false
+            Me.columnDoc1.MaxLength = 1
+            Me.columnDoc2.AllowDBNull = false
+            Me.columnDoc2.MaxLength = 1
+            Me.columnDoc3.AllowDBNull = false
+            Me.columnDoc3.MaxLength = 1
+            Me.columnPrendaria.AllowDBNull = false
+            Me.columnPrendaria.MaxLength = 1
+            Me.columnPrenda.AllowDBNull = false
+            Me.columnPrenda.MaxLength = 1
+            Me.columnObserva.AllowDBNull = false
+            Me.columnObserva.MaxLength = 60
+            Me.columnFechafin.AllowDBNull = false
+            Me.columnFechafin.MaxLength = 8
+            Me.columnFactor.AllowDBNull = false
+            Me.columnPiso.AllowDBNull = false
+            Me.columnTecho.AllowDBNull = false
+            Me.columnTasamax.AllowDBNull = false
+            Me.columnAdeudo.AllowDBNull = false
+            Me.columnAdeudo.MaxLength = 1
+            Me.columnRD.AllowDBNull = false
+            Me.columnImpDG.AllowDBNull = false
+            Me.columnIvaDG.AllowDBNull = false
+            Me.columnDerechos.AllowDBNull = false
+            Me.columnDG.AllowDBNull = false
+            Me.columnGHipotec.AllowDBNull = false
+            Me.columnGHipotec.MaxLength = 1
+            Me.columnLugar.AllowDBNull = false
+            Me.columnLugar.MaxLength = 30
+            Me.columnNotaria.AllowDBNull = false
+            Me.columnNotaria.MaxLength = 30
+            Me.columnEscritura.AllowDBNull = false
+            Me.columnEscritura.MaxLength = 30
+            Me.columnScaneo.AllowDBNull = false
+            Me.columnScaneo.MaxLength = 1
+            Me.columnArchivo.AllowDBNull = false
+            Me.columnArchivo.MaxLength = 45
+            Me.columnServicio.AllowDBNull = false
+            Me.columnIVAServicio.AllowDBNull = false
+            Me.columnFecha_Pago.AllowDBNull = false
+            Me.columnFecha_Pago.MaxLength = 8
+            Me.columnCobertura.AllowDBNull = false
+            Me.columnCobertura.MaxLength = 1
+            Me.columnPagos.AllowDBNull = false
+            Me.columnTipoFrecuencia.AllowDBNull = false
+            Me.columnTipoFrecuencia.MaxLength = 5
+            Me.columnValorFrecuencia.AllowDBNull = false
+            Me.columnAmortizaciones.AllowDBNull = false
+            Me.columnBanco.AllowDBNull = false
+            Me.columnBanco.MaxLength = 16
+            Me.columnCuentaCLABE.AllowDBNull = false
+            Me.columnCuentaCLABE.MaxLength = 18
+            Me.columnAutoriza.AllowDBNull = false
+            Me.columnAutoriza.MaxLength = 1
+            Me.columnTitular.AllowDBNull = false
+            Me.columnTitular.MaxLength = 45
+            Me.columnidCredito.MaxLength = 7
+            Me.columnDescr.ReadOnly = true
+            Me.columnDescr.MaxLength = 120
+            Me.columnTipo.AllowDBNull = false
+            Me.columnTipo.MaxLength = 1
+            Me.columnSucursal.MaxLength = 2
+            Me.columnPromo.AllowDBNull = false
+            Me.columnPromo.MaxLength = 3
+            Me.columnGestor.AllowDBNull = false
+            Me.columnGestor.MaxLength = 3
+            Me.columnCalle.ReadOnly = true
+            Me.columnCalle.MaxLength = 120
+            Me.columnColonia.ReadOnly = true
+            Me.columnColonia.MaxLength = 45
+            Me.columnDelegacion.ReadOnly = true
+            Me.columnDelegacion.MaxLength = 45
+            Me.columnCopos.AllowDBNull = false
+            Me.columnCopos.MaxLength = 5
+            Me.columnTelef1.AllowDBNull = false
+            Me.columnTelef1.MaxLength = 25
+            Me.columnTelef2.AllowDBNull = false
+            Me.columnTelef2.MaxLength = 25
+            Me.columnTelef3.AllowDBNull = false
+            Me.columnTelef3.MaxLength = 25
+            Me.columnFax.AllowDBNull = false
+            Me.columnFax.MaxLength = 17
+            Me.columnFecha1.AllowDBNull = false
+            Me.columnFecha1.MaxLength = 8
+            Me.columnGiro.AllowDBNull = false
+            Me.columnGiro.MaxLength = 2
+            Me.columnPlaza.AllowDBNull = false
+            Me.columnPlaza.MaxLength = 2
+            Me.columnRFC.AllowDBNull = false
+            Me.columnRFC.MaxLength = 13
+            Me.columnCURP.MaxLength = 18
+            Me.columnEMail1.AllowDBNull = false
+            Me.columnEMail1.MaxLength = 50
+            Me.columnEMail2.AllowDBNull = false
+            Me.columnEMail2.MaxLength = 50
+            Me.columnCuentaBancomer.AllowDBNull = false
+            Me.columnCuentaBancomer.MaxLength = 10
+            Me.columnGeneClie.AllowDBNull = false
+            Me.columnGeneClie.MaxLength = 1073741823
+            Me.columnNomrepr.AllowDBNull = false
+            Me.columnNomrepr.MaxLength = 150
+            Me.columnGenerepr.AllowDBNull = false
+            Me.columnGenerepr.MaxLength = 1073741823
+            Me.columnPoderepr.AllowDBNull = false
+            Me.columnPoderepr.MaxLength = 1073741823
+            Me.columnNomrepr2.AllowDBNull = false
+            Me.columnNomrepr2.MaxLength = 60
+            Me.columnGenerep2.AllowDBNull = false
+            Me.columnGenerep2.MaxLength = 1073741823
+            Me.columnPoderep2.AllowDBNull = false
+            Me.columnPoderep2.MaxLength = 1073741823
+            Me.columnCoac.AllowDBNull = false
+            Me.columnCoac.MaxLength = 1
+            Me.columnTipcoac.AllowDBNull = false
+            Me.columnTipcoac.MaxLength = 1
+            Me.columnNomcoac.AllowDBNull = false
+            Me.columnNomcoac.MaxLength = 150
+            Me.columnGenecoac.AllowDBNull = false
+            Me.columnGenecoac.MaxLength = 1073741823
+            Me.columnNomrcoac.AllowDBNull = false
+            Me.columnNomrcoac.MaxLength = 150
+            Me.columnGenercoa.AllowDBNull = false
+            Me.columnGenercoa.MaxLength = 1073741823
+            Me.columnPodercoa.AllowDBNull = false
+            Me.columnPodercoa.MaxLength = 1073741823
+            Me.columnObli.AllowDBNull = false
+            Me.columnObli.MaxLength = 1
+            Me.columnTipoObli.AllowDBNull = false
+            Me.columnTipoObli.MaxLength = 1
+            Me.columnNomObli.AllowDBNull = false
+            Me.columnNomObli.MaxLength = 80
+            Me.columnGeneObli.AllowDBNull = false
+            Me.columnGeneObli.MaxLength = 1073741823
+            Me.columnNomrObl.AllowDBNull = false
+            Me.columnNomrObl.MaxLength = 150
+            Me.columnGenerObl.AllowDBNull = false
+            Me.columnGenerObl.MaxLength = 1073741823
+            Me.columnPoderObl.AllowDBNull = false
+            Me.columnPoderObl.MaxLength = 1073741823
+            Me.columnAval1.AllowDBNull = false
+            Me.columnAval1.MaxLength = 1
+            Me.columnTipaval1.AllowDBNull = false
+            Me.columnTipaval1.MaxLength = 1
+            Me.columnNomaval1.AllowDBNull = false
+            Me.columnNomaval1.MaxLength = 150
+            Me.columnGeneava1.AllowDBNull = false
+            Me.columnGeneava1.MaxLength = 1073741823
+            Me.columnNomrava1.AllowDBNull = false
+            Me.columnNomrava1.MaxLength = 150
+            Me.columnGenerav1.AllowDBNull = false
+            Me.columnGenerav1.MaxLength = 1073741823
+            Me.columnPoderav1.AllowDBNull = false
+            Me.columnPoderav1.MaxLength = 1073741823
+            Me.columnAval2.AllowDBNull = false
+            Me.columnAval2.MaxLength = 1
+            Me.columnTipaval2.AllowDBNull = false
+            Me.columnTipaval2.MaxLength = 1
+            Me.columnNomaval2.AllowDBNull = false
+            Me.columnNomaval2.MaxLength = 150
+            Me.columnGeneAva2.AllowDBNull = false
+            Me.columnGeneAva2.MaxLength = 1073741823
+            Me.columnNomrava2.AllowDBNull = false
+            Me.columnNomrava2.MaxLength = 150
+            Me.columnGenerav2.AllowDBNull = false
+            Me.columnGenerav2.MaxLength = 1073741823
+            Me.columnPoderav2.AllowDBNull = false
+            Me.columnPoderav2.MaxLength = 1073741823
+            Me.columnAgrupa.AllowDBNull = false
+            Me.columnAgrupa.MaxLength = 5
+            Me.columnSegVida.MaxLength = 1
+            Me.columnTasaIVACliente.AllowDBNull = false
+            Me.columnCuentadePago1.AllowDBNull = false
+            Me.columnCuentadePago1.MaxLength = 4
+            Me.columnFormadePago1.AllowDBNull = false
+            Me.columnFormadePago1.MaxLength = 37
+            Me.columnCuentadePago2.AllowDBNull = false
+            Me.columnCuentadePago2.MaxLength = 4
+            Me.columnFormadePago2.AllowDBNull = false
+            Me.columnFormadePago2.MaxLength = 37
+            Me.columnCuentadePago3.AllowDBNull = false
+            Me.columnCuentadePago3.MaxLength = 4
+            Me.columnFormadePago3.AllowDBNull = false
+            Me.columnFormadePago3.MaxLength = 37
+            Me.columnCuentadePago4.AllowDBNull = false
+            Me.columnCuentadePago4.MaxLength = 4
+            Me.columnFormadePago4.AllowDBNull = false
+            Me.columnFormadePago4.MaxLength = 37
+            Me.columnNombreCliente.AllowDBNull = false
+            Me.columnNombreCliente.MaxLength = 50
+            Me.columnApellidoPaterno.AllowDBNull = false
+            Me.columnApellidoPaterno.MaxLength = 50
+            Me.columnApellidoMaterno.AllowDBNull = false
+            Me.columnApellidoMaterno.MaxLength = 50
+            Me.columnGenero.AllowDBNull = false
+            Me.columnGenero.MaxLength = 9
+            Me.columnAnexoCon.MaxLength = 11
+            Me.columnTipoCredito.MaxLength = 50
+            Me.columnMontoFinanciado.ReadOnly = true
+            Me.columnPrimera.MaxLength = 3
+            Me.columnUltima.MaxLength = 3
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewAnexos2Row() As Anexos2Row
+            Return CType(Me.NewRow,Anexos2Row)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New Anexos2Row(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(Anexos2Row)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.Anexos2RowChangedEvent) Is Nothing) Then
+                RaiseEvent Anexos2RowChanged(Me, New Anexos2RowChangeEvent(CType(e.Row,Anexos2Row), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.Anexos2RowChangingEvent) Is Nothing) Then
+                RaiseEvent Anexos2RowChanging(Me, New Anexos2RowChangeEvent(CType(e.Row,Anexos2Row), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.Anexos2RowDeletedEvent) Is Nothing) Then
+                RaiseEvent Anexos2RowDeleted(Me, New Anexos2RowChangeEvent(CType(e.Row,Anexos2Row), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.Anexos2RowDeletingEvent) Is Nothing) Then
+                RaiseEvent Anexos2RowDeleting(Me, New Anexos2RowChangeEvent(CType(e.Row,Anexos2Row), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveAnexos2Row(ByVal row As Anexos2Row)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As ProductionDataSet = New ProductionDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "Anexos2DataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class TdetalleDataTable
         Inherits Global.System.Data.TypedTableBase(Of TdetalleRow)
         
@@ -22428,6 +25170,1989 @@ Partial Public Class ProductionDataSet
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
+    Partial Public Class Anexos2Row
+        Inherits Global.System.Data.DataRow
+        
+        Private tableAnexos2 As Anexos2DataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableAnexos2 = CType(Me.Table,Anexos2DataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Anexo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.AnexoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AnexoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Flcan() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FlcanColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FlcanColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Vencida() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.VencidaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.VencidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Garantia() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GarantiaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GarantiaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Referencia() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ReferenciaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ReferenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Cliente() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ClienteColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Impeq() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.ImpeqColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ImpeqColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Segeq() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.SegeqColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.SegeqColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Finse() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FinseColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FinseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Plazo() As Short
+            Get
+                Return CType(Me(Me.tableAnexos2.PlazoColumn),Short)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PlazoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Plaseg() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.PlasegColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PlasegColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ivaeq() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaeqColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaeqColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ivase() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaseColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Porieq() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.PorieqColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PorieqColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PorInt() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.PorIntColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PorIntColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Amorin() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.AmorinColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AmorinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IvaAmorin() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaAmorinColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaAmorinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tippe() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TippeColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TippeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipta() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TiptaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TiptaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tasas() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TasasColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TasasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Difer() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.DiferColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.DiferColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AcumulaIntereses() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.AcumulaInteresesColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AcumulaInteresesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipar() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TiparColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TiparColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Forca() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ForcaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ForcaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipmen() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipmenColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipmenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RtasD() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.RtasDColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.RtasDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ImpRD() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.ImpRDColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ImpRDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IvaRD() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaRDColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaRDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Porco() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.PorcoColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PorcoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Comis() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.ComisColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ComisColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Porop() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.PoropColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PoropColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fechacon() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FechaconColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FechaconColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fvenc() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FvencColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FvencColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fondeo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FondeoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FondeoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property DepNafin() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.DepNafinColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.DepNafinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Critas() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CritasColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CritasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipeq() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipeqColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipeqColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Gastos() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.GastosColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GastosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IvaGastos() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaGastosColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaGastosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipmon() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipmonColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipmonColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Mensu() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.MensuColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.MensuColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tasmor() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TasmorColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TasmorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Taspen() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TaspenColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TaspenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Doc1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Doc1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Doc1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Doc2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Doc2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Doc2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Doc3() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Doc3Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Doc3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Prendaria() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PrendariaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PrendariaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Prenda() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PrendaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PrendaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Observa() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ObservaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ObservaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fechafin() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FechafinColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FechafinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Factor() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.FactorColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FactorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Piso() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.PisoColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PisoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Techo() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TechoColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TechoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tasamax() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TasamaxColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TasamaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Adeudo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.AdeudoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AdeudoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RD() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.RDColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.RDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ImpDG() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.ImpDGColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ImpDGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IvaDG() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IvaDGColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IvaDGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Derechos() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.DerechosColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.DerechosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property DG() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.DGColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.DGColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property GHipotec() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GHipotecColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GHipotecColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Lugar() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.LugarColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.LugarColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Notaria() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NotariaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NotariaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Escritura() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.EscrituraColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.EscrituraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Scaneo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ScaneoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ScaneoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Archivo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ArchivoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ArchivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Servicio() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.ServicioColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ServicioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IVAServicio() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.IVAServicioColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.IVAServicioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fecha_Pago() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Fecha_PagoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Fecha_PagoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Cobertura() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CoberturaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CoberturaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Pagos() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.PagosColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PagosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoFrecuencia() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipoFrecuenciaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipoFrecuenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ValorFrecuencia() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.ValorFrecuenciaColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ValorFrecuenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Amortizaciones() As Byte
+            Get
+                Return CType(Me(Me.tableAnexos2.AmortizacionesColumn),Byte)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AmortizacionesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Banco() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.BancoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.BancoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentaCLABE() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentaCLABEColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentaCLABEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Autoriza() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.AutorizaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AutorizaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Titular() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TitularColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TitularColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idCredito() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.idCreditoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idCredito' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.idCreditoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Minds() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.MindsColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Minds' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.MindsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Descr() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.DescrColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Descr' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.DescrColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Sucursal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.SucursalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Sucursal' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.SucursalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Promo() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PromoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PromoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Gestor() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GestorColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GestorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Calle() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.CalleColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Calle' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.CalleColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Colonia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.ColoniaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Colonia' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.ColoniaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Delegacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.DelegacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Delegacion' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.DelegacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Copos() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CoposColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CoposColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Telef1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Telef1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Telef1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Telef2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Telef2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Telef2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Telef3() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Telef3Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Telef3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fax() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FaxColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Fecha1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Fecha1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Fecha1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Giro() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GiroColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GiroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Plaza() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PlazaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PlazaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RFC() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.RFCColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.RFCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CURP() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.CURPColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CURP' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.CURPColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property EMail1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.EMail1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.EMail1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property EMail2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.EMail2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.EMail2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentaBancomer() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentaBancomerColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentaBancomerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property GeneClie() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GeneClieColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GeneClieColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomrepr() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NomreprColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NomreprColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Generepr() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GenereprColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GenereprColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Poderepr() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PodereprColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PodereprColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomrepr2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Nomrepr2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Nomrepr2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Generep2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Generep2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Generep2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Poderep2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Poderep2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Poderep2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Coac() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CoacColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CoacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipcoac() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipcoacColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipcoacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomcoac() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NomcoacColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NomcoacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Genecoac() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GenecoacColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GenecoacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomrcoac() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NomrcoacColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NomrcoacColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Genercoa() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GenercoaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GenercoaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Podercoa() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PodercoaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PodercoaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Obli() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ObliColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ObliColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoObli() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.TipoObliColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipoObliColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NomObli() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NomObliColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NomObliColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property GeneObli() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GeneObliColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GeneObliColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NomrObl() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NomrOblColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NomrOblColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property GenerObl() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GenerOblColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GenerOblColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property PoderObl() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.PoderOblColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.PoderOblColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Aval1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Aval1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Aval1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipaval1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Tipaval1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Tipaval1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomaval1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Nomaval1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Nomaval1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Geneava1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Geneava1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Geneava1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomrava1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Nomrava1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Nomrava1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Generav1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Generav1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Generav1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Poderav1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Poderav1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Poderav1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Aval2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Aval2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Aval2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipaval2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Tipaval2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Tipaval2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomaval2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Nomaval2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Nomaval2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property GeneAva2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GeneAva2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GeneAva2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Nomrava2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Nomrava2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Nomrava2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Generav2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Generav2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Generav2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Poderav2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.Poderav2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.Poderav2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Agrupa() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.AgrupaColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.AgrupaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SegVida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.SegVidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SegVida' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.SegVidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TasaIVACliente() As Decimal
+            Get
+                Return CType(Me(Me.tableAnexos2.TasaIVAClienteColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableAnexos2.TasaIVAClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentadePago1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentadePago1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentadePago1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FormadePago1() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FormadePago1Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FormadePago1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentadePago2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentadePago2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentadePago2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FormadePago2() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FormadePago2Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FormadePago2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentadePago3() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentadePago3Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentadePago3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FormadePago3() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FormadePago3Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FormadePago3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentadePago4() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.CuentadePago4Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.CuentadePago4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FormadePago4() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.FormadePago4Column),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.FormadePago4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NombreCliente() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.NombreClienteColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.NombreClienteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ApellidoPaterno() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ApellidoPaternoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ApellidoPaternoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ApellidoMaterno() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.ApellidoMaternoColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.ApellidoMaternoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Genero() As String
+            Get
+                Return CType(Me(Me.tableAnexos2.GeneroColumn),String)
+            End Get
+            Set
+                Me(Me.tableAnexos2.GeneroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property siebel() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.siebelColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'siebel' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.siebelColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AnexoCon() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.AnexoConColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AnexoCon' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.AnexoConColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoCredito() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.TipoCreditoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoCredito' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.TipoCreditoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property MontoFinanciado() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.MontoFinanciadoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MontoFinanciado' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.MontoFinanciadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Primera() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.PrimeraColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Primera' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.PrimeraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ultima() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAnexos2.UltimaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ultima' de la tabla 'Anexos2' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAnexos2.UltimaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidCreditoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.idCreditoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidCreditoNull()
+            Me(Me.tableAnexos2.idCreditoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMindsNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.MindsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMindsNull()
+            Me(Me.tableAnexos2.MindsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDescrNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.DescrColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDescrNull()
+            Me(Me.tableAnexos2.DescrColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSucursalNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.SucursalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSucursalNull()
+            Me(Me.tableAnexos2.SucursalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCalleNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.CalleColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCalleNull()
+            Me(Me.tableAnexos2.CalleColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsColoniaNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.ColoniaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetColoniaNull()
+            Me(Me.tableAnexos2.ColoniaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDelegacionNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.DelegacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDelegacionNull()
+            Me(Me.tableAnexos2.DelegacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCURPNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.CURPColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCURPNull()
+            Me(Me.tableAnexos2.CURPColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSegVidaNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.SegVidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSegVidaNull()
+            Me(Me.tableAnexos2.SegVidaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IssiebelNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.siebelColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetsiebelNull()
+            Me(Me.tableAnexos2.siebelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAnexoConNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.AnexoConColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAnexoConNull()
+            Me(Me.tableAnexos2.AnexoConColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoCreditoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.TipoCreditoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoCreditoNull()
+            Me(Me.tableAnexos2.TipoCreditoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMontoFinanciadoNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.MontoFinanciadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMontoFinanciadoNull()
+            Me(Me.tableAnexos2.MontoFinanciadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsPrimeraNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.PrimeraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetPrimeraNull()
+            Me(Me.tableAnexos2.PrimeraColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUltimaNull() As Boolean
+            Return Me.IsNull(Me.tableAnexos2.UltimaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUltimaNull()
+            Me(Me.tableAnexos2.UltimaColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
     Partial Public Class TdetalleRow
         Inherits Global.System.Data.DataRow
         
@@ -23484,6 +28209,42 @@ Partial Public Class ProductionDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As Vw_BuroMonitorPM_Fira_PIRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class Anexos2RowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As Anexos2Row
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As Anexos2Row, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As Anexos2Row
             Get
                 Return Me.eventRow
             End Get
@@ -32734,6 +37495,359 @@ Namespace ProductionDataSetTableAdapters
         Public Overloads Overridable Function GetData() As ProductionDataSet.Vw_BuroMonitorPM_Fira_PIDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As ProductionDataSet.Vw_BuroMonitorPM_Fira_PIDataTable = New ProductionDataSet.Vw_BuroMonitorPM_Fira_PIDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class Anexos2TableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "Anexos2"
+            tableMapping.ColumnMappings.Add("Anexo", "Anexo")
+            tableMapping.ColumnMappings.Add("Flcan", "Flcan")
+            tableMapping.ColumnMappings.Add("Vencida", "Vencida")
+            tableMapping.ColumnMappings.Add("Garantia", "Garantia")
+            tableMapping.ColumnMappings.Add("Referencia", "Referencia")
+            tableMapping.ColumnMappings.Add("Cliente", "Cliente")
+            tableMapping.ColumnMappings.Add("Impeq", "Impeq")
+            tableMapping.ColumnMappings.Add("Segeq", "Segeq")
+            tableMapping.ColumnMappings.Add("Finse", "Finse")
+            tableMapping.ColumnMappings.Add("Plazo", "Plazo")
+            tableMapping.ColumnMappings.Add("Plaseg", "Plaseg")
+            tableMapping.ColumnMappings.Add("Ivaeq", "Ivaeq")
+            tableMapping.ColumnMappings.Add("Ivase", "Ivase")
+            tableMapping.ColumnMappings.Add("Porieq", "Porieq")
+            tableMapping.ColumnMappings.Add("PorInt", "PorInt")
+            tableMapping.ColumnMappings.Add("Amorin", "Amorin")
+            tableMapping.ColumnMappings.Add("IvaAmorin", "IvaAmorin")
+            tableMapping.ColumnMappings.Add("Tippe", "Tippe")
+            tableMapping.ColumnMappings.Add("Tipta", "Tipta")
+            tableMapping.ColumnMappings.Add("Tasas", "Tasas")
+            tableMapping.ColumnMappings.Add("Difer", "Difer")
+            tableMapping.ColumnMappings.Add("AcumulaIntereses", "AcumulaIntereses")
+            tableMapping.ColumnMappings.Add("Tipar", "Tipar")
+            tableMapping.ColumnMappings.Add("Forca", "Forca")
+            tableMapping.ColumnMappings.Add("Tipmen", "Tipmen")
+            tableMapping.ColumnMappings.Add("RtasD", "RtasD")
+            tableMapping.ColumnMappings.Add("ImpRD", "ImpRD")
+            tableMapping.ColumnMappings.Add("IvaRD", "IvaRD")
+            tableMapping.ColumnMappings.Add("Porco", "Porco")
+            tableMapping.ColumnMappings.Add("Comis", "Comis")
+            tableMapping.ColumnMappings.Add("Porop", "Porop")
+            tableMapping.ColumnMappings.Add("Fechacon", "Fechacon")
+            tableMapping.ColumnMappings.Add("Fvenc", "Fvenc")
+            tableMapping.ColumnMappings.Add("Fondeo", "Fondeo")
+            tableMapping.ColumnMappings.Add("DepNafin", "DepNafin")
+            tableMapping.ColumnMappings.Add("Critas", "Critas")
+            tableMapping.ColumnMappings.Add("Tipeq", "Tipeq")
+            tableMapping.ColumnMappings.Add("Gastos", "Gastos")
+            tableMapping.ColumnMappings.Add("IvaGastos", "IvaGastos")
+            tableMapping.ColumnMappings.Add("Tipmon", "Tipmon")
+            tableMapping.ColumnMappings.Add("Mensu", "Mensu")
+            tableMapping.ColumnMappings.Add("Tasmor", "Tasmor")
+            tableMapping.ColumnMappings.Add("Taspen", "Taspen")
+            tableMapping.ColumnMappings.Add("Doc1", "Doc1")
+            tableMapping.ColumnMappings.Add("Doc2", "Doc2")
+            tableMapping.ColumnMappings.Add("Doc3", "Doc3")
+            tableMapping.ColumnMappings.Add("Prendaria", "Prendaria")
+            tableMapping.ColumnMappings.Add("Prenda", "Prenda")
+            tableMapping.ColumnMappings.Add("Observa", "Observa")
+            tableMapping.ColumnMappings.Add("Fechafin", "Fechafin")
+            tableMapping.ColumnMappings.Add("Factor", "Factor")
+            tableMapping.ColumnMappings.Add("Piso", "Piso")
+            tableMapping.ColumnMappings.Add("Techo", "Techo")
+            tableMapping.ColumnMappings.Add("Tasamax", "Tasamax")
+            tableMapping.ColumnMappings.Add("Adeudo", "Adeudo")
+            tableMapping.ColumnMappings.Add("RD", "RD")
+            tableMapping.ColumnMappings.Add("ImpDG", "ImpDG")
+            tableMapping.ColumnMappings.Add("IvaDG", "IvaDG")
+            tableMapping.ColumnMappings.Add("Derechos", "Derechos")
+            tableMapping.ColumnMappings.Add("DG", "DG")
+            tableMapping.ColumnMappings.Add("GHipotec", "GHipotec")
+            tableMapping.ColumnMappings.Add("Lugar", "Lugar")
+            tableMapping.ColumnMappings.Add("Notaria", "Notaria")
+            tableMapping.ColumnMappings.Add("Escritura", "Escritura")
+            tableMapping.ColumnMappings.Add("Scaneo", "Scaneo")
+            tableMapping.ColumnMappings.Add("Archivo", "Archivo")
+            tableMapping.ColumnMappings.Add("Servicio", "Servicio")
+            tableMapping.ColumnMappings.Add("IVAServicio", "IVAServicio")
+            tableMapping.ColumnMappings.Add("Fecha_Pago", "Fecha_Pago")
+            tableMapping.ColumnMappings.Add("Cobertura", "Cobertura")
+            tableMapping.ColumnMappings.Add("Pagos", "Pagos")
+            tableMapping.ColumnMappings.Add("TipoFrecuencia", "TipoFrecuencia")
+            tableMapping.ColumnMappings.Add("ValorFrecuencia", "ValorFrecuencia")
+            tableMapping.ColumnMappings.Add("Amortizaciones", "Amortizaciones")
+            tableMapping.ColumnMappings.Add("Banco", "Banco")
+            tableMapping.ColumnMappings.Add("CuentaCLABE", "CuentaCLABE")
+            tableMapping.ColumnMappings.Add("Autoriza", "Autoriza")
+            tableMapping.ColumnMappings.Add("Titular", "Titular")
+            tableMapping.ColumnMappings.Add("idCredito", "idCredito")
+            tableMapping.ColumnMappings.Add("Minds", "Minds")
+            tableMapping.ColumnMappings.Add("Descr", "Descr")
+            tableMapping.ColumnMappings.Add("Tipo", "Tipo")
+            tableMapping.ColumnMappings.Add("Sucursal", "Sucursal")
+            tableMapping.ColumnMappings.Add("Promo", "Promo")
+            tableMapping.ColumnMappings.Add("Gestor", "Gestor")
+            tableMapping.ColumnMappings.Add("Calle", "Calle")
+            tableMapping.ColumnMappings.Add("Colonia", "Colonia")
+            tableMapping.ColumnMappings.Add("Delegacion", "Delegacion")
+            tableMapping.ColumnMappings.Add("Copos", "Copos")
+            tableMapping.ColumnMappings.Add("Telef1", "Telef1")
+            tableMapping.ColumnMappings.Add("Telef2", "Telef2")
+            tableMapping.ColumnMappings.Add("Telef3", "Telef3")
+            tableMapping.ColumnMappings.Add("Fax", "Fax")
+            tableMapping.ColumnMappings.Add("Fecha1", "Fecha1")
+            tableMapping.ColumnMappings.Add("Giro", "Giro")
+            tableMapping.ColumnMappings.Add("Plaza", "Plaza")
+            tableMapping.ColumnMappings.Add("RFC", "RFC")
+            tableMapping.ColumnMappings.Add("CURP", "CURP")
+            tableMapping.ColumnMappings.Add("EMail1", "EMail1")
+            tableMapping.ColumnMappings.Add("EMail2", "EMail2")
+            tableMapping.ColumnMappings.Add("CuentaBancomer", "CuentaBancomer")
+            tableMapping.ColumnMappings.Add("GeneClie", "GeneClie")
+            tableMapping.ColumnMappings.Add("Nomrepr", "Nomrepr")
+            tableMapping.ColumnMappings.Add("Generepr", "Generepr")
+            tableMapping.ColumnMappings.Add("Poderepr", "Poderepr")
+            tableMapping.ColumnMappings.Add("Nomrepr2", "Nomrepr2")
+            tableMapping.ColumnMappings.Add("Generep2", "Generep2")
+            tableMapping.ColumnMappings.Add("Poderep2", "Poderep2")
+            tableMapping.ColumnMappings.Add("Coac", "Coac")
+            tableMapping.ColumnMappings.Add("Tipcoac", "Tipcoac")
+            tableMapping.ColumnMappings.Add("Nomcoac", "Nomcoac")
+            tableMapping.ColumnMappings.Add("Genecoac", "Genecoac")
+            tableMapping.ColumnMappings.Add("Nomrcoac", "Nomrcoac")
+            tableMapping.ColumnMappings.Add("Genercoa", "Genercoa")
+            tableMapping.ColumnMappings.Add("Podercoa", "Podercoa")
+            tableMapping.ColumnMappings.Add("Obli", "Obli")
+            tableMapping.ColumnMappings.Add("TipoObli", "TipoObli")
+            tableMapping.ColumnMappings.Add("NomObli", "NomObli")
+            tableMapping.ColumnMappings.Add("GeneObli", "GeneObli")
+            tableMapping.ColumnMappings.Add("NomrObl", "NomrObl")
+            tableMapping.ColumnMappings.Add("GenerObl", "GenerObl")
+            tableMapping.ColumnMappings.Add("PoderObl", "PoderObl")
+            tableMapping.ColumnMappings.Add("Aval1", "Aval1")
+            tableMapping.ColumnMappings.Add("Tipaval1", "Tipaval1")
+            tableMapping.ColumnMappings.Add("Nomaval1", "Nomaval1")
+            tableMapping.ColumnMappings.Add("Geneava1", "Geneava1")
+            tableMapping.ColumnMappings.Add("Nomrava1", "Nomrava1")
+            tableMapping.ColumnMappings.Add("Generav1", "Generav1")
+            tableMapping.ColumnMappings.Add("Poderav1", "Poderav1")
+            tableMapping.ColumnMappings.Add("Aval2", "Aval2")
+            tableMapping.ColumnMappings.Add("Tipaval2", "Tipaval2")
+            tableMapping.ColumnMappings.Add("Nomaval2", "Nomaval2")
+            tableMapping.ColumnMappings.Add("GeneAva2", "GeneAva2")
+            tableMapping.ColumnMappings.Add("Nomrava2", "Nomrava2")
+            tableMapping.ColumnMappings.Add("Generav2", "Generav2")
+            tableMapping.ColumnMappings.Add("Poderav2", "Poderav2")
+            tableMapping.ColumnMappings.Add("Agrupa", "Agrupa")
+            tableMapping.ColumnMappings.Add("SegVida", "SegVida")
+            tableMapping.ColumnMappings.Add("TasaIVACliente", "TasaIVACliente")
+            tableMapping.ColumnMappings.Add("CuentadePago1", "CuentadePago1")
+            tableMapping.ColumnMappings.Add("FormadePago1", "FormadePago1")
+            tableMapping.ColumnMappings.Add("CuentadePago2", "CuentadePago2")
+            tableMapping.ColumnMappings.Add("FormadePago2", "FormadePago2")
+            tableMapping.ColumnMappings.Add("CuentadePago3", "CuentadePago3")
+            tableMapping.ColumnMappings.Add("FormadePago3", "FormadePago3")
+            tableMapping.ColumnMappings.Add("CuentadePago4", "CuentadePago4")
+            tableMapping.ColumnMappings.Add("FormadePago4", "FormadePago4")
+            tableMapping.ColumnMappings.Add("NombreCliente", "NombreCliente")
+            tableMapping.ColumnMappings.Add("ApellidoPaterno", "ApellidoPaterno")
+            tableMapping.ColumnMappings.Add("ApellidoMaterno", "ApellidoMaterno")
+            tableMapping.ColumnMappings.Add("Genero", "Genero")
+            tableMapping.ColumnMappings.Add("siebel", "siebel")
+            tableMapping.ColumnMappings.Add("AnexoCon", "AnexoCon")
+            tableMapping.ColumnMappings.Add("TipoCredito", "TipoCredito")
+            tableMapping.ColumnMappings.Add("MontoFinanciado", "MontoFinanciado")
+            tableMapping.ColumnMappings.Add("Primera", "Primera")
+            tableMapping.ColumnMappings.Add("Ultima", "Ultima")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.Agil.My.MySettings.Default.ProductionConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        Anexos.Anexo, Anexos.Flcan, Anexos.Vencida, Anexos.Garantia, Anexos"& _ 
+                ".Referencia, Anexos.Cliente, Anexos.Impeq, Anexos.Segeq, Anexos.Finse, Anexos.Pl"& _ 
+                "azo, Anexos.Plaseg, Anexos.Ivaeq, Anexos.Ivase, Anexos.Porieq, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+                "          Anexos.PorInt, Anexos.Amorin, Anexos.IvaAmorin, Anexos.Tippe, Anexos.T"& _ 
+                "ipta, Anexos.Tasas, Anexos.Difer, Anexos.AcumulaIntereses, Anexos.Tipar, Anexos."& _ 
+                "Forca, Anexos.Tipmen, Anexos.RtasD, Anexos.ImpRD, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Ane"& _ 
+                "xos.IvaRD, Anexos.Porco, Anexos.Comis, Anexos.Porop, Anexos.Fechacon, Anexos.Fve"& _ 
+                "nc, Anexos.Fondeo, Anexos.DepNafin, Anexos.Critas, Anexos.Tipeq, Anexos.Gastos, "& _ 
+                "Anexos.IvaGastos, Anexos.Tipmon, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Mensu, Anexos"& _ 
+                ".Tasmor, Anexos.Taspen, Anexos.Doc1, Anexos.Doc2, Anexos.Doc3, Anexos.Prendaria,"& _ 
+                " Anexos.Prenda, Anexos.Observa, Anexos.Fechafin, Anexos.Factor, Anexos.Piso, Ane"& _ 
+                "xos.Techo, Anexos.Tasamax, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.Adeudo, Anexos.RD, "& _ 
+                "Anexos.ImpDG, Anexos.IvaDG, Anexos.Derechos, Anexos.DG, Anexos.GHipotec, Anexos."& _ 
+                "Lugar, Anexos.Notaria, Anexos.Escritura, Anexos.Scaneo, Anexos.Archivo, Anexos.S"& _ 
+                "ervicio, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.IVAServicio, Anexos.Fecha_Pago, Anexo"& _ 
+                "s.Cobertura, Anexos.Pagos, Anexos.TipoFrecuencia, Anexos.ValorFrecuencia, Anexos"& _ 
+                ".Amortizaciones, Anexos.Banco, Anexos.CuentaCLABE, Anexos.Autoriza, Anexos.Titul"& _ 
+                "ar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos.idCredito, Anexos.Minds, RTRIM(Clientes.De"& _ 
+                "scr) AS Descr, Clientes.Tipo, Clientes.Sucursal, Clientes.Promo, Clientes.Gestor"& _ 
+                ", RTRIM(Clientes.Calle) AS Calle, RTRIM(Clientes.Colonia) AS Colonia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                 RTRIM(Clientes.Delegacion) AS Delegacion, Clientes.Copos, Clien"& _ 
+                "tes.Telef1, Clientes.Telef2, Clientes.Telef3, Clientes.Fax, Clientes.Fecha1, Cli"& _ 
+                "entes.Giro, Clientes.Plaza, Clientes.RFC, Clientes.CURP, Clientes.EMail1, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     Clientes.EMail2, Clientes.CuentaBancomer, Clientes.GeneClie"& _ 
+                ", Clientes.Nomrepr, Clientes.Generepr, Clientes.Poderepr, Clientes.Nomrepr2, Cli"& _ 
+                "entes.Generep2, Clientes.Poderep2, Clientes.Coac, Clientes.Tipcoac, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
+                "               Clientes.Nomcoac, Clientes.Genecoac, Clientes.Nomrcoac, Clientes."& _ 
+                "Genercoa, Clientes.Podercoa, Clientes.Obli, Clientes.TipoObli, Clientes.NomObli,"& _ 
+                " Clientes.GeneObli, Clientes.NomrObl, Clientes.GenerObl, Clientes.PoderObl, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
+                "                       Clientes.Aval1, Clientes.Tipaval1, Clientes.Nomaval1, Cli"& _ 
+                "entes.Geneava1, Clientes.Nomrava1, Clientes.Generav1, Clientes.Poderav1, Cliente"& _ 
+                "s.Aval2, Clientes.Tipaval2, Clientes.Nomaval2, Clientes.GeneAva2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             Clientes.Nomrava2, Clientes.Generav2, Clientes.Poderav2, Clientes.A"& _ 
+                "grupa, Clientes.SegVida, Clientes.TasaIVACliente, Clientes.CuentadePago1, Client"& _ 
+                "es.FormadePago1, Clientes.CuentadePago2, Clientes.FormadePago2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+                "           Clientes.CuentadePago3, Clientes.FormadePago3, Clientes.CuentadePago4"& _ 
+                ", Clientes.FormadePago4, Clientes.NombreCliente, Clientes.ApellidoPaterno, Clien"& _ 
+                "tes.ApellidoMaterno, Clientes.Genero, Clientes.siebel, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  Vw_Anexos.AnexoCon, Vw_Anexos.TipoCredito, Anexos.Impeq - Anexos.Amorin - Anex"& _ 
+                "os.Ivaeq AS MontoFinanciado, Vw_AnexosMinMax.Primera, Vw_AnexosMinMax.Ultima"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FR"& _ 
+                "OM            Clientes INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Anexos ON Clientes.C"& _ 
+                "liente = Anexos.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_Anexos ON Anexos"& _ 
+                ".Anexo = Vw_Anexos.Anexo INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vw_AnexosMinMax ON"& _ 
+                " Anexos.Anexo = Vw_AnexosMinMax.Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Anexo = @Anexo)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As ProductionDataSet.Anexos2DataTable, ByVal Anexo As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal Anexo As String) As ProductionDataSet.Anexos2DataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Anexo,String)
+            End If
+            Dim dataTable As ProductionDataSet.Anexos2DataTable = New ProductionDataSet.Anexos2DataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

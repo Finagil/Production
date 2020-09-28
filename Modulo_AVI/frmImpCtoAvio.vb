@@ -530,129 +530,130 @@ Public Class frmImpCtoAvio
                 End If
             Else
                 rbMolinos.Enabled = False
-                        rbArfin.Enabled = False
-                    End If
+                rbArfin.Enabled = False
+            End If
 
-                    ' Proceso los nombres de los avales
+            ' Proceso los nombres de los avales
 
-                    cAval1 = Trim(drDato("NomCoac"))
-                    If Trim(drDato("NomrCoac")) <> "" Then
-                        cAval1b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrCoac"))
-                    End If
-                    cAval2 = Trim(drDato("NomObli"))
-                    If Trim(drDato("NomrObl")) <> "" Then
-                        cAval2b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrObl"))
-                    End If
-                    cAval3 = Trim(drDato("NomAval1"))
-                    If Trim(drDato("NomrAva1")) <> "" Then
-                        cAval3b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva1"))
-                    End If
-                    cAval4 = Trim(drDato("NomAval2"))
-                    If Trim(drDato("NomrAva2")) <> "" Then
-                        cAval4b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva2"))
-                    End If
 
-                    If cAval1 <> "" Then
-                        lbAvales.Items.Add(cAval1)
-                        If drDato("TipCoac") = "M" Then
-                            If drDato("Coac") = "C" Then
-                                cDatosAval = Chr(10) & "DECLARA EL COACREDITADO POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
-                            Else
-                                cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
-                            End If
-                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrCoac") & Chr(10) & drDato("Genercoa") & Chr(10) & Chr(10) & drDato("PoderCoa")
-                        Else
-                            If drDato("Coac") = "C" Then
-                                cDatosAval = Chr(10) & "DECLARA EL COACREDITADO:" & drDato("GeneCoac")
-                            Else
-                                cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL:" & drDato("GeneCoac")
-                            End If
-                        End If
-                    End If
-                    If cAval2 <> "" Then
-                        lbAvales.Items.Add(cAval2)
-                        If drDato("TipoObli") = "M" Then
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneObli")
-                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrObl") & Chr(10) & drDato("GenerObl") & Chr(10) & Chr(10) & drDato("PoderObl")
-                        Else
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneObli")
-                        End If
-                    End If
-                    If cAval3 <> "" Then
-                        lbAvales.Items.Add(cAval3)
-                        If drDato("TipAval1") = "M" Then
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "ODECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("Geneava1")
-                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva1") & Chr(10) & drDato("GenerAv1") & Chr(10) & Chr(10) & drDato("Poderav1")
-                        Else
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva1")
-                        End If
-                    End If
-                    If cAval4 <> "" Then
-                        lbAvales.Items.Add(cAval4)
-                        If drDato("TipAval2") = "M" Then
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SE REPRESENTANTE: " & drDato("GeneAva2")
-                            cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva2") & Chr(10) & drDato("GenerAv2") & Chr(10) & Chr(10) & drDato("Poderav2")
-                        Else
-                            cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva2")
-                        End If
-                    End If
+            cAval1 = Trim(drDato("NomCoac"))
+            If Trim(drDato("NomrCoac")) <> "" Then
+                cAval1b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrCoac"))
+            End If
+            cAval2 = Trim(drDato("NomObli"))
+            If Trim(drDato("NomrObl")) <> "" Then
+                cAval2b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrObl"))
+            End If
+            cAval3 = Trim(drDato("NomAval1"))
+            If Trim(drDato("NomrAva1")) <> "" Then
+                cAval3b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva1"))
+            End If
+            cAval4 = Trim(drDato("NomAval2"))
+            If Trim(drDato("NomrAva2")) <> "" Then
+                cAval4b = "REPRESENTADA EN ESTE ACTO POR " & Trim(drDato("NomrAva2"))
+            End If
 
-                    If cSucursal = "05" Then
-                        cNum = "III. " & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
-                        cNum1 = "IV."
-                        cNum2 = "V. "
+            If cAval1 <> "" Then
+                lbAvales.Items.Add(cAval1)
+                If drDato("TipCoac") = "M" Then
+                    If drDato("Coac") = "C" Then
+                        cDatosAval = Chr(10) & "DECLARA EL COACREDITADO POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
                     Else
-                        cNum = ""
-                        cNum1 = "III." & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
-                        cNum2 = "IV. "
+                        cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneCoac")
                     End If
-
-                    cGarantiaPrendaria = drDato("GarantiaPrendaria")
-                    cGarantiaHipotecaria = drDato("GarantiaHipotecaria")
-                    cGarantiaUsufructo = drDato("GarantiaUsufructo")
-                    nRendimiento = drDato("ToneladasHectarea")
-                    cFondeo = drDato("Fondeo")
-                    If cFondeo = "01" Then
-                        TxtFondeo.Text = "PROPIOS"
-                    ElseIf cFondeo = "03" Then
-                        TxtFondeo.Text = "FIRA"
+                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrCoac") & Chr(10) & drDato("Genercoa") & Chr(10) & Chr(10) & drDato("PoderCoa")
+                Else
+                    If drDato("Coac") = "C" Then
+                        cDatosAval = Chr(10) & "DECLARA EL COACREDITADO:" & drDato("GeneCoac")
                     Else
-                        TxtFondeo.Text = "NAFIN"
+                        cDatosAval = Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL:" & drDato("GeneCoac")
                     End If
-                    nToneladas = nHectareas * nRendimiento
-                    cHectareas = Format(nHectareas, "##,##0.00")
-                    cToneladas = Format(nToneladas, "##,##0.00")
-                    cRendimiento = Format(nRendimiento, "##,##0.00")
-                    nPlazoCred = DateDiff(DateInterval.Day, CTOD(cFechaFirma), CTOD(cFechaTermino))
+                End If
+            End If
+            If cAval2 <> "" Then
+                lbAvales.Items.Add(cAval2)
+                If drDato("TipoObli") = "M" Then
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("GeneObli")
+                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrObl") & Chr(10) & drDato("GenerObl") & Chr(10) & Chr(10) & drDato("PoderObl")
+                Else
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneObli")
+                End If
+            End If
+            If cAval3 <> "" Then
+                lbAvales.Items.Add(cAval3)
+                If drDato("TipAval1") = "M" Then
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "ODECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SU REPRESENTANTE: " & drDato("Geneava1")
+                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva1") & Chr(10) & drDato("GenerAv1") & Chr(10) & Chr(10) & drDato("Poderav1")
+                Else
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva1")
+                End If
+            End If
+            If cAval4 <> "" Then
+                lbAvales.Items.Add(cAval4)
+                If drDato("TipAval2") = "M" Then
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL POR CONDUCTO DE SE REPRESENTANTE: " & drDato("GeneAva2")
+                    cDatosAval = cDatosAval & Chr(10) & " SU REPRESENTANTE " & drDato("NomrAva2") & Chr(10) & drDato("GenerAv2") & Chr(10) & Chr(10) & drDato("Poderav2")
+                Else
+                    cDatosAval = cDatosAval & Chr(10) & Chr(10) & "DECLARA EL OBLIGADO SOLIDARIO Y AVAL: " & drDato("GeneAva2")
+                End If
+            End If
 
-                    If cFechaAutorizacion = "" Or nRendimiento = 0 Or nHectareas = 0 Or nImporte = 0 Or Val(cDiferencialFINAGIL) = 0 Then
-                        btnImprimir.Enabled = False
-                        btnImpPagare.Enabled = False
-                        gbPagare.Visible = False
-                    End If
+            If cSucursal = "05" Then
+                cNum = "III. " & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
+                cNum1 = "IV."
+                cNum2 = "V. "
+            Else
+                cNum = ""
+                cNum1 = "III." & "Declara(n) el(los) Obligado(s) y Aval(es):" & Chr(10) & Chr(10) & cDatosAval & Chr(10)
+                cNum2 = "IV. "
+            End If
 
-                    nCultivo = TaQUERY.SacaIDCultivo(cSemilla)
+            cGarantiaPrendaria = drDato("GarantiaPrendaria")
+            cGarantiaHipotecaria = drDato("GarantiaHipotecaria")
+            cGarantiaUsufructo = drDato("GarantiaUsufructo")
+            nRendimiento = drDato("ToneladasHectarea")
+            cFondeo = drDato("Fondeo")
+            If cFondeo = "01" Then
+                TxtFondeo.Text = "PROPIOS"
+            ElseIf cFondeo = "03" Then
+                TxtFondeo.Text = "FIRA"
+            Else
+                TxtFondeo.Text = "NAFIN"
+            End If
+            nToneladas = nHectareas * nRendimiento
+            cHectareas = Format(nHectareas, "##,##0.00")
+            cToneladas = Format(nToneladas, "##,##0.00")
+            cRendimiento = Format(nRendimiento, "##,##0.00")
+            nPlazoCred = DateDiff(DateInterval.Day, CTOD(cFechaFirma), CTOD(cFechaTermino))
 
-                    With cm4
-                        .CommandType = CommandType.Text
-                        .CommandText = "SELECT GastosAdminHecta FROM AVI_Parametros WHERE id_Ciclo = " & "'" & cCiclo & "'" & " And id_Sucursal = " & "'" & cSucursal & "'" & " And id_Cultivo = " & nCultivo.ToString
-                        .Connection = cnAgil
-                    End With
+            If cFechaAutorizacion = "" Or nRendimiento = 0 Or nHectareas = 0 Or nImporte = 0 Or Val(cDiferencialFINAGIL) = 0 Then
+                btnImprimir.Enabled = False
+                btnImpPagare.Enabled = False
+                gbPagare.Visible = False
+            End If
 
-                    daGtoAd.Fill(dsAgil, "GtoAdmin")
-                    If dsAgil.Tables("GtoAdmin").Rows.Count > 0 Then
-                        drGtoAd = dsAgil.Tables("GtoAdmin").Rows(0)
-                        cFactorGA = drGtoAd("GastosAdminHecta").ToString
-                    End If
+            nCultivo = TaQUERY.SacaIDCultivo(cSemilla)
 
-                    cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA"
-                    cFertilizante = "UREA" & Chr(13) & "FOSFORO" & Chr(13) & "SULFATO DE AMONIO(ESTANDAR Y GRANULADO)" & Chr(13) & "MEZCLA 300-100" & Chr(13) & "MEZCLA 400-100" & Chr(13)
-                    cFertilizante = cFertilizante & "AMONIACO C/SERVICIO" & Chr(13) & "AMINIACO S/SERVICIO" & Chr(13) & "FOSFORO LIQUIDO"
-                    If cSemilla = "C" And cSucursal = "04" Then
-                        cHerbicidas = "MURALLA MAX (Insecticida)" & Chr(13) & "OPUS (Fungicida)" & Chr(13) & "CLOROTALONI (Fungicida)" & Chr(13) & "SURFACID (Adherente)"
-                    Else
-                        cHerbicidas = "DIAMINE 400" & Chr(13) & "PERFEKTION" & Chr(13) & "DIAMINE 480" & Chr(13) & "AMINA 4" & Chr(13) & "SUTUIXL" & Chr(13) & "ETC."
-                    End If
+            With cm4
+                .CommandType = CommandType.Text
+                .CommandText = "SELECT GastosAdminHecta FROM AVI_Parametros WHERE id_Ciclo = " & "'" & cCiclo & "'" & " And id_Sucursal = " & "'" & cSucursal & "'" & " And id_Cultivo = " & nCultivo.ToString
+                .Connection = cnAgil
+            End With
+
+            daGtoAd.Fill(dsAgil, "GtoAdmin")
+            If dsAgil.Tables("GtoAdmin").Rows.Count > 0 Then
+                drGtoAd = dsAgil.Tables("GtoAdmin").Rows(0)
+                cFactorGA = drGtoAd("GastosAdminHecta").ToString
+            End If
+
+            cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA"
+            cFertilizante = "UREA" & Chr(13) & "FOSFORO" & Chr(13) & "SULFATO DE AMONIO(ESTANDAR Y GRANULADO)" & Chr(13) & "MEZCLA 300-100" & Chr(13) & "MEZCLA 400-100" & Chr(13)
+            cFertilizante = cFertilizante & "AMONIACO C/SERVICIO" & Chr(13) & "AMINIACO S/SERVICIO" & Chr(13) & "FOSFORO LIQUIDO"
+            If cSemilla = "C" And cSucursal = "04" Then
+                cHerbicidas = "MURALLA MAX (Insecticida)" & Chr(13) & "OPUS (Fungicida)" & Chr(13) & "CLOROTALONI (Fungicida)" & Chr(13) & "SURFACID (Adherente)"
+            Else
+                cHerbicidas = "DIAMINE 400" & Chr(13) & "PERFEKTION" & Chr(13) & "DIAMINE 480" & Chr(13) & "AMINA 4" & Chr(13) & "SUTUIXL" & Chr(13) & "ETC."
+            End If
             If cSucursal = "03" Then
                 cEmpcv = "TABLEX MILLER S DE RL DE CV"
                 cLugar = "Navojoa, Sonora"
@@ -696,12 +697,15 @@ Public Class frmImpCtoAvio
                 cFirmaTestigo1 = "LIC. ESTEFANÍA VERÓNICA ACOSTA GONZÁLEZ"
                 cFirmaTestigo2 = "ING. JORGE FAVELA CONTRERAS"
 
+                cFertilizante = "UREA" & Chr(13) & "11-52-00" & Chr(13) & "AMONIACO ANHIDRO" & Chr(13) & "UAN32" & Chr(13) & "ACIDO FOSFORICO" & Chr(13)
+                cFertilizante += "MEZCLA 50-50" & Chr(13) & "MEZCLA 10-34"
+                cHerbicidas = "AXIAL" & Chr(13) & "PIXXARO" & Chr(13) & "TOPIC"
 
                 cUnidadEsp = "Avenida Rio San Angel número 48 (cuarenta y ocho) interior 7 (siete) y 8 (ocho), fraccionamiento Valle de Puebla, C.P. 21384 (veintiún mil trescientos ochenta y cuatro), Mexicali, Baja California, los teléfonos de atención a usuarios serán: (686) 577 80 60, (686) 577 80 50 y 01 800 626 02 27, "
                 If cSemilla = "C" Then
                     cOtros = "CIANO-OL"
                 Else
-                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
+                    cOtros = "CIRNO" & Chr(13) & "CANDURA" & Chr(13) & "RIO COLORADO" & Chr(13) & "QUETCHEHUECA" & Chr(13) & "BAROYECA" & Chr(13) & "CEMEXI" & Chr(13) & "ATIL"
                 End If
             ElseIf cSucursal = "08" Then
                 cEmpcv = "MOLINOS DEL SUDESTE SA DE CV"
@@ -721,45 +725,45 @@ Public Class frmImpCtoAvio
             ElseIf cSucursal = "05" Then
                 cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA "
                 cPirineos = " a través de HARINERA LOS PIRINEOS S.A. DE C.V., "
-                        cC_Venta = "Lo anterior en base al "
-                        cC_Venta2 = "de conformidad con el "
+                cC_Venta = "Lo anterior en base al "
+                cC_Venta2 = "de conformidad con el "
                 cCtoC_Venta = "contrato de compraventa del Ciclo Agrícola Primavera-Verano 2011 suscrito entre 'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA, S.P.R. DE R.L Y HARINERA LOS PIRINEOS S.A. DE C.V."
                 If cSemilla = "S" Then
-                            cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
-                        ElseIf cSemilla = "M" Or cSemilla = "N" Then
-                            cOtros = "P3368W PIONNER" & Chr(13) & "P2946W PIONNER" & Chr(13) & "32D06 PIONNER" & Chr(13) & "30P16 PIONNER" & Chr(13) & "RIO GRANDE AVANTE" & Chr(13) & "TRES RIOS AVANTE"
-                        ElseIf cSemilla = "T" Then
-                            cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "OTRA"
-                        End If
+                    cOtros = "8133 PIONNER" & Chr(13) & "81T91 PIONNER" & Chr(13) & "81G47 PIONNER" & Chr(13) & "84G48 PIONNER" & Chr(13) & "GALIO ASGROW" & Chr(13) & "KILATE ASGROW" & Chr(13) & "NIQUEL ASGROW" & Chr(13) & "PINO AVANTE" & Chr(13) & "MEZQUITE AVANTE" & Chr(13) & "FRESNO AVANTE" & Chr(13) & "NOGAL AVANTE" & Chr(13) & "DKS43 DKALB" & Chr(13) & "DKS74 DKALB" & Chr(13) & "DKS46 DKALB"
+                ElseIf cSemilla = "M" Or cSemilla = "N" Then
+                    cOtros = "P3368W PIONNER" & Chr(13) & "P2946W PIONNER" & Chr(13) & "32D06 PIONNER" & Chr(13) & "30P16 PIONNER" & Chr(13) & "RIO GRANDE AVANTE" & Chr(13) & "TRES RIOS AVANTE"
+                ElseIf cSemilla = "T" Then
+                    cOtros = "JUPARE" & Chr(13) & "NACORI" & Chr(13) & "ALTAR" & Chr(13) & "BANAMICHI" & Chr(13) & "SAMAYOA" & Chr(13) & "OTRA"
+                End If
 
-                        'cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA para el ciclo " & cDescCiclo2 & ", se aplicará la siguiente formula GA = ga + (ga x 2i)" & Chr(13) & Chr(13) & "GA = Gastos administrativos a aplicar al ciclo correspondiente, redondeando a las unidades de pesos (si el resultado –tomando en consideración los decimales- es menor a 0.5," & _
-                        '" se redondeará a la unidad inmediata anterior, si es mayor o igual a 0.5 se cerrará a la unidad inmediata superior)." & "ga = gastos administrativos del ciclo inmediato anterior al correspondiente." & Chr(13) & "i = Inflación anual (del 1 de enero al 31 de diciembre que determine el Banco de México) al cierre del ejercicio fiscal del año inmediato anterior al ciclo correspondiente."
+                'cGtoAdmin = "$ " & Trim(cFactorGA) & "/HA para el ciclo " & cDescCiclo2 & ", se aplicará la siguiente formula GA = ga + (ga x 2i)" & Chr(13) & Chr(13) & "GA = Gastos administrativos a aplicar al ciclo correspondiente, redondeando a las unidades de pesos (si el resultado –tomando en consideración los decimales- es menor a 0.5," & _
+                '" se redondeará a la unidad inmediata anterior, si es mayor o igual a 0.5 se cerrará a la unidad inmediata superior)." & "ga = gastos administrativos del ciclo inmediato anterior al correspondiente." & Chr(13) & "i = Inflación anual (del 1 de enero al 31 de diciembre que determine el Banco de México) al cierre del ejercicio fiscal del año inmediato anterior al ciclo correspondiente."
 
-                        cLugar = "Irapuato, Guanajuato"
-                        cTestigos = "DECLARA EL TESTIGO LLAMARSE VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS, DE PROFESION LICENCIADA EN CONTADURIA, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
-                        cTestigos = cTestigos & " 17 DE ENERO DE 1984, CON R.F.C. TECV8401179F0, DE ESTADO CIVIL CASADA. "
-                        cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
-                        cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
-                        cFirmaTestigo1 = "LIC. VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS"
-                        ''cTestigos = "DECLARA EL TESTIGO LLAMARSE VIANEY ALEJANDRA YAÑEZ ORTIZ, DE OCUPACION ESTUDIANTE, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
-                        ''cTestigos = cTestigos & " 15 DE MAYO DE 1991, CON R.F.C. YAOV910515480, DE ESTADO CIVIL SOLTERA. "
-                        ''cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
-                        ''cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
-                        ''cFirmaTestigo1 = "VIANEY ALEJANDRA YAÑEZ ORTIZ"
-                        cFirmaTestigo2 = "ING. JOSE JUAN CARLOS RAZO GUERRA"
-                        cUnidadEsp = "Avenida de los Insurgentes número 2604 (dos mil seiscientos cuatro), Local B-4, Plaza Inn, colonia Los Fresnos, C.P. 36555 (treinta y seis mil quinientos cincuenta y cinco), Irapuato, Guanajuato, los teléfonos de atención a usuarios serán: (462) 623 62 31, (462) 623 64 61 y 01 800 837 74 76, "
-                    ElseIf cSucursal = "06" Then
-                        cEmpcv = "MOLINOS DEL FENIX SA DE CV"
-                        cLugar = "Saltillo, Coahuila"
-                        cTestigos = "DECLARA EL TESTIGO LLAMARSE MARIO RUIZ URBINA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE MONTERREY, NUEVO LEON, LUGAR DONDE NACIO EL "
-                        cTestigos = cTestigos & " 19 DE ENERO DE 1961, CON R.F.C. RUUM610119MG3, DE ESTADO CIVIL CASADO. "
-                        cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE FRANCISCO JAVIER MARTINEZ GARCIA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE SALTILLO, COAHUILA, LUGAR DONDE NACIO EL "
-                        cTestigos = cTestigos & " 03 DE SEPTIEMBRE DE 1955, CON R.F.C. MAGF550903, DE ESTADO CIVIL CASADO. "
-                        cFirmaTestigo1 = "ING. MARIO RUIZ URBINA"
-                        cFirmaTestigo2 = "ING. FRANCISCO JAVIER MARTINEZ GARCIA"
-                    End If
+                cLugar = "Irapuato, Guanajuato"
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS, DE PROFESION LICENCIADA EN CONTADURIA, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
+                cTestigos = cTestigos & " 17 DE ENERO DE 1984, CON R.F.C. TECV8401179F0, DE ESTADO CIVIL CASADA. "
+                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
+                cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
+                cFirmaTestigo1 = "LIC. VIOLETA MARIA LUCIA TEZCUCANO CONTRERAS"
+                ''cTestigos = "DECLARA EL TESTIGO LLAMARSE VIANEY ALEJANDRA YAÑEZ ORTIZ, DE OCUPACION ESTUDIANTE, ORIGINARIA DE IRAPUATO, GUANAJUATO LUGAR DONDE NACIO EL "
+                ''cTestigos = cTestigos & " 15 DE MAYO DE 1991, CON R.F.C. YAOV910515480, DE ESTADO CIVIL SOLTERA. "
+                ''cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE JOSE JUAN CARLOS RAZO GUERRA, DE PROFESION INGENIERO AGROINDUSTRIAL, ORIGINARIO DE ABASOLO, GUANAJUATO LUGAR DONDE NACIO EL "
+                ''cTestigos = cTestigos & " 03 DE MAYO DE 1984, CON R.F.C. RAGJ840503K35, DE ESTADO CIVIL SOLTERO. "
+                ''cFirmaTestigo1 = "VIANEY ALEJANDRA YAÑEZ ORTIZ"
+                cFirmaTestigo2 = "ING. JOSE JUAN CARLOS RAZO GUERRA"
+                cUnidadEsp = "Avenida de los Insurgentes número 2604 (dos mil seiscientos cuatro), Local B-4, Plaza Inn, colonia Los Fresnos, C.P. 36555 (treinta y seis mil quinientos cincuenta y cinco), Irapuato, Guanajuato, los teléfonos de atención a usuarios serán: (462) 623 62 31, (462) 623 64 61 y 01 800 837 74 76, "
+            ElseIf cSucursal = "06" Then
+                cEmpcv = "MOLINOS DEL FENIX SA DE CV"
+                cLugar = "Saltillo, Coahuila"
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE MARIO RUIZ URBINA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE MONTERREY, NUEVO LEON, LUGAR DONDE NACIO EL "
+                cTestigos = cTestigos & " 19 DE ENERO DE 1961, CON R.F.C. RUUM610119MG3, DE ESTADO CIVIL CASADO. "
+                cTestigos = cTestigos & Chr(10) & "DECLARA EL TESTIGO LLAMARSE FRANCISCO JAVIER MARTINEZ GARCIA, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE SALTILLO, COAHUILA, LUGAR DONDE NACIO EL "
+                cTestigos = cTestigos & " 03 DE SEPTIEMBRE DE 1955, CON R.F.C. MAGF550903, DE ESTADO CIVIL CASADO. "
+                cFirmaTestigo1 = "ING. MARIO RUIZ URBINA"
+                cFirmaTestigo2 = "ING. FRANCISCO JAVIER MARTINEZ GARCIA"
+            End If
 
-                    If cSemilla = "A" Then
+            If cSemilla = "A" Then
                         cOtros = "DELTA PINE 0912" & Chr(13) & "DELTA PINE 0935" & Chr(13) & "FIBER MAX 1740" & "FIBER MAX 5458"
                         cAgroquimi = "COLOSO" & Chr(13) & "FAENA FORTE" & Chr(13) & "GLIFOX MAX"
                         cAgroquimi2 = "METAMIDOFOS" & Chr(13) & "TALSTAR" & Chr(13) & "THIODAN"
