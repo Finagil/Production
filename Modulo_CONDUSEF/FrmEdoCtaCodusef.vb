@@ -34,7 +34,7 @@ Public Class FrmEdoCtaCodusef
 
         Dim rep As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         Dim DS As New ProductionDataSet
-        Dim Ta As New ProductionDataSetTableAdapters.AnexosTableAdapter
+        Dim Ta As New ProductionDataSetTableAdapters.Anexos2TableAdapter
         Dim Tf As New ProductionDataSetTableAdapters.FacturasTableAdapter
         If Not IsDBNull(Tf.ScalarSaldoVenc(LstAnexos.SelectedValue, LbLetra.Text)) Then SaldoVenc = Tf.ScalarSaldoVenc(LstAnexos.SelectedValue, LbLetra.Text)
 
@@ -42,7 +42,7 @@ Public Class FrmEdoCtaCodusef
         LLena_Abonos(DS, CDate(LbFI.Text), CDate(LbFF.Text), IntePag, TotalPag, Comision, MontoMora)
         LLena_Cargos(DS, CDate(LbFI.Text), CDate(LbFF.Text))
 
-        Ta.FillByAnexo(DS.Tables("Anexos"), LstAnexos.SelectedValue)
+        Ta.Fill(DS.Anexos2, LstAnexos.SelectedValue)
         Tf.FillFactura(DS.Tables("Facturas"), LstAnexos.SelectedValue, LstPeriodos.SelectedValue)
 
         'For Each rr As FinagilDS.TablaLetrasRow In T1.Rows
