@@ -1458,9 +1458,9 @@ Public Class frmAcepagoIVF
                 taFavor.Insert(cAnexo, "", txtMontoPagado.Text, UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
                 Aux = "Usuario:" & UsuarioGlobal & "<br>"
                 Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
-                Aux += "Saldo a Favor:" & (txtMontoPagado.Text) & "<br>"
+                Aux += "Saldo a Favor:" & Val(txtMontoPagado.Text).ToString("c") & "<br>"
                 Aux += "Instrumento Monetario:" & CmbInstruMon.SelectedValue & "<br>"
-                MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "AP Manual Saldo a Favor: " & cAnexo, Aux)
+                MandaCorreoFase("SaldosFavor@cmoderna.com", "NOTI_SALDO_FAVOR", "AP Manual Saldo a Favor: " & cAnexo, Aux)
             End If
 
             Me.Close()

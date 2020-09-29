@@ -193,7 +193,8 @@
     End Sub
 
     Private Sub btnReimprimir_Click(sender As Object, e As EventArgs) Handles btnReimprimir.Click
-        frmImprRelDocOrig.Show()
+        Dim f As New frmImprRelDocOrig
+        f.ShowDialog(Me)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click

@@ -2054,11 +2054,11 @@ Public Class frmFiniquito
             taFavor.Insert(cAnexo, "", Round(nImportePago, 2) - Round(nPagoTotal, 2), UsuarioGlobal, Date.Now, cFechaAplicacion, cCliente, CmbInstruMon.SelectedValue, False)
             Aux = "Usuario:" & UsuarioGlobal & "<br>"
             Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
-            aux += "nImportePago:" & nImportePago & "<br>"
-            aux += "nPagoTotal:" & nPagoTotal & "<br>"
-            aux += "Saldo a Favor:" & Round(nImportePago, 2) - Round(nPagoTotal, 2) & "<br>"
+            aux += "nImportePago:" & nImportePago.ToString("c") & "<br>"
+            aux += "nPagoTotal:" & nPagoTotal.ToString("c") & "<br>"
+            aux += "Saldo a Favor:" & Abs(Round(nImportePago, 2) - Round(nPagoTotal, 2)).ToString("c") & "<br>"
             aux += "Instrumento Monetario:" & CmbInstruMon.SelectedValue & "<br>"
-            MandaCorreo("SaldosFavor@cmoderna.com", "ecacerest@cmoderna.com", "Finiquito Saldo a Favor: " & cAnexo, aux)
+            MandaCorreoFase("SaldosFavor@cmoderna.com", "NOTI_SALDO_FAVOR", "Finiquito Saldo a Favor: " & cAnexo, aux)
 
         End If
 
