@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>144</ApplicationRevision>
+    <ApplicationRevision>146</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -153,6 +153,11 @@
     </Compile>
     <Compile Include="Modulo_CONS\ConsultasDS.vb">
       <DependentUpon>ConsultasDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CXP\CxpDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CxpDS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulo_FIRA\frmRepcobraFIRA.vb">
       <SubType>Form</SubType>
@@ -1976,10 +1981,10 @@
     <Compile Include="Modulo_RPT\frmCalifica.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCambioCuenta.designer.vb">
+    <Compile Include="Modulo_TESO\frmCambioCuenta.designer.vb">
       <DependentUpon>frmCambioCuenta.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCambioCuenta.vb">
+    <Compile Include="Modulo_TESO\frmCambioCuenta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_AVI\frmCapturaPMI.designer.vb">
@@ -3636,7 +3641,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmCalifica.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCambioCuenta.resx">
+    <EmbeddedResource Include="Modulo_TESO\frmCambioCuenta.resx">
       <DependentUpon>frmCambioCuenta.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -4176,6 +4181,17 @@
     </None>
     <None Include="Modulo_CRE\CreditoDS.xss">
       <DependentUpon>CreditoDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_CXP\CxpDS.xsc">
+      <DependentUpon>CxpDS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulo_CXP\CxpDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CxpDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulo_CXP\CxpDS.xss">
+      <DependentUpon>CxpDS.xsd</DependentUpon>
     </None>
     <None Include="Modulo_FIRA\FiraDS.xsc">
       <DependentUpon>FiraDS.xsd</DependentUpon>

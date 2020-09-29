@@ -8,38 +8,23 @@ Imports System.Security
 Imports System.Security.Principal.WindowsIdentity
 
 Public Class frmLayOut2017
-
-
     Inherits System.Windows.Forms.Form
-
-    ' Declaración de variables de alcance privado
-
     Dim dtConCtaBmer As New DataTable("ConCtaBmer")
     Dim dtSinCtaBmer As New DataTable("SinCtaBmer")
     Dim dtPagos As New DataTable("GeneraPago")
     Dim dtRevisar As New DataTable("Faltantes")
-    Dim myIdentity As Principal.WindowsIdentity
-    Dim cUsuario As String
 
     Private Sub frmLayOut_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'ProductionDataSet.Bancos' table. You can move, or remove it, as needed.
         Me.BancosTableAdapter.Fill(Me.ProductionDataSet.Bancos)
 
-        Dim cnAgil As New SqlConnection(strConn)
-        Dim dsAgil As New DataSet()
-        Dim oTablaClientes As DataTable
-        Dim cm1 As New SqlCommand()
-        Dim daClientes As New SqlDataAdapter(cm1)
+        'Dim cnAgil As New SqlConnection(strConn)
+        Dim dsCxpDS As New CxpDS
+        'Dim oTablaClientes As DataTable
+        Dim taClientes As New CxpDSTableAdapters.TESO_Datos_LayOutTableAdapter
         Dim drDato As DataRow
-        Dim drRegistro As DataRow
+        Dim drRegistro As CxpDS.TESO_Datos_LayOutRow
 
         Dim i As Integer
-
-        myIdentity = GetCurrent()
-        cUsuario = myIdentity.Name
-
-        ' Crear tabla temporal para integrar los datos de los Clientes con Cuenta Bancomer
-
         dtConCtaBmer.Columns.Add("Nombre", Type.GetType("System.String"))
         dtConCtaBmer.Columns.Add("Contrato", Type.GetType("System.String"))
         dtConCtaBmer.Columns.Add("Importe", Type.GetType("System.String"))
@@ -51,82 +36,65 @@ Public Class frmLayOut2017
         dtConCtaBmer.Columns.Add("Cliente", Type.GetType("System.String"))
         dtConCtaBmer.Columns.Add("Ciclo", Type.GetType("System.String"))
 
-        ' Las siguientes dos tablas temporales tienen la misma estructura que la anterior por lo que únicamente clono
-
         dtSinCtaBmer = dtConCtaBmer.Clone()
         dtPagos = dtConCtaBmer.Clone()
         dtRevisar = dtConCtaBmer.Clone()
-
-        With cm1
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "TESO_Datos_LayOut"
-            .Connection = cnAgil
-        End With
-        daClientes.Fill(dsAgil, "Clientes")
-        cnAgil.Open()
-
-        oTablaClientes = dsAgil.Tables("Clientes")
-
-        ' creo un nodo raiz (el nombre Country, puede ser cualquier texto como Raíz, Root, etc.)
-
-        For Each drRegistro In dsAgil.Tables("Clientes").Rows
-
-            ' agrego al DataGrid correspondiente
-
-            If Trim(drRegistro("Banco")) = "BANCOMER" Then
-                If Trim(drRegistro("CuentaBancomer")) = "" Then
+        taClientes.Fill(dsCxpDS.TESO_Datos_LayOut)
+        For Each drRegistro In dsCxpDS.TESO_Datos_LayOut.Rows
+            If Trim(drRegistro.Banco) = "BANCOMER" Then
+                If Trim(drRegistro.CuentaBancomer) = "" Then
                     drDato = dtRevisar.NewRow()
-                    drDato("Nombre") = drRegistro("Descr")
-                    drDato("Contrato") = Mid(drRegistro("Anexo"), 1, 5) & "/" & Mid(drRegistro("Anexo"), 6, 4)
-                    drDato("Importe") = drRegistro("Importe")
-                    drDato("Banco") = drRegistro("Banco")
-                    drDato("CuentaBancomer") = drRegistro("CuentaBancomer")
-                    drDato("CuentaCLABE") = drRegistro("CuentaCLABE")
+                    drDato("Nombre") = drRegistro.Descr
+                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
+                    drDato("Importe") = drRegistro.Importe
+                    drDato("Banco") = drRegistro.Banco
+                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
+                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
                     drDato("Observacion") = "Revisa Datos"
-                    drDato("Ministracion") = drRegistro("Ministracion")
-                    drDato("Cliente") = drRegistro("Cliente")
-                    drDato("Ciclo") = drRegistro("Ciclo")
+                    drDato("Ministracion") = drRegistro.Ministracion
+                    drDato("Cliente") = drRegistro.Cliente
+                    drDato("Ciclo") = drRegistro.Ciclo
                     dtRevisar.Rows.Add(drDato)
                 Else
                     drDato = dtConCtaBmer.NewRow()
-                    drDato("Nombre") = drRegistro("Descr")
-                    drDato("Contrato") = Mid(drRegistro("Anexo"), 1, 5) & "/" & Mid(drRegistro("Anexo"), 6, 4)
-                    drDato("Importe") = drRegistro("Importe")
-                    drDato("Banco") = drRegistro("Banco")
-                    drDato("CuentaBancomer") = drRegistro("CuentaBancomer")
-                    drDato("CuentaCLABE") = drRegistro("CuentaCLABE")
+                    drDato("Nombre") = drRegistro.Descr
+                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
+                    drDato("Importe") = drRegistro.Importe
+                    drDato("Banco") = drRegistro.Banco
+                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
+                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
                     drDato("Observacion") = "Ok"
-                    drDato("Ministracion") = drRegistro("Ministracion")
-                    drDato("Cliente") = drRegistro("Cliente")
-                    drDato("Ciclo") = drRegistro("Ciclo")
+                    drDato("Ministracion") = drRegistro.Ministracion
+                    drDato("Cliente") = drRegistro.Cliente
+                    drDato("Ciclo") = drRegistro.Ciclo
                     dtConCtaBmer.Rows.Add(drDato)
                 End If
             Else
-                If Trim(drRegistro("CuentaCLABE")) = "" Then
+                If Trim(drRegistro.CuentaCLABE) = "" Then
                     drDato = dtRevisar.NewRow()
-                    drDato("Nombre") = drRegistro("Descr")
-                    drDato("Contrato") = Mid(drRegistro("Anexo"), 1, 5) & "/" & Mid(drRegistro("Anexo"), 6, 4)
-                    drDato("Importe") = drRegistro("Importe")
-                    drDato("Banco") = drRegistro("Banco")
-                    drDato("CuentaBancomer") = drRegistro("CuentaBancomer")
-                    drDato("CuentaCLABE") = drRegistro("CuentaCLABE")
+                    drDato("Nombre") = drRegistro.Descr
+                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
+                    drDato("Importe") = drRegistro.Importe
+                    drDato("Banco") = drRegistro.Banco
+                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
+                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
                     drDato("Observacion") = "Revisa Datos"
-                    drDato("Ministracion") = drRegistro("Ministracion")
-                    drDato("Cliente") = drRegistro("Cliente")
-                    drDato("Ciclo") = drRegistro("Ciclo")
+                    drDato("Ministracion") = drRegistro.Ministracion
+                    drDato("Cliente") = drRegistro.Cliente
+                    drDato("Ciclo") = drRegistro.Ciclo
                     dtRevisar.Rows.Add(drDato)
                 Else
                     drDato = dtSinCtaBmer.NewRow()
-                    drDato("Nombre") = drRegistro("Descr")
-                    drDato("Contrato") = Mid(drRegistro("Anexo"), 1, 5) & "/" & Mid(drRegistro("Anexo"), 6, 4)
-                    drDato("Importe") = drRegistro("Importe")
-                    drDato("Banco") = drRegistro("Banco")
-                    drDato("CuentaBancomer") = drRegistro("CuentaBancomer")
-                    drDato("CuentaCLABE") = drRegistro("CuentaCLABE")
+                    drDato("Nombre") = drRegistro.Descr
+                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
+                    drDato("Importe") = drRegistro.Importe
+                    drDato("Banco") = drRegistro.Banco
+                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
+                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
                     drDato("Observacion") = "Ok"
-                    drDato("Ministracion") = drRegistro("Ministracion")
-                    drDato("Cliente") = drRegistro("Cliente")
-                    drDato("Ciclo") = drRegistro("Ciclo")
+                    drDato("Ministracion") = drRegistro.Ministracion
+                    drDato("Cliente") = drRegistro.Cliente
+                    drDato("Ciclo") = drRegistro.Ciclo
                     dtSinCtaBmer.Rows.Add(drDato)
                 End If
             End If
@@ -134,7 +102,7 @@ Public Class frmLayOut2017
         DataGridView1.DataSource = dtConCtaBmer
         DataGridView2.DataSource = dtSinCtaBmer
         i = dtRevisar.Rows.Count()
-        If cUsuario = "AGIL\laura-mercado" Then
+        If UsuarioGlobal.ToUpper = "LMERCADO" Then
             DataGridView1.Enabled = False
             DataGridView2.Enabled = False
             DataGridView3.Visible = False
@@ -148,13 +116,9 @@ Public Class frmLayOut2017
                 Label5.Visible = True
             End If
         End If
-
-        cnAgil.Close()
-
     End Sub
 
     Private Sub DataGridView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
-
         Dim drDato1 As DataRow
         Dim nImporte As Decimal
         Dim nSuma As Decimal
@@ -179,7 +143,6 @@ Public Class frmLayOut2017
         txtSuma.Text = FormatNumber(txtTemp.Text)
 
         For Each row As DataGridViewRow In DataGridView1.SelectedRows
-            ' Eliminamos la fila. 
             dtConCtaBmer.Rows.RemoveAt(row.Index)
         Next
         DataGridView1.Refresh()
@@ -188,7 +151,6 @@ Public Class frmLayOut2017
     End Sub
 
     Private Sub DataGridView2_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView2.DoubleClick
-
         Dim drDato1 As DataRow
         Dim nImporte As Decimal
         Dim nSuma As Decimal
@@ -213,16 +175,13 @@ Public Class frmLayOut2017
         txtSuma.Text = FormatNumber(txtTemp.Text)
 
         For Each row As DataGridViewRow In DataGridView2.SelectedRows
-            ' Eliminamos la fila. 
             dtSinCtaBmer.Rows.RemoveAt(row.Index)
         Next
         DataGridView2.Refresh()
         DataGridView3.Refresh()
-
     End Sub
 
     Private Sub DataGridView3_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView3.DoubleClick
-
         Dim drDato1 As DataRow
         Dim drDato2 As DataRow
         Dim nImporte As Decimal
@@ -249,7 +208,6 @@ Public Class frmLayOut2017
             txtSuma.Text = FormatNumber(txtTemp.Text)
 
             For Each row As DataGridViewRow In DataGridView3.SelectedRows
-                ' Eliminamos la fila. 
                 dtPagos.Rows.RemoveAt(row.Index)
             Next
             DataGridView3.Refresh()
@@ -276,18 +234,14 @@ Public Class frmLayOut2017
             txtSuma.Text = FormatNumber(txtTemp.Text)
 
             For Each row As DataGridViewRow In DataGridView3.SelectedRows
-                ' Eliminamos la fila. 
                 dtPagos.Rows.RemoveAt(row.Index)
             Next
             DataGridView3.Refresh()
             DataGridView1.Refresh()
-
         End If
-
     End Sub
 
     Private Sub DataGridView4_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView4.DoubleClick
-
         If Trim(DataGridView4.Item(3, DataGridView4.CurrentRow.Index).Value) = "" Then
             cbBanco.Visible = True
         Else
@@ -302,11 +256,9 @@ Public Class frmLayOut2017
             btnSave.Visible = True
             txtCuenta.Visible = True
         End If
-
     End Sub
 
     Private Sub cbBanco_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbBanco.SelectedIndexChanged
-
         If cbBanco.SelectedIndex = 0 Then
             Label6.Text = "Dame la Cuenta BANCOMER"
             txtCuenta.MaxLength = 10
@@ -317,17 +269,14 @@ Public Class frmLayOut2017
         Label6.Visible = True
         btnSave.Visible = True
         txtCuenta.Visible = True
-
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
         If Val(txtCuenta.Text) = 0 Then
             MsgBox("NO se ha capturado la CUENTA", MsgBoxStyle.Information, "Mensaje")
         Else
             Dim cnAgil As New SqlConnection(strConn)
             Dim cm1 As New SqlCommand()
-
             Dim drDato1 As DataRow
             Dim strUpdate As String
             Dim cCliente As String = ""
@@ -338,7 +287,6 @@ Public Class frmLayOut2017
 
             cnAgil.Open()
             If Trim(DataGridView4.Item(3, DataGridView4.CurrentRow.Index).Value) = "BANCOMER" Or cbBanco.SelectedIndex = 0 Then
-
                 drDato1 = dtConCtaBmer.NewRow()
                 drDato1("Nombre") = DataGridView4.Item(0, DataGridView4.CurrentRow.Index).Value
                 drDato1("Contrato") = DataGridView4.Item(1, DataGridView4.CurrentRow.Index).Value
@@ -354,7 +302,7 @@ Public Class frmLayOut2017
 
                 DataGridView1.DataSource = dtConCtaBmer
 
-                strUpdate = "UPDATE Clientes SET CuentaBancomer = '" & txtCuenta.Text & "'"
+                strUpdate = "UPDATE Clientes Set CuentaBancomer = '" & txtCuenta.Text & "'"
                 strUpdate = strUpdate & ", Banco = '" & cBanco & "'"
                 strUpdate = strUpdate & ", CuentaCLABE = '" & " " & "'"
                 strUpdate = strUpdate & " WHERE Cliente = '" & cCliente & "'"
@@ -362,15 +310,12 @@ Public Class frmLayOut2017
                 cm1.ExecuteNonQuery()
 
                 For Each row As DataGridViewRow In DataGridView4.SelectedRows
-                    ' Eliminamos la fila. 
                     dtRevisar.Rows.RemoveAt(row.Index)
                 Next
 
                 DataGridView4.Refresh()
                 DataGridView1.Refresh()
-
             Else
-
                 drDato1 = dtSinCtaBmer.NewRow()
                 drDato1("Nombre") = DataGridView4.Item(0, DataGridView4.CurrentRow.Index).Value
                 drDato1("Contrato") = DataGridView4.Item(1, DataGridView4.CurrentRow.Index).Value
@@ -394,7 +339,6 @@ Public Class frmLayOut2017
                 cm1.ExecuteNonQuery()
 
                 For Each row As DataGridViewRow In DataGridView4.SelectedRows
-                    ' Eliminamos la fila. 
                     dtRevisar.Rows.RemoveAt(row.Index)
                 Next
                 DataGridView4.Refresh()
@@ -413,9 +357,7 @@ Public Class frmLayOut2017
             cbBanco.Visible = False
             cnAgil.Close()
             cnAgil = Nothing
-
         End If
-
     End Sub
 
     Private Sub btnGenera_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnGenera.Click
