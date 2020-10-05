@@ -159,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CxpDS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulo_CXP\CxpDS.vb">
+      <DependentUpon>CxpDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulo_FIRA\frmRepcobraFIRA.vb">
       <SubType>Form</SubType>
     </Compile>

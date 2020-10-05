@@ -20,9 +20,9 @@ Public Class frmLayOut2017
         'Dim cnAgil As New SqlConnection(strConn)
         Dim dsCxpDS As New CxpDS
         'Dim oTablaClientes As DataTable
-        Dim taClientes As New CxpDSTableAdapters.TESO_Datos_LayOutTableAdapter
+        Dim taClientes As New CxpDSTableAdapters.TESO_Datos_LayOut_CXPTableAdapter
         Dim drDato As DataRow
-        Dim drRegistro As CxpDS.TESO_Datos_LayOutRow
+        Dim drRegistro As CxpDS.TESO_Datos_LayOut_CXPRow
 
         Dim i As Integer
         dtConCtaBmer.Columns.Add("Nombre", Type.GetType("System.String"))
@@ -39,8 +39,8 @@ Public Class frmLayOut2017
         dtSinCtaBmer = dtConCtaBmer.Clone()
         dtPagos = dtConCtaBmer.Clone()
         dtRevisar = dtConCtaBmer.Clone()
-        taClientes.Fill(dsCxpDS.TESO_Datos_LayOut)
-        For Each drRegistro In dsCxpDS.TESO_Datos_LayOut.Rows
+        taClientes.Fill(dsCxpDS.TESO_Datos_LayOut_CXP)
+        For Each drRegistro In dsCxpDS.TESO_Datos_LayOut_CXP.Rows
             If Trim(drRegistro.Banco) = "BANCOMER" Then
                 If Trim(drRegistro.CuentaBancomer) = "" Then
                     drDato = dtRevisar.NewRow()
@@ -442,5 +442,16 @@ Public Class frmLayOut2017
     Private Sub btnModifica_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModifica.Click
         Dim newfrmCambioCuenta As New frmCambioCuenta()
         newfrmCambioCuenta.Show()
+    End Sub
+
+    Private Sub Inserta_CXP_MOVS()
+        Dim taCuent As New CxpDSTableAdapters.CXP_CuentasBancariasProvTableAdapter
+        Dim taProv As New CxpDSTableAdapters.CXP_ProveedoresTableAdapter
+        Dim TaMinis As New CxpDSTableAdapters.TESO_Datos_LayOut_CXPTableAdapter
+        Dim tMinis As New CxpDS.TESO_Datos_LayOut_CXPDataTable
+        TaMinis.Fill(tMinis)
+        For Each r As CxpDS.TESO_Datos_LayOut_CXPRow In tMinis.Rows
+
+        Next
     End Sub
 End Class
