@@ -1937,7 +1937,7 @@ Public Class frmFiniquitoAP
             Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
             Aux += "nImportePago:" & nImportePago.ToString("c") & "<br>"
             Aux += "nPagoTotal:" & nPagoTotal.ToString("c") & "<br>"
-            Aux += "Saldo a Favor:" & Abs(Round(nImportePago, 2) - Round(nPagoTotal, 2)).ToString("c") & "<br>"
+            Aux += "Saldo a Favor:" & CDec(Round(nImportePago, 2) - Round(nPagoTotal, 2)).ToString("c") & "<br>"
             Aux += "Instrumento Monetario:" & CmbInstruMon.SelectedValue & "<br>"
             MandaCorreoFase("SaldosFavor@cmoderna.com", "NOTI_SALDO_FAVOR", "Finiquito AP Saldo a Favor: " & cAnexo, Aux)
         End If

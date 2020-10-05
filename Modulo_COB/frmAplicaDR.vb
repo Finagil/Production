@@ -339,9 +339,9 @@ Public Class frmAplicaDR
                     taFavor.Insert(cAnexo, "", Abs(DataGridView1.Rows(i).Cells(7).Value), UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
                     Aux = "Usuario:" & UsuarioGlobal & "<br>"
                     Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
-                    Aux += "Saldo Aplicado:" & Abs(DataGridView1.Rows(i).Cells(5).Value).ToString("c") & "<br>"
-                    Aux += "Adeudo:" & Abs(DataGridView1.Rows(i).Cells(6).Value).ToString("c") & "<br>"
-                    Aux += "Saldo a Favor:" & Abs(DataGridView1.Rows(i).Cells(7).Value).ToString("c") & "<br>"
+                    Aux += "Saldo Aplicado:" & CDec(DataGridView1.Rows(i).Cells(5).Value).ToString("c") & "<br>"
+                    Aux += "Adeudo:" & CDec(DataGridView1.Rows(i).Cells(6).Value).ToString("c") & "<br>"
+                    Aux += "Saldo a Favor:" & CDec(DataGridView1.Rows(i).Cells(7).Value).ToString("c") & "<br>"
                     Aux += "Instrumento Monetario:" & InstrumentoMonetario & "<br>"
                     MandaCorreoFase("SaldosFavor@cmoderna.com", "NOTI_SALDO_FAVOR", "DR Saldo a Favor: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
                 End If
@@ -488,9 +488,9 @@ Public Class frmAplicaDR
                             taFavor.Insert(cAnexo, "", nImporte, UsuarioGlobal, Date.Now, cFechaAplicacion, TaQUERY.SacaCliente(cAnexo), InstrumentoMonetario, False)
                             Aux = "Usuario:" & UsuarioGlobal & "<br>"
                             Aux += "Fecha Aplicacion:" & cFechaAplicacion & "<br>"
-                            Aux += "Saldo Aplicado:" & Abs(DataGridView1.Rows(i).Cells(5).Value).ToString("c") & "<br>"
-                            Aux += "Adeudo:" & Abs(DataGridView1.Rows(i).Cells(6).Value).ToString("c") & "<br>"
-                            Aux += "Saldo a Favor:" & Abs(nImporte).ToString("c") & "<br>"
+                            Aux += "Saldo Aplicado:" & CDec(DataGridView1.Rows(i).Cells(5).Value).ToString("c") & "<br>"
+                            Aux += "Adeudo:" & CDec(DataGridView1.Rows(i).Cells(6).Value).ToString("c") & "<br>"
+                            Aux += "Saldo a Favor:" & CDec(nImporte).ToString("c") & "<br>"
                             Aux += "Instrumento Monetario:" & InstrumentoMonetario & "<br>"
                             MandaCorreoFase("SaldosFavor@cmoderna.com", "NOTI_SALDO_FAVOR", "Saldo a Favor Moras: " & DataGridView1.Rows(i).Cells(3).Value, Aux)
                             Exit For ' no aplica el movimiento por que no cobre los moratorios
