@@ -680,7 +680,7 @@ Module mGeneraPoliza
                     End If
                 End If
 
-                If cTiparORG = "L" And Tipmov = "55" Then
+                If cTiparORG = "L" And cCve = "55" Then
                     myKeySearch(0) = cTiparORG
                 End If
 

@@ -1209,7 +1209,7 @@ Public Class frmGeneFact
                 cm1 = New SqlCommand(strUpdate, cnAgil)
                 cm1.ExecuteNonQuery()
 
-                If AvisosNoMensuales.ScalarEsNoMensual(cAnexo) > 0 Then
+                If AvisosNoMensuales.ScalarEsNoMensual(aFactura.Anexo) > 0 Then
                     Facturas.BloqueaFactura(nFactura)
                 End If
                 If aFactura.Anexo = "000170090" And aFactura.Letra > "009" Then ' bloqueado por valentin
@@ -1217,7 +1217,7 @@ Public Class frmGeneFact
                 End If
 
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
-                If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(cAnexo)) And cTipar <> "B" Then
+                If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(aFactura.Anexo)) And cTipar <> "B" Then
                     strUpdate = "UPDATE Opciones SET Exigible = 'S' WHERE Anexo = '" & aFactura.Anexo & "'"
                     MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada TRA " & aFactura.Anexo, strUpdate)
                     cm1 = New SqlCommand(strUpdate, cnAgil)
