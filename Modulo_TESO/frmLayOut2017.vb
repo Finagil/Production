@@ -452,7 +452,12 @@ Public Class frmLayOut2017
         Dim tMinis As New CxpDS.TESO_Datos_LayOut_CXPDataTable
         TaMinis.Fill(tMinis)
         For Each r As CxpDS.TESO_Datos_LayOut_CXPRow In tMinis.Rows
-            taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.CuentaBancomer, r.CuentaCLABE, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, r.FechaAlta, r.Anexo & r.Ciclo & r.Ministracion)
+            If r.IsclabeNull Then
+                MandaCorreoFase("Avios@cmoderna.com", "sistemas", "Prductor sin idProveedor", r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
+            Else
+                taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.cuenta, r.clabe, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, r.FechaAlta, r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
+            End If
+
         Next
     End Sub
 End Class
