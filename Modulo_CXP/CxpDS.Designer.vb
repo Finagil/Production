@@ -1702,6 +1702,14 @@ Partial Public Class CxpDS
         
         Private columnEMail1 As Global.System.Data.DataColumn
         
+        Private columnidProveedor As Global.System.Data.DataColumn
+        
+        Private columnMoneda As Global.System.Data.DataColumn
+        
+        Private columnUsuario As Global.System.Data.DataColumn
+        
+        Private columnFechaAlta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -1930,6 +1938,38 @@ Partial Public Class CxpDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idProveedorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidProveedor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UsuarioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUsuario
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaAltaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaAlta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1989,9 +2029,12 @@ Partial Public Class CxpDS
                     ByVal Copos As String,  _
                     ByVal RFC As String,  _
                     ByVal CURP As String,  _
-                    ByVal EMail1 As String) As TESO_Datos_LayOut_CXPRow
+                    ByVal EMail1 As String,  _
+                    ByVal Moneda As String,  _
+                    ByVal Usuario As String,  _
+                    ByVal FechaAlta As String) As TESO_Datos_LayOut_CXPRow
             Dim rowTESO_Datos_LayOut_CXPRow As TESO_Datos_LayOut_CXPRow = CType(Me.NewRow,TESO_Datos_LayOut_CXPRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Banco, CuentaBancomer, CuentaCLABE, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, ClaveBancos, Nothing, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, RFC, CURP, EMail1}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Banco, CuentaBancomer, CuentaCLABE, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, ClaveBancos, Nothing, Calle, Colonia, Delegacion, Ciudad, Estado, Copos, RFC, CURP, EMail1, Nothing, Moneda, Usuario, FechaAlta}
             rowTESO_Datos_LayOut_CXPRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTESO_Datos_LayOut_CXPRow)
             Return rowTESO_Datos_LayOut_CXPRow
@@ -2044,6 +2087,10 @@ Partial Public Class CxpDS
             Me.columnRFC = MyBase.Columns("RFC")
             Me.columnCURP = MyBase.Columns("CURP")
             Me.columnEMail1 = MyBase.Columns("EMail1")
+            Me.columnidProveedor = MyBase.Columns("idProveedor")
+            Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnFechaAlta = MyBase.Columns("FechaAlta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2097,6 +2144,14 @@ Partial Public Class CxpDS
             MyBase.Columns.Add(Me.columnCURP)
             Me.columnEMail1 = New Global.System.Data.DataColumn("EMail1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEMail1)
+            Me.columnidProveedor = New Global.System.Data.DataColumn("idProveedor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidProveedor)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnFechaAlta = New Global.System.Data.DataColumn("FechaAlta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaAlta)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente, Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
@@ -2137,6 +2192,14 @@ Partial Public Class CxpDS
             Me.columnCURP.MaxLength = 18
             Me.columnEMail1.AllowDBNull = false
             Me.columnEMail1.MaxLength = 50
+            Me.columnidProveedor.AutoIncrement = true
+            Me.columnidProveedor.AutoIncrementSeed = -1
+            Me.columnidProveedor.AutoIncrementStep = -1
+            Me.columnidProveedor.ReadOnly = true
+            Me.columnMoneda.MaxLength = 3
+            Me.columnUsuario.MaxLength = 20
+            Me.columnFechaAlta.AllowDBNull = false
+            Me.columnFechaAlta.MaxLength = 8
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4504,6 +4567,63 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idProveedor() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.idProveedorColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idProveedor' de la tabla 'TESO_Datos_LayOut_CXP' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.idProveedorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'TESO_Datos_LayOut_CXP' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Usuario() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.UsuarioColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Usuario' de la tabla 'TESO_Datos_LayOut_CXP' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.UsuarioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaAlta() As String
+            Get
+                Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.FechaAltaColumn),String)
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.FechaAltaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImporteNull() As Boolean
             Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.ImporteColumn)
         End Function
@@ -4608,6 +4728,42 @@ Partial Public Class CxpDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetCURPNull()
             Me(Me.tableTESO_Datos_LayOut_CXP.CURPColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidProveedorNull() As Boolean
+            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.idProveedorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidProveedorNull()
+            Me(Me.tableTESO_Datos_LayOut_CXP.idProveedorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tableTESO_Datos_LayOut_CXP.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUsuarioNull() As Boolean
+            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.UsuarioColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUsuarioNull()
+            Me(Me.tableTESO_Datos_LayOut_CXP.UsuarioColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8249,6 +8405,10 @@ Namespace CxpDSTableAdapters
             tableMapping.ColumnMappings.Add("RFC", "RFC")
             tableMapping.ColumnMappings.Add("CURP", "CURP")
             tableMapping.ColumnMappings.Add("EMail1", "EMail1")
+            tableMapping.ColumnMappings.Add("idProveedor", "idProveedor")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("Usuario", "Usuario")
+            tableMapping.ColumnMappings.Add("FechaAlta", "FechaAlta")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

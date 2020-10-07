@@ -445,13 +445,14 @@ Public Class frmLayOut2017
     End Sub
 
     Private Sub Inserta_CXP_MOVS()
+        Dim TaPAg As New CxpDSTableAdapters.CXP_PagosTesoreriaTableAdapter
         Dim taCuent As New CxpDSTableAdapters.CXP_CuentasBancariasProvTableAdapter
         Dim taProv As New CxpDSTableAdapters.CXP_ProveedoresTableAdapter
         Dim TaMinis As New CxpDSTableAdapters.TESO_Datos_LayOut_CXPTableAdapter
         Dim tMinis As New CxpDS.TESO_Datos_LayOut_CXPDataTable
         TaMinis.Fill(tMinis)
         For Each r As CxpDS.TESO_Datos_LayOut_CXPRow In tMinis.Rows
-
+            taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.CuentaBancomer, r.CuentaCLABE, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, r.FechaAlta, r.Anexo & r.Ciclo & r.Ministracion)
         Next
     End Sub
 End Class
