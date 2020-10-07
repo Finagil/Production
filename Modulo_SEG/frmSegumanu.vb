@@ -685,7 +685,7 @@ Public Class frmSegumanu
 
                 ' Por último validamos que no exista saldo en seguro financiado
 
-                lSaldoSeg = False
+                lSaldoSeg = True ' siempre entra
                 nLetras = 0
                 txtSaldoant.Text = 0
 
