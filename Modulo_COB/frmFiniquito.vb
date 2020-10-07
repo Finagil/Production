@@ -486,7 +486,7 @@ Public Class frmFiniquito
         If lContinuar = False Then
             Me.Close()
         End If
-
+        AlertasAnexos(cAnexo, "", "FINIQUITO")
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click

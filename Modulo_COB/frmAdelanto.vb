@@ -69,7 +69,7 @@ Public Class frmAdelanto
 
         Dim cNombreCliente As String
 
-        cAnexo = txtAnexo.Text
+        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
 
         cFecha = FECHA_APLICACION.ToString 'Now().ToShortDateString
         ToolStripStatusLabel1.Text = "Fecha de Aplicación " & cFecha
@@ -80,9 +80,9 @@ Public Class frmAdelanto
 
         With cm1
             .CommandType = CommandType.Text
-            .CommandText = "SELECT Clientes.* FROM Clientes " & _
-                           "INNER JOIN Anexos ON Clientes.Cliente = Anexos.Cliente " & _
-                           "WHERE Anexo = " & "'" & Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4) & "'"
+            .CommandText = "SELECT Clientes.* FROM Clientes " &
+                           "INNER JOIN Anexos ON Clientes.Cliente = Anexos.Cliente " &
+                           "WHERE Anexo = " & "'" & cAnexo & "'"
             .Connection = cnAgil
         End With
 
@@ -103,13 +103,13 @@ Public Class frmAdelanto
 
         cNombreCliente = drCliente("Descr")
 
-        Me.Text = "Adelanto a Capital Contrato " & cAnexo & " " & cNombreCliente
+        Me.Text = "Adelanto a Capital Contrato " & txtAnexo.Text & " " & cNombreCliente
 
         ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
         cTipo = drCliente("tipo")
         cSucursal = drCliente("Sucursal")
         nTasaIVACliente = drCliente("TasaIVACliente")
-        nIvaAnexo = taIVA.SacaIvaAnexoTRA(Mid(cAnexo, 1, 5) & Mid(cAnexo, 7, 4))
+        nIvaAnexo = taIVA.SacaIvaAnexoTRA(cAnexo)
         If nIvaAnexo > 0 Then
             nTasaIVACliente = nIvaAnexo
         End If
@@ -130,7 +130,7 @@ Public Class frmAdelanto
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-
+        AlertasAnexos(cAnexo, "", "ADELANTO")
     End Sub
 
     Public Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click

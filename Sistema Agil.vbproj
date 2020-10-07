@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>151</ApplicationRevision>
+    <ApplicationRevision>153</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1190,19 +1190,19 @@
       <DependentUpon>rptFega.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_CONS\rptFiniquito.vb">
+    <Compile Include="Modulo_COB\rptFiniquito.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptFiniquito.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_CONS\rptFiniquitoAP.vb">
+    <Compile Include="Modulo_COB\rptFiniquitoAP.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptFiniquitoAP.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_CONS\rptFiniquitoLiq.vb">
+    <Compile Include="Modulo_COB\rptFiniquitoLiq.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptFiniquitoLiq.rpt</DependentUpon>
@@ -3123,15 +3123,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFega.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_CONS\rptFiniquito.rpt">
+    <EmbeddedResource Include="Modulo_COB\rptFiniquito.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFiniquito.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_CONS\rptFiniquitoAP.rpt">
+    <EmbeddedResource Include="Modulo_COB\rptFiniquitoAP.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFiniquitoAP.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_CONS\rptFiniquitoLiq.rpt">
+    <EmbeddedResource Include="Modulo_COB\rptFiniquitoLiq.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptFiniquitoLiq.vb</LastGenOutput>
     </EmbeddedResource>

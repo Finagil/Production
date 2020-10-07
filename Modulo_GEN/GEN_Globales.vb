@@ -529,4 +529,14 @@ Module GEN_Globales
         End If
     End Sub
 
+    Public Sub AlertasAnexos(ByRef Anexo As String, ByRef Ciclo As String, ByRef Tipo As String)
+        Dim ta As New GeneralDSTableAdapters.GEN_AnexosAlertasTableAdapter
+        Dim t As New GeneralDS.GEN_AnexosAlertasDataTable
+        For Each r As GeneralDS.GEN_AnexosAlertasRow In t.Rows
+            MessageBox.Show(r.Alerta, "¡¡¡ALERTA FINAGIL!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Next
+        ta.Dispose()
+        t.Dispose()
+    End Sub
+
 End Module

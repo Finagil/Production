@@ -1043,7 +1043,8 @@ Public Class frmCalcfiniAP
         ' envía a su vez a la función CalcIvaU.
 
         drUdis = dsAgil.Tables("Udis").Rows
-
+        cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
+        AlertasAnexos(cAnexo, "", "FINIQUITO")
 
     End Sub
 
