@@ -15,107 +15,7 @@ Public Class frmLayOut2017
     Dim dtRevisar As New DataTable("Faltantes")
 
     Private Sub frmLayOut_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.BancosTableAdapter.Fill(Me.ProductionDataSet.Bancos)
-
-        'Dim cnAgil As New SqlConnection(strConn)
-        Dim dsCxpDS As New CxpDS
-        'Dim oTablaClientes As DataTable
-        Dim taClientes As New CxpDSTableAdapters.TESO_Datos_LayOut_CXPTableAdapter
-        Dim drDato As DataRow
-        Dim drRegistro As CxpDS.TESO_Datos_LayOut_CXPRow
-
-        Dim i As Integer
-        dtConCtaBmer.Columns.Add("Nombre", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Contrato", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Importe", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Banco", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("CuentaBancomer", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("CuentaCLABE", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Observacion", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Ministracion", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Cliente", Type.GetType("System.String"))
-        dtConCtaBmer.Columns.Add("Ciclo", Type.GetType("System.String"))
-
-        dtSinCtaBmer = dtConCtaBmer.Clone()
-        dtPagos = dtConCtaBmer.Clone()
-        dtRevisar = dtConCtaBmer.Clone()
-        taClientes.Fill(dsCxpDS.TESO_Datos_LayOut_CXP)
-        For Each drRegistro In dsCxpDS.TESO_Datos_LayOut_CXP.Rows
-            If Trim(drRegistro.Banco) = "BANCOMER" Then
-                If Trim(drRegistro.CuentaBancomer) = "" Then
-                    drDato = dtRevisar.NewRow()
-                    drDato("Nombre") = drRegistro.Descr
-                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
-                    drDato("Importe") = drRegistro.Importe
-                    drDato("Banco") = drRegistro.Banco
-                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
-                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
-                    drDato("Observacion") = "Revisa Datos"
-                    drDato("Ministracion") = drRegistro.Ministracion
-                    drDato("Cliente") = drRegistro.Cliente
-                    drDato("Ciclo") = drRegistro.Ciclo
-                    dtRevisar.Rows.Add(drDato)
-                Else
-                    drDato = dtConCtaBmer.NewRow()
-                    drDato("Nombre") = drRegistro.Descr
-                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
-                    drDato("Importe") = drRegistro.Importe
-                    drDato("Banco") = drRegistro.Banco
-                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
-                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
-                    drDato("Observacion") = "Ok"
-                    drDato("Ministracion") = drRegistro.Ministracion
-                    drDato("Cliente") = drRegistro.Cliente
-                    drDato("Ciclo") = drRegistro.Ciclo
-                    dtConCtaBmer.Rows.Add(drDato)
-                End If
-            Else
-                If Trim(drRegistro.CuentaCLABE) = "" Then
-                    drDato = dtRevisar.NewRow()
-                    drDato("Nombre") = drRegistro.Descr
-                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
-                    drDato("Importe") = drRegistro.Importe
-                    drDato("Banco") = drRegistro.Banco
-                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
-                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
-                    drDato("Observacion") = "Revisa Datos"
-                    drDato("Ministracion") = drRegistro.Ministracion
-                    drDato("Cliente") = drRegistro.Cliente
-                    drDato("Ciclo") = drRegistro.Ciclo
-                    dtRevisar.Rows.Add(drDato)
-                Else
-                    drDato = dtSinCtaBmer.NewRow()
-                    drDato("Nombre") = drRegistro.Descr
-                    drDato("Contrato") = Mid(drRegistro.Anexo, 1, 5) & "/" & Mid(drRegistro.Anexo, 6, 4)
-                    drDato("Importe") = drRegistro.Importe
-                    drDato("Banco") = drRegistro.Banco
-                    drDato("CuentaBancomer") = drRegistro.CuentaBancomer
-                    drDato("CuentaCLABE") = drRegistro.CuentaCLABE
-                    drDato("Observacion") = "Ok"
-                    drDato("Ministracion") = drRegistro.Ministracion
-                    drDato("Cliente") = drRegistro.Cliente
-                    drDato("Ciclo") = drRegistro.Ciclo
-                    dtSinCtaBmer.Rows.Add(drDato)
-                End If
-            End If
-        Next
-        DataGridView1.DataSource = dtConCtaBmer
-        DataGridView2.DataSource = dtSinCtaBmer
-        i = dtRevisar.Rows.Count()
-        If UsuarioGlobal.ToUpper = "LMERCADO" Then
-            DataGridView1.Enabled = False
-            DataGridView2.Enabled = False
-            DataGridView3.Visible = False
-            btnGenera.Visible = False
-            Label4.Visible = False
-            txtSuma.Visible = False
-        Else
-            If i > 0 Then
-                DataGridView4.DataSource = dtRevisar
-                DataGridView4.Visible = True
-                Label5.Visible = True
-            End If
-        End If
+        Inserta_CXP_MOVS()
     End Sub
 
     Private Sub DataGridView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
@@ -451,13 +351,14 @@ Public Class frmLayOut2017
         Dim TaMinis As New CxpDSTableAdapters.TESO_Datos_LayOut_CXPTableAdapter
         Dim tMinis As New CxpDS.TESO_Datos_LayOut_CXPDataTable
         TaMinis.Fill(tMinis)
+        Dim cFecha As String = Today.ToString("yyyyMMdd")
         For Each r As CxpDS.TESO_Datos_LayOut_CXPRow In tMinis.Rows
             If r.IsclabeNull Then
                 MandaCorreoFase("Avios@cmoderna.com", "sistemas", "Prductor sin idProveedor", r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
             Else
-                taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.cuenta, r.clabe, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, r.FechaAlta, r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
+                taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.cuenta, r.clabe, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, CTOD(r.FechaAlta), r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
+                TaMinis.UpdateMinistracion(cFecha, UsuarioGlobal, r.Anexo, r.Ciclo, r.Ministracion)
             End If
-
         Next
     End Sub
 End Class
