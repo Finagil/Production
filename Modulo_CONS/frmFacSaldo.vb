@@ -321,7 +321,9 @@ Public Class frmFacSaldo
             'se verifica si el cliete tiene avisos bloqueados
             If Facturas.CuantosBloqueos(cCliente) > 0 Then
                 MessageBox.Show("Estado de Cuenta Bloqueado para su revision, favor de contactar a su área contable.", "Estado de Cuenta Bloqueado " & UsuarioGlobal, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                If UCase(UsuarioGlobal) <> "LMERCADO" Then Exit Sub
+                If TaQUERY.SacaPermisoModulo("EDO_CTA_BLOQUEADO", UsuarioGlobal) <= 0 Then
+                    Exit Sub
+                End If
             End If
 
             If Facturas.AvisosGenerados(cFecha, cCliente) > 0 Then

@@ -170,10 +170,7 @@ Public Class frmPideProductor
         Dim cCiclo As String = Mid(lbContratos.SelectedItem, 18, 2)
         ta.Fill(t, cAnexo, cCiclo)
         If t.Rows.Count > 0 Then
-            If LCase(UsuarioGlobal) <> "jjavier" And
-            LCase(UsuarioGlobal) <> "mleal" And
-            LCase(UsuarioGlobal) <> "lmercado" And
-            LCase(UsuarioGlobal) <> "vcruz" Then
+            If TaQUERY.SacaPermisoModulo("EDO_CTA_BLOQUEADO_JUR", UsuarioGlobal) <= 0 Then
                 MessageBox.Show("CUENTA BLOQUEDA, FAVOR DE COMUNICARSE AL ÁREA JURÍDICA", "CUENTA BLOQUEDA", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             Else
