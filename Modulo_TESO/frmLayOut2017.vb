@@ -345,6 +345,7 @@ Public Class frmLayOut2017
     End Sub
 
     Private Sub Inserta_CXP_MOVS()
+        Dim Folio As Decimal
         Dim TaPAg As New CxpDSTableAdapters.CXP_PagosTesoreriaTableAdapter
         Dim taCuent As New CxpDSTableAdapters.CXP_CuentasBancariasProvTableAdapter
         Dim taProv As New CxpDSTableAdapters.CXP_ProveedoresTableAdapter
@@ -356,8 +357,10 @@ Public Class frmLayOut2017
             If r.IsclabeNull Then
                 MandaCorreoFase("Avios@cmoderna.com", "sistemas", "Prductor sin idProveedor", r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
             Else
-                taCuent.InsertCuenta(r.idProveedor, r.idBancos, r.cuenta, r.clabe, "Ministracion AV " & r.Anexo & "-" & r.Ministracion, r.Usuario, CTOD(r.FechaAlta), r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2))
-                TaMinis.UpdateMinistracion(cFecha, UsuarioGlobal, r.Anexo, r.Ciclo, r.Ministracion)
+                Folio = FOLIOS.FolioCXP_AVI()
+                FOLIOS.ConsumeFolioCXP_AVI()
+                TaPAg.InsertPago("AVI", Folio, r.idCuentas, r.Importe, CTOD(r.FechaAlta), CTOD(r.FechaAlta), r.Moneda, Date.Now, r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2), r.idProveedor)
+                'TaMinis.UpdateMinistracion(cFecha, UsuarioGlobal, r.Anexo, r.Ciclo, r.Ministracion)
             End If
         Next
     End Sub

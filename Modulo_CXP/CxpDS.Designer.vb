@@ -2181,6 +2181,8 @@ Partial Public Class CxpDS
         
         Private columnidProveedor As Global.System.Data.DataColumn
         
+        Private columnidCuentas As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2353,6 +2355,14 @@ Partial Public Class CxpDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idCuentasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidCuentas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2407,7 +2417,7 @@ Partial Public Class CxpDS
                     ByVal clabe As String,  _
                     ByVal idProveedor As Decimal) As TESO_Datos_LayOut_CXPRow
             Dim rowTESO_Datos_LayOut_CXPRow As TESO_Datos_LayOut_CXPRow = CType(Me.NewRow,TESO_Datos_LayOut_CXPRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, Nothing, Moneda, Usuario, FechaAlta, cuenta, clabe, idProveedor}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, Nothing, Moneda, Usuario, FechaAlta, cuenta, clabe, idProveedor, Nothing}
             rowTESO_Datos_LayOut_CXPRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTESO_Datos_LayOut_CXPRow)
             Return rowTESO_Datos_LayOut_CXPRow
@@ -2447,6 +2457,7 @@ Partial Public Class CxpDS
             Me.columncuenta = MyBase.Columns("cuenta")
             Me.columnclabe = MyBase.Columns("clabe")
             Me.columnidProveedor = MyBase.Columns("idProveedor")
+            Me.columnidCuentas = MyBase.Columns("idCuentas")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2486,6 +2497,8 @@ Partial Public Class CxpDS
             MyBase.Columns.Add(Me.columnclabe)
             Me.columnidProveedor = New Global.System.Data.DataColumn("idProveedor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidProveedor)
+            Me.columnidCuentas = New Global.System.Data.DataColumn("idCuentas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidCuentas)
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
             Me.columnDescr.AllowDBNull = false
@@ -2509,6 +2522,10 @@ Partial Public Class CxpDS
             Me.columnFechaAlta.MaxLength = 8
             Me.columncuenta.MaxLength = 50
             Me.columnclabe.MaxLength = 50
+            Me.columnidCuentas.AutoIncrement = true
+            Me.columnidCuentas.AutoIncrementSeed = -1
+            Me.columnidCuentas.AutoIncrementStep = -1
+            Me.columnidCuentas.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4775,6 +4792,22 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idCuentas() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idCuentas' de la tabla 'TESO_Datos_LayOut_CXP' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsImporteNull() As Boolean
             Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.ImporteColumn)
         End Function
@@ -4891,6 +4924,18 @@ Partial Public Class CxpDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetidProveedorNull()
             Me(Me.tableTESO_Datos_LayOut_CXP.idProveedorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidCuentasNull() As Boolean
+            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidCuentasNull()
+            Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8255,13 +8300,14 @@ Namespace CxpDSTableAdapters
             Me._commandCollection(1).CommandText = "INSERT INTO CXP_PagosTesoreria"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (tipoSolicitud, folioSol"& _ 
                 "icitud, destinoRecurso, estatus, idEmpresa, importe, fechaPago, idFPago, fechaPr"& _ 
                 "ogPago, moneda, fechaProceso, referencia, idProveedor, idConcepto)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES      "& _ 
-                "  ('AVI',@folioSolicitud,@destinoRecurso, 33, 23,@importe,@fechaPago, 3,@fechaMi"& _ 
-                "nistracion,@moneda,@fechaProceso,@referencia,@idProveedor, 43);  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idPago"& _ 
-                "sTesoreria, tipoSolicitud, folioSolicitud, origenRecurso, destinoRecurso, estatu"& _ 
-                "s, idEmpresa, importe, fechaPago, idFPago, fechaProgPago, moneda, fechaProceso, "& _ 
-                "referencia, uuidPago, idProveedor, idConcepto FROM CXP_PagosTesoreria WHERE (idP"& _ 
-                "agosTesoreria = SCOPE_IDENTITY())"
+                "  (@TipoSol,@folioSolicitud,@destinoRecurso, 33, 23,@importe,@fechaPago, 3,@fech"& _ 
+                "aMinistracion,@moneda,@fechaProceso,@referencia,@idProveedor, 43);   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT id"& _ 
+                "PagosTesoreria, tipoSolicitud, folioSolicitud, origenRecurso, destinoRecurso, es"& _ 
+                "tatus, idEmpresa, importe, fechaPago, idFPago, fechaProgPago, moneda, fechaProce"& _ 
+                "so, referencia, uuidPago, idProveedor, idConcepto FROM CXP_PagosTesoreria WHERE "& _ 
+                "(idPagosTesoreria = SCOPE_IDENTITY())"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TipoSol", Global.System.Data.SqlDbType.VarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "tipoSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@folioSolicitud", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "folioSolicitud", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@destinoRecurso", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "destinoRecurso", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@importe", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 2, "importe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8886,52 +8932,57 @@ Namespace CxpDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function InsertPago(ByVal folioSolicitud As Global.System.Nullable(Of Decimal), ByVal destinoRecurso As Global.System.Nullable(Of Decimal), ByVal importe As Global.System.Nullable(Of Decimal), ByVal fechaPago As Global.System.Nullable(Of Date), ByVal fechaMinistracion As Global.System.Nullable(Of Date), ByVal moneda As String, ByVal fechaProceso As Global.System.Nullable(Of Date), ByVal referencia As String, ByVal idProveedor As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function InsertPago(ByVal TipoSol As String, ByVal folioSolicitud As Global.System.Nullable(Of Decimal), ByVal destinoRecurso As Global.System.Nullable(Of Decimal), ByVal importe As Global.System.Nullable(Of Decimal), ByVal fechaPago As Global.System.Nullable(Of Date), ByVal fechaMinistracion As Global.System.Nullable(Of Date), ByVal moneda As String, ByVal fechaProceso As Global.System.Nullable(Of Date), ByVal referencia As String, ByVal idProveedor As Global.System.Nullable(Of Decimal)) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            If (folioSolicitud.HasValue = true) Then
-                command.Parameters(0).Value = CType(folioSolicitud.Value,Decimal)
-            Else
+            If (TipoSol Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(TipoSol,String)
             End If
-            If (destinoRecurso.HasValue = true) Then
-                command.Parameters(1).Value = CType(destinoRecurso.Value,Decimal)
+            If (folioSolicitud.HasValue = true) Then
+                command.Parameters(1).Value = CType(folioSolicitud.Value,Decimal)
             Else
                 command.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (importe.HasValue = true) Then
-                command.Parameters(2).Value = CType(importe.Value,Decimal)
+            If (destinoRecurso.HasValue = true) Then
+                command.Parameters(2).Value = CType(destinoRecurso.Value,Decimal)
             Else
                 command.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (fechaPago.HasValue = true) Then
-                command.Parameters(3).Value = CType(fechaPago.Value,Date)
+            If (importe.HasValue = true) Then
+                command.Parameters(3).Value = CType(importe.Value,Decimal)
             Else
                 command.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (fechaMinistracion.HasValue = true) Then
-                command.Parameters(4).Value = CType(fechaMinistracion.Value,Date)
+            If (fechaPago.HasValue = true) Then
+                command.Parameters(4).Value = CType(fechaPago.Value,Date)
             Else
                 command.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (moneda Is Nothing) Then
-                command.Parameters(5).Value = Global.System.DBNull.Value
+            If (fechaMinistracion.HasValue = true) Then
+                command.Parameters(5).Value = CType(fechaMinistracion.Value,Date)
             Else
-                command.Parameters(5).Value = CType(moneda,String)
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (moneda Is Nothing) Then
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(6).Value = CType(moneda,String)
             End If
             If (fechaProceso.HasValue = true) Then
-                command.Parameters(6).Value = CType(fechaProceso.Value,Date)
+                command.Parameters(7).Value = CType(fechaProceso.Value,Date)
             Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
+                command.Parameters(7).Value = Global.System.DBNull.Value
             End If
             If (referencia Is Nothing) Then
-                command.Parameters(7).Value = Global.System.DBNull.Value
+                command.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(7).Value = CType(referencia,String)
+                command.Parameters(8).Value = CType(referencia,String)
             End If
             If (idProveedor.HasValue = true) Then
-                command.Parameters(8).Value = CType(idProveedor.Value,Decimal)
+                command.Parameters(9).Value = CType(idProveedor.Value,Decimal)
             Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
+                command.Parameters(9).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -9094,6 +9145,7 @@ Namespace CxpDSTableAdapters
             tableMapping.ColumnMappings.Add("cuenta", "cuenta")
             tableMapping.ColumnMappings.Add("clabe", "clabe")
             tableMapping.ColumnMappings.Add("idProveedor", "idProveedor")
+            tableMapping.ColumnMappings.Add("idCuentas", "idCuentas")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
