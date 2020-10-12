@@ -2216,6 +2216,7 @@ Public Class frmCierreCo
                         .Banco = ""
                         .Concepto = ""
                         .Segmento = cSegmento
+                        aMovimientos.Add(aMovimiento)
                     End With
                 End If
                 If cTipar = "P" Then
@@ -2230,6 +2231,7 @@ Public Class frmCierreCo
                         .Banco = ""
                         .Concepto = ""
                         .Segmento = cSegmento
+                        aMovimientos.Add(aMovimiento)
                     End With
                 End If
                 If cTipar = "R" Then
@@ -2244,6 +2246,7 @@ Public Class frmCierreCo
                         .Banco = ""
                         .Concepto = ""
                         .Segmento = cSegmento
+                        aMovimientos.Add(aMovimiento)
                     End With
                 End If
                 If cTipar = "S" Then
@@ -2258,6 +2261,7 @@ Public Class frmCierreCo
                         .Banco = ""
                         .Concepto = ""
                         .Segmento = cSegmento
+                        aMovimientos.Add(aMovimiento)
                     End With
                 End If
                 If cTipar = "L" Then
@@ -2272,13 +2276,10 @@ Public Class frmCierreCo
                         .Banco = ""
                         .Concepto = ""
                         .Segmento = cSegmento
+                        aMovimientos.Add(aMovimiento)
                     End With
                 End If
-
-                aMovimientos.Add(aMovimiento)
-
             End If
-
         Next
 
         cn.Open()

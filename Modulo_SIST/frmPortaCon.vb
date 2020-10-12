@@ -351,7 +351,7 @@ Public Class frmPortaCon
                     nCarteraExigible = 0
 
                     Select Case Mid(cRenglon, 5, 10)
-                                                Case "1351-01-01"               ' Capital Exigible Vencido de Bienes al Comercio
+                        Case "1351-01-01"               ' Capital Exigible Vencido de Bienes al Comercio
                             cTabla = "Vencida"
                             nCapitalExigibleVencido = CDbl(Mid(cRenglon, 190, 24))
                         Case "1351-01-02"               ' Saldo Insoluto Vencido de Bienes al Comercio
@@ -1161,7 +1161,9 @@ Public Class frmPortaCon
         CargaDatos(dtExigible, "FACTORAJE FINANCIERO", CARTERA_FACTORAJE - EXIGIBLE_FACTORAJE - AFORO)
         CargaDatos(dtExigible, "FACTORAJE FINANCIERO EXIGIBLE", EXIGIBLE_FACTORAJE)
         CargaDatos(dtExigible, "CESIÓN DE DERECHOS", 0)
-
+        MessageBox.Show("CARTERA_FACTORAJE: " & CARTERA_FACTORAJE.ToString("n2") & vbCrLf &
+                        "EXIGIBLE_FACTORAJE: " & EXIGIBLE_FACTORAJE.ToString("n2") & vbCrLf &
+                        "AFORO: " & AFORO.ToString("n2") & vbCrLf, "Factoraje")
 
         dgvVencida.DataSource = dtVencida
         dgvAF.DataSource = dtAF
