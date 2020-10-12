@@ -252,7 +252,15 @@ Public Class frmCargaGPS
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
-        ' Declaración de variables de conexión ADO .NET
+        If Not IsNumeric(txtMonto.Text) Then
+            MessageBox.Show("Importe no Valido")
+            Exit Sub
+        End If
+
+        If Not IsNumeric(txtPlazo.Text) Then
+            MessageBox.Show("Plazo no Valido")
+            Exit Sub
+        End If
 
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -265,13 +273,13 @@ Public Class frmCargaGPS
 
         nVencimiento = Val(txtPlazo.Text) - Fila
 
-
         Try
 
             cnAgil.Open()
             Dim taGps As New SegurosDSTableAdapters.GPSTableAdapter
+            Dim Plazo As Integer = TaQUERY.UltimaLetra(cAnexo)
             taGps.DeleteMismaFecha(cAnexo, cFecha)
-            taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, TaQUERY.UltimaLetra(cAnexo), txtMonto.Text + nSaldoAnt, CargaFinanNEW - CargaFinan)
+            taGps.Insert(cAnexo, cCliente, cFecha, "GPS", "02", nVencimiento, cFecha, plazo, Val(txtMonto.Text) + nSaldoAnt, CargaFinanNEW - CargaFinan)
 
             If cAdeudo = "S" Then
                 With cm3
@@ -301,8 +309,7 @@ Public Class frmCargaGPS
                 cm1.ExecuteNonQuery()
             Next
             Dim BLOQ As Integer = DesBloqueaContrato(cAnexo) 'DESBLOQUEO MESA DE CONTROL+++++++++++++
-            strUpdate = "UPDATE Anexos SET  Adeudo = 'S'" & ""
-            strUpdate = strUpdate & " WHERE Anexo = '" & cAnexo & "'"
+            strUpdate = "UPDATE Anexos SET  Adeudo = 'S' WHERE Anexo = '" & cAnexo & "';"
             cm2 = New SqlCommand(strUpdate, cnAgil)
             cm2.ExecuteNonQuery()
             BloqueaContrato(cAnexo, BLOQ) '*******************BLOQUEO MESA DE CONTROL++++++++++++++++
