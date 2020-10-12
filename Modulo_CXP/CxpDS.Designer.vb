@@ -390,10 +390,6 @@ Partial Public Class CxpDS
         
         Private columnidCuentas As Global.System.Data.DataColumn
         
-        Private columnidProveedor As Global.System.Data.DataColumn
-        
-        Private columnidBanco As Global.System.Data.DataColumn
-        
         Private columncuenta As Global.System.Data.DataColumn
         
         Private columnclabe As Global.System.Data.DataColumn
@@ -402,31 +398,17 @@ Partial Public Class CxpDS
         
         Private columnmoneda As Global.System.Data.DataColumn
         
-        Private columnarchivo1 As Global.System.Data.DataColumn
-        
         Private columnvigente As Global.System.Data.DataColumn
         
-        Private columnusuarioSolicita1 As Global.System.Data.DataColumn
+        Private columnnombreCorto As Global.System.Data.DataColumn
         
-        Private columnusuarioSolicita2 As Global.System.Data.DataColumn
+        Private columnrfc As Global.System.Data.DataColumn
         
-        Private columnusuarioAutoriza1 As Global.System.Data.DataColumn
+        Private columnEstatusCuenta As Global.System.Data.DataColumn
         
-        Private columnusuarioAutoriza2 As Global.System.Data.DataColumn
+        Private columnactivoS As Global.System.Data.DataColumn
         
-        Private columnfechaSolicita1 As Global.System.Data.DataColumn
-        
-        Private columnfechaSolicita2 As Global.System.Data.DataColumn
-        
-        Private columnfechaAutoriza1 As Global.System.Data.DataColumn
-        
-        Private columnfechaAutoriza2 As Global.System.Data.DataColumn
-        
-        Private columnestatus As Global.System.Data.DataColumn
-        
-        Private columnreferencia As Global.System.Data.DataColumn
-        
-        Private columnconvenio As Global.System.Data.DataColumn
+        Private columnautorizadoS As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -473,22 +455,6 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property idProveedorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidProveedor
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property idBancoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidBanco
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property cuentaColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columncuenta
@@ -521,14 +487,6 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property archivo1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnarchivo1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property vigenteColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnvigente
@@ -537,89 +495,41 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property usuarioSolicita1Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property nombreCortoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnusuarioSolicita1
+                Return Me.columnnombreCorto
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property usuarioSolicita2Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property rfcColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnusuarioSolicita2
+                Return Me.columnrfc
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property usuarioAutoriza1Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property EstatusCuentaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnusuarioAutoriza1
+                Return Me.columnEstatusCuenta
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property usuarioAutoriza2Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property activoSColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnusuarioAutoriza2
+                Return Me.columnactivoS
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property fechaSolicita1Column() As Global.System.Data.DataColumn
+        Public ReadOnly Property autorizadoSColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnfechaSolicita1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property fechaSolicita2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfechaSolicita2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property fechaAutoriza1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfechaAutoriza1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property fechaAutoriza2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfechaAutoriza2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property estatusColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnestatus
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property referenciaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnreferencia
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property convenioColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnconvenio
+                Return Me.columnautorizadoS
             End Get
         End Property
         
@@ -660,28 +570,9 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCXP_CuentasBancariasProvRow( _
-                    ByVal idProveedor As Decimal,  _
-                    ByVal idBanco As Decimal,  _
-                    ByVal cuenta As String,  _
-                    ByVal clabe As String,  _
-                    ByVal descripcion As String,  _
-                    ByVal moneda As String,  _
-                    ByVal archivo1 As String,  _
-                    ByVal vigente As Boolean,  _
-                    ByVal usuarioSolicita1 As String,  _
-                    ByVal usuarioSolicita2 As String,  _
-                    ByVal usuarioAutoriza1 As String,  _
-                    ByVal usuarioAutoriza2 As String,  _
-                    ByVal fechaSolicita1 As Date,  _
-                    ByVal fechaSolicita2 As Date,  _
-                    ByVal fechaAutoriza1 As Date,  _
-                    ByVal fechaAutoriza2 As Date,  _
-                    ByVal estatus As Decimal,  _
-                    ByVal referencia As String,  _
-                    ByVal convenio As String) As CXP_CuentasBancariasProvRow
+        Public Overloads Function AddCXP_CuentasBancariasProvRow(ByVal cuenta As String, ByVal clabe As String, ByVal descripcion As String, ByVal moneda As String, ByVal vigente As Boolean, ByVal nombreCorto As String, ByVal rfc As String, ByVal EstatusCuenta As String, ByVal activoS As String, ByVal autorizadoS As String) As CXP_CuentasBancariasProvRow
             Dim rowCXP_CuentasBancariasProvRow As CXP_CuentasBancariasProvRow = CType(Me.NewRow,CXP_CuentasBancariasProvRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, idProveedor, idBanco, cuenta, clabe, descripcion, moneda, archivo1, vigente, usuarioSolicita1, usuarioSolicita2, usuarioAutoriza1, usuarioAutoriza2, fechaSolicita1, fechaSolicita2, fechaAutoriza1, fechaAutoriza2, estatus, referencia, convenio}
+            Dim columnValuesArray() As Object = New Object() {Nothing, cuenta, clabe, descripcion, moneda, vigente, nombreCorto, rfc, EstatusCuenta, activoS, autorizadoS}
             rowCXP_CuentasBancariasProvRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCXP_CuentasBancariasProvRow)
             Return rowCXP_CuentasBancariasProvRow
@@ -711,25 +602,16 @@ Partial Public Class CxpDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnidCuentas = MyBase.Columns("idCuentas")
-            Me.columnidProveedor = MyBase.Columns("idProveedor")
-            Me.columnidBanco = MyBase.Columns("idBanco")
             Me.columncuenta = MyBase.Columns("cuenta")
             Me.columnclabe = MyBase.Columns("clabe")
             Me.columndescripcion = MyBase.Columns("descripcion")
             Me.columnmoneda = MyBase.Columns("moneda")
-            Me.columnarchivo1 = MyBase.Columns("archivo1")
             Me.columnvigente = MyBase.Columns("vigente")
-            Me.columnusuarioSolicita1 = MyBase.Columns("usuarioSolicita1")
-            Me.columnusuarioSolicita2 = MyBase.Columns("usuarioSolicita2")
-            Me.columnusuarioAutoriza1 = MyBase.Columns("usuarioAutoriza1")
-            Me.columnusuarioAutoriza2 = MyBase.Columns("usuarioAutoriza2")
-            Me.columnfechaSolicita1 = MyBase.Columns("fechaSolicita1")
-            Me.columnfechaSolicita2 = MyBase.Columns("fechaSolicita2")
-            Me.columnfechaAutoriza1 = MyBase.Columns("fechaAutoriza1")
-            Me.columnfechaAutoriza2 = MyBase.Columns("fechaAutoriza2")
-            Me.columnestatus = MyBase.Columns("estatus")
-            Me.columnreferencia = MyBase.Columns("referencia")
-            Me.columnconvenio = MyBase.Columns("convenio")
+            Me.columnnombreCorto = MyBase.Columns("nombreCorto")
+            Me.columnrfc = MyBase.Columns("rfc")
+            Me.columnEstatusCuenta = MyBase.Columns("EstatusCuenta")
+            Me.columnactivoS = MyBase.Columns("activoS")
+            Me.columnautorizadoS = MyBase.Columns("autorizadoS")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -737,10 +619,6 @@ Partial Public Class CxpDS
         Private Sub InitClass()
             Me.columnidCuentas = New Global.System.Data.DataColumn("idCuentas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidCuentas)
-            Me.columnidProveedor = New Global.System.Data.DataColumn("idProveedor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidProveedor)
-            Me.columnidBanco = New Global.System.Data.DataColumn("idBanco", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidBanco)
             Me.columncuenta = New Global.System.Data.DataColumn("cuenta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncuenta)
             Me.columnclabe = New Global.System.Data.DataColumn("clabe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -749,32 +627,18 @@ Partial Public Class CxpDS
             MyBase.Columns.Add(Me.columndescripcion)
             Me.columnmoneda = New Global.System.Data.DataColumn("moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmoneda)
-            Me.columnarchivo1 = New Global.System.Data.DataColumn("archivo1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnarchivo1)
             Me.columnvigente = New Global.System.Data.DataColumn("vigente", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnvigente)
-            Me.columnusuarioSolicita1 = New Global.System.Data.DataColumn("usuarioSolicita1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnusuarioSolicita1)
-            Me.columnusuarioSolicita2 = New Global.System.Data.DataColumn("usuarioSolicita2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnusuarioSolicita2)
-            Me.columnusuarioAutoriza1 = New Global.System.Data.DataColumn("usuarioAutoriza1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnusuarioAutoriza1)
-            Me.columnusuarioAutoriza2 = New Global.System.Data.DataColumn("usuarioAutoriza2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnusuarioAutoriza2)
-            Me.columnfechaSolicita1 = New Global.System.Data.DataColumn("fechaSolicita1", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfechaSolicita1)
-            Me.columnfechaSolicita2 = New Global.System.Data.DataColumn("fechaSolicita2", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfechaSolicita2)
-            Me.columnfechaAutoriza1 = New Global.System.Data.DataColumn("fechaAutoriza1", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfechaAutoriza1)
-            Me.columnfechaAutoriza2 = New Global.System.Data.DataColumn("fechaAutoriza2", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfechaAutoriza2)
-            Me.columnestatus = New Global.System.Data.DataColumn("estatus", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnestatus)
-            Me.columnreferencia = New Global.System.Data.DataColumn("referencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnreferencia)
-            Me.columnconvenio = New Global.System.Data.DataColumn("convenio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnconvenio)
+            Me.columnnombreCorto = New Global.System.Data.DataColumn("nombreCorto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnombreCorto)
+            Me.columnrfc = New Global.System.Data.DataColumn("rfc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrfc)
+            Me.columnEstatusCuenta = New Global.System.Data.DataColumn("EstatusCuenta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEstatusCuenta)
+            Me.columnactivoS = New Global.System.Data.DataColumn("activoS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnactivoS)
+            Me.columnautorizadoS = New Global.System.Data.DataColumn("autorizadoS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnautorizadoS)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidCuentas}, true))
             Me.columnidCuentas.AutoIncrement = true
             Me.columnidCuentas.AutoIncrementSeed = -1
@@ -786,13 +650,11 @@ Partial Public Class CxpDS
             Me.columnclabe.MaxLength = 50
             Me.columndescripcion.MaxLength = 200
             Me.columnmoneda.MaxLength = 5
-            Me.columnarchivo1.MaxLength = 100
-            Me.columnusuarioSolicita1.MaxLength = 50
-            Me.columnusuarioSolicita2.MaxLength = 50
-            Me.columnusuarioAutoriza1.MaxLength = 50
-            Me.columnusuarioAutoriza2.MaxLength = 50
-            Me.columnreferencia.MaxLength = 300
-            Me.columnconvenio.MaxLength = 100
+            Me.columnnombreCorto.MaxLength = 50
+            Me.columnrfc.MaxLength = 13
+            Me.columnEstatusCuenta.MaxLength = 50
+            Me.columnactivoS.MaxLength = 20
+            Me.columnautorizadoS.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2683,38 +2545,6 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property idProveedor() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.idProveedorColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idProveedor' de la tabla 'CXP_CuentasBancariasProv' es DB"& _ 
-                            "Null.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.idProveedorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property idBanco() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.idBancoColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idBanco' de la tabla 'CXP_CuentasBancariasProv' es DBNull"& _ 
-                            ".", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.idBancoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property cuenta() As String
             Get
                 Try 
@@ -2778,22 +2608,6 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property archivo1() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.archivo1Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'archivo1' de la tabla 'CXP_CuentasBancariasProv' es DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.archivo1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property vigente() As Boolean
             Get
                 Try 
@@ -2810,203 +2624,82 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property usuarioSolicita1() As String
+        Public Property nombreCorto() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita1Column),String)
+                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.nombreCortoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'usuarioSolicita1' de la tabla 'CXP_CuentasBancariasProv' "& _ 
-                            "es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombreCorto' de la tabla 'CXP_CuentasBancariasProv' es DB"& _ 
+                            "Null.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita1Column) = value
+                Me(Me.tableCXP_CuentasBancariasProv.nombreCortoColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property usuarioSolicita2() As String
+        Public Property rfc() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita2Column),String)
+                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.rfcColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'usuarioSolicita2' de la tabla 'CXP_CuentasBancariasProv' "& _ 
-                            "es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'rfc' de la tabla 'CXP_CuentasBancariasProv' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita2Column) = value
+                Me(Me.tableCXP_CuentasBancariasProv.rfcColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property usuarioAutoriza1() As String
+        Public Property EstatusCuenta() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza1Column),String)
+                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.EstatusCuentaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'usuarioAutoriza1' de la tabla 'CXP_CuentasBancariasProv' "& _ 
-                            "es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'EstatusCuenta' de la tabla 'CXP_CuentasBancariasProv' es "& _ 
+                            "DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza1Column) = value
+                Me(Me.tableCXP_CuentasBancariasProv.EstatusCuentaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property usuarioAutoriza2() As String
+        Public Property activoS() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza2Column),String)
+                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.activoSColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'usuarioAutoriza2' de la tabla 'CXP_CuentasBancariasProv' "& _ 
-                            "es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property fechaSolicita1() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita1Column),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fechaSolicita1' de la tabla 'CXP_CuentasBancariasProv' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property fechaSolicita2() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita2Column),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fechaSolicita2' de la tabla 'CXP_CuentasBancariasProv' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property fechaAutoriza1() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza1Column),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fechaAutoriza1' de la tabla 'CXP_CuentasBancariasProv' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property fechaAutoriza2() As Date
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza2Column),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fechaAutoriza2' de la tabla 'CXP_CuentasBancariasProv' es"& _ 
-                            " DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property estatus() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.estatusColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'estatus' de la tabla 'CXP_CuentasBancariasProv' es DBNull"& _ 
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'activoS' de la tabla 'CXP_CuentasBancariasProv' es DBNull"& _ 
                             ".", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCXP_CuentasBancariasProv.estatusColumn) = value
+                Me(Me.tableCXP_CuentasBancariasProv.activoSColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property referencia() As String
+        Public Property autorizadoS() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.referenciaColumn),String)
+                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.autorizadoSColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'referencia' de la tabla 'CXP_CuentasBancariasProv' es DBN"& _ 
-                            "ull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'autorizadoS' de la tabla 'CXP_CuentasBancariasProv' es DB"& _ 
+                            "Null.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCXP_CuentasBancariasProv.referenciaColumn) = value
+                Me(Me.tableCXP_CuentasBancariasProv.autorizadoSColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property convenio() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableCXP_CuentasBancariasProv.convenioColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'convenio' de la tabla 'CXP_CuentasBancariasProv' es DBNul"& _ 
-                            "l.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableCXP_CuentasBancariasProv.convenioColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidProveedorNull() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.idProveedorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidProveedorNull()
-            Me(Me.tableCXP_CuentasBancariasProv.idProveedorColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidBancoNull() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.idBancoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidBancoNull()
-            Me(Me.tableCXP_CuentasBancariasProv.idBancoColumn) = Global.System.Convert.DBNull
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -3058,18 +2751,6 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isarchivo1Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.archivo1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setarchivo1Null()
-            Me(Me.tableCXP_CuentasBancariasProv.archivo1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsvigenteNull() As Boolean
             Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.vigenteColumn)
         End Function
@@ -3082,134 +2763,62 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsusuarioSolicita1Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.usuarioSolicita1Column)
+        Public Function IsnombreCortoNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.nombreCortoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetusuarioSolicita1Null()
-            Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita1Column) = Global.System.Convert.DBNull
+        Public Sub SetnombreCortoNull()
+            Me(Me.tableCXP_CuentasBancariasProv.nombreCortoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsusuarioSolicita2Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.usuarioSolicita2Column)
+        Public Function IsrfcNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.rfcColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetusuarioSolicita2Null()
-            Me(Me.tableCXP_CuentasBancariasProv.usuarioSolicita2Column) = Global.System.Convert.DBNull
+        Public Sub SetrfcNull()
+            Me(Me.tableCXP_CuentasBancariasProv.rfcColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsusuarioAutoriza1Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza1Column)
+        Public Function IsEstatusCuentaNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.EstatusCuentaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetusuarioAutoriza1Null()
-            Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza1Column) = Global.System.Convert.DBNull
+        Public Sub SetEstatusCuentaNull()
+            Me(Me.tableCXP_CuentasBancariasProv.EstatusCuentaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsusuarioAutoriza2Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza2Column)
+        Public Function IsactivoSNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.activoSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetusuarioAutoriza2Null()
-            Me(Me.tableCXP_CuentasBancariasProv.usuarioAutoriza2Column) = Global.System.Convert.DBNull
+        Public Sub SetactivoSNull()
+            Me(Me.tableCXP_CuentasBancariasProv.activoSColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsfechaSolicita1Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.fechaSolicita1Column)
+        Public Function IsautorizadoSNull() As Boolean
+            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.autorizadoSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetfechaSolicita1Null()
-            Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsfechaSolicita2Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.fechaSolicita2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetfechaSolicita2Null()
-            Me(Me.tableCXP_CuentasBancariasProv.fechaSolicita2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsfechaAutoriza1Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.fechaAutoriza1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetfechaAutoriza1Null()
-            Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsfechaAutoriza2Null() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.fechaAutoriza2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetfechaAutoriza2Null()
-            Me(Me.tableCXP_CuentasBancariasProv.fechaAutoriza2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsestatusNull() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.estatusColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetestatusNull()
-            Me(Me.tableCXP_CuentasBancariasProv.estatusColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsreferenciaNull() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.referenciaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetreferenciaNull()
-            Me(Me.tableCXP_CuentasBancariasProv.referenciaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsconvenioNull() As Boolean
-            Return Me.IsNull(Me.tableCXP_CuentasBancariasProv.convenioColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetconvenioNull()
-            Me(Me.tableCXP_CuentasBancariasProv.convenioColumn) = Global.System.Convert.DBNull
+        Public Sub SetautorizadoSNull()
+            Me(Me.tableCXP_CuentasBancariasProv.autorizadoSColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5214,225 +4823,17 @@ Namespace CxpDSTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "CXP_CuentasBancariasProv"
             tableMapping.ColumnMappings.Add("idCuentas", "idCuentas")
-            tableMapping.ColumnMappings.Add("idProveedor", "idProveedor")
-            tableMapping.ColumnMappings.Add("idBanco", "idBanco")
             tableMapping.ColumnMappings.Add("cuenta", "cuenta")
             tableMapping.ColumnMappings.Add("clabe", "clabe")
             tableMapping.ColumnMappings.Add("descripcion", "descripcion")
             tableMapping.ColumnMappings.Add("moneda", "moneda")
-            tableMapping.ColumnMappings.Add("archivo1", "archivo1")
             tableMapping.ColumnMappings.Add("vigente", "vigente")
-            tableMapping.ColumnMappings.Add("usuarioSolicita1", "usuarioSolicita1")
-            tableMapping.ColumnMappings.Add("usuarioSolicita2", "usuarioSolicita2")
-            tableMapping.ColumnMappings.Add("usuarioAutoriza1", "usuarioAutoriza1")
-            tableMapping.ColumnMappings.Add("usuarioAutoriza2", "usuarioAutoriza2")
-            tableMapping.ColumnMappings.Add("fechaSolicita1", "fechaSolicita1")
-            tableMapping.ColumnMappings.Add("fechaSolicita2", "fechaSolicita2")
-            tableMapping.ColumnMappings.Add("fechaAutoriza1", "fechaAutoriza1")
-            tableMapping.ColumnMappings.Add("fechaAutoriza2", "fechaAutoriza2")
-            tableMapping.ColumnMappings.Add("estatus", "estatus")
-            tableMapping.ColumnMappings.Add("referencia", "referencia")
-            tableMapping.ColumnMappings.Add("convenio", "convenio")
+            tableMapping.ColumnMappings.Add("nombreCorto", "nombreCorto")
+            tableMapping.ColumnMappings.Add("rfc", "rfc")
+            tableMapping.ColumnMappings.Add("EstatusCuenta", "EstatusCuenta")
+            tableMapping.ColumnMappings.Add("activoS", "activoS")
+            tableMapping.ColumnMappings.Add("autorizadoS", "autorizadoS")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [CXP_CuentasBancariasProv] WHERE (([idCuentas] = @Original_idCuentas)"& _ 
-                " AND ((@IsNull_idProveedor = 1 AND [idProveedor] IS NULL) OR ([idProveedor] = @O"& _ 
-                "riginal_idProveedor)) AND ((@IsNull_idBanco = 1 AND [idBanco] IS NULL) OR ([idBa"& _ 
-                "nco] = @Original_idBanco)) AND ((@IsNull_cuenta = 1 AND [cuenta] IS NULL) OR ([c"& _ 
-                "uenta] = @Original_cuenta)) AND ((@IsNull_clabe = 1 AND [clabe] IS NULL) OR ([cl"& _ 
-                "abe] = @Original_clabe)) AND ((@IsNull_descripcion = 1 AND [descripcion] IS NULL"& _ 
-                ") OR ([descripcion] = @Original_descripcion)) AND ((@IsNull_moneda = 1 AND [mone"& _ 
-                "da] IS NULL) OR ([moneda] = @Original_moneda)) AND ((@IsNull_archivo1 = 1 AND [a"& _ 
-                "rchivo1] IS NULL) OR ([archivo1] = @Original_archivo1)) AND ((@IsNull_vigente = "& _ 
-                "1 AND [vigente] IS NULL) OR ([vigente] = @Original_vigente)) AND ((@IsNull_usuar"& _ 
-                "ioSolicita1 = 1 AND [usuarioSolicita1] IS NULL) OR ([usuarioSolicita1] = @Origin"& _ 
-                "al_usuarioSolicita1)) AND ((@IsNull_usuarioSolicita2 = 1 AND [usuarioSolicita2] "& _ 
-                "IS NULL) OR ([usuarioSolicita2] = @Original_usuarioSolicita2)) AND ((@IsNull_usu"& _ 
-                "arioAutoriza1 = 1 AND [usuarioAutoriza1] IS NULL) OR ([usuarioAutoriza1] = @Orig"& _ 
-                "inal_usuarioAutoriza1)) AND ((@IsNull_usuarioAutoriza2 = 1 AND [usuarioAutoriza2"& _ 
-                "] IS NULL) OR ([usuarioAutoriza2] = @Original_usuarioAutoriza2)) AND ((@IsNull_f"& _ 
-                "echaSolicita1 = 1 AND [fechaSolicita1] IS NULL) OR ([fechaSolicita1] = @Original"& _ 
-                "_fechaSolicita1)) AND ((@IsNull_fechaSolicita2 = 1 AND [fechaSolicita2] IS NULL)"& _ 
-                " OR ([fechaSolicita2] = @Original_fechaSolicita2)) AND ((@IsNull_fechaAutoriza1 "& _ 
-                "= 1 AND [fechaAutoriza1] IS NULL) OR ([fechaAutoriza1] = @Original_fechaAutoriza"& _ 
-                "1)) AND ((@IsNull_fechaAutoriza2 = 1 AND [fechaAutoriza2] IS NULL) OR ([fechaAut"& _ 
-                "oriza2] = @Original_fechaAutoriza2)) AND ((@IsNull_estatus = 1 AND [estatus] IS "& _ 
-                "NULL) OR ([estatus] = @Original_estatus)) AND ((@IsNull_referencia = 1 AND [refe"& _ 
-                "rencia] IS NULL) OR ([referencia] = @Original_referencia)) AND ((@IsNull_conveni"& _ 
-                "o = 1 AND [convenio] IS NULL) OR ([convenio] = @Original_convenio)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idCuentas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idCuentas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idProveedor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idProveedor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idProveedor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idBanco", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idBanco", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idBanco", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idBanco", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_cuenta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_cuenta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_clabe", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_clabe", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_moneda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_moneda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_archivo1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_archivo1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_vigente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vigente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioSolicita1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioSolicita1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioSolicita2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioSolicita2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioAutoriza1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioAutoriza1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioAutoriza2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioAutoriza2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaSolicita1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaSolicita1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaSolicita2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaSolicita2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaAutoriza1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaAutoriza1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaAutoriza2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaAutoriza2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_estatus", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "estatus", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_estatus", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "estatus", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_referencia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_referencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_convenio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_convenio", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [CXP_CuentasBancariasProv] ([idProveedor], [idBanco], [cuenta], [clab"& _ 
-                "e], [descripcion], [moneda], [archivo1], [vigente], [usuarioSolicita1], [usuario"& _ 
-                "Solicita2], [usuarioAutoriza1], [usuarioAutoriza2], [fechaSolicita1], [fechaSoli"& _ 
-                "cita2], [fechaAutoriza1], [fechaAutoriza2], [estatus], [referencia], [convenio])"& _ 
-                " VALUES (@idProveedor, @idBanco, @cuenta, @clabe, @descripcion, @moneda, @archiv"& _ 
-                "o1, @vigente, @usuarioSolicita1, @usuarioSolicita2, @usuarioAutoriza1, @usuarioA"& _ 
-                "utoriza2, @fechaSolicita1, @fechaSolicita2, @fechaAutoriza1, @fechaAutoriza2, @e"& _ 
-                "status, @referencia, @convenio);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idCuentas, idProveedor, idBanco, cuenta"& _ 
-                ", clabe, descripcion, moneda, archivo1, vigente, usuarioSolicita1, usuarioSolici"& _ 
-                "ta2, usuarioAutoriza1, usuarioAutoriza2, fechaSolicita1, fechaSolicita2, fechaAu"& _ 
-                "toriza1, fechaAutoriza2, estatus, referencia, convenio FROM CXP_CuentasBancarias"& _ 
-                "Prov WHERE (idCuentas = SCOPE_IDENTITY())"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idProveedor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idBanco", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idBanco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cuenta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@clabe", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@moneda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@archivo1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vigente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioSolicita1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioSolicita2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioAutoriza1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioAutoriza2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaSolicita1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaSolicita2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaAutoriza1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaAutoriza2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@estatus", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "estatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@referencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@convenio", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [CXP_CuentasBancariasProv] SET [idProveedor] = @idProveedor, [idBanco] = @"& _ 
-                "idBanco, [cuenta] = @cuenta, [clabe] = @clabe, [descripcion] = @descripcion, [mo"& _ 
-                "neda] = @moneda, [archivo1] = @archivo1, [vigente] = @vigente, [usuarioSolicita1"& _ 
-                "] = @usuarioSolicita1, [usuarioSolicita2] = @usuarioSolicita2, [usuarioAutoriza1"& _ 
-                "] = @usuarioAutoriza1, [usuarioAutoriza2] = @usuarioAutoriza2, [fechaSolicita1] "& _ 
-                "= @fechaSolicita1, [fechaSolicita2] = @fechaSolicita2, [fechaAutoriza1] = @fecha"& _ 
-                "Autoriza1, [fechaAutoriza2] = @fechaAutoriza2, [estatus] = @estatus, [referencia"& _ 
-                "] = @referencia, [convenio] = @convenio WHERE (([idCuentas] = @Original_idCuenta"& _ 
-                "s) AND ((@IsNull_idProveedor = 1 AND [idProveedor] IS NULL) OR ([idProveedor] = "& _ 
-                "@Original_idProveedor)) AND ((@IsNull_idBanco = 1 AND [idBanco] IS NULL) OR ([id"& _ 
-                "Banco] = @Original_idBanco)) AND ((@IsNull_cuenta = 1 AND [cuenta] IS NULL) OR ("& _ 
-                "[cuenta] = @Original_cuenta)) AND ((@IsNull_clabe = 1 AND [clabe] IS NULL) OR (["& _ 
-                "clabe] = @Original_clabe)) AND ((@IsNull_descripcion = 1 AND [descripcion] IS NU"& _ 
-                "LL) OR ([descripcion] = @Original_descripcion)) AND ((@IsNull_moneda = 1 AND [mo"& _ 
-                "neda] IS NULL) OR ([moneda] = @Original_moneda)) AND ((@IsNull_archivo1 = 1 AND "& _ 
-                "[archivo1] IS NULL) OR ([archivo1] = @Original_archivo1)) AND ((@IsNull_vigente "& _ 
-                "= 1 AND [vigente] IS NULL) OR ([vigente] = @Original_vigente)) AND ((@IsNull_usu"& _ 
-                "arioSolicita1 = 1 AND [usuarioSolicita1] IS NULL) OR ([usuarioSolicita1] = @Orig"& _ 
-                "inal_usuarioSolicita1)) AND ((@IsNull_usuarioSolicita2 = 1 AND [usuarioSolicita2"& _ 
-                "] IS NULL) OR ([usuarioSolicita2] = @Original_usuarioSolicita2)) AND ((@IsNull_u"& _ 
-                "suarioAutoriza1 = 1 AND [usuarioAutoriza1] IS NULL) OR ([usuarioAutoriza1] = @Or"& _ 
-                "iginal_usuarioAutoriza1)) AND ((@IsNull_usuarioAutoriza2 = 1 AND [usuarioAutoriz"& _ 
-                "a2] IS NULL) OR ([usuarioAutoriza2] = @Original_usuarioAutoriza2)) AND ((@IsNull"& _ 
-                "_fechaSolicita1 = 1 AND [fechaSolicita1] IS NULL) OR ([fechaSolicita1] = @Origin"& _ 
-                "al_fechaSolicita1)) AND ((@IsNull_fechaSolicita2 = 1 AND [fechaSolicita2] IS NUL"& _ 
-                "L) OR ([fechaSolicita2] = @Original_fechaSolicita2)) AND ((@IsNull_fechaAutoriza"& _ 
-                "1 = 1 AND [fechaAutoriza1] IS NULL) OR ([fechaAutoriza1] = @Original_fechaAutori"& _ 
-                "za1)) AND ((@IsNull_fechaAutoriza2 = 1 AND [fechaAutoriza2] IS NULL) OR ([fechaA"& _ 
-                "utoriza2] = @Original_fechaAutoriza2)) AND ((@IsNull_estatus = 1 AND [estatus] I"& _ 
-                "S NULL) OR ([estatus] = @Original_estatus)) AND ((@IsNull_referencia = 1 AND [re"& _ 
-                "ferencia] IS NULL) OR ([referencia] = @Original_referencia)) AND ((@IsNull_conve"& _ 
-                "nio = 1 AND [convenio] IS NULL) OR ([convenio] = @Original_convenio)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "idCuentas, idProveedor, idBanco, cuenta, clabe, descripcion, moneda, archivo1, v"& _ 
-                "igente, usuarioSolicita1, usuarioSolicita2, usuarioAutoriza1, usuarioAutoriza2, "& _ 
-                "fechaSolicita1, fechaSolicita2, fechaAutoriza1, fechaAutoriza2, estatus, referen"& _ 
-                "cia, convenio FROM CXP_CuentasBancariasProv WHERE (idCuentas = @idCuentas)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idProveedor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idBanco", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idBanco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cuenta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@clabe", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@moneda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@archivo1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vigente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioSolicita1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioSolicita2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioAutoriza1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioAutoriza2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaSolicita1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaSolicita2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaAutoriza1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaAutoriza2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@estatus", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "estatus", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@referencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@convenio", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idCuentas", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idCuentas", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idProveedor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idProveedor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idProveedor", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_idBanco", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "idBanco", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_idBanco", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "idBanco", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_cuenta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_cuenta", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_clabe", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_clabe", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_descripcion", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_descripcion", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_moneda", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_moneda", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "moneda", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_archivo1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_archivo1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "archivo1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_vigente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vigente", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vigente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioSolicita1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioSolicita1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioSolicita2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioSolicita2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioAutoriza1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioAutoriza1", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_usuarioAutoriza2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_usuarioAutoriza2", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioAutoriza2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaSolicita1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaSolicita1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaSolicita2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaSolicita2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaAutoriza1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaAutoriza1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_fechaAutoriza2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fechaAutoriza2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaAutoriza2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_estatus", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "estatus", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_estatus", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 0, "estatus", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_referencia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_referencia", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_convenio", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_convenio", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "convenio", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idCuentas", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idCuentas", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5448,35 +4849,36 @@ Namespace CxpDSTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        idCuentas, idProveedor, idBanco, cuenta, clabe, descripcion, moneda"& _ 
-                ", archivo1, vigente, usuarioSolicita1, usuarioSolicita2, usuarioAutoriza1, usuar"& _ 
-                "ioAutoriza2, fechaSolicita1, fechaSolicita2, fechaAutoriza1, fechaAutoriza2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        estatus, referencia, convenio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CXP_Cuent"& _ 
-                "asBancariasProv"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (idProveedor = @id_proveedor)"
+            Me._commandCollection(0).CommandText = "SELECT        CXP_CuentasBancariasProv.idCuentas, CXP_CuentasBancariasProv.cuenta"& _ 
+                ", CXP_CuentasBancariasProv.clabe, CXP_CuentasBancariasProv.descripcion, CXP_Cuen"& _ 
+                "tasBancariasProv.moneda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_CuentasBancariasProv.vig"& _ 
+                "ente, CXP_Bancos.nombreCorto, CXP_Bancos.rfc, CXP_Estatus.descripcion AS Estatus"& _ 
+                "Cuenta, CXP_Proveedores.activoS, CXP_Proveedores.autorizadoS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CX"& _ 
+                "P_CuentasBancariasProv INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos ON CXP_Cu"& _ 
+                "entasBancariasProv.idBanco = CXP_Bancos.idBancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      CXP_Estatus ON CXP_CuentasBancariasProv.estatus = CXP_Estatus.idEstatus IN"& _ 
+                "NER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Proveedores ON CXP_CuentasBancariasProv.i"& _ 
+                "dProveedor = CXP_Proveedores.idProveedor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CXP_CuentasBancariasProv"& _ 
+                ".idProveedor = @id_proveedor)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_proveedor", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "INSERT INTO CXP_CuentasBancariasProv"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (idProveedor, idBa"& _ 
-                "nco, cuenta, clabe, descripcion, moneda, vigente, usuarioSolicita1, fechaSolicit"& _ 
-                "a1, fechaSolicita2, fechaAutoriza1, fechaAutoriza2, estatus, referencia)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES"& _ 
-                "        (@idProveedor,@idBanco,@cuenta,@clabe,@descripcion, 'MXN', 1,@usuarioSol"& _ 
-                "icita1,@fechaSolicita1, CONVERT(DATETIME, '1900-01-01 00:00:00', 102), CONVERT(D"& _ 
-                "ATETIME, '1900-01-01 00:00:00', 102), "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CONVERT(DATETIM"& _ 
-                "E, '1900-01-01 00:00:00', 102), 33,@referencia); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT idCuentas, idProveedor"& _ 
-                ", idBanco, cuenta, clabe, descripcion, moneda, archivo1, vigente, usuarioSolicit"& _ 
-                "a1, usuarioSolicita2, usuarioAutoriza1, usuarioAutoriza2, fechaSolicita1, fechaS"& _ 
-                "olicita2, fechaAutoriza1, fechaAutoriza2, estatus, referencia, convenio FROM CXP"& _ 
-                "_CuentasBancariasProv WHERE (idCuentas = SCOPE_IDENTITY())"
+            Me._commandCollection(1).CommandText = "SELECT        CXP_CuentasBancariasProv.idCuentas, CXP_CuentasBancariasProv.cuenta"& _ 
+                ", CXP_CuentasBancariasProv.clabe, CXP_CuentasBancariasProv.descripcion, CXP_Cuen"& _ 
+                "tasBancariasProv.moneda, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_CuentasBancariasProv.vig"& _ 
+                "ente, CXP_Bancos.nombreCorto, CXP_Bancos.rfc, CXP_Estatus.descripcion AS Estatus"& _ 
+                "Cuenta, CXP_Proveedores.activoS, CXP_Proveedores.autorizadoS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CX"& _ 
+                "P_CuentasBancariasProv INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Bancos ON CXP_Cu"& _ 
+                "entasBancariasProv.idBanco = CXP_Bancos.idBancos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+                "      CXP_Estatus ON CXP_CuentasBancariasProv.estatus = CXP_Estatus.idEstatus IN"& _ 
+                "NER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CXP_Proveedores ON CXP_CuentasBancariasProv.i"& _ 
+                "dProveedor = CXP_Proveedores.idProveedor INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Cl"& _ 
+                "ientes ON CXP_Proveedores.rfc = Clientes.RFC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Clientes.Cliente = @"& _ 
+                "Cliente) AND (CXP_Estatus.descripcion = 'ACTIVA') AND (CXP_Proveedores.autorizad"& _ 
+                "oS = 'AUTORIZADO') AND (CXP_Proveedores.activoS = 'ACTIVO')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idProveedor", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idProveedor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@idBanco", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 18, 0, "idBanco", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cuenta", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "cuenta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@clabe", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "clabe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@descripcion", Global.System.Data.SqlDbType.VarChar, 200, Global.System.Data.ParameterDirection.Input, 0, 0, "descripcion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@usuarioSolicita1", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "usuarioSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fechaSolicita1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "fechaSolicita1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@referencia", Global.System.Data.SqlDbType.VarChar, 300, Global.System.Data.ParameterDirection.Input, 0, 0, "referencia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Cliente", Global.System.Data.SqlDbType.NChar, 5, Global.System.Data.ParameterDirection.Input, 0, 0, "Cliente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5515,737 +4917,36 @@ Namespace CxpDSTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As CxpDS.CXP_CuentasBancariasProvDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As CxpDS) As Integer
-            Return Me.Adapter.Update(dataSet, "CXP_CuentasBancariasProv")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete( _
-                    ByVal Original_idCuentas As Decimal,  _
-                    ByVal Original_idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_cuenta As String,  _
-                    ByVal Original_clabe As String,  _
-                    ByVal Original_descripcion As String,  _
-                    ByVal Original_moneda As String,  _
-                    ByVal Original_archivo1 As String,  _
-                    ByVal Original_vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_usuarioSolicita1 As String,  _
-                    ByVal Original_usuarioSolicita2 As String,  _
-                    ByVal Original_usuarioAutoriza1 As String,  _
-                    ByVal Original_usuarioAutoriza2 As String,  _
-                    ByVal Original_fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_referencia As String,  _
-                    ByVal Original_convenio As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_idCuentas,Decimal)
-            If (Original_idProveedor.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_idProveedor.Value,Decimal)
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByCliente(ByVal dataTable As CxpDS.CXP_CuentasBancariasProvDataTable, ByVal Cliente As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
             Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
             End If
-            If (Original_idBanco.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_idBanco.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_cuenta Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_cuenta,String)
-            End If
-            If (Original_clabe Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_clabe,String)
-            End If
-            If (Original_descripcion Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_descripcion,String)
-            End If
-            If (Original_moneda Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_moneda,String)
-            End If
-            If (Original_archivo1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_archivo1,String)
-            End If
-            If (Original_vigente.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_vigente.Value,Boolean)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (Original_usuarioSolicita1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_usuarioSolicita1,String)
-            End If
-            If (Original_usuarioSolicita2 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_usuarioSolicita2,String)
-            End If
-            If (Original_usuarioAutoriza1 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_usuarioAutoriza1,String)
-            End If
-            If (Original_usuarioAutoriza2 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_usuarioAutoriza2,String)
-            End If
-            If (Original_fechaSolicita1.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_fechaSolicita1.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaSolicita2.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_fechaSolicita2.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaAutoriza1.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_fechaAutoriza1.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaAutoriza2.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_fechaAutoriza2.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
-            End If
-            If (Original_estatus.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_estatus.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
-            End If
-            If (Original_referencia Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_referencia,String)
-            End If
-            If (Original_convenio Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_convenio,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert( _
-                    ByVal idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal cuenta As String,  _
-                    ByVal clabe As String,  _
-                    ByVal descripcion As String,  _
-                    ByVal moneda As String,  _
-                    ByVal archivo1 As String,  _
-                    ByVal vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal usuarioSolicita1 As String,  _
-                    ByVal usuarioSolicita2 As String,  _
-                    ByVal usuarioAutoriza1 As String,  _
-                    ByVal usuarioAutoriza2 As String,  _
-                    ByVal fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal referencia As String,  _
-                    ByVal convenio As String) As Integer
-            If (idProveedor.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(idProveedor.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (idBanco.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(idBanco.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (cuenta Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(cuenta,String)
-            End If
-            If (clabe Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(clabe,String)
-            End If
-            If (descripcion Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(descripcion,String)
-            End If
-            If (moneda Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(moneda,String)
-            End If
-            If (archivo1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(archivo1,String)
-            End If
-            If (vigente.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(vigente.Value,Boolean)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (usuarioSolicita1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(usuarioSolicita1,String)
-            End If
-            If (usuarioSolicita2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(usuarioSolicita2,String)
-            End If
-            If (usuarioAutoriza1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(usuarioAutoriza1,String)
-            End If
-            If (usuarioAutoriza2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(usuarioAutoriza2,String)
-            End If
-            If (fechaSolicita1.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(fechaSolicita1.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (fechaSolicita2.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(fechaSolicita2.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (fechaAutoriza1.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(fechaAutoriza1.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (fechaAutoriza2.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(fechaAutoriza2.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (estatus.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(estatus.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (referencia Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(referencia,String)
-            End If
-            If (convenio Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(convenio,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal cuenta As String,  _
-                    ByVal clabe As String,  _
-                    ByVal descripcion As String,  _
-                    ByVal moneda As String,  _
-                    ByVal archivo1 As String,  _
-                    ByVal vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal usuarioSolicita1 As String,  _
-                    ByVal usuarioSolicita2 As String,  _
-                    ByVal usuarioAutoriza1 As String,  _
-                    ByVal usuarioAutoriza2 As String,  _
-                    ByVal fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal referencia As String,  _
-                    ByVal convenio As String,  _
-                    ByVal Original_idCuentas As Decimal,  _
-                    ByVal Original_idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_cuenta As String,  _
-                    ByVal Original_clabe As String,  _
-                    ByVal Original_descripcion As String,  _
-                    ByVal Original_moneda As String,  _
-                    ByVal Original_archivo1 As String,  _
-                    ByVal Original_vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_usuarioSolicita1 As String,  _
-                    ByVal Original_usuarioSolicita2 As String,  _
-                    ByVal Original_usuarioAutoriza1 As String,  _
-                    ByVal Original_usuarioAutoriza2 As String,  _
-                    ByVal Original_fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_referencia As String,  _
-                    ByVal Original_convenio As String,  _
-                    ByVal idCuentas As Decimal) As Integer
-            If (idProveedor.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(idProveedor.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (idBanco.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(idBanco.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (cuenta Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(cuenta,String)
-            End If
-            If (clabe Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(clabe,String)
-            End If
-            If (descripcion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(descripcion,String)
-            End If
-            If (moneda Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(moneda,String)
-            End If
-            If (archivo1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(archivo1,String)
-            End If
-            If (vigente.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(vigente.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (usuarioSolicita1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(usuarioSolicita1,String)
-            End If
-            If (usuarioSolicita2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(usuarioSolicita2,String)
-            End If
-            If (usuarioAutoriza1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(usuarioAutoriza1,String)
-            End If
-            If (usuarioAutoriza2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(usuarioAutoriza2,String)
-            End If
-            If (fechaSolicita1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(fechaSolicita1.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (fechaSolicita2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(fechaSolicita2.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (fechaAutoriza1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(fechaAutoriza1.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (fechaAutoriza2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(fechaAutoriza2.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (estatus.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(estatus.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (referencia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(referencia,String)
-            End If
-            If (convenio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(convenio,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_idCuentas,Decimal)
-            If (Original_idProveedor.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_idProveedor.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (Original_idBanco.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_idBanco.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            If (Original_cuenta Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_cuenta,String)
-            End If
-            If (Original_clabe Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_clabe,String)
-            End If
-            If (Original_descripcion Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_descripcion,String)
-            End If
-            If (Original_moneda Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_moneda,String)
-            End If
-            If (Original_archivo1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_archivo1,String)
-            End If
-            If (Original_vigente.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_vigente.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            End If
-            If (Original_usuarioSolicita1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_usuarioSolicita1,String)
-            End If
-            If (Original_usuarioSolicita2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_usuarioSolicita2,String)
-            End If
-            If (Original_usuarioAutoriza1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_usuarioAutoriza1,String)
-            End If
-            If (Original_usuarioAutoriza2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_usuarioAutoriza2,String)
-            End If
-            If (Original_fechaSolicita1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_fechaSolicita1.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaSolicita2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_fechaSolicita2.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaAutoriza1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_fechaAutoriza1.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
-            End If
-            If (Original_fechaAutoriza2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_fechaAutoriza2.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
-            End If
-            If (Original_estatus.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_estatus.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
-            End If
-            If (Original_referencia Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_referencia,String)
-            End If
-            If (Original_convenio Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_convenio,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(58).Value = CType(idCuentas,Decimal)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal cuenta As String,  _
-                    ByVal clabe As String,  _
-                    ByVal descripcion As String,  _
-                    ByVal moneda As String,  _
-                    ByVal archivo1 As String,  _
-                    ByVal vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal usuarioSolicita1 As String,  _
-                    ByVal usuarioSolicita2 As String,  _
-                    ByVal usuarioAutoriza1 As String,  _
-                    ByVal usuarioAutoriza2 As String,  _
-                    ByVal fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal referencia As String,  _
-                    ByVal convenio As String,  _
-                    ByVal Original_idCuentas As Decimal,  _
-                    ByVal Original_idProveedor As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_idBanco As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_cuenta As String,  _
-                    ByVal Original_clabe As String,  _
-                    ByVal Original_descripcion As String,  _
-                    ByVal Original_moneda As String,  _
-                    ByVal Original_archivo1 As String,  _
-                    ByVal Original_vigente As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_usuarioSolicita1 As String,  _
-                    ByVal Original_usuarioSolicita2 As String,  _
-                    ByVal Original_usuarioAutoriza1 As String,  _
-                    ByVal Original_usuarioAutoriza2 As String,  _
-                    ByVal Original_fechaSolicita1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaSolicita2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_fechaAutoriza2 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_estatus As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_referencia As String,  _
-                    ByVal Original_convenio As String) As Integer
-            Return Me.Update(idProveedor, idBanco, cuenta, clabe, descripcion, moneda, archivo1, vigente, usuarioSolicita1, usuarioSolicita2, usuarioAutoriza1, usuarioAutoriza2, fechaSolicita1, fechaSolicita2, fechaAutoriza1, fechaAutoriza2, estatus, referencia, convenio, Original_idCuentas, Original_idProveedor, Original_idBanco, Original_cuenta, Original_clabe, Original_descripcion, Original_moneda, Original_archivo1, Original_vigente, Original_usuarioSolicita1, Original_usuarioSolicita2, Original_usuarioAutoriza1, Original_usuarioAutoriza2, Original_fechaSolicita1, Original_fechaSolicita2, Original_fechaAutoriza1, Original_fechaAutoriza2, Original_estatus, Original_referencia, Original_convenio, Original_idCuentas)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function InsertCuenta(ByVal idProveedor As Global.System.Nullable(Of Decimal), ByVal idBanco As Global.System.Nullable(Of Decimal), ByVal cuenta As String, ByVal clabe As String, ByVal descripcion As String, ByVal usuarioSolicita1 As String, ByVal fechaSolicita1 As Global.System.Nullable(Of Date), ByVal referencia As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            If (idProveedor.HasValue = true) Then
-                command.Parameters(0).Value = CType(idProveedor.Value,Decimal)
-            Else
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (idBanco.HasValue = true) Then
-                command.Parameters(1).Value = CType(idBanco.Value,Decimal)
-            Else
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            End If
-            If (cuenta Is Nothing) Then
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(2).Value = CType(cuenta,String)
-            End If
-            If (clabe Is Nothing) Then
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(3).Value = CType(clabe,String)
-            End If
-            If (descripcion Is Nothing) Then
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(4).Value = CType(descripcion,String)
-            End If
-            If (usuarioSolicita1 Is Nothing) Then
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(5).Value = CType(usuarioSolicita1,String)
-            End If
-            If (fechaSolicita1.HasValue = true) Then
-                command.Parameters(6).Value = CType(fechaSolicita1.Value,Date)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (referencia Is Nothing) Then
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(7).Value = CType(referencia,String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByCliente(ByVal Cliente As String) As CxpDS.CXP_CuentasBancariasProvDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Cliente Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Cliente")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Cliente,String)
+            End If
+            Dim dataTable As CxpDS.CXP_CuentasBancariasProvDataTable = New CxpDS.CXP_CuentasBancariasProvDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
         End Function
     End Class
     
@@ -9259,8 +7960,6 @@ Namespace CxpDSTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _cXP_CuentasBancariasProvTableAdapter As CXP_CuentasBancariasProvTableAdapter
-        
         Private _cXP_ProveedoresTableAdapter As CXP_ProveedoresTableAdapter
         
         Private _cXP_PagosTesoreriaTableAdapter As CXP_PagosTesoreriaTableAdapter
@@ -9277,20 +7976,6 @@ Namespace CxpDSTableAdapters
             End Get
             Set
                 Me._updateOrder = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property CXP_CuentasBancariasProvTableAdapter() As CXP_CuentasBancariasProvTableAdapter
-            Get
-                Return Me._cXP_CuentasBancariasProvTableAdapter
-            End Get
-            Set
-                Me._cXP_CuentasBancariasProvTableAdapter = value
             End Set
         End Property
         
@@ -9341,10 +8026,6 @@ Namespace CxpDSTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._cXP_CuentasBancariasProvTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._cXP_CuentasBancariasProvTableAdapter.Connection
-                End If
                 If ((Not (Me._cXP_ProveedoresTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._cXP_ProveedoresTableAdapter.Connection) Is Nothing)) Then
                     Return Me._cXP_ProveedoresTableAdapter.Connection
@@ -9366,9 +8047,6 @@ Namespace CxpDSTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 If (Not (Me._cXP_ProveedoresTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
@@ -9386,15 +8064,6 @@ Namespace CxpDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As CxpDS, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.CXP_CuentasBancariasProv.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._cXP_CuentasBancariasProvTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._cXP_ProveedoresTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.CXP_Proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -9423,14 +8092,6 @@ Namespace CxpDSTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As CxpDS, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.CXP_CuentasBancariasProv.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._cXP_CuentasBancariasProvTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._cXP_ProveedoresTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.CXP_Proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -9470,14 +8131,6 @@ Namespace CxpDSTableAdapters
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._cXP_ProveedoresTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.CXP_CuentasBancariasProv.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._cXP_CuentasBancariasProvTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -9522,11 +8175,6 @@ Namespace CxpDSTableAdapters
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._cXP_CuentasBancariasProvTableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
-                        "sma cadena de conexión.")
-            End If
             If ((Not (Me._cXP_ProveedoresTableAdapter) Is Nothing)  _
                         AndAlso (Me.MatchTableAdapterConnection(Me._cXP_ProveedoresTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
@@ -9569,15 +8217,6 @@ Namespace CxpDSTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._cXP_CuentasBancariasProvTableAdapter, Me._cXP_CuentasBancariasProvTableAdapter.Connection)
-                    Me._cXP_CuentasBancariasProvTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._cXP_CuentasBancariasProvTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._cXP_CuentasBancariasProvTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._cXP_CuentasBancariasProvTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._cXP_CuentasBancariasProvTableAdapter.Adapter)
-                    End If
-                End If
                 If (Not (Me._cXP_ProveedoresTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._cXP_ProveedoresTableAdapter, Me._cXP_ProveedoresTableAdapter.Connection)
                     Me._cXP_ProveedoresTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -9655,10 +8294,6 @@ Namespace CxpDSTableAdapters
             Finally
                 If workConnOpened Then
                     workConnection.Close
-                End If
-                If (Not (Me._cXP_CuentasBancariasProvTableAdapter) Is Nothing) Then
-                    Me._cXP_CuentasBancariasProvTableAdapter.Connection = CType(revertConnections(Me._cXP_CuentasBancariasProvTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._cXP_CuentasBancariasProvTableAdapter.Transaction = Nothing
                 End If
                 If (Not (Me._cXP_ProveedoresTableAdapter) Is Nothing) Then
                     Me._cXP_ProveedoresTableAdapter.Connection = CType(revertConnections(Me._cXP_ProveedoresTableAdapter),Global.System.Data.SqlClient.SqlConnection)
