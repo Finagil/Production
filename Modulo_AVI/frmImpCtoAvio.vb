@@ -9,9 +9,6 @@ Imports System.Security
 Imports System.Security.Principal.WindowsIdentity
 
 Public Class frmImpCtoAvio
-
-    ' Declaración de variables de datos de alcance privado
-    Dim taTEXTO As New DocumentosDSTableAdapters.GEN_TextoConfigurableTableAdapter
     Dim Cultivos As New GeneralDSTableAdapters.CultivosTableAdapter
     Dim cAnexo As String = ""
     Dim cAval1 As String = ""

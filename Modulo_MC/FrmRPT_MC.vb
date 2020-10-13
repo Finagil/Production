@@ -18,6 +18,8 @@ Public Class FrmRPT_MC
                 ta.Fill(Dt_resguardos.Vw_resguardo_anexo_doc, anexo_id)
                 Dim rpt As New rpt_resguardos()
                 rpt.SetDataSource(Dt_resguardos)
+                rpt.SetParameterValue("Firma_Entrega", taTEXTO.SacaTexto("FIRMA_CK_MC_Entrega"))
+                rpt.SetParameterValue("Firma_Recibe", taTEXTO.SacaTexto("FIRMA_CK_MC_Revisa"))
                 Crv.ReportSource = rpt
             Case "Hoja de Cambios"
                 BtnMail.Visible = True
@@ -34,6 +36,8 @@ Public Class FrmRPT_MC
                 ta.Fill(Dt_resguardos.Vw_resguardo_anexo_docAV, anexo_id, ciclo)
                 Dim rpt As New rpt_resguardoAV()
                 rpt.SetDataSource(Dt_resguardos)
+                rpt.SetParameterValue("Firma_Entrega", taTEXTO.SacaTexto("FIRMA_CK_MC_Entrega"))
+                rpt.SetParameterValue("Firma_Recibe", taTEXTO.SacaTexto("FIRMA_CK_MC_Revisa"))
                 Crv.ReportSource = rpt
         End Select
 
