@@ -717,7 +717,7 @@ Public Class frmImpCtoAvio
                 If cSemilla = "C" Then
                     cOtros = "CIANO-OL"
                 Else
-                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RARI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA"
+                    cOtros = "ATIL" & Chr(13) & "CEMEXI" & Chr(13) & "RAFI" & Chr(13) & "RIO COLORADO" & Chr(13) & "ORITA" & Chr(13) & "QUETCHEHUECA ORO" & Chr(13) & "BAROYECA ORO" & Chr(13) & "CIRNO"
                 End If
             ElseIf cSucursal = "05" Then
                 cEmpcv = "'AGROPRODUCTORES DE LA RIBERA DEL LERMA, SOCIEDAD DE PRODUCCION RURAL DE RESPONSABILIDAD LIMITADA "
