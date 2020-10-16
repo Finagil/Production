@@ -61,10 +61,9 @@
             r.PlazoMaximo = Date.Now.AddDays(-1).Date
             r.FechaRecepcion = Date.Now
             r.Liberado = False
-            r.usuario = UsuarioGlobal & "1"
+            r.usuario = UsuarioGlobal
             r.Notas = ""
             Me.SegurosDS.SEG_LiberacionesMC.AddSEG_LiberacionesMCRow(r)
-            GeneraCorreo1(r, Me.AnexosSEGBindingSource.Current("CicloPagare"))
             Guardar()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -170,98 +169,5 @@
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.SEGLiberacionesMCBindingSource.EndEdit()
         Guardar()
-    End Sub
-
-    Sub GeneraCorreo1(ByRef r As SegurosDS.SEG_LiberacionesMCRow, Ciclo As String)
-        Dim Asunto As String = "Solicitud de SEGUROS: " & CmbAnexo.Text
-        Dim Mensaje As String = ""
-        Mensaje += "Cliente: " & CmbClientes.Text & "<br>"
-        Mensaje += "Ciclo: " & Ciclo & "<br>"
-        Mensaje += "Contrato: " & CmbAnexo.Text & "<br>"
-        Mensaje += "Estatus: INFORMACION SOLICITADA <br>"
-        Mensaje += "Estimado promotor, solicitamos el envío de la hoja de resolución y/o autorización de crédito, para revisar las condiciones del seguro en caso de proceder el seguro :<br> "
-        Mensaje += "-Póliza externa se requiere : póliza, beneficiario a favor de FINAGIL y factura de pago de la misma.<br>"
-        Mensaje += "-Póliza interna: solicitar la misma al área e indicar si esta será financiada o pagada por el cliente .<br><br>Quedo atenta a la información solicitada.<br>"
-
-
-        If r.Ciclo.ToString.Trim = "" Then ' no es avío
-            MandaCorreoPROMO(r.Anexo, Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, AnexosSEGBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
-        Else
-            MandaCorreoFase(UsuarioGlobalCorreo, AnexosSEGBindingSource.Current("Nombre_Sucursal"), Asunto, Mensaje)
-        End If
-        MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
-        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
-        MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Me.SEGLiberacionesMCBindingSource1.EndEdit()
-        Guardar1()
-    End Sub
-
-    Sub Guardar1()
-        If Me.SegurosDS1.VW_LiberacionesMC.Rows.Count > 0 Then
-            Dim x As Integer = Me.VWLiberacionesMCBindingSource1.Position
-            Me.SegurosDS1.SEG_LiberacionesMC.GetChanges()
-            Me.SEG_LiberacionesMCTableAdapter.Update(Me.SegurosDS1.SEG_LiberacionesMC)
-            Me.SegurosDS1.SEG_LiberacionesMC.AcceptChanges()
-            Me.SegurosDS1.SEG_LiberacionesMC.Clear()
-            If RadioAV.Checked Then
-                Me.VW_LiberacionesMCTableAdapter.FillAV(Me.SegurosDS.VW_LiberacionesMC)
-                Me.VW_LiberacionesMCTableAdapter.FillAV1(Me.SegurosDS1.VW_LiberacionesMC)
-            Else
-                Me.VW_LiberacionesMCTableAdapter.FillTRA(Me.SegurosDS.VW_LiberacionesMC)
-                Me.VW_LiberacionesMCTableAdapter.FillTRA1(Me.SegurosDS1.VW_LiberacionesMC)
-            End If
-            If Me.SegurosDS1.VW_LiberacionesMC.Rows.Count > 0 Then
-                Me.VWLiberacionesMCBindingSource1.Position = x
-            End If
-        End If
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If IsNothing(Me.SEGLiberacionesMCBindingSource1.Current) Then
-            MessageBox.Show("No existe nada para Recibir", "Recibir Información", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-        If MessageBox.Show("¿Esta seguro de recibir información este contrato " & Me.VWLiberacionesMCBindingSource1.Current("AnexoCon") & "?", "Liberación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-            Me.SEGLiberacionesMCBindingSource1.Current("FechaRecepcion") = Date.Now
-            Me.SEGLiberacionesMCBindingSource1.Current("usuario") = UsuarioGlobal
-            Me.SEGLiberacionesMCBindingSource1.Current("Liberado") = False
-            Me.SEGLiberacionesMCBindingSource1.EndEdit()
-            Guardar1()
-            MessageBox.Show("Contrato Recibido", "Información Recibida", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Me.SEGLiberacionesMCBindingSource1.Current("usuario") = UsuarioGlobal & "2"
-        Me.SEGLiberacionesMCBindingSource1.EndEdit()
-        Guardar1()
-        GeneraCorreo2()
-    End Sub
-    Sub GeneraCorreo2()
-        Dim Asunto As String = "Solicitud de SEGUROS: " & Me.VWLiberacionesMCBindingSource1.Current("AnexoCon")
-        Dim Mensaje As String = ""
-        Mensaje += "Cliente: " & Me.VWLiberacionesMCBindingSource1.Current("Descr") & "<br>"
-        Mensaje += "Ciclo: " & Me.VWLiberacionesMCBindingSource1.Current("CicloPagare") & "<br>"
-        Mensaje += "Contrato: " & Me.VWLiberacionesMCBindingSource1.Current("AnexoCon") & "<br>"
-        Mensaje += "Estatus: INFORMACION SOLICITADA SIN RESPUESTA <br>"
-        Mensaje += "Estimado promotor, solicitamos el envío de la hoja de resolución y/o autorización de crédito, para revisar las condiciones del seguro en caso de proceder el seguro :<br> "
-        Mensaje += "-Póliza externa se requiere : póliza, beneficiario a favor de FINAGIL y factura de pago de la misma.<br>"
-        Mensaje += "-Póliza interna: solicitar la misma al área e indicar si esta será financiada o pagada por el cliente .<br><br>Quedo atenta a la información solicitada.<br>"
-        Mensaje += "Observaciones: " & TxtNotas1.Text & "<br>"
-
-        If Me.SEGLiberacionesMCBindingSource1.Current("Ciclo").ToString.Trim = "" Then ' no es avío
-            MandaCorreoPROMO(Me.SEGLiberacionesMCBindingSource1.Current("Anexo"), Asunto, Mensaje, True, False)
-            MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource1.Current("Nombre_Sucursal"), Asunto, Mensaje)
-        Else
-            MandaCorreoFase(UsuarioGlobalCorreo, Me.VWLiberacionesMCBindingSource1.Current("Nombre_Sucursal"), Asunto, Mensaje)
-        End If
-        'MandaCorreoFase(UsuarioGlobalCorreo, "MESA_CONTROL", Asunto, Mensaje)
-        'MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje)
-        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje)
-        MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

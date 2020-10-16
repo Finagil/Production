@@ -63,31 +63,15 @@ Partial Class FrmLiberacionesSEG
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VWLiberacionesMCBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.SegurosDS1 = New Agil.SegurosDS()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.TxtNotas1 = New System.Windows.Forms.TextBox()
         Me.SEGLiberacionesMCBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.AnexosSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClientesSEGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VWLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VWLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,13 +147,13 @@ Partial Class FrmLiberacionesSEG
         Me.ButtonADD.Name = "ButtonADD"
         Me.ButtonADD.Size = New System.Drawing.Size(111, 23)
         Me.ButtonADD.TabIndex = 15
-        Me.ButtonADD.Text = "Solicitar Info."
+        Me.ButtonADD.Text = "Recibir Info."
         Me.ButtonADD.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 382)
+        Me.Label2.Location = New System.Drawing.Point(13, 113)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(123, 13)
         Me.Label2.TabIndex = 16
@@ -183,11 +167,11 @@ Partial Class FrmLiberacionesSEG
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Descr, Me.AnexoConDataGridViewTextBoxColumn, Me.CicloPagareDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.PlazoMaximoDataGridViewTextBoxColumn, Me.LiberadoDataGridViewCheckBoxColumn, Me.Nombre_Sucursal, Me.Nombre_Promotor})
         Me.DataGridView1.DataSource = Me.VWLiberacionesMCBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 398)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 129)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(921, 207)
+        Me.DataGridView1.Size = New System.Drawing.Size(921, 476)
         Me.DataGridView1.TabIndex = 17
         '
         'Descr
@@ -418,91 +402,6 @@ Partial Class FrmLiberacionesSEG
         Me.Button2.Text = "Guardar"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(9, 112)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(80, 13)
-        Me.Label9.TabIndex = 33
-        Me.Label9.Text = "Sin Información"
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AutoGenerateColumns = False
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        Me.DataGridView2.DataSource = Me.VWLiberacionesMCBindingSource1
-        Me.DataGridView2.Location = New System.Drawing.Point(12, 128)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.ReadOnly = True
-        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(921, 193)
-        Me.DataGridView2.TabIndex = 34
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Descr"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Cliente"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 250
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "AnexoCon"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Anexo"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 90
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "CicloPagare"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Ciclo"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 80
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TipoCredito"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Tipo de Crédito"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 200
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PlazoMaximo"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Plazo Máximo"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Liberado"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Liberado"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn1.Width = 70
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Nombre_Sucursal"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Sucursal"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "Nombre_Promotor"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Promotor"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
         'VWLiberacionesMCBindingSource1
         '
         Me.VWLiberacionesMCBindingSource1.DataMember = "VW_LiberacionesMC"
@@ -513,69 +412,16 @@ Partial Class FrmLiberacionesSEG
         Me.SegurosDS1.DataSetName = "SegurosDS"
         Me.SegurosDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(858, 327)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 35
-        Me.Button3.Text = "Recibir Info."
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(659, 367)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 39
-        Me.Button4.Text = "Guardar"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(659, 338)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 38
-        Me.Button5.Text = "Correo"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'TxtNotas1
-        '
-        Me.TxtNotas1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SEGLiberacionesMCBindingSource1, "Notas", True))
-        Me.TxtNotas1.Location = New System.Drawing.Point(135, 343)
-        Me.TxtNotas1.MaxLength = 200
-        Me.TxtNotas1.Multiline = True
-        Me.TxtNotas1.Name = "TxtNotas1"
-        Me.TxtNotas1.Size = New System.Drawing.Size(518, 46)
-        Me.TxtNotas1.TabIndex = 37
-        '
         'SEGLiberacionesMCBindingSource1
         '
         Me.SEGLiberacionesMCBindingSource1.DataMember = "SEG_LiberacionesMC"
         Me.SEGLiberacionesMCBindingSource1.DataSource = Me.SegurosDS1
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(132, 325)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(78, 13)
-        Me.Label10.TabIndex = 36
-        Me.Label10.Text = "Observaciones"
         '
         'FrmLiberacionesSEG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(946, 679)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.TxtNotas1)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -607,7 +453,6 @@ Partial Class FrmLiberacionesSEG
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VWLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGLiberacionesMCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VWLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SegurosDS1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEGLiberacionesMCBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -656,21 +501,6 @@ Partial Class FrmLiberacionesSEG
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents Label9 As Label
-    Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents TxtNotas1 As TextBox
-    Friend WithEvents Label10 As Label
     Friend WithEvents VWLiberacionesMCBindingSource1 As BindingSource
     Friend WithEvents SegurosDS1 As SegurosDS
     Friend WithEvents SEGLiberacionesMCBindingSource1 As BindingSource
