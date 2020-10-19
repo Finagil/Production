@@ -304,15 +304,6 @@ Public Class frmPideContrato
 
                     End If
                 Case "mnuCkList"
-                    If TipoCredito = "B" Then ' FULL SERVICE
-                        MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Select
-                    End If
-                    If TipoCredito = "L" Then ' FULL SERVICE
-                        MessageBox.Show("Esta operación no se puede para Crédito de Liquidez Inmediata", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Exit Select
-                    End If
-
                     lblMensaje.Visible = False
                     Dim RptCKList As New FrmRPT_MC
                     RptCKList.anexo_id = cAnexo

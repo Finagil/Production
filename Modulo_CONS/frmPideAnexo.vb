@@ -497,15 +497,6 @@ Public Class frmPideAnexo
                 Frm.cAnexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
                 Frm.Show()
             Case "mnuCkList"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-                If TipoCredito = "L" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Crédito de Liquidez Inmediata", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-
                 Dim RptCKList As New FrmRPT_MC
                 RptCKList.anexo_id = cAnexo
                 RptCKList.RPTTit = "Resguardo"
