@@ -182,6 +182,8 @@ Public Class frmPideAnexo
                 Me.Text = "Selección de Cliente y Contrato para Alta Siniestros y Devoluciones"
             Case "FrmAlertasAnexo"
                 Me.Text = "Notificaciones por Anexo por Letra (Alertas)"
+            Case "mnuCkList"
+                Me.Text = "Consulta de Check List MC"
         End Select
 
         ' Este Stored Procedure trae TODOS los clientes que tengan generado por lo menos 1 contrato, sin
@@ -494,6 +496,20 @@ Public Class frmPideAnexo
                 Frm.Text += " " & ComboBox1.Text.Trim & "-" & Mid(ListBox1.SelectedItem, 1, 10)
                 Frm.cAnexo = Mid(ListBox1.SelectedItem, 1, 5) & Mid(ListBox1.SelectedItem, 7, 4)
                 Frm.Show()
+            Case "mnuCkList"
+                If TipoCredito = "B" Then ' FULL SERVICE
+                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Select
+                End If
+                If TipoCredito = "L" Then ' FULL SERVICE
+                    MessageBox.Show("Esta operación no se puede para Crédito de Liquidez Inmediata", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Select
+                End If
+
+                Dim RptCKList As New FrmRPT_MC
+                RptCKList.anexo_id = cAnexo
+                RptCKList.RPTTit = "Resguardo"
+                RptCKList.Show()
         End Select
     End Sub
 

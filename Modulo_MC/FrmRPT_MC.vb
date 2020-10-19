@@ -10,7 +10,6 @@ Public Class FrmRPT_MC
 
     Private Sub FrmRPT_MC_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.Text = "Reporte de " & RPTTit
-
         Select Case RPTTit
             Case "Resguardo"
                 Dim ta As New MesaControlDSTableAdapters.Vw_resguardo_anexo_docTableAdapter
@@ -21,6 +20,10 @@ Public Class FrmRPT_MC
                 rpt.SetParameterValue("Firma_Entrega", taTEXTO.SacaTexto("FIRMA_CK_MC_Entrega"))
                 rpt.SetParameterValue("Firma_Recibe", taTEXTO.SacaTexto("FIRMA_CK_MC_Revisa"))
                 Crv.ReportSource = rpt
+                If Dt_resguardos.Vw_resguardo_anexo_doc.Rows.Count <= 0 Then
+                    MessageBox.Show("Contrato sin Información", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Me.Close()
+                End If
             Case "Hoja de Cambios"
                 BtnMail.Visible = True
                 Dim ta As New MesaControlDSTableAdapters.Vw_MC_cambios_condicionesTableAdapter
@@ -30,6 +33,10 @@ Public Class FrmRPT_MC
                 rpt.SetDataSource(MC)
                 rpt.SetParameterValue("NombreSub", NombreSUB.ToUpper)
                 Crv.ReportSource = rpt
+                If MC.Vw_MC_cambios_condiciones.Rows.Count <= 0 Then
+                    MessageBox.Show("Contrato sin Información", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Me.Close()
+                End If
             Case "Resguardo Avío"
                 Dim ta As New MesaControlDSTableAdapters.Vw_resguardo_anexo_docAVTableAdapter
                 Dim Dt_resguardos As New MesaControlDS
@@ -39,7 +46,12 @@ Public Class FrmRPT_MC
                 rpt.SetParameterValue("Firma_Entrega", taTEXTO.SacaTexto("FIRMA_CK_MC_Entrega"))
                 rpt.SetParameterValue("Firma_Recibe", taTEXTO.SacaTexto("FIRMA_CK_MC_Revisa"))
                 Crv.ReportSource = rpt
+                If Dt_resguardos.Vw_resguardo_anexo_docAV.Rows.Count <= 0 Then
+                    MessageBox.Show("Contrato sin Información", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Me.Close()
+                End If
         End Select
+
 
     End Sub
 
@@ -62,9 +74,5 @@ Public Class FrmRPT_MC
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Cursor.Current = Cursors.Default
-    End Sub
-
-    Private Sub Crv_Load(sender As Object, e As EventArgs) Handles Crv.Load
-
     End Sub
 End Class

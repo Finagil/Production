@@ -18,6 +18,9 @@ Public Class frmAgil
     Friend WithEvents MenuItem88 As MenuItem
     Friend WithEvents MenuItem84 As MenuItem
     Friend WithEvents MenuItem89 As MenuItem
+    Friend WithEvents MenuItem90 As MenuItem
+    Friend WithEvents MenuItem91 As MenuItem
+    Friend WithEvents MenuItem92 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -583,6 +586,7 @@ Public Class frmAgil
         Me.MnuFira = New System.Windows.Forms.MenuItem()
         Me.MnuAutoAviCRE = New System.Windows.Forms.MenuItem()
         Me.MenuItem84 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem89 = New System.Windows.Forms.MenuItem()
         Me.mnuSalir = New System.Windows.Forms.MenuItem()
         Me.PendientesORGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GeneralDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -591,7 +595,9 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem89 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem90 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem91 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem92 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2010,7 +2016,7 @@ Public Class frmAgil
         '
         Me.MenuItem3.Enabled = False
         Me.MenuItem3.Index = 12
-        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52, Me.MenuItem80})
+        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52, Me.MenuItem80, Me.MenuItem90})
         Me.MenuItem3.Text = "Mesa de Control"
         '
         'mnuCaptValo
@@ -2120,6 +2126,12 @@ Public Class frmAgil
         Me.MenuItem84.Index = 1
         Me.MenuItem84.Text = "Seguimiento de Crédito"
         '
+        'MenuItem89
+        '
+        Me.MenuItem89.Enabled = False
+        Me.MenuItem89.Index = 2
+        Me.MenuItem89.Text = "Reporte de Cobranza FIRA"
+        '
         'mnuSalir
         '
         Me.mnuSalir.Index = 15
@@ -2157,11 +2169,21 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem89
+        'MenuItem90
         '
-        Me.MenuItem89.Enabled = False
-        Me.MenuItem89.Index = 2
-        Me.MenuItem89.Text = "Reporte de Cobranza FIRA"
+        Me.MenuItem90.Index = 11
+        Me.MenuItem90.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem91, Me.MenuItem92})
+        Me.MenuItem90.Text = "Consulta Check List MC"
+        '
+        'MenuItem91
+        '
+        Me.MenuItem91.Index = 0
+        Me.MenuItem91.Text = "Por Anexo"
+        '
+        'MenuItem92
+        '
+        Me.MenuItem92.Index = 1
+        Me.MenuItem92.Text = "Por Nombre"
         '
         'frmAgil
         '
@@ -3673,5 +3695,15 @@ Public Class frmAgil
     Private Sub MenuItem89_Click(sender As Object, e As EventArgs) Handles MenuItem89.Click
         Dim f As New frmRepcobraFIRA
         f.Show()
+    End Sub
+
+    Private Sub MenuItem91_Click(sender As Object, e As EventArgs) Handles MenuItem91.Click
+        Dim newfrmPideContrato As New frmPideContrato("mnuCkList")
+        newfrmPideContrato.Show()
+    End Sub
+
+    Private Sub MenuItem92_Click(sender As Object, e As EventArgs) Handles MenuItem92.Click
+        Dim newfrmPideAnexo As New frmPideAnexo("mnuCkList")
+        newfrmPideAnexo.Show()
     End Sub
 End Class

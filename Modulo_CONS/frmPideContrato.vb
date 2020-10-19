@@ -45,6 +45,8 @@ Public Class frmPideContrato
                 Me.Text = "Selección de Contrato de Avío para impresión"
             Case "DATOS_EMPRESA"
                 Me.Text = "Selección de Contrato para cambio de empresa"
+            Case "mnuCkList"
+                Me.Text = "Consulta de Check List MC"
         End Select
 
         mtxtContrato.Mask = "A0000/0000"
@@ -72,6 +74,11 @@ Public Class frmPideContrato
             cAnexo = Mid(mtxtContrato.Text, 1, 5) + Mid(mtxtContrato.Text, 7, 4)
             TipoCredito = ta.SacaTipar(cAnexo)
             SacaAlerta("", cAnexo)
+            If IsNothing(TipoCredito) Then
+                lblMensaje.Text = "¡Contrato inexistente o es un Avío!"
+                lblMensaje.Visible = True
+                Exit Sub
+            End If
             Select Case txtMenu.Text
                 Case "DATOS_EMPRESA"
                     If TipoCredito <> "L" Then ' FULL SERVICE
@@ -296,6 +303,41 @@ Public Class frmPideContrato
                         newfrmCapturaPMI.Show()
 
                     End If
+                Case "mnuCkList"
+                    If TipoCredito = "B" Then ' FULL SERVICE
+                        MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Select
+                    End If
+                    If TipoCredito = "L" Then ' FULL SERVICE
+                        MessageBox.Show("Esta operación no se puede para Crédito de Liquidez Inmediata", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Select
+                    End If
+
+                    lblMensaje.Visible = False
+                    Dim RptCKList As New FrmRPT_MC
+                    RptCKList.anexo_id = cAnexo
+
+                    If TipoCredito = "H" Or TipoCredito = "AM" Then
+                        Dim cCiclo As String = ""
+                        With cm1
+                            .CommandType = CommandType.Text
+                            .CommandText = "SELECT Ciclo FROM Avios WHERE Anexo = '" & cAnexo & "'"
+                            .Connection = cnAgil
+                            .Parameters.Add("@Anexo", SqlDbType.NVarChar)
+                            .Parameters(0).Value = cAnexo
+                        End With
+                        daAvios.Fill(dsAgil, "Avios")
+                        If dsAgil.Tables("Avios").Rows.Count = 0 Then
+                            lblMensaje.Text = "¡Contrato inexistente o no es de Avío!"
+                        Else
+                            cCiclo = dsAgil.Tables("Avios").Rows(0).Item("Ciclo")
+                        End If
+                        RptCKList.RPTTit = "Resguardo Avío"
+                        RptCKList.ciclo = cCiclo
+                    Else
+                        RptCKList.RPTTit = "Resguardo"
+                    End If
+                    RptCKList.Show()
 
                 Case "mnuImpCtoAvioPorContrato"
                     If TipoCredito = "B" Then ' FULL SERVICE
@@ -330,7 +372,6 @@ Public Class frmPideContrato
                     End If
 
             End Select
-
         End If
 
         cnAgil.Dispose()

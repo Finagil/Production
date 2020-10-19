@@ -103,7 +103,7 @@
         MessageBox.Show("Se Confirmaron " & cont & " pagos a contratos", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.VW_PAgosAvioTableAdapter.Fill(Me.TesoreriaDS.VW_PAgosAvio, Pag.FechaMIN, Pag.FechaMAX)
         TextBox1.Text = Val(Me.VW_PAgosAvioTableAdapter.Total(Pag.FechaMAX, Pag.FechaMAX)).ToString("n2")
-        'MandaCorreoFase("@", "sistemas", "Se Confirmaron " & cont & " pagos a contratos", "Pagos de avio por " & UsuarioGlobal)
+        MandaCorreoFase("@", "sistemas", "Se Confirmaron " & cont & " pagos a contratos", "Pagos de avio por " & UsuarioGlobal)
         Bloquea(False)
     End Sub
 End Class
