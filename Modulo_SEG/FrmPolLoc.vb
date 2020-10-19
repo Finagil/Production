@@ -391,11 +391,9 @@ Public Class FrmPolLoc
             Exit Sub
         End If
         If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
-            If IsNothing(SEGPolizasBienesBindingSource.Current) Then
-                MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Else
-                GeneraCorreoSEG("TERMINACION")
-            End If
+            MessageBox.Show("No existen Activo selecionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            GeneraCorreoSEG("TERMINACION")
         End If
     End Sub
 

@@ -550,12 +550,11 @@ Module GEN_Globales
 
         promo.Fill(tu, Anexo)
         For Each r In tu.Rows
-
-            If r.Correo1.Length > 3 Then
+            If r.Correo1.Trim.Length > 3 Then
                 taCorreos.Insert(UsuarioGlobalCorreo, r.Correo1, Asunto, Mensaje, False, Date.Now, Archivo)
             End If
             If r.IsCorreo2Null = False Then
-                If r.Correo2.Length > 3 Then
+                If r.Correo2.Trim.Length > 3 Then
                     taCorreos.Insert(UsuarioGlobalCorreo, r.Correo2, Asunto, Mensaje, False, Date.Now, Archivo)
                 End If
             End If
