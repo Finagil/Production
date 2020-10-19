@@ -251,6 +251,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Contrato no activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
+
         If CmbAnexo.SelectedIndex >= 0 Then
             Dim pol As New SegurosDSTableAdapters.PolizasBienesTableAdapter
             Dim t As New SegurosDS.PolizasBienesDataTable
@@ -347,4 +348,84 @@ Public Class FrmPolLoc
 
     End Sub
 
+    Private Sub BtnProx_Click(sender As Object, e As EventArgs) Handles BtnProx.Click
+        If TxtStatus.Text = "" Then
+            MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If MessageBox.Show("¿Esta seguro de enviar el correo de PROXIMO A VENCER?", "Correo PROXIMO A VENCER", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes Then
+            Exit Sub
+        End If
+        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+            If IsNothing(SEGPolizasBienesBindingSource.Current) Then
+                MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                GeneraCorreoSEG("PROXIMA")
+            End If
+        End If
+    End Sub
+
+    Private Sub BtnRenov_Click(sender As Object, e As EventArgs) Handles BtnRenov.Click
+        If TxtStatus.Text = "" Then
+            MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If MessageBox.Show("¿Esta seguro de enviar el correo de RENOVACION?", "Correo RENOVACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes Then
+            Exit Sub
+        End If
+        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+            If IsNothing(SEGPolizasBienesBindingSource.Current) Then
+                MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                GeneraCorreoSEG("RENOVACION")
+            End If
+        End If
+    End Sub
+
+    Private Sub BtTermina_Click(sender As Object, e As EventArgs) Handles BtTermina.Click
+        If TxtStatus.Text = "" Then
+            MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If MessageBox.Show("¿Esta seguro de enviar el correo de TERMINACION?", "Correo TERMINACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes Then
+            Exit Sub
+        End If
+        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+            If IsNothing(SEGPolizasBienesBindingSource.Current) Then
+                MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                GeneraCorreoSEG("TERMINACION")
+            End If
+        End If
+    End Sub
+
+    Sub GeneraCorreoSEG(TipoCorreo As String)
+        Cursor.Current = Cursors.WaitCursor
+        Dim Asunto As String = ""
+        Dim Att As String = ""
+
+        If TipoCorreo.ToUpper = "RENOVACION" Then
+            Att = NOTIFICACION_RENOVACION_POLIZA(ClientesBindingSource.Current("Descr"), ActifijoBindingSource.Current("Serie"), CTOD(SEGPolizasBienesBindingSource.Current("FechaTermina")),
+                    AnexosBindingSource.Current("TipoCredito"), AnexosBindingSource.Current("AnexoCon"))
+            Asunto = "AVISO DE RENOVACIÓN DE POLIZA DE SEGURO: " & Me.AnexosBindingSource.Current("AnexoCon")
+        ElseIf TipoCorreo.ToUpper = "TERMINACION" Then
+            Att = AVISO_TERMINACIÓN_CONTRATO(ClientesBindingSource.Current("Descr"), ActifijoBindingSource.Current("Serie"), CTOD(TaQUERY.UltimoPago(AnexosBindingSource.Current("Anexo"))),
+                    AnexosBindingSource.Current("TipoCredito"), AnexosBindingSource.Current("AnexoCon"))
+            Asunto = "AVISO DE VENCIMIENTO DE PÓLIZA DE SEGURO: " & Me.AnexosBindingSource.Current("AnexoCon")
+        ElseIf TipoCorreo.ToUpper = "PROXIMA" Then
+            Att = NOTIFICACION_PROXIMA_VENCER(ClientesBindingSource.Current("Descr"), ActifijoBindingSource.Current("Serie"), CTOD(SEGPolizasBienesBindingSource.Current("FechaTermina")),
+                    AnexosBindingSource.Current("TipoCredito"), AnexosBindingSource.Current("AnexoCon"))
+            Asunto = "AVISO DE VENCIMIENTO DE PÓLIZA DE SEGURO: " & Me.AnexosBindingSource.Current("AnexoCon")
+        End If
+        Dim Mensaje As String = ""
+        Mensaje += "Cliente: " & Me.ClientesBindingSource.Current("Descr") & "<br>"
+        Mensaje += "Contrato: " & Me.AnexosBindingSource.Current("AnexoCon") & "<br>"
+        Mensaje += "Serie: " & Me.ActifijoBindingSource.Current("Serie") & "<br>"
+
+        MandaCorreoANEXO(Me.AnexosBindingSource.Current("Anexo"), Asunto, Mensaje, True, False, Att)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SEGUROS", Asunto, Mensaje, Att)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", Asunto, Mensaje, Att)
+        Cursor.Current = Cursors.Default
+        MessageBox.Show("Correo Enviado", "Envio de correo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

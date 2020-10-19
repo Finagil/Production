@@ -24,6 +24,9 @@ Partial Class FrmPolLoc
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupClientes = New System.Windows.Forms.GroupBox()
+        Me.BtnProx = New System.Windows.Forms.Button()
+        Me.BtnRenov = New System.Windows.Forms.Button()
+        Me.BtTermina = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.BttModPol = New System.Windows.Forms.Button()
         Me.BttDevol = New System.Windows.Forms.Button()
@@ -133,6 +136,9 @@ Partial Class FrmPolLoc
         '
         'GroupClientes
         '
+        Me.GroupClientes.Controls.Add(Me.BtnProx)
+        Me.GroupClientes.Controls.Add(Me.BtnRenov)
+        Me.GroupClientes.Controls.Add(Me.BtTermina)
         Me.GroupClientes.Controls.Add(Me.Button1)
         Me.GroupClientes.Controls.Add(Me.BttModPol)
         Me.GroupClientes.Controls.Add(Me.BttDevol)
@@ -154,13 +160,43 @@ Partial Class FrmPolLoc
         Me.GroupClientes.TabStop = False
         Me.GroupClientes.Text = "Selecionar Clientes"
         '
+        'BtnProx
+        '
+        Me.BtnProx.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnProx.Location = New System.Drawing.Point(495, 19)
+        Me.BtnProx.Name = "BtnProx"
+        Me.BtnProx.Size = New System.Drawing.Size(93, 34)
+        Me.BtnProx.TabIndex = 116
+        Me.BtnProx.Text = "Notif. Prox. Vencer"
+        Me.BtnProx.UseVisualStyleBackColor = True
+        '
+        'BtnRenov
+        '
+        Me.BtnRenov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnRenov.Location = New System.Drawing.Point(595, 19)
+        Me.BtnRenov.Name = "BtnRenov"
+        Me.BtnRenov.Size = New System.Drawing.Size(93, 34)
+        Me.BtnRenov.TabIndex = 117
+        Me.BtnRenov.Text = "Notif. Renovacion"
+        Me.BtnRenov.UseVisualStyleBackColor = True
+        '
+        'BtTermina
+        '
+        Me.BtTermina.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtTermina.Location = New System.Drawing.Point(695, 19)
+        Me.BtTermina.Name = "BtTermina"
+        Me.BtTermina.Size = New System.Drawing.Size(93, 34)
+        Me.BtTermina.TabIndex = 118
+        Me.BtTermina.Text = "Notif. Terminación"
+        Me.BtTermina.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(795, 18)
+        Me.Button1.Location = New System.Drawing.Point(795, 19)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(93, 34)
-        Me.Button1.TabIndex = 116
+        Me.Button1.TabIndex = 119
         Me.Button1.Text = "Adjuntar Archivos"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -1104,4 +1140,7 @@ Partial Class FrmPolLoc
     Friend WithEvents IdAseguradoraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IdActivoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Observaciones As DataGridViewTextBoxColumn
+    Friend WithEvents BtnProx As Button
+    Friend WithEvents BtnRenov As Button
+    Friend WithEvents BtTermina As Button
 End Class

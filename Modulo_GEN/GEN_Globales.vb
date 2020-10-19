@@ -540,4 +540,32 @@ Module GEN_Globales
         t.Dispose()
     End Sub
 
+    Public Sub MandaCorreoANEXO(Anexo As String, Asunto As String, Mensaje As String, Jefe As Boolean, CopiaRemitente As Boolean, Optional Archivo As String = "", Optional MsgPara As Boolean = False)
+        Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
+        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
+        Dim promo As New GeneralDSTableAdapters.CorreosAnexosCliTableAdapter
+        Dim tu As New GeneralDS.CorreosAnexosCliDataTable
+        Dim r As GeneralDS.CorreosAnexosCliRow
+        AjustaCorreo(Asunto, Mensaje)
+
+        promo.Fill(tu, Anexo)
+        For Each r In tu.Rows
+
+            If r.Correo1.Length > 3 Then
+                taCorreos.Insert(UsuarioGlobalCorreo, r.Correo1, Asunto, Mensaje, False, Date.Now, Archivo)
+            End If
+            If r.IsCorreo2Null = False Then
+                If r.Correo2.Length > 3 Then
+                    taCorreos.Insert(UsuarioGlobalCorreo, r.Correo2, Asunto, Mensaje, False, Date.Now, Archivo)
+                End If
+            End If
+        Next
+
+        If tu.Rows.Count <= 0 Then
+            MandaCorreo("ecacerest@finagil.com.mx", "ecacerest@finagil.com.mx", "Sin CorreoCliente-" & Asunto, Mensaje)
+        End If
+
+        taCorreos.Dispose()
+        promo.Dispose()
+    End Sub
 End Module
