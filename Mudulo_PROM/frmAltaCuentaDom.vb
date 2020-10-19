@@ -147,7 +147,10 @@ Public Class frmAltaCuentaDom
         Else
             lPasa1 = True
         End If
-
+        txtTitular.Text = txtTitular.Text.Trim
+        If txtTitular.TextLength > 60 Then
+            txtTitular.Text = txtTitular.Text.Substring(1, 60)
+        End If
         If lPasa1 = True Then
             strUpdate = "UPDATE CuentasDomi SET CuentaCLABE = '" & txtCtaCLABE.Text & "'"
             strUpdate = strUpdate & ", NumTarjeta = '" & txtCuentaD.Text & "'"
