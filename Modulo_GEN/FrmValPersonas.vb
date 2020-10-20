@@ -22,7 +22,9 @@ Public Class FrmValPersonas
             End If
             DataGridView1_Click(Nothing, Nothing)
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
-            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(TxtPersona.Text.Trim)) > 0 Then
+            CargaDatos()
+            Dim ArrOnbaseCliente() As String = CadOnbase(TxtPersona.Text.Trim)
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False

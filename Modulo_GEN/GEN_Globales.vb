@@ -451,22 +451,40 @@ Module GEN_Globales
         Dim RCD As Decimal = PorcEGRE + PorcFINAgil
         Return RCD
     End Function
-    Function CadOnbase(cad As String) As String
+    Function CadOnbase(cad As String) As String()
+        Dim Arreglo(3) As String
+
         If InStr(cad, "/") Then
             cad = cad.Replace("/", "")
         End If
         If InStr(cad, "-") Then
             cad = cad.Replace("-", "")
         End If
+        For x As Integer = 0 To 3
+            Arreglo(x) = cad
+        Next
+
         If IsNumeric(cad) Then
             If cad.Length < 5 Then 'no se quitan los ceros a la derecha si es numero de cliente
                 cad = Stuff(cad, "I", "0", 5)
-            ElseIf cad.Length = 9 Then 'se quitaun cero a la derecha si es contrato
-                cad = cad.Substring(1, 8)
+                For x As Integer = 0 To 3
+                    Arreglo(x) = cad
+                Next
+            ElseIf cad.Length = 9 Then 'se revisan con ceros
+                If cad.Substring(0, 1) = "0" Then
+                    Arreglo(1) = cad.Substring(1, 8)
+                    Arreglo(2) = cad.Substring(1, 8)
+                    Arreglo(3) = cad.Substring(1, 8)
+                    If cad.Substring(1, 1) = "0" Then
+                        Arreglo(2) = cad.Substring(2, 7)
+                        If cad.Substring(2, 1) = "0" Then
+                            Arreglo(3) = cad.Substring(3, 6)
+                        End If
+                    End If
+                End If
             End If
-            'cad = CInt(cad)
         End If
-        Return cad
+        Return Arreglo
     End Function
 
     Function GeneraNoContrato() As String

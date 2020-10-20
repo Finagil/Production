@@ -16,7 +16,6 @@ Public Class frmDatosconFull
     Friend WithEvents TxtContMarco As System.Windows.Forms.TextBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
     Friend WithEvents BtnOnbaseCRE As System.Windows.Forms.Button
-    Dim cAnexoOnbase As String = ""
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents TxtFechaPAG As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
@@ -1099,19 +1098,23 @@ Public Class frmDatosconFull
 
             drAnexo = dsAgil.Tables("Anexos").Rows(0)
             cFlcan = drAnexo("Flcan")
+            cCliente = drAnexo("cliente")
             lblStatus.Text = SacaGEN_ESTAUS(cFlcan)
             lblDescr.Text = drAnexo("Descr")
 
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-            cAnexoOnbase = "% " & CDbl(Mid(cAnexo, 2, 8)) & " %"
-            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
+
+            Dim ArrOnbaseAnexo() As String = CadOnbase(cAnexo)
+            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
             End If
-            cCliente = drAnexo("cliente")
-            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
+
+            Dim ArrOnbaseCliente() As String = CadOnbase(cCliente)
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
+
                 BtnOnbaseCRE.Enabled = True
             Else
                 BtnOnbaseCRE.Enabled = False

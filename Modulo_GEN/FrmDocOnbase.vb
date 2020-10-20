@@ -7,16 +7,16 @@ Public Class FrmDocOnbase
     Dim Impresion As Boolean
 
     Private Sub FrmDocOnbase_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim Arreglo() As String
         If Area = "" Then
             LbBusqueda.Visible = True
             TxtBusqueda.Visible = True
         Else
-            If AnexoOcliente = "" Then
+            If NombreCliente <> "" Then
                 Me.OnBaseTableAdapter.FillByAreaNombre(GeneralDS.OnBase, Area, NombreCliente)
             Else
-                AnexoOcliente = AnexoOcliente.Replace("/", "")
-                AnexoOcliente = CadOnbase(AnexoOcliente)
-                Me.OnBaseTableAdapter.FillByAreaAnexo(GeneralDS.OnBase, Area, AnexoOcliente)
+                Arreglo = CadOnbase(AnexoOcliente)
+                Me.OnBaseTableAdapter.FillByAreaAnexo(GeneralDS.OnBase, Area, Arreglo(0), Arreglo(1), Arreglo(2), Arreglo(3))
             End If
         End If
         Me.Text = Titulo

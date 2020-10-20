@@ -10,8 +10,6 @@ Imports System.Security.Principal.WindowsIdentity
 Public Class frmPideProductor
     Dim myIdentity As Principal.WindowsIdentity
     Dim cUsuario As String
-    Dim cCliente As String = ""
-
     Public Sub New(ByVal cMenu As String)
         MyBase.New()
 
@@ -154,7 +152,9 @@ Public Class frmPideProductor
         End If
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
-        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cProductor)) > 0 Then
+        Dim ArrOnbaseCliente() As String = CadOnbase(cProductor)
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
+
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
@@ -249,7 +249,7 @@ Public Class frmPideProductor
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmAtachments
-        f.Cliente = cCliente
+        f.Cliente = cProductor
         f.Carpeta = "Crédito"
         If TaQUERY.SacaPermisoModulo("CREDITO_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False

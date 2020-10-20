@@ -311,7 +311,8 @@ Public Class frmPideAnexo
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
         cNombre = ComboBox1.Text.Trim
-        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
+        Dim ArrOnbaseCliente() As String = CadOnbase(cCliente)
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False

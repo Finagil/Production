@@ -167,7 +167,8 @@ Public Class frmModCtoAvio
         ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
         Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
 
-        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
+        Dim ArrOnbaseAnexo() As String = CadOnbase(cAnexo)
+        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
             BtnOnbase.Enabled = True
         Else
             BtnOnbase.Enabled = False

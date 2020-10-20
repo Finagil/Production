@@ -198,18 +198,21 @@ Public Class frmEdoCtaAvio
         End If
         LbFondeo.Text = cFondeo
 
-        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
+        Dim ArrOnbaseAnexo() As String = CadOnbase(cAnexo)
+        If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
             BtnOnbase.Enabled = True
         Else
             BtnOnbase.Enabled = False
         End If
 
-        If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(cCliente)) > 0 Then
+        Dim ArrOnbaseCliente() As String = CadOnbase(cCliente)
+        If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
+
             BtnOnbaseCRE.Enabled = True
         Else
             BtnOnbaseCRE.Enabled = False
         End If
-        If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", CadOnbase(cAnexo)) > 0 Then
+        If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
             BtnOnbaseFira.Enabled = True
         Else
             BtnOnbaseFira.Enabled = False

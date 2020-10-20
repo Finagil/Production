@@ -199,9 +199,7 @@ Public Class frmDatoscon
     Friend WithEvents txtPlaseg As System.Windows.Forms.TextBox
     Friend WithEvents txtSaldoSeguro As System.Windows.Forms.TextBox
     Friend WithEvents txtOpcion As System.Windows.Forms.TextBox
-    Friend WithEvents txtReferencia As System.Windows.Forms.TextBox
     Friend WithEvents btnDatosCliente As System.Windows.Forms.Button
-    Friend WithEvents txtCliente As System.Windows.Forms.TextBox
     Friend WithEvents btnTablaEquipo As System.Windows.Forms.Button
     Friend WithEvents btnTablaSeguro As System.Windows.Forms.Button
     Friend WithEvents btnHistoria As System.Windows.Forms.Button
@@ -301,8 +299,6 @@ Public Class frmDatoscon
         Me.btnDatosCliente = New System.Windows.Forms.Button()
         Me.btnDatoseq = New System.Windows.Forms.Button()
         Me.btnReferencia = New System.Windows.Forms.Button()
-        Me.txtReferencia = New System.Windows.Forms.TextBox()
-        Me.txtCliente = New System.Windows.Forms.TextBox()
         Me.btnTablaEquipo = New System.Windows.Forms.Button()
         Me.btnTablaSeguro = New System.Windows.Forms.Button()
         Me.btnHistoria = New System.Windows.Forms.Button()
@@ -454,7 +450,7 @@ Public Class frmDatoscon
         Me.gpoPagosi.Controls.Add(Me.lblIvag)
         Me.gpoPagosi.Controls.Add(Me.lblImpDG)
         Me.gpoPagosi.Controls.Add(Me.lblComis)
-        Me.gpoPagosi.Location = New System.Drawing.Point(384, 230)
+        Me.gpoPagosi.Location = New System.Drawing.Point(384, 232)
         Me.gpoPagosi.Name = "gpoPagosi"
         Me.gpoPagosi.Size = New System.Drawing.Size(264, 290)
         Me.gpoPagosi.TabIndex = 49
@@ -675,7 +671,7 @@ Public Class frmDatoscon
         Me.gpoPagos.Controls.Add(Me.lblMontos)
         Me.gpoPagos.Controls.Add(Me.lblPlazos)
         Me.gpoPagos.Controls.Add(Me.lblSeg)
-        Me.gpoPagos.Location = New System.Drawing.Point(384, 32)
+        Me.gpoPagos.Location = New System.Drawing.Point(384, 34)
         Me.gpoPagos.Name = "gpoPagos"
         Me.gpoPagos.Size = New System.Drawing.Size(264, 192)
         Me.gpoPagos.TabIndex = 48
@@ -1135,7 +1131,7 @@ Public Class frmDatoscon
         '
         'lblNumc
         '
-        Me.lblNumc.Location = New System.Drawing.Point(16, 12)
+        Me.lblNumc.Location = New System.Drawing.Point(16, 7)
         Me.lblNumc.Name = "lblNumc"
         Me.lblNumc.Size = New System.Drawing.Size(88, 20)
         Me.lblNumc.TabIndex = 0
@@ -1169,22 +1165,6 @@ Public Class frmDatoscon
         Me.btnReferencia.TabIndex = 2
         Me.btnReferencia.Text = "Referencia"
         '
-        'txtReferencia
-        '
-        Me.txtReferencia.Location = New System.Drawing.Point(618, 13)
-        Me.txtReferencia.Name = "txtReferencia"
-        Me.txtReferencia.Size = New System.Drawing.Size(24, 20)
-        Me.txtReferencia.TabIndex = 62
-        Me.txtReferencia.Visible = False
-        '
-        'txtCliente
-        '
-        Me.txtCliente.Location = New System.Drawing.Point(588, 13)
-        Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(24, 20)
-        Me.txtCliente.TabIndex = 63
-        Me.txtCliente.Visible = False
-        '
         'btnTablaEquipo
         '
         Me.btnTablaEquipo.Enabled = False
@@ -1215,25 +1195,27 @@ Public Class frmDatoscon
         'lblStatus
         '
         Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(190, 12)
+        Me.lblStatus.Location = New System.Drawing.Point(203, 8)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(142, 21)
+        Me.lblStatus.Size = New System.Drawing.Size(129, 19)
         Me.lblStatus.TabIndex = 69
+        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblAnexo
         '
         Me.lblAnexo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAnexo.Location = New System.Drawing.Point(112, 12)
+        Me.lblAnexo.Location = New System.Drawing.Point(104, 8)
         Me.lblAnexo.Name = "lblAnexo"
-        Me.lblAnexo.Size = New System.Drawing.Size(72, 20)
+        Me.lblAnexo.Size = New System.Drawing.Size(96, 18)
         Me.lblAnexo.TabIndex = 70
+        Me.lblAnexo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblDescr
         '
         Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescr.Location = New System.Drawing.Point(330, 13)
+        Me.lblDescr.Location = New System.Drawing.Point(330, 8)
         Me.lblDescr.Name = "lblDescr"
-        Me.lblDescr.Size = New System.Drawing.Size(480, 20)
+        Me.lblDescr.Size = New System.Drawing.Size(243, 18)
         Me.lblDescr.TabIndex = 71
         '
         'btnTablaOtros
@@ -1843,7 +1825,7 @@ Public Class frmDatoscon
         '
         'Label25
         '
-        Me.Label25.Location = New System.Drawing.Point(385, 525)
+        Me.Label25.Location = New System.Drawing.Point(385, 527)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(120, 16)
         Me.Label25.TabIndex = 136
@@ -1852,7 +1834,7 @@ Public Class frmDatoscon
         '
         'TxtFechaPAG
         '
-        Me.TxtFechaPAG.Location = New System.Drawing.Point(505, 524)
+        Me.TxtFechaPAG.Location = New System.Drawing.Point(505, 526)
         Me.TxtFechaPAG.Name = "TxtFechaPAG"
         Me.TxtFechaPAG.ReadOnly = True
         Me.TxtFechaPAG.Size = New System.Drawing.Size(68, 20)
@@ -1863,7 +1845,7 @@ Public Class frmDatoscon
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(385, 552)
+        Me.Label26.Location = New System.Drawing.Point(385, 554)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(105, 13)
         Me.Label26.TabIndex = 138
@@ -1872,7 +1854,7 @@ Public Class frmDatoscon
         '
         'TxtFechaACTI
         '
-        Me.TxtFechaACTI.Location = New System.Drawing.Point(505, 549)
+        Me.TxtFechaACTI.Location = New System.Drawing.Point(505, 551)
         Me.TxtFechaACTI.Name = "TxtFechaACTI"
         Me.TxtFechaACTI.ReadOnly = True
         Me.TxtFechaACTI.Size = New System.Drawing.Size(68, 20)
@@ -1923,7 +1905,7 @@ Public Class frmDatoscon
         '
         Me.LbCastigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LbCastigo.ForeColor = System.Drawing.Color.Red
-        Me.LbCastigo.Location = New System.Drawing.Point(851, 9)
+        Me.LbCastigo.Location = New System.Drawing.Point(851, 5)
         Me.LbCastigo.Name = "LbCastigo"
         Me.LbCastigo.Size = New System.Drawing.Size(171, 23)
         Me.LbCastigo.TabIndex = 142
@@ -1960,12 +1942,11 @@ Public Class frmDatoscon
         '
         'LbStatus
         '
-        Me.LbStatus.AutoSize = True
         Me.LbStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LbStatus.ForeColor = System.Drawing.Color.Black
-        Me.LbStatus.Location = New System.Drawing.Point(16, 30)
+        Me.LbStatus.Location = New System.Drawing.Point(16, 27)
         Me.LbStatus.Name = "LbStatus"
-        Me.LbStatus.Size = New System.Drawing.Size(107, 13)
+        Me.LbStatus.Size = New System.Drawing.Size(361, 17)
         Me.LbStatus.TabIndex = 146
         Me.LbStatus.Text = "Estatus Contable:"
         Me.LbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2133,8 +2114,6 @@ Public Class frmDatoscon
         Me.Controls.Add(Me.btnHistoria)
         Me.Controls.Add(Me.btnTablaSeguro)
         Me.Controls.Add(Me.btnTablaEquipo)
-        Me.Controls.Add(Me.txtCliente)
-        Me.Controls.Add(Me.txtReferencia)
         Me.Controls.Add(Me.btnReferencia)
         Me.Controls.Add(Me.btnDatoseq)
         Me.Controls.Add(Me.btnDatosCliente)
@@ -2287,17 +2266,19 @@ Public Class frmDatoscon
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
 
-            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", CadOnbase(cAnexo)) > 0 Then
+            Dim ArrOnbaseAnexo() As String = CadOnbase(cAnexo)
+            If TaOnbase.ScalarCuantosAreaAnexo("Mesa de Control", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
                 BtnOnbase.Enabled = True
             Else
                 BtnOnbase.Enabled = False
             End If
-            If TaOnbase.ScalarCuantosAreaAnexo("Credito", CadOnbase(ClienteAux)) > 0 Then
+            Dim ArrOnbaseCliente() As String = CadOnbase(ClienteAux)
+            If TaOnbase.ScalarCuantosAreaAnexo("Credito", ArrOnbaseCliente(0), ArrOnbaseCliente(1), ArrOnbaseCliente(2), ArrOnbaseCliente(3)) > 0 Then
                 BtnOnbaseCRE.Enabled = True
             Else
                 BtnOnbaseCRE.Enabled = False
             End If
-            If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", CadOnbase(cAnexo)) > 0 Then
+            If TaOnbase.ScalarCuantosAreaAnexo("Supervision Fira", ArrOnbaseAnexo(0), ArrOnbaseAnexo(1), ArrOnbaseAnexo(2), ArrOnbaseAnexo(3)) > 0 Then
                 BtnOnbaseFira.Enabled = True
             Else
                 BtnOnbaseFira.Enabled = False
@@ -2433,7 +2414,26 @@ Public Class frmDatoscon
             nSaldoEquipo = Round(drAnexo("ImpEq") - drAnexo("IvaEq") - drAnexo("Amorin"), 2)
             txtNafin.Text = Format(drAnexo("DepNafin"), "##,##0.00")
             TxtFondoReserva.Text = Format(drAnexo("FondoReserva"), "##,##0.00")
+
+            LbStatus.Visible = True
+            If drAnexo("EstatusContable") = "VENCIDA" Then
+                If drAnexo("Reestructura") = "S" Then
+                    LbStatus.Text = "Estatus Contable: REESTRUCTURA VENCIDA"
+                Else
+                    LbStatus.Text = "Estatus Contable: VENCIDA"
+                End If
+                LbStatus.ForeColor = Color.Red
+            Else
+                If drAnexo("Reestructura") = "S" Then
+                    LbStatus.Text = "Estatus Contable: REESTRUCTURA VIGENTE"
+                Else
+                    LbStatus.Text = "Estatus Contable: VIGENTE"
+                End If
+                LbStatus.ForeColor = Color.Blue
+            End If
+
             If drAnexo("Vencida") = "C" Then
+                LbStatus.Visible = False
                 LbCastigo.Visible = True
                 If drAnexo("CastigadoAnticipado") = False Then
                     LbCastigo.Text = "CASTIGADO"
@@ -2442,15 +2442,7 @@ Public Class frmDatoscon
                 LbCastigo.Visible = False
             End If
 
-            If drAnexo("EstatusContable") = "VENCIDA" Then
-                LbStatus.Visible = True
-                LbStatus.Text = "Estatus Contable: VENCIDA"
-                LbStatus.ForeColor = Color.Red
-            Else
-                LbCastigo.Visible = False
-                LbStatus.Text = "Estatus Contable: VIGENTE"
-                LbStatus.ForeColor = Color.Black
-            End If
+
             txtPagosIniciales.Text = Format(drAnexo("Amorin") + drAnexo("IvaAmorin") + drAnexo("Derechos") + drAnexo("Comis") + drAnexo("Gastos") + drAnexo("IvaGastos") + drAnexo("DepNafin") + nImpDG + nIvaDG + nImpRD + nIvaRD + drAnexo("FondoReserva"), "##,##0.00")
 
             txtPrenda.Text = "N"
@@ -2473,9 +2465,6 @@ Public Class frmDatoscon
                 txtEscritura.Text = drAnexo("Escritura")
                 txtEscritura.Visible = True
             End If
-
-            txtCliente.Text = drAnexo("Cliente")
-            txtReferencia.Text = drAnexo("Referencia")
 
             If txtFinse.Text = "S" And cUsuario <> "AGIL\seguros" And cUsuario <> "AGIL\seguros2" Then
                 btnTablaSeguro.Enabled = True
@@ -2551,7 +2540,7 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub btnDatosCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDatosCliente.Click
-        Dim newfrmDatosClie As New frmDatosclie(txtCliente.Text)
+        Dim newfrmDatosClie As New frmDatosclie(ClienteAux)
         newfrmDatosClie.Show()
     End Sub
 
@@ -2561,7 +2550,7 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub btnReferencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReferencia.Click
-        Dim newfrmReferencia As New frmReferencia(lblAnexo.Text, txtCliente.Text)
+        Dim newfrmReferencia As New frmReferencia(lblAnexo.Text, ClienteAux)
         newfrmReferencia.Show()
     End Sub
 
