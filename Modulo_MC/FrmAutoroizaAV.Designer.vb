@@ -604,7 +604,7 @@ Partial Class FrmAutoroizaAV
         '
         'BttnDG
         '
-        Me.BttnDG.Location = New System.Drawing.Point(449, 418)
+        Me.BttnDG.Location = New System.Drawing.Point(882, 502)
         Me.BttnDG.Name = "BttnDG"
         Me.BttnDG.Size = New System.Drawing.Size(107, 23)
         Me.BttnDG.TabIndex = 157
@@ -717,7 +717,7 @@ Partial Class FrmAutoroizaAV
         '
         'bt_checklist
         '
-        Me.bt_checklist.Location = New System.Drawing.Point(449, 445)
+        Me.bt_checklist.Location = New System.Drawing.Point(449, 418)
         Me.bt_checklist.Name = "bt_checklist"
         Me.bt_checklist.Size = New System.Drawing.Size(107, 23)
         Me.bt_checklist.TabIndex = 171
@@ -726,7 +726,7 @@ Partial Class FrmAutoroizaAV
         '
         'ButtonSave
         '
-        Me.ButtonSave.Location = New System.Drawing.Point(449, 472)
+        Me.ButtonSave.Location = New System.Drawing.Point(449, 445)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(107, 23)
         Me.ButtonSave.TabIndex = 172
