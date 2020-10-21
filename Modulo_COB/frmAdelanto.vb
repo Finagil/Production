@@ -5,25 +5,15 @@ Imports System.IO
 
 Public Class frmAdelanto
     Public Sub New(ByVal cAnexo As String)
-
-        ' This call is required by the Windows Form Designer.
-
         InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
         txtAnexo.Text = cAnexo
-
     End Sub
 
     ' Declaración de variables de conexión ADO .NET de alcance Privado
-
     Dim dtMovimientos As DataTable
     Dim drMovimiento As DataRow
     Dim dtPagos As DataTable
     Dim drPago As DataRow
-
-    ' Declaración de variables de datos de alcance Privado
     Public lContinuar As Boolean
     Dim cAnexo As String = ""
     Dim cBanco As String = ""
@@ -43,8 +33,6 @@ Public Class frmAdelanto
     Dim nTasaIVACliente As Decimal = 0
     Dim nSubTotal As Decimal = 0
     Dim nTotal As Decimal = 0
-    Dim nIDSerieA As Decimal = 0
-    Dim nIDSerieMXL As Decimal = 0
     Dim nPorIeq As Decimal = 0.16
     Dim cTipo As String
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
@@ -65,18 +53,13 @@ Public Class frmAdelanto
         Dim taIVA As New ContaDSTableAdapters.CONT_AutorizarIVATableAdapter
         Dim nIvaAnexo As Decimal
 
-        ' Declaración de variables de datos
-
         Dim cNombreCliente As String
 
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-
         cFecha = FECHA_APLICACION.ToString 'Now().ToShortDateString
         ToolStripStatusLabel1.Text = "Fecha de Aplicación " & cFecha
         cFecha = Mid(cFecha, 7, 4) & Mid(cFecha, 4, 2) & Mid(cFecha, 1, 2)
         lblAdeudaRentas.Text = ""
-
-        ' Este Command trae todos los atributos de la tabla Clientes, para el cliente de un contrato dado.
 
         With cm1
             .CommandType = CommandType.Text
@@ -86,26 +69,18 @@ Public Class frmAdelanto
             .Connection = cnAgil
         End With
 
-        ' Este Stored Procedure regresa los datos de los Bancos
-
         With cm2
             .CommandType = CommandType.StoredProcedure
             .CommandText = "Bancos1"
             .Connection = cnAgil
         End With
 
-        ' Llenar el DataSet lo cual abre y cierra la conexión
-
         daClientes.Fill(dsAgil, "Clientes")
         daBancos.Fill(dsBcos, "Bancos")
-
         drCliente = dsAgil.Tables("Clientes").Rows(0)
-
         cNombreCliente = drCliente("Descr")
 
         Me.Text = "Adelanto a Capital Contrato " & txtAnexo.Text & " " & cNombreCliente
-
-        ' Traigo la Sucursal y la Tasa de IVA que aplica al cliente a efecto de poder determinar la Serie a utilizar
         cTipo = drCliente("tipo")
         cSucursal = drCliente("Sucursal")
         nTasaIVACliente = drCliente("TasaIVACliente")
@@ -120,11 +95,9 @@ Public Class frmAdelanto
         End If
 
         ' Lleno cbBancos con el nombre de los Bancos
-
         cbBancos.DataSource = dsBcos
         cbBancos.DisplayMember = "Bancos.DescBanco"
         cbBancos.ValueMember = "Bancos.Banco"
-
         cbBancos.SelectedIndex = 0
 
         cnAgil.Dispose()
@@ -141,21 +114,15 @@ Public Class frmAdelanto
         Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
-        Dim cm7 As New SqlCommand()
         Dim cm8 As New SqlCommand()
         Dim daAnexos As New SqlDataAdapter(cm1)
         Dim daEdoctav As New SqlDataAdapter(cm2)
         Dim daEdoctas As New SqlDataAdapter(cm3)
         Dim daEdoctao As New SqlDataAdapter(cm4)
         Dim daFacturas As New SqlDataAdapter(cm5)
-        Dim daSeries As New SqlDataAdapter(cm7)
         Dim dsAgil As New DataSet()
         Dim drAnexo As DataRow
         Dim drDato As DataRow
-        Dim drSerie As DataRow
-
-        ' Declaración de variables de datos
-
         Dim cAdeudo As String = "N"
         Dim cBancoGarantia As String = ""
         Dim cFepag As String
@@ -236,14 +203,6 @@ Public Class frmAdelanto
             .Connection = cnAgil
         End With
 
-        ' El siguiente Command trae los consecutivos de cada Serie
-
-        With cm7
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT IDSerieA, IDSerieMXL FROM Llaves"
-            .Connection = cnAgil
-        End With
-
         ' El siguiente Command me indica si el crédito está dado en garantía.   Es importante saberlo porque los
         ' créditos que estén al amparo de la línea NAFIN no pueden recibir Adelantos a Capital si no es por
         ' autorización expresa del C.P. Abraham Torres
@@ -263,18 +222,13 @@ Public Class frmAdelanto
         daEdoctas.Fill(dsAgil, "Edoctas")
         daEdoctao.Fill(dsAgil, "Edoctao")
         daFacturas.Fill(dsAgil, "Facturas")
-        daSeries.Fill(dsAgil, "Series")
 
         ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
 
-        drSerie = dsAgil.Tables("Series").Rows(0)
-        nIDSerieA = drSerie("IDSerieA")
-        nIDSerieMXL = drSerie("IDSerieMXL")
-
         If cSerie = "A" Then
-            nFactura = nIDSerieA + 1
+            nFactura = FOLIOS.FolioA
         ElseIf cSerie = "MXL" Then
-            nFactura = nIDSerieMXL + 1
+            nFactura = FOLIOS.FolioMXL
         End If
 
         txtSerie.Text = cSerie
@@ -295,9 +249,7 @@ Public Class frmAdelanto
         End If
 
         If lContinuar = True Then
-
             drAnexo = dsAgil.Tables("Anexos").Rows(0)
-
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
             cFondeo = drAnexo("Fondeo")
@@ -361,14 +313,11 @@ Public Class frmAdelanto
                 MsgBox("No existen Adelantos a Capital de Créditos LINEA NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
                 Me.Close()
             End If
-
         End If
 
         If lContinuar = True Then
-
             ' Si existe seguro financiado se debe tomar el saldo insoluto del seguro
             ' que no haya sido facturado
-
             If cFinse = "S" Then
                 nSaldoSeguro = 0
                 lSalir = False
@@ -382,7 +331,6 @@ Public Class frmAdelanto
 
             ' Si existe saldo en otros adeudos debemos traer el saldo insoluto que no haya sido facturado;
             ' FALTA QUE CALCULE LA CARGA FINANCIERA ORIGINAL
-
             If cAdeudo = "S" Then
                 nSaldoOtros = 0
                 lSalir = False
@@ -421,15 +369,11 @@ Public Class frmAdelanto
             If cTipar <> "P" And cTipar <> "F" Then
                 nIvaDiferido = 0
             End If
-
         End If
 
         If lContinuar = True Then
-
             ' Se debe checar el saldo de Facturas de Renta
-
             nAdeudoRentas = 0
-
             For Each drDato In dsAgil.Tables("Facturas").Rows
                 cIndpag = drDato("IndPag")
                 nSaldoFactura = 0
@@ -472,14 +416,12 @@ Public Class frmAdelanto
             txtDiasIntereses.Text = FormatNumber(nDiasFact, 0)
 
         End If
-
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
         cm3.Dispose()
         cm4.Dispose()
         cm5.Dispose()
-        cm7.Dispose()
         cm8.Dispose()
     End Sub
 
@@ -491,9 +433,6 @@ Public Class frmAdelanto
         Dim cm1 As New SqlCommand()
         Dim daUdis As New SqlDataAdapter(cm1)
         Dim dsAgil As New DataSet()
-
-        ' Declaración de variables de datos
-
         Dim cCatal As String
         Dim cCheque As String
         Dim cFepag As String
@@ -596,26 +535,17 @@ Public Class frmAdelanto
 
 
         Do While Abs(Round(nImportePago - nPagoTotal, 4)) > 0.0001
-
             nPivote = (nLimiteSuperior + nLimiteInferior) / 2
-
             nBonifica = 0
             nIvaCapital = 0
-
             If nPivote > nSaldoSeguro + nSaldoOtros Then
-
                 If nDeposito > 0 Then
-
                     ' La bonificación solo aplica para el capital del equipo
-
                     nBonifica = (nPivote - nSaldoSeguro - nSaldoOtros) * nPorIeq
-
                 End If
-
                 If nIvaDiferido > 0 Then
                     nIvaCapital = (nPivote - nSaldoSeguro - nSaldoOtros) * (nTasaIVACliente / 100)
                 End If
-
             End If
 
             nIntereses = 0
@@ -628,7 +558,6 @@ Public Class frmAdelanto
             nInteresesSeguro = 0
 
             If nDiasIntereses >= 0 Then
-
                 If nPivote <= nSaldoSeguro Then
                     nAbonoSeguro = nPivote
                     nAbonoOtros = 0
@@ -648,14 +577,10 @@ Public Class frmAdelanto
                 nIntereses = (nAbonoEquipo) * nTasaAplicada / 36000 * nDiasIntereses
                 nInteresesSeguro = (nAbonoSeguro) * nTasaAplicada / 36000 * nDiasIntereses
                 nInteresOtros = nAbonoOtros * nTasaAplicada / 36000 * nDiasIntereses
-
                 'nInteresesTOT = nIntereses + nInteresSeguro + nInteresOtros
 
                 If cTipar = "F" Then
-
                     nIvaIntereses = CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoEquipo), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100))
-
-
                     If cTipo = "F" Then
                         If IVA_Interes_TasaReal = False Or cFepag < "20160101" Then 'Enterar IVA Basado en fujo = TRUE o direco sobre base nominal = False #ECT20151015.n
                             nIvaInteresesOtr += (nInteresOtros * (nTasaIVACliente / 100))
@@ -664,7 +589,6 @@ Public Class frmAdelanto
                             If nAbonoSeguro > 0 Then nIvaInteresesSeg = Round(CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoSeguro), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
                             If nAbonoOtros > 0 Then nIvaInteresesOtr = Round(CalcIvaU(dsAgil.Tables("Udis").Rows, (nAbonoOtros), nTasaAplicada, DTOC(DateAdd(DateInterval.Day, -nDiasIntereses, CTOD(cFepag))), cFepag, nUdiInicial, nUdiFinal, (nTasaIVACliente / 100)), 2)
                         End If
-
                     End If
                     If nIntereses > 0 And nAbonoEquipo > 0 And (nUdiInicial = 0 Or nUdiFinal = 0) Then
                         MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
@@ -777,7 +701,6 @@ Public Class frmAdelanto
         ' se hace en forma automática en el módulo Ingresos)
 
         If nIntereses + nInteresesSeguro + nInteresOtros > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -828,15 +751,10 @@ Public Class frmAdelanto
                 drPago("IVA") = nIvaInteresesOtr
                 dtPagos.Rows.Add(drPago)
             End If
-
             nSubTotal += nIntereses + nInteresesSeguro + nInteresOtros
-
-
-
         End If
 
         If nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -891,13 +809,10 @@ Public Class frmAdelanto
                 drPago("IVA") = 0
                 dtPagos.Rows.Add(drPago)
             End If
-
             nIva += nIvaIntereses + nIvaInteresesSeg + nIvaInteresesOtr
+        End If
 
-            End If
-
-            If nComision > 0 Then
-
+        If nComision > 0 Then
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -924,13 +839,10 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = nIvaComision
             dtPagos.Rows.Add(drPago)
-
             nSubTotal = nSubTotal + nComision
-
         End If
 
         If nIvaComision > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -957,13 +869,10 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
-
             nIva = nIva + nIvaComision
-
         End If
 
         If nAbonoSeguro > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -990,13 +899,10 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
-
             nSubTotal = nSubTotal + nAbonoSeguro
-
         End If
 
         If nAbonoOtros > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -1023,13 +929,10 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
-
             nSubTotal = nSubTotal + nAbonoOtros
-
         End If
 
         If Round(nIvaCapital, 2) > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -1049,7 +952,6 @@ Public Class frmAdelanto
             dtMovimientos.Rows.Add(drMovimiento)
 
             If cTipar = "F" Then
-
                 drMovimiento = dtMovimientos.NewRow()
                 drMovimiento("Anexo") = cAnexo
                 drMovimiento("Letra") = "888"
@@ -1085,9 +987,7 @@ Public Class frmAdelanto
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
                 drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
-
             End If
-
             drPago = dtPagos.NewRow()
             drPago("Anexo") = cAnexo
             drPago("Fecha") = cFecha
@@ -1096,13 +996,10 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
-
             nIva = nIva + nIvaCapital
-
         End If
 
         If nID < 0 Then
-
             ' Solo existe esta bonificación en contratos de arrendamiento financiero que hubieran dejado
             ' depósito en garantía.   El depósito en garantía de los créditos refaccionarios se bonifica
             ' en una sola exhibición al final del plazo o si se finiquita en contrato anticipadamente.
@@ -1132,13 +1029,10 @@ Public Class frmAdelanto
             drPago("Importe") = nID
             drPago("Banco") = cBanco
             dtPagos.Rows.Add(drPago)
-
             nIva = nIva + nID
-
         End If
 
         If Round(nAbonoEquipo, 2) > 0 Then
-
             drMovimiento = dtMovimientos.NewRow()
             drMovimiento("Anexo") = cAnexo
             drMovimiento("Letra") = "888"
@@ -1212,7 +1106,6 @@ Public Class frmAdelanto
             End If
 
             If cTipar = "F" Then
-
                 drMovimiento = dtMovimientos.NewRow()
                 drMovimiento("Anexo") = cAnexo
                 drMovimiento("Letra") = "888"
@@ -1248,7 +1141,6 @@ Public Class frmAdelanto
                 drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
                 drMovimiento("Grupo") = NoGrupo
                 dtMovimientos.Rows.Add(drMovimiento)
-
             End If
 
             drPago = dtPagos.NewRow()
@@ -1265,7 +1157,6 @@ Public Class frmAdelanto
         End If
 
         If nDG < 0 Then
-
             ' Solo existe esta bonificación en contratos de arrendamiento financiero que hubieran dejado
             ' depósito en garantía.   El depósito en garantía de los créditos refaccionarios se bonifica
             ' en una sola exhibición al final del plazo o si se finiquita en contrato anticipadamente.
@@ -1296,9 +1187,7 @@ Public Class frmAdelanto
             drPago("Banco") = cBanco
             drPago("IVA") = 0
             dtPagos.Rows.Add(drPago)
-
             nSubTotal = nSubTotal + nDG
-
         End If
 
         nTotal = nSubTotal + nIva
@@ -1387,13 +1276,10 @@ Public Class frmAdelanto
         cnAgil.Close()
 
         If CDec(txtAbonoSeguro.Text) > 0 Then
-
             nSaldoSeguro = CDec(txtSaldoSeguro.Text)
             nPlazoSeguro = 0
             nLetraSeguro = 0
-
             ' El siguiente Stored Procedure trae los movimientos de la tabla de amortización del seguro
-
             With cm4
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "TablaSeguro1"
@@ -1401,39 +1287,29 @@ Public Class frmAdelanto
                 .Parameters.Add("@Anexo", SqlDbType.NVarChar)
                 .Parameters(0).Value = cAnexo
             End With
-
             ' Llenar el dataset lo cual abre y cierra la conexión
-
             daEdoctas.Fill(dsAgil, "Edoctas")
-
             For Each drEdoctas In dsAgil.Tables("Edoctas").Rows
                 If drEdoctas("Nufac") = 0 And nLetraSeguro = 0 Then
                     nLetraSeguro = Val(drEdoctas("Letra"))
                 End If
                 nPlazoSeguro = Val(drEdoctas("Letra"))
             Next
-
             dsAgil.Tables.Remove("Edoctas")
 
             If CDec(txtAbonoSeguro.Text) = CDec(txtSaldoSeguro.Text) Then
-
                 ' El pago cubre completamente el saldo del seguro, por lo que debe eliminar 
                 ' los vencimientos no facturados del seguro
-
                 strDelete = "DELETE FROM Edoctas WHERE Nufac = 0 AND Anexo = '" & cAnexo & "'"
                 cm2 = New SqlCommand(strDelete, cnAgil)
                 cnAgil.Open()
                 cm2.ExecuteNonQuery()
                 cnAgil.Close()
-
             Else
-
                 ' El pago a cuenta de capital no cubre totalmente el saldo del seguro, 
                 ' por lo que debe aplicarse como adelanto a capital del seguro y reconstruir la
                 ' tabla del seguro
-
                 RegTabla(cAnexo, CDec(txtSaldoSeguro.Text) - CDec(txtAbonoSeguro.Text), "S")
-
             End If
 
             ' Independientemente de si se trató de un pago parcial o total del seguro, debe insertar
@@ -1456,15 +1332,12 @@ Public Class frmAdelanto
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-
         End If
 
         If CDec(txtAbonoOtros.Text) > 0 Then
-
             nSaldoOtros = CDec(txtSaldoOtros.Text)
             nPlazoOtros = 0
             nLetraOtros = 0
-
             ' El siguiente Stored Procedure trae los movimientos de la tabla de amortización de Otros Adeudos
 
             With cm5
@@ -1474,9 +1347,7 @@ Public Class frmAdelanto
                 .Parameters.Add("@Anexo", SqlDbType.NVarChar)
                 .Parameters(0).Value = cAnexo
             End With
-
             ' Llenar el dataset lo cual abre y cierra la conexión
-
             daEdoctao.Fill(dsAgil, "Edoctao")
 
             For Each drEdoctao In dsAgil.Tables("Edoctao").Rows
@@ -1485,29 +1356,21 @@ Public Class frmAdelanto
                 End If
                 nPlazoOtros = Val(drEdoctao("Letra"))
             Next
-
             dsAgil.Tables.Remove("Edoctao")
 
             If CDec(txtAbonoOtros.Text) = CDec(txtSaldoOtros.Text) Then
-
                 ' El pago cubre completamente el Saldo de Otros Adeudos, por lo que debe eliminar 
                 ' los vencimientos no facturados
-
                 strDelete = "DELETE FROM Edoctao WHERE Nufac = 0 AND Anexo = '" & cAnexo & "'"
                 cm2 = New SqlCommand(strDelete, cnAgil)
                 cnAgil.Open()
                 cm2.ExecuteNonQuery()
                 cnAgil.Close()
-
             Else
-
                 ' El pago no cubre totalmente el Saldo de Otros Adeudos, por lo que debe
                 ' aplicarse como adelanto a capital de Otros Adeudos y reconstruir su tabla
-
                 RegTabla(cAnexo, CDec(txtSaldoOtros.Text) - CDec(txtAbonoOtros.Text), "O")
-
             End If
-
             ' Independientemente de si se trató de un pago parcial o total de Otros Adeudos, debe insertar
             ' un registro a la tabla de amortización por este concepto y en número de factura tendrá 9999999
 
@@ -1527,13 +1390,10 @@ Public Class frmAdelanto
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-
         End If
 
         If CDec(txtAbonoEquipo.Text) > 0 Then
-
             ' Reconstruyo la Tabla de Amortización y luego inserto un registro por el adelanto a capital
-
             RegTabla(cAnexo, CDec(txtSaldoEquipo.Text) - CDec(txtAbonoEquipo.Text), "E")
 
             strInsert = "INSERT INTO Edoctav(Anexo, Letra, Feven, Nufac, IndRec, Saldo, Abcap, Inter, Iva, IvaCapital )"
@@ -1553,9 +1413,7 @@ Public Class frmAdelanto
             cnAgil.Open()
             cm1.ExecuteNonQuery()
             cnAgil.Close()
-
             ' El siguiente Stored Procedure trae los movimientos de la tabla de amortización del equipo
-
             With cm3
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "TablaEquipo1"
@@ -1563,11 +1421,8 @@ Public Class frmAdelanto
                 .Parameters.Add("@Anexo", SqlDbType.NVarChar)
                 .Parameters(0).Value = cAnexo
             End With
-
             ' Llenar el dataset lo cual abre y cierra la conexión
-
             daEdoctav.Fill(dsAgil, "Edoctav")
-
             ' Los siguientes movimientos deben ir después de reconstruir la tabla ya que es hasta
             ' este momento que puedo determinar la nueva carga financiera por devengar
 
@@ -1577,9 +1432,7 @@ Public Class frmAdelanto
             Next
 
             dsAgil.Tables.Remove("Edoctav")
-
             If nCargaOri - nCargaNue > 0 And cTipar <> "L" Then
-
                 drMovimiento = dtMovimientos.NewRow()
                 drMovimiento("Anexo") = cAnexo
                 drMovimiento("Letra") = "888"
@@ -1641,9 +1494,7 @@ Public Class frmAdelanto
             End If
 
             If nAbonoEquipo + (nCargaOri - nCargaNue) > 0 Then
-
                 If cTipar = "F" Then
-
                     drMovimiento = dtMovimientos.NewRow()
                     drMovimiento("Anexo") = cAnexo
                     drMovimiento("Letra") = "888"
@@ -1679,19 +1530,15 @@ Public Class frmAdelanto
                     drMovimiento("Factura") = cSerie & nFactura '#ECT pala ligar folios Fiscal
                     drMovimiento("Grupo") = NoGrupo
                     dtMovimientos.Rows.Add(drMovimiento)
-
                 End If
-
             End If
-
         End If
 
         ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
-
         If cSerie = "A" Then
-            strUpdate = "UPDATE Llaves SET IDSerieA = " & nFactura
+            FOLIOS.ConsumeFolioA()
         ElseIf cSerie = "MXL" Then
-            strUpdate = "UPDATE Llaves SET IDSerieMXL = " & nFactura
+            FOLIOS.ConsumeFolioMXL()
         End If
 
         cm7 = New SqlCommand(strUpdate, cnAgil)
@@ -1700,9 +1547,7 @@ Public Class frmAdelanto
         cnAgil.Close()
 
         ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
-
         Ingresos(dtMovimientos)
-
         ' El siguiente Stored Procedure trae los datos del cliente del cual se está aplicando el adelanto
 
         With cm6
@@ -1714,9 +1559,7 @@ Public Class frmAdelanto
         End With
 
         daClientes.Fill(dsAgil, "Clientes")
-
         drCliente = dsAgil.Tables("Clientes").Rows(0)
-
         cNombre = drCliente("Descr")
         cRfc = drCliente("Rfc")
         cCalle = drCliente("Calle")
@@ -1768,9 +1611,7 @@ Public Class frmAdelanto
         Next
 
         nTotal = Round(nTotal, 2)
-
         ' Una vez que cerré la conexión y que generé los asientos contables, procedo a generar el archivo de texto para la factura electrónica de pago
-
         dsAgil.Tables.Remove("Clientes")
 
         Dim stmFactura As New FileStream("C:\Facturas\FACTURA_" & cSerie & "_" & nFactura & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
@@ -1814,9 +1655,7 @@ Public Class frmAdelanto
         cm5.Dispose()
         cm6.Dispose()
         cm7.Dispose()
-
         Me.Close()
-
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
