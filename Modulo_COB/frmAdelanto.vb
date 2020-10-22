@@ -1208,7 +1208,6 @@ Public Class frmAdelanto
         Dim cm4 As New SqlCommand()
         Dim cm5 As New SqlCommand()
         Dim cm6 As New SqlCommand()
-        Dim cm7 As New SqlCommand()
         Dim dsAgil As New DataSet()
         Dim daEdoctav As New SqlDataAdapter(cm3)
         Dim daEdoctas As New SqlDataAdapter(cm4)
@@ -1541,11 +1540,6 @@ Public Class frmAdelanto
             FOLIOS.ConsumeFolioMXL()
         End If
 
-        cm7 = New SqlCommand(strUpdate, cnAgil)
-        cnAgil.Open()
-        cm7.ExecuteNonQuery()
-        cnAgil.Close()
-
         ' En este punto llamo a la función Ingresos para afectar la tabla Hisgin
         Ingresos(dtMovimientos)
         ' El siguiente Stored Procedure trae los datos del cliente del cual se está aplicando el adelanto
@@ -1654,7 +1648,6 @@ Public Class frmAdelanto
         cm4.Dispose()
         cm5.Dispose()
         cm6.Dispose()
-        cm7.Dispose()
         Me.Close()
     End Sub
 
