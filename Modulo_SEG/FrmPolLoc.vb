@@ -279,8 +279,8 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If TxtStatus.Text <> "Activo" Then
-            MessageBox.Show("Contrato no activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        If TxtStatus.Text = "Baja" Or TxtStatus.Text = "Suspenso" Then
+            MessageBox.Show("Contrato con estatus " & TxtStatus.Text & ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
