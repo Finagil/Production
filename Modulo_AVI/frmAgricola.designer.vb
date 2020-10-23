@@ -46,6 +46,10 @@ Partial Class frmAgricola
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.lblMinistradoFINAGIL = New System.Windows.Forms.Label()
         Me.panelFINAGIL = New System.Windows.Forms.Panel()
+        Me.CmbCuenta = New System.Windows.Forms.ComboBox()
+        Me.CxP_CuentasBancariasProvBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CxpDS = New Agil.CxpDS()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.btnCancelarFINAGIL = New System.Windows.Forms.Button()
         Me.btnGuardarFINAGIL = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -89,11 +93,14 @@ Partial Class frmAgricola
         Me.AVIAjustesHectareasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AviosDSX = New Agil.AviosDSX()
         Me.AVI_AjustesHectareasTableAdapter = New Agil.AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter()
+        Me.CxP_CuentasBancariasProvTableAdapter = New Agil.CxpDSTableAdapters.CXP_CuentasBancariasProvTableAdapter()
         Me.GroupBox3.SuspendLayout()
         Me.panelFIRA.SuspendLayout()
         CType(Me.dgvFIRA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.panelFINAGIL.SuspendLayout()
+        CType(Me.CxP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CxpDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvFINAGIL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvPagares, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,6 +296,8 @@ Partial Class frmAgricola
         'panelFINAGIL
         '
         Me.panelFINAGIL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panelFINAGIL.Controls.Add(Me.CmbCuenta)
+        Me.panelFINAGIL.Controls.Add(Me.Label5)
         Me.panelFINAGIL.Controls.Add(Me.btnCancelarFINAGIL)
         Me.panelFINAGIL.Controls.Add(Me.btnGuardarFINAGIL)
         Me.panelFINAGIL.Controls.Add(Me.Label24)
@@ -297,12 +306,43 @@ Partial Class frmAgricola
         Me.panelFINAGIL.Controls.Add(Me.txtImporteFINAGIL)
         Me.panelFINAGIL.Location = New System.Drawing.Point(177, 214)
         Me.panelFINAGIL.Name = "panelFINAGIL"
-        Me.panelFINAGIL.Size = New System.Drawing.Size(322, 98)
+        Me.panelFINAGIL.Size = New System.Drawing.Size(322, 130)
         Me.panelFINAGIL.TabIndex = 19
+        '
+        'CmbCuenta
+        '
+        Me.CmbCuenta.DataSource = Me.CxP_CuentasBancariasProvBindingSource
+        Me.CmbCuenta.DisplayMember = "clabe"
+        Me.CmbCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbCuenta.FormattingEnabled = True
+        Me.CmbCuenta.Location = New System.Drawing.Point(113, 17)
+        Me.CmbCuenta.Name = "CmbCuenta"
+        Me.CmbCuenta.Size = New System.Drawing.Size(196, 21)
+        Me.CmbCuenta.TabIndex = 27
+        Me.CmbCuenta.ValueMember = "idCuentas"
+        '
+        'CxP_CuentasBancariasProvBindingSource
+        '
+        Me.CxP_CuentasBancariasProvBindingSource.DataMember = "CXP_CuentasBancariasProv"
+        Me.CxP_CuentasBancariasProvBindingSource.DataSource = Me.CxpDS
+        '
+        'CxpDS
+        '
+        Me.CxpDS.DataSetName = "CxpDS"
+        Me.CxpDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label5
+        '
+        Me.Label5.Location = New System.Drawing.Point(14, 19)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(93, 19)
+        Me.Label5.TabIndex = 26
+        Me.Label5.Text = "Cuenta Bancaria"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnCancelarFINAGIL
         '
-        Me.btnCancelarFINAGIL.Location = New System.Drawing.Point(227, 63)
+        Me.btnCancelarFINAGIL.Location = New System.Drawing.Point(234, 92)
         Me.btnCancelarFINAGIL.Name = "btnCancelarFINAGIL"
         Me.btnCancelarFINAGIL.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelarFINAGIL.TabIndex = 15
@@ -311,7 +351,7 @@ Partial Class frmAgricola
         '
         'btnGuardarFINAGIL
         '
-        Me.btnGuardarFINAGIL.Location = New System.Drawing.Point(26, 63)
+        Me.btnGuardarFINAGIL.Location = New System.Drawing.Point(17, 92)
         Me.btnGuardarFINAGIL.Name = "btnGuardarFINAGIL"
         Me.btnGuardarFINAGIL.Size = New System.Drawing.Size(75, 23)
         Me.btnGuardarFINAGIL.TabIndex = 14
@@ -320,7 +360,7 @@ Partial Class frmAgricola
         '
         'Label24
         '
-        Me.Label24.Location = New System.Drawing.Point(23, 15)
+        Me.Label24.Location = New System.Drawing.Point(14, 44)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(118, 19)
         Me.Label24.TabIndex = 25
@@ -331,14 +371,14 @@ Partial Class frmAgricola
         '
         Me.cbDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbDocumento.FormattingEnabled = True
-        Me.cbDocumento.Location = New System.Drawing.Point(165, 14)
+        Me.cbDocumento.Location = New System.Drawing.Point(172, 43)
         Me.cbDocumento.Name = "cbDocumento"
         Me.cbDocumento.Size = New System.Drawing.Size(137, 21)
         Me.cbDocumento.TabIndex = 11
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(23, 39)
+        Me.Label22.Location = New System.Drawing.Point(14, 68)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(118, 19)
         Me.Label22.TabIndex = 21
@@ -347,7 +387,7 @@ Partial Class frmAgricola
         '
         'txtImporteFINAGIL
         '
-        Me.txtImporteFINAGIL.Location = New System.Drawing.Point(202, 37)
+        Me.txtImporteFINAGIL.Location = New System.Drawing.Point(209, 66)
         Me.txtImporteFINAGIL.Name = "txtImporteFINAGIL"
         Me.txtImporteFINAGIL.Size = New System.Drawing.Size(100, 20)
         Me.txtImporteFINAGIL.TabIndex = 12
@@ -483,6 +523,7 @@ Partial Class frmAgricola
         '
         'txtBanco
         '
+        Me.txtBanco.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CxP_CuentasBancariasProvBindingSource, "nombreCorto", True))
         Me.txtBanco.Location = New System.Drawing.Point(408, 125)
         Me.txtBanco.Name = "txtBanco"
         Me.txtBanco.ReadOnly = True
@@ -492,6 +533,7 @@ Partial Class frmAgricola
         '
         'txtCuentaBancomer
         '
+        Me.txtCuentaBancomer.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CxP_CuentasBancariasProvBindingSource, "cuenta", True))
         Me.txtCuentaBancomer.Location = New System.Drawing.Point(398, 155)
         Me.txtCuentaBancomer.Name = "txtCuentaBancomer"
         Me.txtCuentaBancomer.ReadOnly = True
@@ -501,6 +543,7 @@ Partial Class frmAgricola
         '
         'txtCuentaCLABE
         '
+        Me.txtCuentaCLABE.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CxP_CuentasBancariasProvBindingSource, "clabe", True))
         Me.txtCuentaCLABE.Location = New System.Drawing.Point(398, 185)
         Me.txtCuentaCLABE.Name = "txtCuentaCLABE"
         Me.txtCuentaCLABE.ReadOnly = True
@@ -712,6 +755,10 @@ Partial Class frmAgricola
         '
         Me.AVI_AjustesHectareasTableAdapter.ClearBeforeFill = True
         '
+        'CxP_CuentasBancariasProvTableAdapter
+        '
+        Me.CxP_CuentasBancariasProvTableAdapter.ClearBeforeFill = True
+        '
         'frmAgricola
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -749,6 +796,8 @@ Partial Class frmAgricola
         Me.GroupBox4.PerformLayout()
         Me.panelFINAGIL.ResumeLayout(False)
         Me.panelFINAGIL.PerformLayout()
+        CType(Me.CxP_CuentasBancariasProvBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CxpDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvFINAGIL, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -823,4 +872,9 @@ Partial Class frmAgricola
     Friend WithEvents AVIAjustesHectareasBindingSource As BindingSource
     Friend WithEvents AviosDSX As AviosDSX
     Friend WithEvents AVI_AjustesHectareasTableAdapter As AviosDSXTableAdapters.AVI_AjustesHectareasTableAdapter
+    Friend WithEvents CxpDS As CxpDS
+    Friend WithEvents CxP_CuentasBancariasProvTableAdapter As CxpDSTableAdapters.CXP_CuentasBancariasProvTableAdapter
+    Friend WithEvents CmbCuenta As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents CxP_CuentasBancariasProvBindingSource As BindingSource
 End Class

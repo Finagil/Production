@@ -111,7 +111,6 @@ Public Class frmAgricola
 
     Private Sub FrmAgricola_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.AVI_AjustesHectareasTableAdapter.Fill(Me.AviosDSX.AVI_AjustesHectareas, cAnexo, cCiclo)
-        ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
@@ -199,57 +198,9 @@ Public Class frmAgricola
 
         btnModificarFIRA.Visible = False
         panelFIRA.Visible = False
-        'MessageBox.Show(cUsuario)
-        If cUsuario = "AGIL\gisela-vazquez" Or cUsuario = "AGIL\abraham-torres" Then
-            'cbDocumento.Items.Add("EFECTIVO 2")
-            GroupBox3.Visible = False
-        ElseIf cUsuario = "AGIL\laura-mercado" Or cUsuario = "AGIL\carlos-hernandez" Then
-            'cbDocumento.Items.Add("EFECTIVO")
-            'cbDocumento.Items.Add("EFECTIVO 2")
-            'cbDocumento.Items.Add("VALE")
-            'cbDocumento.Items.Add("BURO")
-            'cbDocumento.Items.Add("NOTARIO")
-            'cbDocumento.Items.Add("RPP")
-            'cbDocumento.Items.Add("GASTOS")
-            'cbDocumento.Items.Add("ASISTENCIA")
-            'cbDocumento.Items.Add("SEGURO")
-            'cbDocumento.Items.Add("COMISION")
-            'cbDocumento.Items.Add("ANALISIS DE SUELOS")
-            'cbDocumento.Items.Add("AVALUO")
-            'cbDocumento.Items.Add("COBERTURA")
-            'ElseIf cUsuario = "AGIL\yenni-hernandez" Or cUsuario = "AGIL\alain-cozari" Then
-            'GroupBox3.Visible = False
-            'cbDocumento.Items.Add("NOTARIO")
-            'cbDocumento.Items.Add("RPP")
-        ElseIf TaQUERY.SacaPermisoModulo("MINISTRAR_SEG", UsuarioGlobal) > 0 Then
 
+        If TaQUERY.SacaPermisoModulo("MINISTRAR_SEG", UsuarioGlobal) > 0 Then
             cbDocumento.Items.Add("SEGURO")
-            'cbDocumento.Items.Add("RPP")
-            'ElseIf cUsuario = "AGIL\janeth-ibarra" Or
-            '        cUsuario = "STATION6NAV\Mitzi Lopez" Or
-            '        cUsuario = "AGIL\sandra-duartex" Or
-            '        UsuarioGlobal.ToLower = "mlopezb" Or
-            '        UsuarioGlobal.ToLower = "fwakida" Or
-            '        UsuarioGlobal = "vtezcuc" Then
-
-            'cbDocumento.Items.Add("EFECTIVO")
-            'cbDocumento.Items.Add("EFECTIVO 2")
-            'cbDocumento.Items.Add("NOTARIO")
-            'cbDocumento.Items.Add("RPP")
-            'cbDocumento.Items.Add("VALE")
-            'cbDocumento.Items.Add("BURO")
-            'cbDocumento.Items.Add("GASTOS")
-            'cbDocumento.Items.Add("ASISTENCIA")
-            'cbDocumento.Items.Add("COMISION")
-            'cbDocumento.Items.Add("ANALISIS DE SUELOS")
-            'cbDocumento.Items.Add("AVALUO")
-            'cbDocumento.Items.Add("COBERTURA")
-            'cbDocumento.Items.Add("AGROQUIMICOS")
-            'cbDocumento.Items.Add("IVA")
-            'cbDocumento.Items.Add("SEGURO")
-            'cbDocumento.Items.Add("REEMBOLSO")'deshabilitado por Elisander
-            'cbDocumento.Items.Add("INTEGRACION")'deshabilitado por Elisander
-            'cbDocumento.Items.Add("RECIBO")'deshabilitado por Elisander
         Else
             cbDocumento.Items.Add("EFECTIVO")
             cbDocumento.Items.Add("EFECTIVO 2")
@@ -262,7 +213,6 @@ Public Class frmAgricola
             cbDocumento.Items.Add("ANALISIS DE SUELOS")
             cbDocumento.Items.Add("AVALUO")
             cbDocumento.Items.Add("RPP")
-            '   cbDocumento.Items.Add("COBERTURA")
         End If
 
         btnModificarFINAGIL.Visible = False
@@ -284,6 +234,13 @@ Public Class frmAgricola
             MessageBox.Show("Contrato sin Tasa de Interes, favor de notificar a Contabilidad.", "Error en Contrato.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             btnInsertarFINAGIL.Enabled = False
             btnInsertarFIRA.Enabled = False
+            Exit Sub
+        End If
+
+        Me.CxP_CuentasBancariasProvTableAdapter.FillByCliente(CxpDS.CXP_CuentasBancariasProv, Trim(drAvio("Cliente")))
+        If CxpDS.CXP_CuentasBancariasProv.Count <= 0 Then
+            btnInsertarFINAGIL.Enabled = False
+            MessageBox.Show("Productor sin cuenta bancaria registrada o autorizada.", "Cuenta Bancaria CXP", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
@@ -314,9 +271,6 @@ Public Class frmAgricola
         txtHectareasActual.Text = Format(drAvio("HectareasActual"), "##,##0.00")
         AplicaFega = drAvio("AplicaFega")
         FegaFlat = drAvio("FegaFlat")
-        txtBanco.Text = Trim(drAvio("Banco"))
-        txtCuentaBancomer.Text = drAvio("CuentaBancomer")
-        txtCuentaCLABE.Text = drAvio("CuentaCLABE")
         cFechaAutorizacion = drAvio("FechaAutorizacion")
         cFechaTerminacion = drAvio("FechaTerminacion")
         nPorcFega = drAvio("PorcFega")
@@ -806,9 +760,7 @@ Public Class frmAgricola
         End If
     End Sub
 
-    Private Sub GroupBox4_Enter(sender As Object, e As EventArgs) Handles GroupBox4.Enter
 
-    End Sub
 
     Private Sub BtnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
