@@ -23,10 +23,10 @@ Partial Class frmAgricola
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lblMinistradoFIRA = New System.Windows.Forms.Label()
         Me.panelFIRA = New System.Windows.Forms.Panel()
@@ -315,10 +315,10 @@ Partial Class frmAgricola
         Me.CmbCuenta.DisplayMember = "clabe"
         Me.CmbCuenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbCuenta.FormattingEnabled = True
-        Me.CmbCuenta.Location = New System.Drawing.Point(113, 17)
+        Me.CmbCuenta.Location = New System.Drawing.Point(113, 61)
         Me.CmbCuenta.Name = "CmbCuenta"
         Me.CmbCuenta.Size = New System.Drawing.Size(196, 21)
-        Me.CmbCuenta.TabIndex = 27
+        Me.CmbCuenta.TabIndex = 13
         Me.CmbCuenta.ValueMember = "idCuentas"
         '
         'CxP_CuentasBancariasProvBindingSource
@@ -333,7 +333,7 @@ Partial Class frmAgricola
         '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(14, 19)
+        Me.Label5.Location = New System.Drawing.Point(14, 63)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(93, 19)
         Me.Label5.TabIndex = 26
@@ -360,7 +360,7 @@ Partial Class frmAgricola
         '
         'Label24
         '
-        Me.Label24.Location = New System.Drawing.Point(14, 44)
+        Me.Label24.Location = New System.Drawing.Point(14, 16)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(118, 19)
         Me.Label24.TabIndex = 25
@@ -371,14 +371,14 @@ Partial Class frmAgricola
         '
         Me.cbDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbDocumento.FormattingEnabled = True
-        Me.cbDocumento.Location = New System.Drawing.Point(172, 43)
+        Me.cbDocumento.Location = New System.Drawing.Point(172, 15)
         Me.cbDocumento.Name = "cbDocumento"
         Me.cbDocumento.Size = New System.Drawing.Size(137, 21)
         Me.cbDocumento.TabIndex = 11
         '
         'Label22
         '
-        Me.Label22.Location = New System.Drawing.Point(14, 68)
+        Me.Label22.Location = New System.Drawing.Point(14, 40)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(118, 19)
         Me.Label22.TabIndex = 21
@@ -387,7 +387,7 @@ Partial Class frmAgricola
         '
         'txtImporteFINAGIL
         '
-        Me.txtImporteFINAGIL.Location = New System.Drawing.Point(209, 66)
+        Me.txtImporteFINAGIL.Location = New System.Drawing.Point(209, 38)
         Me.txtImporteFINAGIL.Name = "txtImporteFINAGIL"
         Me.txtImporteFINAGIL.Size = New System.Drawing.Size(100, 20)
         Me.txtImporteFINAGIL.TabIndex = 12
@@ -694,9 +694,9 @@ Partial Class frmAgricola
         'FechaDataGridViewTextBoxColumn
         '
         Me.FechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha"
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Format = "d"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.FechaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.FechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
         Me.FechaDataGridViewTextBoxColumn.Name = "FechaDataGridViewTextBoxColumn"
         Me.FechaDataGridViewTextBoxColumn.ReadOnly = True
@@ -705,8 +705,8 @@ Partial Class frmAgricola
         'SuperficieActualDataGridViewTextBoxColumn
         '
         Me.SuperficieActualDataGridViewTextBoxColumn.DataPropertyName = "SuperficieActual"
-        DataGridViewCellStyle2.Format = "N2"
-        Me.SuperficieActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Format = "N2"
+        Me.SuperficieActualDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.SuperficieActualDataGridViewTextBoxColumn.HeaderText = "Hect. Ant."
         Me.SuperficieActualDataGridViewTextBoxColumn.Name = "SuperficieActualDataGridViewTextBoxColumn"
         Me.SuperficieActualDataGridViewTextBoxColumn.ReadOnly = True
@@ -715,9 +715,9 @@ Partial Class frmAgricola
         'SuperficieNuevaDataGridViewTextBoxColumn
         '
         Me.SuperficieNuevaDataGridViewTextBoxColumn.DataPropertyName = "SuperficieNueva"
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.SuperficieNuevaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Format = "N2"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.SuperficieNuevaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
         Me.SuperficieNuevaDataGridViewTextBoxColumn.HeaderText = "Hect. Nva."
         Me.SuperficieNuevaDataGridViewTextBoxColumn.Name = "SuperficieNuevaDataGridViewTextBoxColumn"
         Me.SuperficieNuevaDataGridViewTextBoxColumn.ReadOnly = True
@@ -726,9 +726,9 @@ Partial Class frmAgricola
         'CuotaDataGridViewTextBoxColumn
         '
         Me.CuotaDataGridViewTextBoxColumn.DataPropertyName = "Cuota"
-        DataGridViewCellStyle4.Format = "N2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Format = "N2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.CuotaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
         Me.CuotaDataGridViewTextBoxColumn.HeaderText = "Cuota"
         Me.CuotaDataGridViewTextBoxColumn.Name = "CuotaDataGridViewTextBoxColumn"
         Me.CuotaDataGridViewTextBoxColumn.ReadOnly = True

@@ -2080,6 +2080,8 @@ Partial Public Class CxpDS
         
         Private columnidCuentas As Global.System.Data.DataColumn
         
+        Private columnCuentaDestino As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2260,6 +2262,14 @@ Partial Public Class CxpDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CuentaDestinoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCuentaDestino
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2312,12 +2322,19 @@ Partial Public Class CxpDS
                     ByVal FechaAlta As String,  _
                     ByVal cuenta As String,  _
                     ByVal clabe As String,  _
-                    ByVal idProveedor As Decimal) As TESO_Datos_LayOut_CXPRow
+                    ByVal idProveedor As Decimal,  _
+                    ByVal CuentaDestino As String) As TESO_Datos_LayOut_CXPRow
             Dim rowTESO_Datos_LayOut_CXPRow As TESO_Datos_LayOut_CXPRow = CType(Me.NewRow,TESO_Datos_LayOut_CXPRow)
-            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, Nothing, Moneda, Usuario, FechaAlta, cuenta, clabe, idProveedor, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Cliente, Descr, Anexo, Ciclo, Importe, FechaPago, Documento, Ministracion, Autoriza, AutorizaAut, Nothing, Moneda, Usuario, FechaAlta, cuenta, clabe, idProveedor, Nothing, CuentaDestino}
             rowTESO_Datos_LayOut_CXPRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTESO_Datos_LayOut_CXPRow)
             Return rowTESO_Datos_LayOut_CXPRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByClienteAnexoCicloMinistracionidCuentas(ByVal Cliente As String, ByVal Anexo As String, ByVal Ciclo As String, ByVal Ministracion As Byte, ByVal idCuentas As Decimal) As TESO_Datos_LayOut_CXPRow
+            Return CType(Me.Rows.Find(New Object() {Cliente, Anexo, Ciclo, Ministracion, idCuentas}),TESO_Datos_LayOut_CXPRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2355,6 +2372,7 @@ Partial Public Class CxpDS
             Me.columnclabe = MyBase.Columns("clabe")
             Me.columnidProveedor = MyBase.Columns("idProveedor")
             Me.columnidCuentas = MyBase.Columns("idCuentas")
+            Me.columnCuentaDestino = MyBase.Columns("CuentaDestino")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2396,6 +2414,9 @@ Partial Public Class CxpDS
             MyBase.Columns.Add(Me.columnidProveedor)
             Me.columnidCuentas = New Global.System.Data.DataColumn("idCuentas", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnidCuentas)
+            Me.columnCuentaDestino = New Global.System.Data.DataColumn("CuentaDestino", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCuentaDestino)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCliente, Me.columnAnexo, Me.columnCiclo, Me.columnMinistracion, Me.columnidCuentas}, true))
             Me.columnCliente.AllowDBNull = false
             Me.columnCliente.MaxLength = 5
             Me.columnDescr.AllowDBNull = false
@@ -2422,7 +2443,9 @@ Partial Public Class CxpDS
             Me.columnidCuentas.AutoIncrement = true
             Me.columnidCuentas.AutoIncrementSeed = -1
             Me.columnidCuentas.AutoIncrementStep = -1
+            Me.columnidCuentas.AllowDBNull = false
             Me.columnidCuentas.ReadOnly = true
+            Me.columnCuentaDestino.MaxLength = 18
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4886,15 +4909,26 @@ Partial Public Class CxpDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property idCuentas() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idCuentas' de la tabla 'TESO_Datos_LayOut_CXP' es DBNull."& _ 
-                            "", e)
-                End Try
+                Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn),Decimal)
             End Get
             Set
                 Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CuentaDestino() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTESO_Datos_LayOut_CXP.CuentaDestinoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CuentaDestino' de la tabla 'TESO_Datos_LayOut_CXP' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTESO_Datos_LayOut_CXP.CuentaDestinoColumn) = value
             End Set
         End Property
         
@@ -5020,14 +5054,14 @@ Partial Public Class CxpDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsidCuentasNull() As Boolean
-            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn)
+        Public Function IsCuentaDestinoNull() As Boolean
+            Return Me.IsNull(Me.tableTESO_Datos_LayOut_CXP.CuentaDestinoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetidCuentasNull()
-            Me(Me.tableTESO_Datos_LayOut_CXP.idCuentasColumn) = Global.System.Convert.DBNull
+        Public Sub SetCuentaDestinoNull()
+            Me(Me.tableTESO_Datos_LayOut_CXP.CuentaDestinoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8616,6 +8650,7 @@ Namespace CxpDSTableAdapters
             tableMapping.ColumnMappings.Add("clabe", "clabe")
             tableMapping.ColumnMappings.Add("idProveedor", "idProveedor")
             tableMapping.ColumnMappings.Add("idCuentas", "idCuentas")
+            tableMapping.ColumnMappings.Add("CuentaDestino", "CuentaDestino")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

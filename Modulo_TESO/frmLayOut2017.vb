@@ -443,4 +443,8 @@ Public Class frmLayOut2017
         Dim newfrmCambioCuenta As New frmCambioCuenta()
         newfrmCambioCuenta.Show()
     End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        Inserta_CXP_MOVS()
+    End Sub
 End Class

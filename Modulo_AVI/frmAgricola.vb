@@ -237,13 +237,6 @@ Public Class frmAgricola
             Exit Sub
         End If
 
-        Me.CxP_CuentasBancariasProvTableAdapter.FillByCliente(CxpDS.CXP_CuentasBancariasProv, Trim(drAvio("Cliente")))
-        If CxpDS.CXP_CuentasBancariasProv.Count <= 0 Then
-            btnInsertarFINAGIL.Enabled = False
-            MessageBox.Show("Productor sin cuenta bancaria registrada o autorizada.", "Cuenta Bancaria CXP", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-
         cNombreProductor = Trim(Mid(drAvio("Descr"), 1, 80))
 
         lblAnexo.Text = lblAnexo.Text & "   " & cNombreProductor
@@ -457,6 +450,13 @@ Public Class frmAgricola
             .ForeColor = Color.MidnightBlue
         End With
 
+        Me.CxP_CuentasBancariasProvTableAdapter.FillByCliente(CxpDS.CXP_CuentasBancariasProv, Trim(drAvio("Cliente")))
+        If CxpDS.CXP_CuentasBancariasProv.Count <= 0 Then
+            btnInsertarFINAGIL.Visible = False
+            btnModificarFINAGIL.Visible = False
+            MessageBox.Show("Productor sin cuenta bancaria registrada o autorizada.", "Cuenta Bancaria CXP", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
@@ -573,7 +573,7 @@ Public Class frmAgricola
 
                 nRowsFINAGIL = nRowsFINAGIL + 1
 
-                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario, Fega,procesado, MesaControlAut)"
+                strInsert = "INSERT INTO mFINAGIL (Anexo, Ciclo, Ministracion, Importe, Garantia, Documento, FechaAlta, SaldoMinistracion, SaldoGarantia, UltimoPago, usuario, Fega,procesado, MesaControlAut,CuentaDestino)"
                 strInsert = strInsert & " VALUES ('"
                 strInsert = strInsert & cAnexo & "', '"
                 strInsert = strInsert & cCiclo & "', '"
@@ -583,7 +583,7 @@ Public Class frmAgricola
                 strInsert = strInsert & cbDocumento.SelectedItem & "', '"
                 strInsert = strInsert & cFechaAlta & "', "
                 strInsert = strInsert & txtImporteFINAGIL.Text & ", "
-                strInsert = strInsert & nGarantiaLiq & ", '','" & UsuarioGlobal.Trim & "', " & nGarantiaFega & ",0,0)"
+                strInsert = strInsert & nGarantiaLiq & ", '','" & UsuarioGlobal.Trim & "', " & nGarantiaFega & ",0,0,'" & CxP_CuentasBancariasProvBindingSource.Current("Clabe") & "')"
                 Try
                     cm1 = New SqlCommand(strInsert, cnAgil)
                     cnAgil.Open()
@@ -760,7 +760,13 @@ Public Class frmAgricola
         End If
     End Sub
 
-
+    Private Sub cbDocumento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDocumento.SelectedIndexChanged
+        If cbDocumento.Text = "EFECTIVO" Then
+            CmbCuenta.Enabled = True
+        Else
+            CmbCuenta.Enabled = False
+        End If
+    End Sub
 
     Private Sub BtnSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()

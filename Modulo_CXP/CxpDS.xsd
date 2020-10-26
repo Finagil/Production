@@ -576,6 +576,7 @@ SELECT idPagosTesoreria, tipoSolicitud, folioSolicitud, origenRecurso, destinoRe
               <Mapping SourceColumn="clabe" DataSetColumn="clabe" />
               <Mapping SourceColumn="idProveedor" DataSetColumn="idProveedor" />
               <Mapping SourceColumn="idCuentas" DataSetColumn="idCuentas" />
+              <Mapping SourceColumn="CuentaDestino" DataSetColumn="CuentaDestino" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateMinistracion" Modifier="Public" Name="UpdateMinistracion" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateMinistracion">
@@ -636,7 +637,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
   <xs:element name="CxpDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CxpDS" msprop:Generator_UserDSName="CxpDS">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CXP_CuentasBancariasProv" msprop:Generator_TableClassName="CXP_CuentasBancariasProvDataTable" msprop:Generator_TableVarName="tableCXP_CuentasBancariasProv" msprop:Generator_RowChangedName="CXP_CuentasBancariasProvRowChanged" msprop:Generator_TablePropName="CXP_CuentasBancariasProv" msprop:Generator_RowDeletingName="CXP_CuentasBancariasProvRowDeleting" msprop:Generator_RowChangingName="CXP_CuentasBancariasProvRowChanging" msprop:Generator_RowEvHandlerName="CXP_CuentasBancariasProvRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CuentasBancariasProvRowDeleted" msprop:Generator_RowClassName="CXP_CuentasBancariasProvRow" msprop:Generator_UserTableName="CXP_CuentasBancariasProv" msprop:Generator_RowEvArgName="CXP_CuentasBancariasProvRowChangeEvent">
+        <xs:element name="CXP_CuentasBancariasProv" msprop:Generator_TableClassName="CXP_CuentasBancariasProvDataTable" msprop:Generator_TableVarName="tableCXP_CuentasBancariasProv" msprop:Generator_TablePropName="CXP_CuentasBancariasProv" msprop:Generator_RowDeletingName="CXP_CuentasBancariasProvRowDeleting" msprop:Generator_RowChangingName="CXP_CuentasBancariasProvRowChanging" msprop:Generator_RowEvHandlerName="CXP_CuentasBancariasProvRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_CuentasBancariasProvRowDeleted" msprop:Generator_UserTableName="CXP_CuentasBancariasProv" msprop:Generator_RowChangedName="CXP_CuentasBancariasProvRowChanged" msprop:Generator_RowEvArgName="CXP_CuentasBancariasProvRowChangeEvent" msprop:Generator_RowClassName="CXP_CuentasBancariasProvRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idCuentas" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCuentas" msprop:Generator_ColumnPropNameInRow="idCuentas" msprop:Generator_ColumnPropNameInTable="idCuentasColumn" msprop:Generator_UserColumnName="idCuentas" type="xs:decimal" />
@@ -707,7 +708,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CXP_Proveedores" msprop:Generator_TableClassName="CXP_ProveedoresDataTable" msprop:Generator_TableVarName="tableCXP_Proveedores" msprop:Generator_RowChangedName="CXP_ProveedoresRowChanged" msprop:Generator_TablePropName="CXP_Proveedores" msprop:Generator_RowDeletingName="CXP_ProveedoresRowDeleting" msprop:Generator_RowChangingName="CXP_ProveedoresRowChanging" msprop:Generator_RowEvHandlerName="CXP_ProveedoresRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_ProveedoresRowDeleted" msprop:Generator_RowClassName="CXP_ProveedoresRow" msprop:Generator_UserTableName="CXP_Proveedores" msprop:Generator_RowEvArgName="CXP_ProveedoresRowChangeEvent">
+        <xs:element name="CXP_Proveedores" msprop:Generator_TableClassName="CXP_ProveedoresDataTable" msprop:Generator_TableVarName="tableCXP_Proveedores" msprop:Generator_TablePropName="CXP_Proveedores" msprop:Generator_RowDeletingName="CXP_ProveedoresRowDeleting" msprop:Generator_RowChangingName="CXP_ProveedoresRowChanging" msprop:Generator_RowEvHandlerName="CXP_ProveedoresRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_ProveedoresRowDeleted" msprop:Generator_UserTableName="CXP_Proveedores" msprop:Generator_RowChangedName="CXP_ProveedoresRowChanged" msprop:Generator_RowEvArgName="CXP_ProveedoresRowChangeEvent" msprop:Generator_RowClassName="CXP_ProveedoresRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProveedor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" />
@@ -895,7 +896,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CXP_PagosTesoreria" msprop:Generator_TableClassName="CXP_PagosTesoreriaDataTable" msprop:Generator_TableVarName="tableCXP_PagosTesoreria" msprop:Generator_RowChangedName="CXP_PagosTesoreriaRowChanged" msprop:Generator_TablePropName="CXP_PagosTesoreria" msprop:Generator_RowDeletingName="CXP_PagosTesoreriaRowDeleting" msprop:Generator_RowChangingName="CXP_PagosTesoreriaRowChanging" msprop:Generator_RowEvHandlerName="CXP_PagosTesoreriaRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_PagosTesoreriaRowDeleted" msprop:Generator_RowClassName="CXP_PagosTesoreriaRow" msprop:Generator_UserTableName="CXP_PagosTesoreria" msprop:Generator_RowEvArgName="CXP_PagosTesoreriaRowChangeEvent">
+        <xs:element name="CXP_PagosTesoreria" msprop:Generator_TableClassName="CXP_PagosTesoreriaDataTable" msprop:Generator_TableVarName="tableCXP_PagosTesoreria" msprop:Generator_TablePropName="CXP_PagosTesoreria" msprop:Generator_RowDeletingName="CXP_PagosTesoreriaRowDeleting" msprop:Generator_RowChangingName="CXP_PagosTesoreriaRowChanging" msprop:Generator_RowEvHandlerName="CXP_PagosTesoreriaRowChangeEventHandler" msprop:Generator_RowDeletedName="CXP_PagosTesoreriaRowDeleted" msprop:Generator_UserTableName="CXP_PagosTesoreria" msprop:Generator_RowChangedName="CXP_PagosTesoreriaRowChanged" msprop:Generator_RowEvArgName="CXP_PagosTesoreriaRowChangeEvent" msprop:Generator_RowClassName="CXP_PagosTesoreriaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idPagosTesoreria" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidPagosTesoreria" msprop:Generator_ColumnPropNameInRow="idPagosTesoreria" msprop:Generator_ColumnPropNameInTable="idPagosTesoreriaColumn" msprop:Generator_UserColumnName="idPagosTesoreria" type="xs:decimal" />
@@ -942,7 +943,7 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TESO_Datos_LayOut_CXP" msprop:Generator_TableClassName="TESO_Datos_LayOut_CXPDataTable" msprop:Generator_TableVarName="tableTESO_Datos_LayOut_CXP" msprop:Generator_TablePropName="TESO_Datos_LayOut_CXP" msprop:Generator_RowDeletingName="TESO_Datos_LayOut_CXPRowDeleting" msprop:Generator_RowChangingName="TESO_Datos_LayOut_CXPRowChanging" msprop:Generator_RowEvHandlerName="TESO_Datos_LayOut_CXPRowChangeEventHandler" msprop:Generator_RowDeletedName="TESO_Datos_LayOut_CXPRowDeleted" msprop:Generator_UserTableName="TESO_Datos_LayOut_CXP" msprop:Generator_RowChangedName="TESO_Datos_LayOut_CXPRowChanged" msprop:Generator_RowEvArgName="TESO_Datos_LayOut_CXPRowChangeEvent" msprop:Generator_RowClassName="TESO_Datos_LayOut_CXPRow">
+        <xs:element name="TESO_Datos_LayOut_CXP" msprop:Generator_TableClassName="TESO_Datos_LayOut_CXPDataTable" msprop:Generator_TableVarName="tableTESO_Datos_LayOut_CXP" msprop:Generator_RowChangedName="TESO_Datos_LayOut_CXPRowChanged" msprop:Generator_TablePropName="TESO_Datos_LayOut_CXP" msprop:Generator_RowDeletingName="TESO_Datos_LayOut_CXPRowDeleting" msprop:Generator_RowChangingName="TESO_Datos_LayOut_CXPRowChanging" msprop:Generator_RowEvHandlerName="TESO_Datos_LayOut_CXPRowChangeEventHandler" msprop:Generator_RowDeletedName="TESO_Datos_LayOut_CXPRowDeleted" msprop:Generator_RowClassName="TESO_Datos_LayOut_CXPRow" msprop:Generator_UserTableName="TESO_Datos_LayOut_CXP" msprop:Generator_RowEvArgName="TESO_Datos_LayOut_CXPRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -1034,11 +1035,18 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
                 </xs:simpleType>
               </xs:element>
               <xs:element name="idProveedor" msprop:Generator_ColumnVarNameInTable="columnidProveedor" msprop:Generator_ColumnPropNameInRow="idProveedor" msprop:Generator_ColumnPropNameInTable="idProveedorColumn" msprop:Generator_UserColumnName="idProveedor" type="xs:decimal" minOccurs="0" />
-              <xs:element name="idCuentas" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCuentas" msprop:Generator_ColumnPropNameInRow="idCuentas" msprop:Generator_ColumnPropNameInTable="idCuentasColumn" msprop:Generator_UserColumnName="idCuentas" type="xs:decimal" minOccurs="0" />
+              <xs:element name="idCuentas" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidCuentas" msprop:Generator_ColumnPropNameInRow="idCuentas" msprop:Generator_ColumnPropNameInTable="idCuentasColumn" msprop:Generator_UserColumnName="idCuentas" type="xs:decimal" />
+              <xs:element name="CuentaDestino" msprop:Generator_ColumnVarNameInTable="columnCuentaDestino" msprop:Generator_ColumnPropNameInRow="CuentaDestino" msprop:Generator_ColumnPropNameInTable="CuentaDestinoColumn" msprop:Generator_UserColumnName="CuentaDestino" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="18" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TESO_Datos_LayOut" msprop:Generator_TableClassName="TESO_Datos_LayOutDataTable" msprop:Generator_TableVarName="tableTESO_Datos_LayOut" msprop:Generator_TablePropName="TESO_Datos_LayOut" msprop:Generator_RowDeletingName="TESO_Datos_LayOutRowDeleting" msprop:Generator_RowChangingName="TESO_Datos_LayOutRowChanging" msprop:Generator_RowEvHandlerName="TESO_Datos_LayOutRowChangeEventHandler" msprop:Generator_RowDeletedName="TESO_Datos_LayOutRowDeleted" msprop:Generator_UserTableName="TESO_Datos_LayOut" msprop:Generator_RowChangedName="TESO_Datos_LayOutRowChanged" msprop:Generator_RowEvArgName="TESO_Datos_LayOutRowChangeEvent" msprop:Generator_RowClassName="TESO_Datos_LayOutRow">
+        <xs:element name="TESO_Datos_LayOut" msprop:Generator_TableClassName="TESO_Datos_LayOutDataTable" msprop:Generator_TableVarName="tableTESO_Datos_LayOut" msprop:Generator_RowChangedName="TESO_Datos_LayOutRowChanged" msprop:Generator_TablePropName="TESO_Datos_LayOut" msprop:Generator_RowDeletingName="TESO_Datos_LayOutRowDeleting" msprop:Generator_RowChangingName="TESO_Datos_LayOutRowChanging" msprop:Generator_RowEvHandlerName="TESO_Datos_LayOutRowChangeEventHandler" msprop:Generator_RowDeletedName="TESO_Datos_LayOutRowDeleted" msprop:Generator_RowClassName="TESO_Datos_LayOutRow" msprop:Generator_UserTableName="TESO_Datos_LayOut" msprop:Generator_RowEvArgName="TESO_Datos_LayOutRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
@@ -1137,6 +1145,14 @@ WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Ministracion = @Ministra
     <xs:unique name="CXP_PagosTesoreria_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CXP_PagosTesoreria" />
       <xs:field xpath="mstns:idPagosTesoreria" />
+    </xs:unique>
+    <xs:unique name="TESO_Datos_LayOut_CXP_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TESO_Datos_LayOut_CXP" />
+      <xs:field xpath="mstns:Cliente" />
+      <xs:field xpath="mstns:Anexo" />
+      <xs:field xpath="mstns:Ciclo" />
+      <xs:field xpath="mstns:Ministracion" />
+      <xs:field xpath="mstns:idCuentas" />
     </xs:unique>
     <xs:unique name="TESO_Datos_LayOut_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:TESO_Datos_LayOut" />

@@ -121,6 +121,7 @@
         If Nuevo = True Then
             Me.MesaControlDS.AviosDet.GetChanges()
             Me.AviosDetTableAdapter.Update(Me.MesaControlDS.AviosDet)
+            Modulo_CXP.Inserta_CXP_MOVS()
             FrmAutoroizaAV_Load(Nothing, Nothing)
             MessageBox.Show("Movimientos liberados.", "Liberación Avío", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
