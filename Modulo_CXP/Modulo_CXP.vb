@@ -15,7 +15,8 @@
                 Folio = FOLIOS.FolioCXP_AVI()
                 FOLIOS.ConsumeFolioCXP_AVI()
                 TaPAg.InsertPago("AVI", Folio, r.idCuentas, r.Importe, Today.Date, Today.Date, r.Moneda, Date.Now, r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2), r.idProveedor)
-                TaMinis.UpdateMinistracion(cFecha, cFecha, "TesoreriaCXP", r.Anexo, r.Ciclo, r.Ministracion)
+                TaMinis.UpdateMinistracion(cFecha, cFecha, "TesoreriaCXPX", r.Anexo, r.Ciclo, r.Ministracion)
+                MandaCorreoFase("Avios@cmoderna.com", "sistemas", "Inserta_CXP_MOVS", r.Anexo & r.Ciclo & Stuff(r.Ministracion.ToString, "I", "0", 2) & " " & r.Importe)
             End If
         Next
     End Sub
