@@ -143,6 +143,7 @@ Public Class FrmParametros
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnMinistraciones.Click
+        BttSave_Click(Nothing, Nothing)
         Dim f As New FrmMinistracionesParametros
         f.ID = Txtid.Text
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
