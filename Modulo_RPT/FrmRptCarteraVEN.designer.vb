@@ -66,6 +66,9 @@ Partial Class FrmRptCarteraVEN
         Me.Hipotecaria = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GarantiaLiquida = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GarantiaFega = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoPersona = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NoLetras = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LetrasFacturadas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CarteraVencidaRPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportesDS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,7 +100,7 @@ Partial Class FrmRptCarteraVEN
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica, Me.Reestructura, Me.ParteRelacionada, Me.Prendaria, Me.Hipotecaria, Me.GarantiaLiquida, Me.GarantiaFega})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AnexoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.FechaActivacionDataGridViewTextBoxColumn, Me.FechaTerminacionDataGridViewTextBoxColumn, Me.DiasRetrasoDataGridViewTextBoxColumn, Me.SaldoInsolutoDataGridViewTextBoxColumn, Me.SaldoSeguroDataGridViewTextBoxColumn, Me.SaldoOtrosDataGridViewTextBoxColumn, Me.ProvInte, Me.RentaCapitalDataGridViewTextBoxColumn, Me.RentaOtrosDataGridViewTextBoxColumn, Me.RentaInteresDataGridViewTextBoxColumn, Me.Castigo, Me.Garantia, Me.Opcion, Me.TotalVencidoDataGridViewTextBoxColumn, Me.TipoCreditoDataGridViewTextBoxColumn, Me.Moneda, Me.EstatusDataGridViewTextBoxColumn, Me.Sucursal, Me.MontoFinanciado, Me.Cultivo, Me.Giro, Me.ActividadInegi, Me.ActividadEconomica, Me.Reestructura, Me.ParteRelacionada, Me.Prendaria, Me.Hipotecaria, Me.GarantiaLiquida, Me.GarantiaFega, Me.TipoPersona, Me.NoLetras, Me.LetrasFacturadas})
         Me.DataGridView1.DataSource = Me.CarteraVencidaRPTBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(12, 635)
         Me.DataGridView1.Name = "DataGridView1"
@@ -394,6 +397,27 @@ Partial Class FrmRptCarteraVEN
         Me.GarantiaFega.Name = "GarantiaFega"
         Me.GarantiaFega.ReadOnly = True
         '
+        'TipoPersona
+        '
+        Me.TipoPersona.DataPropertyName = "TipoPersona"
+        Me.TipoPersona.HeaderText = "TipoPersona"
+        Me.TipoPersona.Name = "TipoPersona"
+        Me.TipoPersona.ReadOnly = True
+        '
+        'NoLetras
+        '
+        Me.NoLetras.DataPropertyName = "NoLetras"
+        Me.NoLetras.HeaderText = "NoLetras"
+        Me.NoLetras.Name = "NoLetras"
+        Me.NoLetras.ReadOnly = True
+        '
+        'LetrasFacturadas
+        '
+        Me.LetrasFacturadas.DataPropertyName = "LetrasFacturadas"
+        Me.LetrasFacturadas.HeaderText = "LetrasFacturadas"
+        Me.LetrasFacturadas.Name = "LetrasFacturadas"
+        Me.LetrasFacturadas.ReadOnly = True
+        '
         'FrmRptCarteraVEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -460,4 +484,7 @@ Partial Class FrmRptCarteraVEN
     Friend WithEvents Hipotecaria As DataGridViewTextBoxColumn
     Friend WithEvents GarantiaLiquida As DataGridViewTextBoxColumn
     Friend WithEvents GarantiaFega As DataGridViewTextBoxColumn
+    Friend WithEvents TipoPersona As DataGridViewTextBoxColumn
+    Friend WithEvents NoLetras As DataGridViewTextBoxColumn
+    Friend WithEvents LetrasFacturadas As DataGridViewTextBoxColumn
 End Class

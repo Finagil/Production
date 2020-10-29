@@ -411,6 +411,9 @@ Public Class FrmRptCarteraVEN
         rr.Hipotecaria = r.Hipotecaria
         rr.GarantiaLiquida = r.GarantiaLiquida
         rr.GarantiaFega = r.GarantiaFega
+        If Not r.IsTipoNull Then rr.TipoPersona = r.Tipo Else rr.TipoPersona = ""
+        If Not r.IsLetrasNull Then rr.NoLetras = r.Letras Else rr.NoLetras = 0
+        If Not r.IsFacturadasNull Then rr.LetrasFacturadas = r.Facturadas Else rr.LetrasFacturadas = 0
 
         rr.Reestructura = r.Reestructura
         rr.MontoFinanciado = r.MontoFinanciado
@@ -541,6 +544,9 @@ Public Class FrmRptCarteraVEN
         Else
             rr.Anexo = r.Factura
         End If
+        rr.TipoPersona = "M"
+        rr.NoLetras = 0
+        rr.LetrasFacturadas = 0
         rr.DiasRetraso = r.Dias
         rr.Moneda = r.Moneda
         rr.Cliente = r.Nombre
