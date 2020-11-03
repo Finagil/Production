@@ -1215,7 +1215,7 @@ Public Class frmDatoscon
         Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescr.Location = New System.Drawing.Point(330, 8)
         Me.lblDescr.Name = "lblDescr"
-        Me.lblDescr.Size = New System.Drawing.Size(243, 18)
+        Me.lblDescr.Size = New System.Drawing.Size(514, 18)
         Me.lblDescr.TabIndex = 71
         '
         'btnTablaOtros
@@ -2260,7 +2260,7 @@ Public Class frmDatoscon
             drAnexo = dsAgil.Tables("Anexos").Rows(0)
             cFlcan = drAnexo("Flcan")
             lblStatus.Text = SacaGEN_ESTAUS(cFlcan)
-            lblDescr.Text = drAnexo("Descr")
+            lblDescr.Text = Trim(drAnexo("Descr"))
             ClienteAux = drAnexo("cliente")
 
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++

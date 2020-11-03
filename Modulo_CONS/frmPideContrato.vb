@@ -54,6 +54,7 @@ Public Class frmPideContrato
     End Sub
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
+        lblMensaje.Visible = False
         Dim ta As New ProductionDataSetTableAdapters.AnexosTableAdapter 'SACA TIPAR
         Dim TipoCredito As String = ""
         ' Declaración de variables de conexión ADO .NET

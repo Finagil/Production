@@ -158,7 +158,6 @@ Public Class frmAgil
     Friend WithEvents mnuCheckList As System.Windows.Forms.MenuItem
     Friend WithEvents mnuReportecl As System.Windows.Forms.MenuItem
     Friend WithEvents mnuConsultaCL As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuLayOutAvio As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMinistracionesPorProductor As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMinistracionesPorContrato As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMinistracionFFP As System.Windows.Forms.MenuItem
@@ -236,10 +235,8 @@ Public Class frmAgil
     Friend WithEvents MnuPLdAuto As MenuItem
     Friend WithEvents MnuPortaCont As MenuItem
     Friend WithEvents MnuLiberMC As MenuItem
-    Friend WithEvents MnuFechaPago As MenuItem
     Friend WithEvents MnuLiberAvio As MenuItem
     Friend WithEvents MnuAutoAviCRE As MenuItem
-    Friend WithEvents MnuPagosAvio As MenuItem
     Friend WithEvents MniBloqAvisos As MenuItem
     Friend WithEvents MnuFira As MenuItem
     Friend WithEvents MenuItem16 As MenuItem
@@ -384,9 +381,6 @@ Public Class frmAgil
         Me.mnuActuaTas = New System.Windows.Forms.MenuItem()
         Me.mnuActuaUdis = New System.Windows.Forms.MenuItem()
         Me.mnuDepoRefe = New System.Windows.Forms.MenuItem()
-        Me.mnuLayOutAvio = New System.Windows.Forms.MenuItem()
-        Me.MnuFechaPago = New System.Windows.Forms.MenuItem()
-        Me.MnuPagosAvio = New System.Windows.Forms.MenuItem()
         Me.MenuItem1 = New System.Windows.Forms.MenuItem()
         Me.mnuSeguros = New System.Windows.Forms.MenuItem()
         Me.mnuCaptSegu = New System.Windows.Forms.MenuItem()
@@ -580,6 +574,9 @@ Public Class frmAgil
         Me.MenuItem34 = New System.Windows.Forms.MenuItem()
         Me.MenuItem52 = New System.Windows.Forms.MenuItem()
         Me.MenuItem80 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem90 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem91 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem92 = New System.Windows.Forms.MenuItem()
         Me.MnuPLD = New System.Windows.Forms.MenuItem()
         Me.MnuPLdAuto = New System.Windows.Forms.MenuItem()
         Me.MenuItem41 = New System.Windows.Forms.MenuItem()
@@ -595,9 +592,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem90 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem91 = New System.Windows.Forms.MenuItem()
-        Me.MenuItem92 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -933,7 +927,7 @@ Public Class frmAgil
         '
         Me.mnuTesoreria.Enabled = False
         Me.mnuTesoreria.Index = 3
-        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuDepoRefe, Me.mnuLayOutAvio, Me.MnuFechaPago, Me.MnuPagosAvio, Me.MenuItem1})
+        Me.mnuTesoreria.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRecupera, Me.mnuRepGaran, Me.mnuRepoDisp, Me.mnuRepNafin, Me.mnuActuaTas, Me.mnuActuaUdis, Me.mnuDepoRefe, Me.MenuItem1})
         Me.mnuTesoreria.Text = "Tesorería"
         '
         'mnuRecupera
@@ -978,28 +972,10 @@ Public Class frmAgil
         Me.mnuDepoRefe.Index = 6
         Me.mnuDepoRefe.Text = "Depósitos Referenciados"
         '
-        'mnuLayOutAvio
-        '
-        Me.mnuLayOutAvio.Enabled = False
-        Me.mnuLayOutAvio.Index = 7
-        Me.mnuLayOutAvio.Text = "Genera Lay Out de Avío"
-        '
-        'MnuFechaPago
-        '
-        Me.MnuFechaPago.Enabled = False
-        Me.MnuFechaPago.Index = 8
-        Me.MnuFechaPago.Text = "Captura Fecha de Pago"
-        '
-        'MnuPagosAvio
-        '
-        Me.MnuPagosAvio.Enabled = False
-        Me.MnuPagosAvio.Index = 9
-        Me.MnuPagosAvio.Text = "Subir Pagos Avío"
-        '
         'MenuItem1
         '
         Me.MenuItem1.Enabled = False
-        Me.MenuItem1.Index = 10
+        Me.MenuItem1.Index = 7
         Me.MenuItem1.Text = "Cancelación de Avisos"
         '
         'mnuSeguros
@@ -2090,6 +2066,22 @@ Public Class frmAgil
         Me.MenuItem80.Index = 10
         Me.MenuItem80.Text = "Cambio de Usuario CXP"
         '
+        'MenuItem90
+        '
+        Me.MenuItem90.Index = 11
+        Me.MenuItem90.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem91, Me.MenuItem92})
+        Me.MenuItem90.Text = "Consulta Check List MC"
+        '
+        'MenuItem91
+        '
+        Me.MenuItem91.Index = 0
+        Me.MenuItem91.Text = "Por Anexo"
+        '
+        'MenuItem92
+        '
+        Me.MenuItem92.Index = 1
+        Me.MenuItem92.Text = "Por Nombre"
+        '
         'MnuPLD
         '
         Me.MnuPLD.Enabled = False
@@ -2168,22 +2160,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem90
-        '
-        Me.MenuItem90.Index = 11
-        Me.MenuItem90.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem91, Me.MenuItem92})
-        Me.MenuItem90.Text = "Consulta Check List MC"
-        '
-        'MenuItem91
-        '
-        Me.MenuItem91.Index = 0
-        Me.MenuItem91.Text = "Por Anexo"
-        '
-        'MenuItem92
-        '
-        Me.MenuItem92.Index = 1
-        Me.MenuItem92.Text = "Por Nombre"
         '
         'frmAgil
         '
@@ -2862,11 +2838,6 @@ Public Class frmAgil
         newfrmRepCL.Show()
     End Sub
 
-    Private Sub mnuLayOutAvio_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuLayOutAvio.Click
-        Dim newfrmLayOutAvio As New frmLayOut2017()
-        newfrmLayOutAvio.Show()
-    End Sub
-
     Private Sub mnuBuscarSerie_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuBuscarSerie.Click
         Dim newfrmBuscarSerie As New frmBuscaSerie()
         newfrmBuscarSerie.Show()
@@ -3230,11 +3201,6 @@ Public Class frmAgil
         f.Show()
     End Sub
 
-    Private Sub MnuFechaPago_Click(sender As Object, e As EventArgs) Handles MnuFechaPago.Click
-        Dim f As New FrmFechaPago
-        f.Show()
-    End Sub
-
     Private Sub MnuLiberAvio_Click(sender As Object, e As EventArgs) Handles MnuLiberAvio.Click
         Dim f As New FrmAutoroizaAV
         f.Show()
@@ -3242,11 +3208,6 @@ Public Class frmAgil
 
     Private Sub MnuAutoAviCRE_Click(sender As Object, e As EventArgs) Handles MnuAutoAviCRE.Click
         Dim f As New FrmAutoroizaAV_FIRA
-        f.Show()
-    End Sub
-
-    Private Sub MenuItem16_Click(sender As Object, e As EventArgs) Handles MnuPagosAvio.Click
-        Dim f As New FrmSubePagosAV
         f.Show()
     End Sub
 
@@ -3706,4 +3667,6 @@ Public Class frmAgil
         Dim newfrmPideAnexo As New frmPideAnexo("mnuCkList")
         newfrmPideAnexo.Show()
     End Sub
+
+
 End Class

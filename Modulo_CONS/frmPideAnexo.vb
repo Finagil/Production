@@ -439,12 +439,12 @@ Public Class frmPideAnexo
                 Dim newfrmCaptValo As New frmCaptValo(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmCaptValo.Show()
             Case "mnuCaptSegu"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-                Dim newfrmCaptSegu As New frmCaptsegu(Mid(ListBox1.SelectedItem, 1, 10))
-                newfrmCaptSegu.Show()
+                'If TipoCredito = "B" Then ' FULL SERVICE
+                '    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    Exit Select
+                'End If
+                'Dim newfrmCaptSegu As New frmCaptsegu(Mid(ListBox1.SelectedItem, 1, 10))
+                'newfrmCaptSegu.Show()
             Case "mnuCartaRat"
                 'If TipoCredito = "B" Then ' FULL SERVICE
                 'MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -91,62 +91,6 @@ WHERE        (Anexo = @Original_Anexo)</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vw_FechaPagosTableAdapter" GeneratorDataComponentClassName="Vw_FechaPagosTableAdapter" Name="Vw_FechaPagos" UserDataComponentName="Vw_FechaPagosTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_TESO_FechaPagos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Cliente, [Importe Equipo], [Monto Financiado], Fecha_Pago, FechaActivacion, Tipar, Ivaeq, IvaAmorin, Iniciales, Producto, NoCliente
-FROM            Vw_TESO_FechaPagos</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
-              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
-              <Mapping SourceColumn="Importe Equipo" DataSetColumn="Importe Equipo" />
-              <Mapping SourceColumn="Monto Financiado" DataSetColumn="Monto Financiado" />
-              <Mapping SourceColumn="Fecha_Pago" DataSetColumn="Fecha_Pago" />
-              <Mapping SourceColumn="FechaActivacion" DataSetColumn="FechaActivacion" />
-              <Mapping SourceColumn="Tipar" DataSetColumn="Tipar" />
-              <Mapping SourceColumn="Ivaeq" DataSetColumn="Ivaeq" />
-              <Mapping SourceColumn="IvaAmorin" DataSetColumn="IvaAmorin" />
-              <Mapping SourceColumn="Iniciales" DataSetColumn="Iniciales" />
-              <Mapping SourceColumn="Producto" DataSetColumn="Producto" />
-              <Mapping SourceColumn="NoCliente" DataSetColumn="NoCliente" />
-            </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Vw_TESO_FechaPagosAll" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAll" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByAll" GeneratorSourceName="FillByAll" GetMethodModifier="Public" GetMethodName="GetDataByAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByAll" UserSourceName="FillByAll">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Anexo, Cliente, [Importe Equipo], [Monto Financiado], Fecha_Pago, FechaActivacion, Tipar, Ivaeq, IvaAmorin, Iniciales, Producto, NoCliente
-FROM            Vw_TESO_FechaPagosAll</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Total" Modifier="Public" Name="Total" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Total">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        ISNULL(SUM([Monto Financiado]), 0) AS Total
-FROM            Vw_TESO_FechaPagos</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TotalAll" Modifier="Public" Name="TotalAll" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="TotalAll">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        ISNULL(SUM([Monto Financiado]), 0) AS Total
-FROM            Vw_TESO_FechaPagosAll</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </Sources>
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AnexosTableAdapter" GeneratorDataComponentClassName="AnexosTableAdapter" Name="Anexos" UserDataComponentName="AnexosTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.Anexos" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -219,159 +163,6 @@ WHERE     (Anexo = @Anexo)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Fecha" ColumnName="Fecha_Pago" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(8)" DbType="String" Direction="Input" ParameterName="@Fecha" Precision="0" ProviderType="NChar" Scale="0" Size="8" SourceColumn="Fecha_Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="Anexo" ColumnName="Anexo" DataSourceName="Production.dbo.Anexos" DataTypeServer="nchar(9)" DbType="String" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="9" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </Sources>
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PagosAvioTableAdapter" GeneratorDataComponentClassName="PagosAvioTableAdapter" Name="PagosAvio" UserDataComponentName="PagosAvioTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="Production.dbo.AVI_PagosAvio" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [AVI_PagosAvio] WHERE (([id_pago] = @Original_id_pago) AND ((@IsNull_Referencia = 1 AND [Referencia] IS NULL) OR ([Referencia] = @Original_Referencia)) AND ((@IsNull_FechaPago = 1 AND [FechaPago] IS NULL) OR ([FechaPago] = @Original_FechaPago)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Confirmado = 1 AND [Confirmado] IS NULL) OR ([Confirmado] = @Original_Confirmado)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Ministracion = 1 AND [Ministracion] IS NULL) OR ([Ministracion] = @Original_Ministracion)) AND ((@IsNull_Aplicado = 1 AND [Aplicado] IS NULL) OR ([Aplicado] = @Original_Aplicado)))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Referencia" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Referencia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaPago" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cliente" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Cliente" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Confirmado" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Confirmado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Ciclo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Aplicado" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Aplicado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [AVI_PagosAvio] ([Referencia], [FechaPago], [Cliente], [Confirmado], [Importe], [Anexo], [Ciclo], [Ministracion], [Aplicado]) VALUES (@Referencia, @FechaPago, @Cliente, @Confirmado, @Importe, @Anexo, @Ciclo, @Ministracion, @Aplicado);
-SELECT id_pago, Referencia, FechaPago, Cliente, Confirmado, Importe, Anexo, Ciclo, Ministracion, Aplicado FROM AVI_PagosAvio WHERE (id_pago = SCOPE_IDENTITY())</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Referencia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaPago" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Confirmado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Aplicado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        id_pago, Referencia, FechaPago, Cliente, Confirmado, Importe, Anexo, Ciclo, Ministracion, Aplicado
-FROM            AVI_PagosAvio
-WHERE        (Referencia = @Refe) AND (Importe = @Importe) AND (FechaPago BETWEEN @Fecha1 AND @Fecha2)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="Refe" ColumnName="Referencia" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="varchar(10)" DbType="AnsiString" Direction="Input" ParameterName="@Refe" Precision="0" ProviderType="VarChar" Scale="0" Size="12" SourceColumn="Referencia" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Importe" ColumnName="Importe" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="numeric(12, 2)" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="9" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha1" ColumnName="FechaPago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha1" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha2" ColumnName="FechaPago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha2" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [AVI_PagosAvio] SET [Referencia] = @Referencia, [FechaPago] = @FechaPago, [Cliente] = @Cliente, [Confirmado] = @Confirmado, [Importe] = @Importe, [Anexo] = @Anexo, [Ciclo] = @Ciclo, [Ministracion] = @Ministracion, [Aplicado] = @Aplicado WHERE (([id_pago] = @Original_id_pago) AND ((@IsNull_Referencia = 1 AND [Referencia] IS NULL) OR ([Referencia] = @Original_Referencia)) AND ((@IsNull_FechaPago = 1 AND [FechaPago] IS NULL) OR ([FechaPago] = @Original_FechaPago)) AND ((@IsNull_Cliente = 1 AND [Cliente] IS NULL) OR ([Cliente] = @Original_Cliente)) AND ((@IsNull_Confirmado = 1 AND [Confirmado] IS NULL) OR ([Confirmado] = @Original_Confirmado)) AND ((@IsNull_Importe = 1 AND [Importe] IS NULL) OR ([Importe] = @Original_Importe)) AND ((@IsNull_Anexo = 1 AND [Anexo] IS NULL) OR ([Anexo] = @Original_Anexo)) AND ((@IsNull_Ciclo = 1 AND [Ciclo] IS NULL) OR ([Ciclo] = @Original_Ciclo)) AND ((@IsNull_Ministracion = 1 AND [Ministracion] IS NULL) OR ([Ministracion] = @Original_Ministracion)) AND ((@IsNull_Aplicado = 1 AND [Aplicado] IS NULL) OR ([Aplicado] = @Original_Aplicado)));
-SELECT id_pago, Referencia, FechaPago, Cliente, Confirmado, Importe, Anexo, Ciclo, Ministracion, Aplicado FROM AVI_PagosAvio WHERE (id_pago = @id_pago)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Referencia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@FechaPago" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Cliente" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Confirmado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Aplicado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Referencia" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Referencia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Referencia" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FechaPago" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_FechaPago" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Cliente" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Cliente" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Cliente" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Confirmado" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Confirmado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Confirmado" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Importe" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Importe" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Importe" Precision="12" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="Importe" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Anexo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Anexo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Anexo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Ciclo" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="StringFixedLength" Direction="Input" ParameterName="@Original_Ciclo" Precision="0" ProviderType="NChar" Scale="0" Size="0" SourceColumn="Ciclo" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Ministracion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Ministracion" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Aplicado" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Aplicado" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Aplicado" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="id_pago" ColumnName="id_pago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="id_pago" DataSetColumn="id_pago" />
-              <Mapping SourceColumn="Referencia" DataSetColumn="Referencia" />
-              <Mapping SourceColumn="FechaPago" DataSetColumn="FechaPago" />
-              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
-              <Mapping SourceColumn="Confirmado" DataSetColumn="Confirmado" />
-              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
-              <Mapping SourceColumn="Anexo" DataSetColumn="Anexo" />
-              <Mapping SourceColumn="Ciclo" DataSetColumn="Ciclo" />
-              <Mapping SourceColumn="Ministracion" DataSetColumn="Ministracion" />
-              <Mapping SourceColumn="Aplicado" DataSetColumn="Aplicado" />
-            </Mappings>
-            <Sources>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Aplicado" Modifier="Public" Name="Aplicado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Aplicado">
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>UPDATE       AVI_PagosAvio
-SET                Aplicado = @Aplicado
-WHERE        (id_pago = @Original_id_pago); 
-SELECT id_pago, Referencia, FechaPago, Cliente, Confirmado, Importe, Anexo, Ciclo, Ministracion,  Aplicado FROM AVI_PagosAvio WHERE (id_pago = @id_pago)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="Aplicado" ColumnName="Aplicado" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@Aplicado" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="Aplicado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Original_id_pago" ColumnName="id_pago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@Original_id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="id_pago" ColumnName="id_pago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelarCarga" Modifier="Public" Name="CancelarCarga" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="CancelarCarga">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>DELETE FROM AVI_PagosAvio
-WHERE        (FechaPago BETWEEN @Fecha1 AND @Fecha2)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha1" ColumnName="FechaPago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha1" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="Fecha2" ColumnName="FechaPago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Fecha2" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FechaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-              </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Confirmado" Modifier="Public" Name="Confirmado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="Confirmado">
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>UPDATE       AVI_PagosAvio
-SET                Confirmado= @Confirmado
-WHERE        (id_pago = @Original_id_pago); </CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="Confirmado" ColumnName="Confirmado" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="bit" DbType="Boolean" Direction="Input" ParameterName="@Confirmado" Precision="0" ProviderType="Bit" Scale="0" Size="1" SourceColumn="Confirmado" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="Original_id_pago" ColumnName="id_pago" DataSourceName="Production.dbo.AVI_PagosAvio" DataTypeServer="numeric" DbType="Decimal" Direction="Input" ParameterName="@Original_id_pago" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="id_pago" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -786,7 +577,7 @@ SET                IDBlanco = IDBlanco + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioCXP_AVI" Modifier="Public" Name="ConsumeFolioCXP_AVI" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="ConsumeFolioCXP_AVI">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioCXP_AVI" Modifier="Public" Name="ConsumeFolioCXP_AVI" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="ConsumeFolioCXP_AVI">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -795,7 +586,7 @@ SET                CXP_AVI = CXP_AVI + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMora" Modifier="Public" Name="ConsumeFolioMora" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="ConsumeFolioMora">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMora" Modifier="Public" Name="ConsumeFolioMora" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="ConsumeFolioMora">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -804,7 +595,7 @@ SET                CFDI_Mora = CFDI_Mora + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMXL" Modifier="Public" Name="ConsumeFolioMXL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="ConsumeFolioMXL">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioMXL" Modifier="Public" Name="ConsumeFolioMXL" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="ConsumeFolioMXL">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -813,7 +604,7 @@ SET                IDSerieMXL = IDSerieMXL + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioPago" Modifier="Public" Name="ConsumeFolioPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="ConsumeFolioPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeFolioPago" Modifier="Public" Name="ConsumeFolioPago" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="ConsumeFolioPago">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -822,7 +613,7 @@ SET                CFDI_Pago = CFDI_Pago + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSerieB" Modifier="Public" Name="ConsumeSerieB" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="ConsumeSerieB">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSerieB" Modifier="Public" Name="ConsumeSerieB" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="ConsumeSerieB">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -831,7 +622,7 @@ SET                ConInv = ConInv + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSolCre" Modifier="Public" Name="ConsumeSolCre" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="ConsumeSolCre">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ConsumeSolCre" Modifier="Public" Name="ConsumeSolCre" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="ConsumeSolCre">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Llaves
@@ -840,7 +631,7 @@ SET                IDSolicitud = IDSolicitud + 1</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FacturaAviso" Modifier="Public" Name="FacturaAviso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="FacturaAviso">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FacturaAviso" Modifier="Public" Name="FacturaAviso" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="FacturaAviso">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Facturas
@@ -854,7 +645,7 @@ WHERE        (Factura = @Aviso) AND (FacturaCFDI = 0)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioA" Modifier="Public" Name="FolioA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="FolioA">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioA" Modifier="Public" Name="FolioA" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="FolioA">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDSerieA) + 1 AS Expr1
@@ -863,7 +654,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioAnexo" Modifier="Public" Name="FolioAnexo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="FolioAnexo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioAnexo" Modifier="Public" Name="FolioAnexo" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy14" UserSourceName="FolioAnexo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        IDContrato + 1 AS Expr1
@@ -872,7 +663,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioAviso" Modifier="Public" Name="FolioAviso" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy14" UserSourceName="FolioAviso">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioAviso" Modifier="Public" Name="FolioAviso" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy15" UserSourceName="FolioAviso">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT IDFactura +1 as IDFactura  FROM Llaves</CommandText>
@@ -880,7 +671,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioB" Modifier="Public" Name="FolioB" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy15" UserSourceName="FolioB">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioB" Modifier="Public" Name="FolioB" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy16" UserSourceName="FolioB">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(ConInv) + 1 AS Expr1
@@ -889,7 +680,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioBlanco" Modifier="Public" Name="FolioBlanco" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy16" UserSourceName="FolioBlanco">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioBlanco" Modifier="Public" Name="FolioBlanco" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy17" UserSourceName="FolioBlanco">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDBlanco) + 1 AS Expr1
@@ -898,7 +689,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioCXP_AVI" Modifier="Public" Name="FolioCXP_AVI" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="FolioCXP_AVI">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioCXP_AVI" Modifier="Public" Name="FolioCXP_AVI" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy18" UserSourceName="FolioCXP_AVI">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CXP_AVI + 1 AS IDFactura
@@ -907,7 +698,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMora" Modifier="Public" Name="FolioMora" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy17" UserSourceName="FolioMora">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMora" Modifier="Public" Name="FolioMora" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="FolioMora">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CFDI_Mora) + 1 AS Expr1
@@ -916,7 +707,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMXL" Modifier="Public" Name="FolioMXL" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy18" UserSourceName="FolioMXL">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioMXL" Modifier="Public" Name="FolioMXL" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="FolioMXL">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDSerieMXL) + 1 AS Expr1
@@ -925,7 +716,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioPago" Modifier="Public" Name="FolioPago" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy19" UserSourceName="FolioPago">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioPago" Modifier="Public" Name="FolioPago" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="FolioPago">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(CFDI_Pago) + 1 AS Expr1
@@ -934,7 +725,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioSolCre" Modifier="Public" Name="FolioSolCre" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy20" UserSourceName="FolioSolCre">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="FolioSolCre" Modifier="Public" Name="FolioSolCre" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy22" UserSourceName="FolioSolCre">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        MAX(IDSolicitud) + 1 AS Expr1
@@ -943,7 +734,7 @@ FROM            Llaves</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaNoGrupo" Modifier="Public" Name="SacaNoGrupo" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy21" UserSourceName="SacaNoGrupo">
+              <DbSource ConnectionRef="ProductionConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="SacaNoGrupo" Modifier="Public" Name="SacaNoGrupo" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy23" UserSourceName="SacaNoGrupo">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX(Grupo), 0) + 1 AS Expr1
@@ -1076,72 +867,6 @@ ORDER BY Responsable, DiasRetraso DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vw_FechaPagos" msprop:Generator_TableClassName="Vw_FechaPagosDataTable" msprop:Generator_TableVarName="tableVw_FechaPagos" msprop:Generator_RowChangedName="Vw_FechaPagosRowChanged" msprop:Generator_TablePropName="Vw_FechaPagos" msprop:Generator_RowDeletingName="Vw_FechaPagosRowDeleting" msprop:Generator_RowChangingName="Vw_FechaPagosRowChanging" msprop:Generator_RowEvHandlerName="Vw_FechaPagosRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_FechaPagosRowDeleted" msprop:Generator_RowClassName="Vw_FechaPagosRow" msprop:Generator_UserTableName="Vw_FechaPagos" msprop:Generator_RowEvArgName="Vw_FechaPagosRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Anexo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="120" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Importe_x0020_Equipo" msprop:Generator_ColumnVarNameInTable="columnImporte_Equipo" msprop:Generator_ColumnPropNameInRow="Importe_Equipo" msprop:Generator_ColumnPropNameInTable="Importe_EquipoColumn" msprop:Generator_UserColumnName="Importe Equipo" type="xs:decimal" />
-              <xs:element name="Monto_x0020_Financiado" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMonto_Financiado" msprop:Generator_ColumnPropNameInRow="Monto_Financiado" msprop:Generator_ColumnPropNameInTable="Monto_FinanciadoColumn" msprop:Generator_UserColumnName="Monto Financiado" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Fecha_Pago" msprop:Generator_ColumnVarNameInTable="columnFecha_Pago" msprop:Generator_ColumnPropNameInRow="Fecha_Pago" msprop:Generator_ColumnPropNameInTable="Fecha_PagoColumn" msprop:Generator_UserColumnName="Fecha_Pago">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="8" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="FechaActivacion" msprop:Generator_ColumnVarNameInTable="columnFechaActivacion" msprop:Generator_ColumnPropNameInRow="FechaActivacion" msprop:Generator_ColumnPropNameInTable="FechaActivacionColumn" msprop:Generator_UserColumnName="FechaActivacion" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="8" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Tipar" msprop:Generator_ColumnVarNameInTable="columnTipar" msprop:Generator_ColumnPropNameInRow="Tipar" msprop:Generator_ColumnPropNameInTable="TiparColumn" msprop:Generator_UserColumnName="Tipar">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Ivaeq" msprop:Generator_ColumnVarNameInTable="columnIvaeq" msprop:Generator_ColumnPropNameInRow="Ivaeq" msprop:Generator_ColumnPropNameInTable="IvaeqColumn" msprop:Generator_UserColumnName="Ivaeq" type="xs:decimal" />
-              <xs:element name="IvaAmorin" msprop:Generator_ColumnVarNameInTable="columnIvaAmorin" msprop:Generator_ColumnPropNameInRow="IvaAmorin" msprop:Generator_ColumnPropNameInTable="IvaAmorinColumn" msprop:Generator_UserColumnName="IvaAmorin" type="xs:decimal" />
-              <xs:element name="Iniciales" msprop:Generator_ColumnVarNameInTable="columnIniciales" msprop:Generator_ColumnPropNameInRow="Iniciales" msprop:Generator_ColumnPropNameInTable="InicialesColumn" msprop:Generator_UserColumnName="Iniciales">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="4" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_UserColumnName="Producto" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NoCliente" msprop:Generator_ColumnVarNameInTable="columnNoCliente" msprop:Generator_ColumnPropNameInRow="NoCliente" msprop:Generator_ColumnPropNameInTable="NoClienteColumn" msprop:Generator_UserColumnName="NoCliente">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="5" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Anexos" msprop:Generator_TableClassName="AnexosDataTable" msprop:Generator_TableVarName="tableAnexos" msprop:Generator_RowChangedName="AnexosRowChanged" msprop:Generator_TablePropName="Anexos" msprop:Generator_RowDeletingName="AnexosRowDeleting" msprop:Generator_RowChangingName="AnexosRowChanging" msprop:Generator_RowEvHandlerName="AnexosRowChangeEventHandler" msprop:Generator_RowDeletedName="AnexosRowDeleted" msprop:Generator_RowClassName="AnexosRow" msprop:Generator_UserTableName="Anexos" msprop:Generator_RowEvArgName="AnexosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
@@ -1159,46 +884,6 @@ ORDER BY Responsable, DiasRetraso DESC</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="PagosAvio" msprop:Generator_TableClassName="PagosAvioDataTable" msprop:Generator_TableVarName="tablePagosAvio" msprop:Generator_RowChangedName="PagosAvioRowChanged" msprop:Generator_TablePropName="PagosAvio" msprop:Generator_RowDeletingName="PagosAvioRowDeleting" msprop:Generator_RowChangingName="PagosAvioRowChanging" msprop:Generator_RowEvHandlerName="PagosAvioRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosAvioRowDeleted" msprop:Generator_RowClassName="PagosAvioRow" msprop:Generator_UserTableName="PagosAvio" msprop:Generator_RowEvArgName="PagosAvioRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id_pago" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_pago" msprop:Generator_ColumnPropNameInRow="id_pago" msprop:Generator_ColumnPropNameInTable="id_pagoColumn" msprop:Generator_UserColumnName="id_pago" type="xs:decimal" />
-              <xs:element name="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_UserColumnName="Referencia" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="12" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="FechaPago" msprop:Generator_ColumnVarNameInTable="columnFechaPago" msprop:Generator_ColumnPropNameInRow="FechaPago" msprop:Generator_ColumnPropNameInTable="FechaPagoColumn" msprop:Generator_UserColumnName="FechaPago" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Confirmado" msprop:Generator_ColumnVarNameInTable="columnConfirmado" msprop:Generator_ColumnPropNameInRow="Confirmado" msprop:Generator_ColumnPropNameInTable="ConfirmadoColumn" msprop:Generator_UserColumnName="Confirmado" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Anexo" msprop:Generator_ColumnVarNameInTable="columnAnexo" msprop:Generator_ColumnPropNameInRow="Anexo" msprop:Generator_ColumnPropNameInTable="AnexoColumn" msprop:Generator_UserColumnName="Anexo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Ciclo" msprop:Generator_ColumnVarNameInTable="columnCiclo" msprop:Generator_ColumnPropNameInRow="Ciclo" msprop:Generator_ColumnPropNameInTable="CicloColumn" msprop:Generator_UserColumnName="Ciclo" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Ministracion" msprop:Generator_ColumnVarNameInTable="columnMinistracion" msprop:Generator_ColumnPropNameInRow="Ministracion" msprop:Generator_ColumnPropNameInTable="MinistracionColumn" msprop:Generator_UserColumnName="Ministracion" type="xs:int" minOccurs="0" />
-              <xs:element name="Aplicado" msprop:Generator_ColumnVarNameInTable="columnAplicado" msprop:Generator_ColumnPropNameInRow="Aplicado" msprop:Generator_ColumnPropNameInTable="AplicadoColumn" msprop:Generator_UserColumnName="Aplicado" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1639,18 +1324,9 @@ ORDER BY Responsable, DiasRetraso DESC</CommandText>
       <xs:selector xpath=".//mstns:Opciones" />
       <xs:field xpath="mstns:Anexo" />
     </xs:unique>
-    <xs:unique name="Vw_FechaPagos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Vw_FechaPagos" />
-      <xs:field xpath="mstns:Anexo" />
-      <xs:field xpath="mstns:NoCliente" />
-    </xs:unique>
     <xs:unique name="Anexos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Anexos" />
       <xs:field xpath="mstns:Anexo" />
-    </xs:unique>
-    <xs:unique name="PagosAvio_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:PagosAvio" />
-      <xs:field xpath="mstns:id_pago" />
     </xs:unique>
     <xs:unique name="VW_PagosAvio_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:VW_PagosAvio" />
