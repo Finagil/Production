@@ -23,7 +23,9 @@ Public Class frmSegumanu
     Friend WithEvents BtnAdd As Button
     Friend WithEvents Txttotal As TextBox
     Dim NoMensual As New ProductionDataSetTableAdapters.AvisosNoMensualesTableAdapter
+    Friend WithEvents BtnCargaImp As Button
     Dim dtCargoseg As New DataTable("Seguro")
+    Dim cAnexo As String
 
 
 
@@ -128,6 +130,7 @@ Public Class frmSegumanu
         Me.ListImportes = New System.Windows.Forms.ListBox()
         Me.BtnAdd = New System.Windows.Forms.Button()
         Me.Txttotal = New System.Windows.Forms.TextBox()
+        Me.BtnCargaImp = New System.Windows.Forms.Button()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -326,6 +329,7 @@ Public Class frmSegumanu
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BtnCargaImp)
         Me.GroupBox1.Controls.Add(Me.btnContinuar)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.lblPlazorestante)
@@ -341,9 +345,9 @@ Public Class frmSegumanu
         '
         'btnContinuar
         '
-        Me.btnContinuar.Location = New System.Drawing.Point(531, 38)
+        Me.btnContinuar.Location = New System.Drawing.Point(519, 38)
         Me.btnContinuar.Name = "btnContinuar"
-        Me.btnContinuar.Size = New System.Drawing.Size(89, 22)
+        Me.btnContinuar.Size = New System.Drawing.Size(117, 22)
         Me.btnContinuar.TabIndex = 4
         Me.btnContinuar.Text = "Continuar"
         Me.btnContinuar.UseVisualStyleBackColor = True
@@ -505,6 +509,15 @@ Public Class frmSegumanu
         Me.Txttotal.TabIndex = 39
         Me.Txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'BtnCargaImp
+        '
+        Me.BtnCargaImp.Location = New System.Drawing.Point(519, 13)
+        Me.BtnCargaImp.Name = "BtnCargaImp"
+        Me.BtnCargaImp.Size = New System.Drawing.Size(117, 22)
+        Me.BtnCargaImp.TabIndex = 5
+        Me.BtnCargaImp.Text = "Carga Imp Ult. Venc."
+        Me.BtnCargaImp.UseVisualStyleBackColor = True
+        '
         'frmSegumanu
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -579,8 +592,6 @@ Public Class frmSegumanu
         Dim relAnexoEdoctav As DataRelation
 
         ' Declaración de variables de datos
-
-        Dim cAnexo As String
         Dim cFecha As String
         Dim cFeven As String
         Dim lSaldoSeg As Boolean
@@ -651,17 +662,22 @@ Public Class frmSegumanu
         ' Validando que el contrato esté Activo
 
         drAnexo = dsAgil.Tables("Anexos").Rows(0)
-
         txtCusnam.Text = drAnexo("Descr")
         cCliente = drAnexo("Cliente")
         nPlazoX = drAnexo("Plazo")
         nTasaApli = (drAnexo("Tasas") + drAnexo("Difer")) / 1200
         txtTasaAp.Text = nTasaApli
+        BtnCargaImp.Visible = False
 
         If drAnexo("Flcan") <> "A" Then
-
-            MsgBox("Contrato NO activo", MsgBoxStyle.OkOnly, "Mensaje")
-            Me.Close()
+            If drAnexo("Flcan") = "W" Then
+                btnContinuar.Visible = False
+                BtnCargaImp.Visible = True
+                GroupBox1.Enabled = True
+            Else
+                MsgBox("Contrato NO activo", MsgBoxStyle.OkOnly, "Mensaje")
+                Me.Close()
+            End If
 
         Else
 
@@ -1093,5 +1109,16 @@ Public Class frmSegumanu
             Next
             Txttotal.Text = s.ToString("n2")
         End If
+    End Sub
+
+    Private Sub BtnCargaImp_Click(sender As Object, e As EventArgs) Handles BtnCargaImp.Click
+        Try
+            Dim Imp As Decimal = InputBox("Importe de Seguro para Ultima letra", "Cargar Importe Ultima Letra")
+            Dim ta As New SegurosDSTableAdapters.AnexosSEGTableAdapter
+            ta.sp_SEG_CargaSeguroUltimoAviso(cAnexo, Imp)
+            MessageBox.Show("Importe cargado: " & Imp.ToString("n2"), "Cargar Importe Ultima Letra", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error de Importe")
+        End Try
     End Sub
 End Class

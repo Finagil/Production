@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>192</ApplicationRevision>
+    <ApplicationRevision>195</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -201,12 +201,6 @@
       <DependentUpon>frmCancelaAviso.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_TESO\frmCancelaAviso.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulo_TESO\frmLayOut2017.designer.vb">
-      <DependentUpon>frmLayOut2017.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_TESO\frmLayOut2017.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\FrmTablasESP_PROM.Designer.vb">
@@ -1423,18 +1417,6 @@
       <DependentUpon>rptRepoDisp.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Modulo_TESO\FrmFechaPago.designer.vb">
-      <DependentUpon>FrmFechaPago.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_TESO\FrmFechaPago.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulo_TESO\FrmSubePagosAV.Designer.vb">
-      <DependentUpon>FrmSubePagosAV.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Modulo_TESO\FrmSubePagosAV.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_TESO\TesoreriaDS.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2143,9 +2125,6 @@
     <Compile Include="Mudulo_PROM\frmAltaClie.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaptsegu.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Modulo_MC\frmCaptValo.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -2663,9 +2642,6 @@
     <EmbeddedResource Include="Modulo_TESO\frmCancelaAviso.resx">
       <DependentUpon>frmCancelaAviso.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\frmLayOut2017.resx">
-      <DependentUpon>frmLayOut2017.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmTablasESP_PROM.resx">
       <DependentUpon>FrmTablasESP_PROM.vb</DependentUpon>
@@ -3276,12 +3252,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepoDisp.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\FrmFechaPago.resx">
-      <DependentUpon>FrmFechaPago.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modulo_TESO\FrmSubePagosAV.resx">
-      <DependentUpon>FrmSubePagosAV.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmActiAnexAF.resx">
       <DependentUpon>frmActiAnexAF.vb</DependentUpon>
     </EmbeddedResource>
@@ -3760,10 +3730,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\frmAltaClie.resx">
       <DependentUpon>frmAltaClie.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmCaptsegu.resx">
-      <DependentUpon>frmCaptsegu.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\frmCaptValo.resx">
