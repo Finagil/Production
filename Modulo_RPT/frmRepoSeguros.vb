@@ -73,7 +73,15 @@ Public Class frmRepoSeguros
             Label2.Text = r.Descr
             Label2.Update()
             cEdad = DameEdad(r.FechaNac.ToString("yyyyMMdd"), cFecha)
+
             drReporte = ReportesDS1.dtReporte.NewdtReporteRow
+            drReporte.FechaNac = r.FechaNac.Date
+            drReporte.Nombre = r.nombreCliente
+            drReporte.Paterno = r.ApellidoPaterno
+            drReporte.Materno = r.ApellidoMaterno
+            drReporte.Nombre2 = ""
+            drReporte.CURP = r.CURP
+            drReporte.Sexo = r.Genero
             drReporte("Contrato") = Mid(r.Anexo, 1, 5) & "/" & Mid(r.Anexo, 6, 4)
             drReporte("NameCte") = Trim(r.Descr)
             drReporte("Edad") = cEdad
@@ -144,6 +152,13 @@ Public Class frmRepoSeguros
             cEdad = DameEdad(r2.FechaNac.ToString("yyyyMMdd"), cFecha)
             'registro del reporte
             drReporte = ReportesDS1.dtReporte.NewRow()
+            drReporte.FechaNac = r2.FechaNac.Date
+            drReporte.Nombre = r2.nombreCliente
+            drReporte.Paterno = r2.ApellidoPaterno
+            drReporte.Materno = r2.ApellidoMaterno
+            drReporte.Nombre2 = ""
+            drReporte.CURP = r2.CURP
+            drReporte.Sexo = r2.Genero
             drReporte("Contrato") = r2.Anexo
             drReporte("NameCte") = r2.Descr
             drReporte("Edad") = cEdad

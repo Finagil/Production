@@ -26,9 +26,17 @@ Partial Class frmRepoSeguros
         Me.cbBase = New System.Windows.Forms.ComboBox()
         Me.ReportesDS1 = New Agil.ReportesDS()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ContratoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Paterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Materno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameCteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CURP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sexo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaNac = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EdadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContratoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoEqDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoSegDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SaldoOTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,7 +47,6 @@ Partial Class frmRepoSeguros
         Me.SaldoAvioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TotalDeudaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PagoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CalleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColoniaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CoposDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -113,7 +120,7 @@ Partial Class frmRepoSeguros
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ContratoDataGridViewTextBoxColumn, Me.NameCteDataGridViewTextBoxColumn, Me.EdadDataGridViewTextBoxColumn, Me.SaldoEqDataGridViewTextBoxColumn, Me.SaldoSegDataGridViewTextBoxColumn, Me.SaldoOTDataGridViewTextBoxColumn, Me.IvaCapDataGridViewTextBoxColumn, Me.RentasVenDataGridViewTextBoxColumn, Me.OpCompIvaDataGridViewTextBoxColumn, Me.RtasDepIvaDataGridViewTextBoxColumn, Me.SaldoAvioDataGridViewTextBoxColumn, Me.TotalDeudaDataGridViewTextBoxColumn, Me.PagoDataGridViewTextBoxColumn, Me.RFCDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.CoposDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.FechaConDataGridViewTextBoxColumn, Me.FechaVecnDataGridViewTextBoxColumn, Me.Sucursal})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Paterno, Me.Materno, Me.Nombre, Me.Nombre2, Me.NameCteDataGridViewTextBoxColumn, Me.CURP, Me.Sexo, Me.FechaNac, Me.RFCDataGridViewTextBoxColumn, Me.EdadDataGridViewTextBoxColumn, Me.ContratoDataGridViewTextBoxColumn, Me.SaldoEqDataGridViewTextBoxColumn, Me.SaldoSegDataGridViewTextBoxColumn, Me.SaldoOTDataGridViewTextBoxColumn, Me.IvaCapDataGridViewTextBoxColumn, Me.RentasVenDataGridViewTextBoxColumn, Me.OpCompIvaDataGridViewTextBoxColumn, Me.RtasDepIvaDataGridViewTextBoxColumn, Me.SaldoAvioDataGridViewTextBoxColumn, Me.TotalDeudaDataGridViewTextBoxColumn, Me.PagoDataGridViewTextBoxColumn, Me.CalleDataGridViewTextBoxColumn, Me.ColoniaDataGridViewTextBoxColumn, Me.CoposDataGridViewTextBoxColumn, Me.EstadoDataGridViewTextBoxColumn, Me.FechaConDataGridViewTextBoxColumn, Me.FechaVecnDataGridViewTextBoxColumn, Me.Sucursal})
         Me.DataGridView1.DataMember = "dtReporte"
         Me.DataGridView1.DataSource = Me.ReportesDS1
         Me.DataGridView1.Location = New System.Drawing.Point(8, 632)
@@ -122,12 +129,33 @@ Partial Class frmRepoSeguros
         Me.DataGridView1.Size = New System.Drawing.Size(1079, 65)
         Me.DataGridView1.TabIndex = 24
         '
-        'ContratoDataGridViewTextBoxColumn
+        'Paterno
         '
-        Me.ContratoDataGridViewTextBoxColumn.DataPropertyName = "Contrato"
-        Me.ContratoDataGridViewTextBoxColumn.HeaderText = "Contrato"
-        Me.ContratoDataGridViewTextBoxColumn.Name = "ContratoDataGridViewTextBoxColumn"
-        Me.ContratoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.Paterno.DataPropertyName = "Paterno"
+        Me.Paterno.HeaderText = "Paterno"
+        Me.Paterno.Name = "Paterno"
+        Me.Paterno.ReadOnly = True
+        '
+        'Materno
+        '
+        Me.Materno.DataPropertyName = "Materno"
+        Me.Materno.HeaderText = "Materno"
+        Me.Materno.Name = "Materno"
+        Me.Materno.ReadOnly = True
+        '
+        'Nombre
+        '
+        Me.Nombre.DataPropertyName = "Nombre"
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        '
+        'Nombre2
+        '
+        Me.Nombre2.DataPropertyName = "Nombre2"
+        Me.Nombre2.HeaderText = "Nombre2"
+        Me.Nombre2.Name = "Nombre2"
+        Me.Nombre2.ReadOnly = True
         '
         'NameCteDataGridViewTextBoxColumn
         '
@@ -136,12 +164,47 @@ Partial Class frmRepoSeguros
         Me.NameCteDataGridViewTextBoxColumn.Name = "NameCteDataGridViewTextBoxColumn"
         Me.NameCteDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'CURP
+        '
+        Me.CURP.DataPropertyName = "CURP"
+        Me.CURP.HeaderText = "CURP"
+        Me.CURP.Name = "CURP"
+        Me.CURP.ReadOnly = True
+        '
+        'Sexo
+        '
+        Me.Sexo.DataPropertyName = "Sexo"
+        Me.Sexo.HeaderText = "Sexo"
+        Me.Sexo.Name = "Sexo"
+        Me.Sexo.ReadOnly = True
+        '
+        'FechaNac
+        '
+        Me.FechaNac.DataPropertyName = "FechaNac"
+        Me.FechaNac.HeaderText = "FechaNac"
+        Me.FechaNac.Name = "FechaNac"
+        Me.FechaNac.ReadOnly = True
+        '
+        'RFCDataGridViewTextBoxColumn
+        '
+        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
+        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'EdadDataGridViewTextBoxColumn
         '
         Me.EdadDataGridViewTextBoxColumn.DataPropertyName = "Edad"
         Me.EdadDataGridViewTextBoxColumn.HeaderText = "Edad"
         Me.EdadDataGridViewTextBoxColumn.Name = "EdadDataGridViewTextBoxColumn"
         Me.EdadDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ContratoDataGridViewTextBoxColumn
+        '
+        Me.ContratoDataGridViewTextBoxColumn.DataPropertyName = "Contrato"
+        Me.ContratoDataGridViewTextBoxColumn.HeaderText = "Contrato"
+        Me.ContratoDataGridViewTextBoxColumn.Name = "ContratoDataGridViewTextBoxColumn"
+        Me.ContratoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'SaldoEqDataGridViewTextBoxColumn
         '
@@ -212,13 +275,6 @@ Partial Class frmRepoSeguros
         Me.PagoDataGridViewTextBoxColumn.HeaderText = "Pago"
         Me.PagoDataGridViewTextBoxColumn.Name = "PagoDataGridViewTextBoxColumn"
         Me.PagoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RFCDataGridViewTextBoxColumn
-        '
-        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
-        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CalleDataGridViewTextBoxColumn
         '
@@ -295,9 +351,17 @@ Partial Class frmRepoSeguros
     Friend WithEvents cbBase As System.Windows.Forms.ComboBox
     Friend WithEvents ReportesDS1 As ReportesDS
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents ContratoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Paterno As DataGridViewTextBoxColumn
+    Friend WithEvents Materno As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As DataGridViewTextBoxColumn
+    Friend WithEvents Nombre2 As DataGridViewTextBoxColumn
     Friend WithEvents NameCteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CURP As DataGridViewTextBoxColumn
+    Friend WithEvents Sexo As DataGridViewTextBoxColumn
+    Friend WithEvents FechaNac As DataGridViewTextBoxColumn
+    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EdadDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ContratoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoEqDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoSegDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SaldoOTDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -308,7 +372,6 @@ Partial Class frmRepoSeguros
     Friend WithEvents SaldoAvioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TotalDeudaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CalleDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ColoniaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CoposDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
