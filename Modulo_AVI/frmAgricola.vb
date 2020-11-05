@@ -162,7 +162,6 @@ Public Class frmAgricola
         End With
 
         nMinistradoFIRA = 0
-        nMinistradoFINAGIL = 0
 
         cbFEGA.Items.Add("NO")
         cbFEGA.Items.Add("SI")
@@ -197,6 +196,7 @@ Public Class frmAgricola
         daAvio.Fill(dsAgil, "Avios")
         daFIRA.Fill(dsAgil, "FIRA")
         Me.Sp_AVI_MinistracionesTableAdapter.Fill(AviosDSX.sp_AVI_Ministraciones, cAnexo, cCiclo)
+        nMinistradoFINAGIL = Me.Sp_AVI_MinistracionesTableAdapter.TotalMinistrado(cAnexo, cCiclo)
         SpAVIMinistracionesBindingSource.MoveLast()
         daPagares.Fill(dsAgil, "Pagares")
 
@@ -546,7 +546,7 @@ Public Class frmAgricola
                 Me.Sp_AVI_MinistracionesTableAdapter.Fill(AviosDSX.sp_AVI_Ministraciones, cAnexo, cCiclo)
                 Me.SpAVIMinistracionesBindingSource.MoveLast()
 
-                nMinistradoFINAGIL = nMinistradoFINAGIL + CDbl(txtImporteFINAGIL.Text)
+                nMinistradoFINAGIL = Me.Sp_AVI_MinistracionesTableAdapter.TotalMinistrado(cAnexo, cCiclo)
                 lblMinistradoFINAGIL.Text = "Total Ministrado por FINAGIL al Productor $" & Format(nMinistradoFINAGIL, "##,##0.00")
             End If
 
