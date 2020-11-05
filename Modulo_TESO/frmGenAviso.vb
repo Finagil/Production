@@ -96,6 +96,8 @@ Public Class frmGenAviso
         Dim taMail As New GeneralDSTableAdapters.CorreosAnexosTableAdapter
         Dim tMail As New GeneralDS.CorreosAnexosDataTable
         Dim rMail As GeneralDS.CorreosAnexosRow
+        Dim TaReest As New ReestructDSTableAdapters.REEST_AnexosBulletTableAdapter
+        Dim Treest As New ReestructDS.REEST_AnexosBulletDataTable
         ' Declaración de variables de conexión ADO .NET
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
@@ -145,6 +147,7 @@ Public Class frmGenAviso
         Dim nIvaOt As Decimal = 0
         Dim nIvaSe As Decimal = 0
         Dim nOpcion As Decimal = 0
+        Dim nBullet As Decimal = 0
         Dim nRense As Decimal = 0
         Dim nSaldo As Decimal = 0
         Dim nSaldot As Decimal = 0
@@ -330,14 +333,11 @@ Public Class frmGenAviso
                 nIvaBonificacion = 0
 
                 If cTipar = "P" Then
-
                     nCapeq = drAnexo("CapEq") + drAnexo("IntPr") + drAnexo("VarPr")
                     nIvacapital = 0
                     nIntEq = 0
                     nIvaEq = drAnexo("IvaCapital") + drAnexo("Ivapr")
-
                 Else
-
                     nCapeq = drAnexo("Capeq")
                     nIvacapital = drAnexo("Ivacapital")
                     nIntEq = drAnexo("IntPr") + drAnexo("VarPr")
@@ -380,12 +380,16 @@ Public Class frmGenAviso
                             nIvaopc = drAnexo("IvaOpcion")
                         End If
                     End If
+                    TaReest.FillORG(Treest, drAnexo("Anexo"))
+                    If Treest.Rows.Count > 0 Then
+                        nBullet = TaReest.SacaCapital(Treest.Rows(0).Item("AnexoBullet"))
+                    End If
                 End If
 
                 nTotaleq = Round(nCapeq + nIvacapital - nBonifica + nIntEq + nIvaEq + nOpcion + nIvaopc, 2)
                 nTotalse = Round(nRense + nIntSe + nIvaSe, 2)
                 nTotalot = Round(nCapot + nIntOt + nIvaOt + nSegVida + nImporteFega, 2)
-                nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc), 2)
+                nImpFac = Round(drAnexo("ImporteFac") + Val(nOpcion) + Val(nIvaopc) + nBullet, 2)
 
                 cLetras = Letras(nImpFac.ToString, drAnexo("Moneda"))
 
@@ -547,9 +551,9 @@ Public Class frmGenAviso
                 End If
                 drAviso("ImporteF") = FormatNumber(nIvacapital.ToString, 2)
                 drAviso("ImporteH") = FormatNumber(-nIvaBonificacion.ToString, 2)
-                drAviso("ImporteJ") = FormatNumber(nIntEq.ToString, 2)
+                drAviso("ImporteJ") = FormatNumber(CDec(nBullet + nIntEq).ToString, 2)
                 drAviso("ImporteK") = FormatNumber(nIntSe.ToString, 2)
-                drAviso("ImporteL") = FormatNumber((nIntEq + nIntSe + nIntOt).ToString, 2)
+                drAviso("ImporteL") = FormatNumber((nBullet + nIntEq + nIntSe + nIntOt).ToString, 2)
                 drAviso("ImporteN") = FormatNumber(nIvaSe.ToString, 2)
                 drAviso("ImporteP") = FormatNumber(nOpcion.ToString, 2)
                 drAviso("ImporteR") = FormatNumber(nIvaopc.ToString, 2)

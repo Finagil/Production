@@ -10,6 +10,8 @@ Public Class frmGeneFact
     Public ContratoAux As String = ""
     Dim tanot As New PromocionDSTableAdapters.GEN_NotificacionesAnexosTableAdapter
     Dim dsProm As New PromocionDS
+    Dim TaReest As New ReestructDSTableAdapters.REEST_AnexosBulletTableAdapter
+    Dim Treest As New ReestructDS.REEST_AnexosBulletDataTable
 
 #Region " Windows Form Designer generated code "
 
@@ -1018,16 +1020,17 @@ Public Class frmGeneFact
                     .ImporteFega = nImporteFega
                     .IndPag = ""
                     .Enviado = "N"
+                    TaReest.FillByBullet(Treest, cAnexo)
+                    If Treest.Rows.Count > 0 Then
+                        .Enviado = "S"
+                        MandaCorreoFase("Avisos@finagil.com.mx", "SISTEMAS", "BULLET", cAnexo)
+                    End If
                 End With
-
                 aFacturas.Add(aFactura)
-
             End If
-
         Next
 
         ' Cuando llego a este punto, ya calculé y guardé el Seguro de Vida de los contratos con Acumulación de Intereses.
-
         ' Ahora tengo que revisar los clientes que se exceden en su Cuota Máxima Mensual del Seguro de Vida
 
         For Each drSVC In dtSVC.Rows
@@ -1222,6 +1225,10 @@ Public Class frmGeneFact
                     MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada TRA " & aFactura.Anexo, strUpdate)
                     cm1 = New SqlCommand(strUpdate, cnAgil)
                     cm1.ExecuteNonQuery()
+                    TaReest.FillORG(Treest, cAnexo)
+                    If Treest.Rows.Count > 0 Then
+                        MandaCorreoFase("Avisos@finagil.com.mx", "SISTEMAS", "ORGBULLET", cAnexo)
+                    End If
                 End If
 
             Catch eException As Exception
