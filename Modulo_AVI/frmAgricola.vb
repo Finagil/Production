@@ -15,7 +15,6 @@ Public Class frmAgricola
     Dim cnAgil As New SqlConnection(strConn)
     Dim dtPagares As New DataTable
     Dim dtFIRA As New DataTable
-    Dim dtFINAGIL As New DataTable
     Dim myKeySearch(0) As String
 
     ' Declaración de variables de datos de alcance privado
@@ -27,7 +26,6 @@ Public Class frmAgricola
     Dim cCliente As String = ""
     Dim lInsertFINAGIL As Boolean
     Dim lInsertFIRA As Boolean
-    Dim lUpdateFINAGIL As Boolean
     Dim lUpdateFIRA As Boolean
     Dim nImporteAnterior As Decimal = 0
     Dim nMinistradoFIRA As Decimal = 0
@@ -76,18 +74,6 @@ Public Class frmAgricola
 
         ' Crear la tabla que contendrá la información de las ministraciones FINAGIL - Productor
         Dim myColArray(0) As DataColumn
-        dtFINAGIL.Columns.Add("No.", Type.GetType("System.Decimal"))
-        dtFINAGIL.Columns.Add("Documento", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Fecha de Pago", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Importe", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Garantia", Type.GetType("System.String"))
-        dtFINAGIL.Columns.Add("Procesado", Type.GetType("System.Boolean"))
-
-        ' Tengo que definir una llave primaria para la tabla dtFINAGIL a fin de buscar un registro cuando desee actualizarlo
-
-        myColArray(0) = dtFINAGIL.Columns("No.")
-        dtFINAGIL.PrimaryKey = myColArray
-
         ' Crear la tabla que contendrá la información de los pagarés firmados por el Productor
 
         dtPagares.Columns.Add("No.", Type.GetType("System.Decimal"))
@@ -114,11 +100,9 @@ Public Class frmAgricola
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
-        Dim cm3 As New SqlCommand()
         Dim cm4 As New SqlCommand()
         Dim daAvio As New SqlDataAdapter(cm1)
         Dim daFIRA As New SqlDataAdapter(cm2)
-        Dim daFINAGIL As New SqlDataAdapter(cm3)
         Dim daPagares As New SqlDataAdapter(cm4)
 
         Dim dsAgil As New DataSet()
@@ -162,16 +146,6 @@ Public Class frmAgricola
         With cm2
             .CommandType = CommandType.Text
             .CommandText = "SELECT * FROM mFIRA " &
-                           "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " &
-                           "ORDER BY Ministracion"
-            .Connection = cnAgil
-        End With
-
-        ' El siguiente Command trae los datos de las ministraciones FINAGIL - Productor
-
-        With cm3
-            .CommandType = CommandType.Text
-            .CommandText = "SELECT * FROM mFINAGIL " &
                            "WHERE Anexo = '" & cAnexo & "' AND Ciclo = '" & cCiclo & "' " &
                            "ORDER BY Ministracion"
             .Connection = cnAgil
@@ -222,7 +196,8 @@ Public Class frmAgricola
 
         daAvio.Fill(dsAgil, "Avios")
         daFIRA.Fill(dsAgil, "FIRA")
-        daFINAGIL.Fill(dsAgil, "FINAGIL")
+        Me.Sp_AVI_MinistracionesTableAdapter.Fill(AviosDSX.sp_AVI_Ministraciones, cAnexo, cCiclo)
+        SpAVIMinistracionesBindingSource.MoveLast()
         daPagares.Fill(dsAgil, "Pagares")
 
         ' Información del contrato de habilitación o avío
@@ -239,7 +214,7 @@ Public Class frmAgricola
 
         cNombreProductor = Trim(Mid(drAvio("Descr"), 1, 80))
 
-        lblAnexo.Text = lblAnexo.Text & "   " & cNombreProductor
+        lblAnexo.Text = lblAnexo.Text.Substring(0, 10) & "   " & cNombreProductor
         TxtSucursal.Text = "Sucursal: " & Trim(drAvio("Nombre_Sucursal"))
         TxtidCred.Text = "ID Crédito:" & drAvio("IDCredito")
         cCliente = Trim(drAvio("Cliente"))
@@ -269,44 +244,17 @@ Public Class frmAgricola
         nPorcFega = drAvio("PorcFega")
 
         If cFlcan <> "A" And cFlcan <> "F" Then
-
             btnInsertarFIRA.Enabled = False
             btnModificarFIRA.Enabled = False
             panelFIRA.Enabled = False
-
-            'btnInsertarFINAGIL.Enabled = False
             btnModificarFINAGIL.Enabled = False
-            'panelFINAGIL.Enabled = False
         End If
 
         ' Información de las ministraciones FINAGIL - Productor
-
-        dtFINAGIL.Clear()
-        nRowsFINAGIL = dsAgil.Tables("FINAGIL").Rows.Count()
-
+        nRowsFINAGIL = AviosDSX.sp_AVI_Ministraciones.Rows.Count()
         If nRowsFINAGIL > 0 Then
             btnModificarFINAGIL.Visible = True
         End If
-
-        For Each drMinistracion In dsAgil.Tables("FINAGIL").Rows
-            drAux = dtFINAGIL.NewRow()
-            drAux("No.") = drMinistracion("Ministracion")
-            drAux("Documento") = drMinistracion("Documento")
-            If Trim(drMinistracion("FechaPago")) <> "" Then
-                drAux("Fecha de Pago") = Mid(drMinistracion("FechaPago"), 7, 2) & "/" & Mid(drMinistracion("FechaPago"), 5, 2) & "/" & Mid(drMinistracion("FechaPago"), 1, 4)
-            Else
-                drAux("Fecha de Pago") = ""
-            End If
-            drAux("Importe") = Format(drMinistracion("Importe"), "##,##0.00")
-            drAux("Garantia") = Format(drMinistracion("Garantia"), "##,##0.00")
-            drAux("Procesado") = drMinistracion("Procesado")
-            If drMinistracion("Procesado") <> True Then
-                drAux("Procesado") = drMinistracion("MesaControlAut")
-            End If
-
-            dtFINAGIL.Rows.Add(drAux)
-            nMinistradoFINAGIL = nMinistradoFINAGIL + drMinistracion("Importe")
-        Next
 
         If nMinistradoFINAGIL > 0 Then
             lblMinistradoFINAGIL.Text = "Total Ministrado por FINAGIL al Productor $" & Format(nMinistradoFINAGIL, "##,##0.00")
@@ -314,13 +262,15 @@ Public Class frmAgricola
             lblMinistradoFINAGIL.Text = ""
         End If
 
-        dgvFINAGIL.DataSource = dtFINAGIL
+        'dgvFINAGIL.DataSource = dtFINAGIL
         dgvFINAGIL.Columns(0).Width = 25
-        dgvFINAGIL.Columns(1).Width = 100
+        dgvFINAGIL.Columns(1).Width = 90
         dgvFINAGIL.Columns(2).Width = 65
         dgvFINAGIL.Columns(3).Width = 100
         dgvFINAGIL.Columns(4).Width = 100
-        dgvFINAGIL.Columns(5).Width = 70
+        dgvFINAGIL.Columns(5).Width = 60
+        dgvFINAGIL.Columns(6).Width = 90
+
 
         For i = 0 To dgvFINAGIL.Columns.Count - 1
             dgvFINAGIL.Columns(i).SortMode = DataGridViewColumnSortMode.NotSortable
@@ -333,6 +283,7 @@ Public Class frmAgricola
             ElseIf i = 3 Or i = 4 Then
                 dgvFINAGIL.Columns(i).HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight ' Alinea el encabezado
                 dgvFINAGIL.Columns(i).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight ' Alinea el contenido
+            ElseIf i = 6 Then
             End If
         Next
 
@@ -454,13 +405,15 @@ Public Class frmAgricola
         If CxpDS.CXP_CuentasBancariasProv.Count <= 0 Then
             btnInsertarFINAGIL.Visible = False
             btnModificarFINAGIL.Visible = False
+            Lbcuenta.Visible = True
             MessageBox.Show("Productor sin cuenta bancaria registrada o autorizada.", "Cuenta Bancaria CXP", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            Lbcuenta.Visible = False
         End If
 
         cnAgil.Dispose()
         cm1.Dispose()
         cm2.Dispose()
-        cm3.Dispose()
         cm4.Dispose()
 
     End Sub
@@ -479,8 +432,6 @@ Public Class frmAgricola
         txtImporteFINAGIL.Text = ""
         cbDocumento.SelectedIndex = 0
         lInsertFINAGIL = True
-        lUpdateFINAGIL = False
-
     End Sub
 
     Private Sub BtnInsertarFIRA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsertarFIRA.Click
@@ -499,7 +450,6 @@ Public Class frmAgricola
     End Sub
 
     Private Sub BtnModificarFINAGIL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificarFINAGIL.Click
-
         If dgvFINAGIL.Item(5, dgvFINAGIL.CurrentRow.Index).Value = True Then
             MessageBox.Show("No se puede Eliminar una ministración Procesada", "Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error)
         ElseIf dgvFINAGIL.Item(1, dgvFINAGIL.CurrentRow.Index).Value = "SEGURO" And UsuarioGlobalDepto <> "SEGUROS" Then
@@ -593,51 +543,14 @@ Public Class frmAgricola
                     MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
                 End Try
 
-                drTemporal = dtFINAGIL.NewRow()
-                drTemporal("No.") = nRowsFINAGIL
-                drTemporal("Importe") = Format(CDbl(txtImporteFINAGIL.Text), "##,##0.00")
-                drTemporal("Garantia") = Format(nGarantiaLiq, "##,##0.00")
-                drTemporal("Documento") = cbDocumento.SelectedItem
-                drTemporal("Procesado") = 0
-                dtFINAGIL.Rows.Add(drTemporal)
+                Me.Sp_AVI_MinistracionesTableAdapter.Fill(AviosDSX.sp_AVI_Ministraciones, cAnexo, cCiclo)
+                Me.SpAVIMinistracionesBindingSource.MoveLast()
 
                 nMinistradoFINAGIL = nMinistradoFINAGIL + CDbl(txtImporteFINAGIL.Text)
                 lblMinistradoFINAGIL.Text = "Total Ministrado por FINAGIL al Productor $" & Format(nMinistradoFINAGIL, "##,##0.00")
-
-            ElseIf lUpdateFINAGIL = True Then
-
-                strUpdate = "UPDATE mFINAGIL SET Importe = " & CDbl(txtImporteFINAGIL.Text) & ", "
-                strUpdate = strUpdate & "Garantia = " & nGarantiaLiq & ", "
-                strUpdate = strUpdate & "Fega = " & nGarantiaFega & ", "
-                strUpdate = strUpdate & "SaldoMinistracion = " & CDbl(txtImporteFINAGIL.Text) & ", "
-                strUpdate = strUpdate & "SaldoGarantia = " & nGarantiaLiq & ", "
-                strUpdate = strUpdate & "Documento = '" & cbDocumento.SelectedItem & "' "
-                strUpdate = strUpdate & "WHERE Anexo = '" & cAnexo & "' "
-                strUpdate = strUpdate & "AND Ciclo = '" & cCiclo & "' "
-                strUpdate = strUpdate & "AND Ministracion = " & nRegistroFINAGIL
-                Try
-                    cm1 = New SqlCommand(strUpdate, cnAgil)
-                    cnAgil.Open()
-                    cm1.ExecuteNonQuery()
-                    cnAgil.Close()
-                Catch eException As Exception
-                    MsgBox(eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
-                End Try
-
-                myKeySearch(0) = nRegistroFINAGIL
-                drTemporal = dtFINAGIL.Rows.Find(myKeySearch)
-                nImporteAnterior = drTemporal("Importe")
-                drTemporal("Importe") = Format(CDbl(txtImporteFINAGIL.Text), "##,##0.00")
-                drTemporal("Garantia") = Format(nGarantiaLiq, "##,##0.00")
-                drTemporal("Documento") = cbDocumento.SelectedItem
-
-                nMinistradoFINAGIL = nMinistradoFINAGIL - nImporteAnterior + CDbl(txtImporteFINAGIL.Text)
-                lblMinistradoFINAGIL.Text = "Total Ministrado por FINAGIL al Productor $" & Format(nMinistradoFINAGIL, "##,##0.00")
-
             End If
 
             cm1.Dispose()
-
             panelFINAGIL.Visible = False
             btnInsertarFINAGIL.Enabled = True
             If btnModificarFINAGIL.Visible = False Then
@@ -765,6 +678,19 @@ Public Class frmAgricola
             CmbCuenta.Enabled = True
         Else
             CmbCuenta.Enabled = False
+        End If
+    End Sub
+
+    Private Sub dgvFINAGIL_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvFINAGIL.CellContentClick
+        If e.ColumnIndex = 6 Then
+            If dgvFINAGIL.CurrentCell.Value.ToString.Length > 0 Then 'or check NULL
+                Dim Arch As String = My.Settings.RutaTMP & "CXP\ComPago\" & SpAVIMinistracionesBindingSource.Current("uuidPago") & ".pdf"
+                Try
+                    Process.Start(Arch)
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Error Referencia", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
         End If
     End Sub
 
