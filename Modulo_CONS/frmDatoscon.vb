@@ -87,7 +87,6 @@ Public Class frmDatoscon
     Dim ClienteAux As String = ""
     Friend WithEvents TxtMoneda As TextBox
     Friend WithEvents Label35 As Label
-    Friend WithEvents LbStatus As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents TxtTaspen As TextBox
     Friend WithEvents TxtSucursal As TextBox
@@ -103,6 +102,11 @@ Public Class frmDatoscon
     Friend WithEvents Label40 As Label
     Dim HCsol As Boolean
     Friend WithEvents BtnObserva As Button
+    Friend WithEvents Label41 As Label
+    Friend WithEvents TxtAnexo As TextBox
+    Friend WithEvents TxtStatus As TextBox
+    Friend WithEvents TxtDescr As TextBox
+    Friend WithEvents TxtStatusCont As TextBox
     Dim cAnexo As String = ""
 
 #Region " Windows Form Designer generated code "
@@ -115,7 +119,7 @@ Public Class frmDatoscon
 
         'Add any initialization after the InitializeComponent() call
         Me.Text = "Datos del Contrato " & cAnexo
-        lblAnexo.Text = cAnexo
+        TxtAnexo.Text = cAnexo
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -210,14 +214,11 @@ Public Class frmDatoscon
     Friend WithEvents txtAmorin As System.Windows.Forms.TextBox
     Friend WithEvents lblIvaamortiza As System.Windows.Forms.Label
     Friend WithEvents lblAmortiza As System.Windows.Forms.Label
-    Friend WithEvents lblStatus As System.Windows.Forms.Label
-    Friend WithEvents lblAnexo As System.Windows.Forms.Label
     Friend WithEvents txtImpRD As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents btnTablaOtros As System.Windows.Forms.Button
     Friend WithEvents txtIvaRD As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents lblDescr As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.txtPrenda = New System.Windows.Forms.TextBox()
@@ -302,9 +303,6 @@ Public Class frmDatoscon
         Me.btnTablaEquipo = New System.Windows.Forms.Button()
         Me.btnTablaSeguro = New System.Windows.Forms.Button()
         Me.btnHistoria = New System.Windows.Forms.Button()
-        Me.lblStatus = New System.Windows.Forms.Label()
-        Me.lblAnexo = New System.Windows.Forms.Label()
-        Me.lblDescr = New System.Windows.Forms.Label()
         Me.btnTablaOtros = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtGHipot = New System.Windows.Forms.TextBox()
@@ -381,7 +379,6 @@ Public Class frmDatoscon
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TxtMoneda = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
-        Me.LbStatus = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.TxtTaspen = New System.Windows.Forms.TextBox()
         Me.TxtSucursal = New System.Windows.Forms.TextBox()
@@ -394,6 +391,11 @@ Public Class frmDatoscon
         Me.TxtAplicaFega = New System.Windows.Forms.TextBox()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.BtnObserva = New System.Windows.Forms.Button()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.TxtAnexo = New System.Windows.Forms.TextBox()
+        Me.TxtStatus = New System.Windows.Forms.TextBox()
+        Me.TxtDescr = New System.Windows.Forms.TextBox()
+        Me.TxtStatusCont = New System.Windows.Forms.TextBox()
         Me.gpoPagosi.SuspendLayout()
         Me.gpoPagos.SuspendLayout()
         Me.gbDatosFIRA.SuspendLayout()
@@ -1131,7 +1133,7 @@ Public Class frmDatoscon
         '
         'lblNumc
         '
-        Me.lblNumc.Location = New System.Drawing.Point(16, 7)
+        Me.lblNumc.Location = New System.Drawing.Point(16, 5)
         Me.lblNumc.Name = "lblNumc"
         Me.lblNumc.Size = New System.Drawing.Size(88, 20)
         Me.lblNumc.TabIndex = 0
@@ -1191,32 +1193,6 @@ Public Class frmDatoscon
         Me.btnHistoria.Size = New System.Drawing.Size(104, 24)
         Me.btnHistoria.TabIndex = 5
         Me.btnHistoria.Text = "Historia de Pagos"
-        '
-        'lblStatus
-        '
-        Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(203, 8)
-        Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(129, 19)
-        Me.lblStatus.TabIndex = 69
-        Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblAnexo
-        '
-        Me.lblAnexo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAnexo.Location = New System.Drawing.Point(104, 8)
-        Me.lblAnexo.Name = "lblAnexo"
-        Me.lblAnexo.Size = New System.Drawing.Size(96, 18)
-        Me.lblAnexo.TabIndex = 70
-        Me.lblAnexo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblDescr
-        '
-        Me.lblDescr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescr.Location = New System.Drawing.Point(330, 8)
-        Me.lblDescr.Name = "lblDescr"
-        Me.lblDescr.Size = New System.Drawing.Size(514, 18)
-        Me.lblDescr.TabIndex = 71
         '
         'btnTablaOtros
         '
@@ -1940,18 +1916,6 @@ Public Class frmDatoscon
         Me.Label35.Text = "Moneda"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'LbStatus
-        '
-        Me.LbStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LbStatus.ForeColor = System.Drawing.Color.Black
-        Me.LbStatus.Location = New System.Drawing.Point(16, 27)
-        Me.LbStatus.Name = "LbStatus"
-        Me.LbStatus.Size = New System.Drawing.Size(361, 17)
-        Me.LbStatus.TabIndex = 146
-        Me.LbStatus.Text = "Estatus Contable:"
-        Me.LbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.LbStatus.Visible = False
-        '
         'Label37
         '
         Me.Label37.AutoSize = True
@@ -2062,10 +2026,66 @@ Public Class frmDatoscon
         Me.BtnObserva.TabIndex = 174
         Me.BtnObserva.Text = "Observaciones Adicionales"
         '
+        'Label41
+        '
+        Me.Label41.Location = New System.Drawing.Point(16, 27)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(103, 20)
+        Me.Label41.TabIndex = 175
+        Me.Label41.Text = "Estatus Contable:"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TxtAnexo
+        '
+        Me.TxtAnexo.Location = New System.Drawing.Point(102, 4)
+        Me.TxtAnexo.Name = "TxtAnexo"
+        Me.TxtAnexo.ReadOnly = True
+        Me.TxtAnexo.Size = New System.Drawing.Size(69, 20)
+        Me.TxtAnexo.TabIndex = 176
+        Me.TxtAnexo.TabStop = False
+        Me.TxtAnexo.Text = "00000/0000"
+        Me.TxtAnexo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TxtStatus
+        '
+        Me.TxtStatus.Location = New System.Drawing.Point(178, 4)
+        Me.TxtStatus.Name = "TxtStatus"
+        Me.TxtStatus.ReadOnly = True
+        Me.TxtStatus.Size = New System.Drawing.Size(148, 20)
+        Me.TxtStatus.TabIndex = 177
+        Me.TxtStatus.TabStop = False
+        Me.TxtStatus.Text = "TERMINADO CON SALDO"
+        Me.TxtStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TxtDescr
+        '
+        Me.TxtDescr.Location = New System.Drawing.Point(332, 4)
+        Me.TxtDescr.Name = "TxtDescr"
+        Me.TxtDescr.ReadOnly = True
+        Me.TxtDescr.Size = New System.Drawing.Size(440, 20)
+        Me.TxtDescr.TabIndex = 178
+        Me.TxtDescr.TabStop = False
+        '
+        'TxtStatusCont
+        '
+        Me.TxtStatusCont.Location = New System.Drawing.Point(115, 26)
+        Me.TxtStatusCont.Name = "TxtStatusCont"
+        Me.TxtStatusCont.ReadOnly = True
+        Me.TxtStatusCont.Size = New System.Drawing.Size(149, 20)
+        Me.TxtStatusCont.TabIndex = 179
+        Me.TxtStatusCont.TabStop = False
+        Me.TxtStatusCont.Text = "REESTRUCTURA VIGENTE"
+        Me.TxtStatusCont.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'frmDatoscon
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(1033, 575)
+        Me.Controls.Add(Me.TxtStatusCont)
+        Me.Controls.Add(Me.TxtDescr)
+        Me.Controls.Add(Me.TxtStatus)
+        Me.Controls.Add(Me.TxtAnexo)
+        Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.BtnObserva)
         Me.Controls.Add(Me.TxtPorcFega)
         Me.Controls.Add(Me.Label39)
@@ -2078,7 +2098,6 @@ Public Class frmDatoscon
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.TxtTaspen)
-        Me.Controls.Add(Me.LbStatus)
         Me.Controls.Add(Me.TxtMoneda)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.Button1)
@@ -2108,9 +2127,6 @@ Public Class frmDatoscon
         Me.Controls.Add(Me.txtGHipot)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.btnTablaOtros)
-        Me.Controls.Add(Me.lblDescr)
-        Me.Controls.Add(Me.lblAnexo)
-        Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.btnHistoria)
         Me.Controls.Add(Me.btnTablaSeguro)
         Me.Controls.Add(Me.btnTablaEquipo)
@@ -2208,7 +2224,7 @@ Public Class frmDatoscon
         Dim nTasaIvaCli As Decimal = 0
 
 
-        cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        cAnexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
 
 
 
@@ -2240,7 +2256,7 @@ Public Class frmDatoscon
 
         If dsAgil.Tables("Anexos").Rows.Count = 0 Then
 
-            lblDescr.Text = "CONTRATO INEXISTENTE"
+            TxtDescr.Text = "CONTRATO INEXISTENTE"
             BtnOnbase.Enabled = False
         Else
 
@@ -2259,9 +2275,14 @@ Public Class frmDatoscon
 
             drAnexo = dsAgil.Tables("Anexos").Rows(0)
             cFlcan = drAnexo("Flcan")
-            lblStatus.Text = SacaGEN_ESTAUS(cFlcan)
-            lblDescr.Text = Trim(drAnexo("Descr"))
+            TxtStatus.Text = SacaGEN_ESTAUS(cFlcan)
+            TxtDescr.Text = Trim(drAnexo("Descr"))
             ClienteAux = drAnexo("cliente")
+            If cFlcan = "B" Or cFlcan = "F" Or cFlcan = "S" Then
+                TxtStatusCont.Visible = False
+            Else
+                TxtStatusCont.Visible = True
+            End If
 
             ' esto es para conuslta Onbase+++++++++++++++++++++++++++++++
             Dim TaOnbase As New GeneralDSTableAdapters.OnBaseTableAdapter
@@ -2415,25 +2436,26 @@ Public Class frmDatoscon
             txtNafin.Text = Format(drAnexo("DepNafin"), "##,##0.00")
             TxtFondoReserva.Text = Format(drAnexo("FondoReserva"), "##,##0.00")
 
-            LbStatus.Visible = True
             If drAnexo("EstatusContable") = "VENCIDA" Then
                 If drAnexo("Reestructura") = "S" Then
-                    LbStatus.Text = "Estatus Contable: REESTRUCTURA VENCIDA"
+                    TxtStatusCont.Text = "REESTRUCTURA VENCIDA"
                 Else
-                    LbStatus.Text = "Estatus Contable: VENCIDA"
+                    TxtStatusCont.Text = "VENCIDA"
                 End If
-                LbStatus.ForeColor = Color.Red
+                TxtStatusCont.BackColor = Color.Red
+                TxtStatusCont.ForeColor = Color.White
             Else
                 If drAnexo("Reestructura") = "S" Then
-                    LbStatus.Text = "Estatus Contable: REESTRUCTURA VIGENTE"
+                    TxtStatusCont.Text = "REESTRUCTURA VIGENTE"
                 Else
-                    LbStatus.Text = "Estatus Contable: VIGENTE"
+                    TxtStatusCont.Text = "VIGENTE"
                 End If
-                LbStatus.ForeColor = Color.Blue
+                TxtStatusCont.BackColor = Color.Blue
+                TxtStatusCont.ForeColor = Color.White
             End If
 
             If drAnexo("Vencida") = "C" Then
-                LbStatus.Visible = False
+                TxtStatusCont.Visible = False
                 LbCastigo.Visible = True
                 If drAnexo("CastigadoAnticipado") = False Then
                     LbCastigo.Text = "CASTIGADO"
@@ -2490,7 +2512,7 @@ Public Class frmDatoscon
 
                 Dim t As New ProductionDataSet.FIRArefaccionariosDataTable
                 Ta.UpdateNulos()
-                Ta.FillByAnexo(t, lblAnexo.Text)
+                Ta.FillByAnexo(t, TxtAnexo.Text)
                 If t.Rows.Count > 0 Then
                     Dim r As ProductionDataSet.FIRArefaccionariosRow
                     r = t.Rows(0)
@@ -2545,34 +2567,34 @@ Public Class frmDatoscon
     End Sub
 
     Private Sub btnDatoseq_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDatoseq.Click
-        Dim newfrmDatosEq As New frmDatosEq(lblAnexo.Text)
+        Dim newfrmDatosEq As New frmDatosEq(TxtAnexo.Text)
         newfrmDatosEq.Show()
     End Sub
 
     Private Sub btnReferencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReferencia.Click
-        Dim newfrmReferencia As New frmReferencia(lblAnexo.Text, ClienteAux)
+        Dim newfrmReferencia As New frmReferencia(TxtAnexo.Text, ClienteAux)
         newfrmReferencia.Show()
     End Sub
 
     Private Sub btnTablaEquipo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTablaEquipo.Click
-        Dim newfrmTablaEquipo As New frmTablaEquipo(lblAnexo.Text)
+        Dim newfrmTablaEquipo As New frmTablaEquipo(TxtAnexo.Text)
         newfrmTablaEquipo.Show()
     End Sub
 
     Private Sub btnTablaSeguro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTablaSeguro.Click
-        Dim newfrmTablaSeguro As New frmTablaSeguro(lblAnexo.Text)
+        Dim newfrmTablaSeguro As New frmTablaSeguro(TxtAnexo.Text)
         newfrmTablaSeguro.Show()
     End Sub
 
     Private Sub btnHistoria_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHistoria.Click
-        Dim newfrmHistoria As New frmHistoria(lblAnexo.Text, "")
+        Dim newfrmHistoria As New frmHistoria(TxtAnexo.Text, "")
         Cursor.Current = Cursors.WaitCursor
         newfrmHistoria.Show()
         Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub btnTablaOtros_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnTablaOtros.Click
-        Dim newfrmTablaOtros As New frmTablaOtros(lblAnexo.Text)
+        Dim newfrmTablaOtros As New frmTablaOtros(TxtAnexo.Text)
         newfrmTablaOtros.Show()
     End Sub
 
@@ -2597,15 +2619,15 @@ Public Class frmDatoscon
         'Agrega datos fira para tradicionales+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ECT20141013.n
 
         Dim t As New ProductionDataSet.FIRArefaccionariosDataTable
-        Ta.FillByAnexo(t, lblAnexo.Text)
+        Ta.FillByAnexo(t, TxtAnexo.Text)
         If t.Rows.Count > 0 Then
-            Ta.UpdateAnexo(txtIDCredito.Text, TxtZ25.Text, txtIDPersona.Text, txtIDDTU.Text, txtIDContrato.Text, TxtIdgarantia.Text, DtGarantia.Value.ToString("yyyyMMdd"), TxtZ08.Text, lblAnexo.Text)
+            Ta.UpdateAnexo(txtIDCredito.Text, TxtZ25.Text, txtIDPersona.Text, txtIDDTU.Text, txtIDContrato.Text, TxtIdgarantia.Text, DtGarantia.Value.ToString("yyyyMMdd"), TxtZ08.Text, TxtAnexo.Text)
         Else
-            Ta.Insert(txtIDCredito.Text, Date.Now, False, lblAnexo.Text, TxtZ25.Text, txtIDPersona.Text, txtIDDTU.Text, txtIDContrato.Text, TxtIdgarantia.Text, DtGarantia.Value.ToString("yyyyMMdd"), TxtZ08.Text)
+            Ta.Insert(txtIDCredito.Text, Date.Now, False, TxtAnexo.Text, TxtZ25.Text, txtIDPersona.Text, txtIDDTU.Text, txtIDContrato.Text, TxtIdgarantia.Text, DtGarantia.Value.ToString("yyyyMMdd"), TxtZ08.Text)
         End If
-        DesBloqueaContrato(Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4))
-        Ta.UpdateGarantiaSinFondeo(CkGSF.Checked, Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4), 0)
-        BloqueaContrato(Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4))
+        DesBloqueaContrato(Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4))
+        Ta.UpdateGarantiaSinFondeo(CkGSF.Checked, Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4), 0)
+        BloqueaContrato(Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4))
         Try
             FiraDatosBindingSource.EndEdit()
             Me.FirA_AnexosDatosTableAdapter1.Update(AviosDSX1.FIRA_AnexosDatos)
@@ -2650,7 +2672,7 @@ Public Class frmDatoscon
 
     Private Sub BtnSoldoc_Click(sender As Object, e As EventArgs) Handles BtnSoldoc.Click
         Dim F As New frmbitacora_anexos
-        F.cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        F.cAnexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         If F.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
         End If
     End Sub
@@ -2682,13 +2704,13 @@ Public Class frmDatoscon
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New FrmHojaCambios
         f.BanSolHC = HCsol
-        f.cAnexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.cAnexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         f.Show()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim f As New FrmAtachments
-        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Anexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Carpeta = "Seguros"
         If TaQUERY.SacaPermisoModulo("SEGUROS_DOC", UsuarioGlobal) > 0 Then
@@ -2696,7 +2718,7 @@ Public Class frmDatoscon
         Else
             f.Consulta = True
         End If
-        f.Nombre = lblDescr.Text
+        f.Nombre = TxtDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
@@ -2704,7 +2726,7 @@ Public Class frmDatoscon
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim f As New FrmAtachments
-        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Anexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         f.Ciclo = ""
         If TaQUERY.SacaPermisoModulo("GESTORIA_DOC", UsuarioGlobal) > 0 Then
             f.Consulta = False
@@ -2713,7 +2735,7 @@ Public Class frmDatoscon
         End If
         f.Consulta = True
         f.Carpeta = "Gestoria"
-        f.Nombre = lblDescr.Text
+        f.Nombre = TxtDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
 
         End If
@@ -2721,22 +2743,22 @@ Public Class frmDatoscon
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim f As New FrmAtachments
-        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Anexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Consulta = False
         f.Carpeta = "Supervisiones"
-        f.Nombre = lblDescr.Text
+        f.Nombre = TxtDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles BtnObserva.Click
         Dim f As New FrmAtachments
-        f.Anexo = Mid(lblAnexo.Text, 1, 5) & Mid(lblAnexo.Text, 7, 4)
+        f.Anexo = Mid(TxtAnexo.Text, 1, 5) & Mid(TxtAnexo.Text, 7, 4)
         f.Ciclo = ""
         f.Consulta = False
         f.Carpeta = "Observaciones"
-        f.Nombre = lblDescr.Text
+        f.Nombre = TxtDescr.Text
         If f.ShowDialog = System.Windows.Forms.DialogResult.OK Then
         End If
         ColorBotonObservaciones(cAnexo, "", BtnObserva, "Observaciones")
