@@ -3513,21 +3513,20 @@ Public Class frmCierreCo
             With aMovimiento
                 .Anexo = ""
                 .Cliente = ""
-                .Imp = r.min_base
+                .Imp = r.importe_abono
                 .Cve = "99"
                 .Tipar = ""
                 .Coa = "0"
-                .Fecha = r.fecha_ini.ToString("yyyyMMdd")
+                .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
                 .Tipmov = Tipmov
                 .Banco = "11"
-                .Concepto = "Recepcion Fondeo FIRA " & r.fecha_ini.ToString("dd/MM/yyyy")
+                .Concepto = "Recepcion Fondeo FIRA " & r.fecha_inicial.ToString("dd/MM/yyyy")
                 .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
-            End With
-            With aMovimiento
+
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
-                .Imp = r.min_base
+                .Imp = r.importe_abono
                 If r.Moneda = "MXN" Then
                     .Cve = "68" & r.Tipar
                 ElseIf r.Moneda = "USD" Then
@@ -3542,11 +3541,11 @@ Public Class frmCierreCo
                 End If
                 .Tipar = "W"
                 .Coa = "1"
-                .Fecha = r.fecha_ini.ToString("yyyyMMdd")
+                .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
                 .Tipmov = Tipmov
                 .Banco = ""
-                .Concepto = "Credito FIRA " & r.id_credito.Trim & " - " & r.fecha_ini.ToString("dd/MM/yyyy")
-                .Segmento = r.Segmento_Negocio
+                .Concepto = "Credito FIRA " & r.id_credito & " - " & r.fecha_inicial.ToString("dd/MM/yyyy")
+                .Segmento = r.SegmentoNegocio
                 aMovimientos.Add(aMovimiento)
             End With
         Next
@@ -3558,125 +3557,127 @@ Public Class frmCierreCo
     End Sub
 
     Private Sub LiquidacionFondeo_MOD_PASIVO_FIRA18(ByVal cFecha As String, cTipmov As String)
+        Dim Fecha As Date = "01/01/01"
+        Dim Importe As Decimal = 0
         Dim TaPagFira As New ContaDSTableAdapters.PagosFiraTableAdapter
         Dim r As ContaDS.PagosFiraRow
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
-
+        '10  PAGO CAPITAL                                                                                                                                                                                            
+        '11  PAGO INTERESES                                                                                                                                                                                          
+        '12  PAGO FINANCIADOS 
         TaPagFira.Fill(ContDS.PagosFira, CTOD(Mid(cFecha, 1, 6) & "01"), CTOD(cFecha))
+        If ContDS.PagosFira.Count > 0 Then Fecha = ContDS.PagosFira.Rows(0).Item("FechaPagoFira")
         For Each r In ContDS.PagosFira.Rows
-            If r.Capital > 0 Then
-                With aMovimiento
-                    .Anexo = r.anexo
-                    .Cliente = r.Cliente
-                    .Imp = r.Capital
-                    If r.Moneda = "MXN" Then
-                        .Cve = "68" & r.Tipar
-                    ElseIf r.Moneda = "USD" Then
-                        Select Case r.Tipar
-                            Case "H", "C", "A"
-                                .Cve = "8HD"
-                            Case "X"
-                                .Cve = "8XD"
-                            Case Else
-                                .Cve = "8TD"
-                        End Select
-                    End If
-                    .Tipar = "W"
-                    .Coa = "0"
+            If Fecha <> r.FechaPagoFira Then
+                With aMovimiento '----------------------cargo a bancos
+                    .Anexo = ""
+                    .Cliente = ""
+                    .Imp = Importe
+                    .Cve = "99"
+                    .Tipar = ""
+                    .Coa = "1"
                     .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
                     .Tipmov = cTipmov
-                    .Banco = ""
-                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
-                    .Segmento = r.Segmento_Negocio
-                    aMovimientos.Add(aMovimiento)
-                End With
-            End If
-            If Math.Abs(r.InteAux1) > 0 Then
-                With aMovimiento
-                    .Anexo = r.anexo
-                    .Cliente = r.Cliente
-                    .Imp = Math.Abs(r.InteAux1)
-                    If r.Moneda = "MXN" Then
-                        .Cve = "68" & r.Tipar
-                    ElseIf r.Moneda = "USD" Then
-                        Select Case r.Tipar
-                            Case "H", "C", "A"
-                                .Cve = "8HD"
-                            Case "X"
-                                .Cve = "8XD"
-                            Case Else
-                                .Cve = "8TD"
-                        End Select
-                    End If
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
-                    .Tipmov = cTipmov
-                    .Banco = ""
-                    .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " FINAN ADICIONAL" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
-                    .Segmento = r.Segmento_Negocio
-                    aMovimientos.Add(aMovimiento)
-                End With
-            End If
-            If r.int_mor_ord > 0 Then '-+++++++++++++++++++
-                With aMovimiento
-                    .Anexo = r.anexo
-                    .Cliente = r.Cliente
-                    .Imp = r.int_mor_ord
-                    If r.Moneda = "MXN" Then
-                        .Cve = "69" & r.Tipar
-                    ElseIf r.Moneda = "USD" Then
-                        .Cve = "69D"
-                    End If
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
-                    .Tipmov = cTipmov
-                    .Banco = ""
-                    .Concepto = "INTERESES MORA FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
+                    .Banco = "11"
+                    .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
                     .Segmento = "100"
                     aMovimientos.Add(aMovimiento)
                 End With
+                Importe = 0
             End If
-            If r.int_ord_FB > 0 Then '-+++++++++++++++++++
-                With aMovimiento
-                    .Anexo = r.anexo
-                    .Cliente = r.Cliente
-                    .Imp = r.int_ord_FB
-                    If r.Moneda = "MXN" Then
-                        .Cve = "70" & r.Tipar
-                    ElseIf r.Moneda = "USD" Then
-                        .Cve = "70D"
-                    End If
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
-                    .Tipmov = cTipmov
-                    .Banco = ""
-                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
-                    .Segmento = "100"
-                    aMovimientos.Add(aMovimiento)
-                End With
-            End If
-
+            Select Case r.concepto
+                Case 10
+                    With aMovimiento
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = r.importe_cargo
+                        If r.Moneda = "MXN" Then
+                            .Cve = "68" & r.Tipar
+                        ElseIf r.Moneda = "USD" Then
+                            Select Case r.Tipar
+                                Case "H", "C", "A"
+                                    .Cve = "8HD"
+                                Case "X"
+                                    .Cve = "8XD"
+                                Case Else
+                                    .Cve = "8TD"
+                            End Select
+                        End If
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
+                        .Segmento = r.SegmentoNegocio
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Case 11
+                    With aMovimiento
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = r.importe_cargo
+                        If r.Moneda = "MXN" Then
+                            .Cve = "70" & r.Tipar
+                        ElseIf r.Moneda = "USD" Then
+                            .Cve = "70D"
+                        End If
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Case 12
+                    With aMovimiento
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = Math.Abs(r.importe_cargo)
+                        If r.Moneda = "MXN" Then
+                            .Cve = "68" & r.Tipar
+                        ElseIf r.Moneda = "USD" Then
+                            Select Case r.Tipar
+                                Case "H", "C", "A"
+                                    .Cve = "8HD"
+                                Case "X"
+                                    .Cve = "8XD"
+                                Case Else
+                                    .Cve = "8TD"
+                            End Select
+                        End If
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = "CREDITO FIRA " & r.id_credito.ToString.Trim & " FINAN ADICIONAL" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
+                        .Segmento = r.SegmentoNegocio
+                        aMovimientos.Add(aMovimiento)
+                    End With
+            End Select
+            Importe += Math.Abs(r.importe_cargo)
+            Fecha = r.FechaPagoFira
+        Next
+        If Importe > 0 Then
             With aMovimiento '----------------------cargo a bancos
                 .Anexo = ""
                 .Cliente = ""
-                .Imp = r.Capital + r.int_mor_ord + r.int_ord_FB + Math.Abs(r.InteAux1) '+ r.int_mora
+                .Imp = Importe
                 .Cve = "99"
                 .Tipar = ""
                 .Coa = "1"
-                .Fecha = r.FechaPagoFira.ToString("yyyyMMdd")
+                .Fecha = Fecha.ToString("yyyyMMdd")
                 .Tipmov = cTipmov
                 .Banco = "11"
-                .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.FechaPagoFira.ToString("dd/MM/yyyy")
+                .Concepto = "Liquidacion Fondeo FIRA" & " - " & Fecha.ToString("dd/MM/yyyy")
                 .Segmento = "100"
                 aMovimientos.Add(aMovimiento)
             End With
-            ' falta realizar neteos 
-        Next
-
+        End If
         ' Luego registro los abonos al Pasivo
         For Each aMovimiento In aMovimientos
             TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
@@ -3694,7 +3695,7 @@ Public Class frmCierreCo
             With aMovimiento
                 .Anexo = r.anexo
                 .Cliente = r.Cliente
-                .Imp = r.InetresProv
+                .Imp = r.intereses
                 If r.Moneda = "MXN" Then
                     .Cve = "69" & r.Tipar
                 ElseIf r.Moneda = "USD" Then
@@ -3709,11 +3710,11 @@ Public Class frmCierreCo
                 .Segmento = r.Segmento_Negocio
             End With
             aMovimientos.Add(aMovimiento)
-            If r.InetresProv > 0 Then
+            If r.intereses > 0 Then
                 With aMovimiento
                     .Anexo = r.anexo
                     .Cliente = r.Cliente
-                    .Imp = r.InetresProv
+                    .Imp = r.intereses
                     .Cve = "70" & r.Tipar
                     .Tipar = "W"
                     .Coa = "1"
@@ -3738,88 +3739,85 @@ Public Class frmCierreCo
         Dim r As ContaDS.FinanAdicional_CPFRow
         Dim aMovimiento As New Movimiento()
         Dim aMovimientos As New ArrayList()
-
+        '69  FINANCIAMIENTO ADICIONAL                                                                                                                                                                                
+        '501 PAGO INTERESES                                                                                                                                                                                          
         TaProvInte.Fill(ContDS.FinanAdicional_CPF, cFecha.Substring(0, 4), cFecha.Substring(4, 2))
         For Each r In ContDS.FinanAdicional_CPF
-            With aMovimiento
-                .Anexo = ""
-                .Cliente = ""
-                .Imp = r.FinanAdicional
-                .Cve = "99"
-                .Tipar = ""
-                .Coa = "0"
-                .Fecha = r.fecha_fin.ToString("yyyyMMdd")
-                .Tipmov = cTipmov
-                .Banco = "11"
-                .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL" & r.fecha_fin.ToString("dd/MM/yyyy")
-                .Segmento = "100"
-                aMovimientos.Add(aMovimiento)
-            End With
-
-            With aMovimiento
-                .Anexo = r.anexo
-                .Cliente = r.Cliente
-                .Imp = r.FinanAdicional
-                If r.Moneda = "MXN" Then
-                    .Cve = "68" & r.Tipar
-                ElseIf r.Moneda = "USD" Then
-                    Select Case r.Tipar
-                        Case "H", "C", "A"
-                            .Cve = "8HD"
-                        Case "X"
-                            .Cve = "8XD"
-                        Case Else
-                            .Cve = "8TD"
-                    End Select
-                End If
-                .Tipar = "W"
-                .Coa = "1"
-                .Fecha = r.fecha_fin.ToString("yyyyMMdd")
-                .Tipmov = cTipmov
-                .Banco = ""
-                .Concepto = "Credito FIRA " & r.id_credito.Trim & " FIN ADICIONAL " & r.fecha_fin.ToString("dd/MM/yyyy")
-                .Segmento = r.Segmento_Negocio
-                aMovimientos.Add(aMovimiento)
-            End With
-            'PAGO DE INTERES
-            If r.int_ord_FB > 0 Then '-+++++++++++++++++++
-                With aMovimiento
-                    .Anexo = r.anexo
-                    .Cliente = r.Cliente
-                    .Imp = r.int_ord_FB
-                    If r.Moneda = "MXN" Then
-                        .Cve = "70" & r.Tipar
-                    ElseIf r.Moneda = "USD" Then
-                        .Cve = "70D"
-                    End If
-                    .Tipar = "W"
-                    .Coa = "0"
-                    .Fecha = r.fecha_fin.ToString("yyyyMMdd")
-                    .Tipmov = "18" ' a poliza de egresos
-                    .Banco = ""
-                    .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.fecha_fin.ToString("dd/MM/yyyy")
-                    .Segmento = "100"
-                    aMovimientos.Add(aMovimiento)
-
-                    With aMovimiento '----------------------cargo a bancos
+            Select Case r.concepto
+                Case 69
+                    With aMovimiento
                         .Anexo = ""
                         .Cliente = ""
-                        .Imp = r.int_ord_FB
+                        .Imp = r.importe_abono
+                        .Cve = "99"
+                        .Tipar = ""
+                        .Coa = "0"
+                        .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
+                        .Tipmov = cTipmov
+                        .Banco = "11"
+                        .Concepto = "Recepcion Fondeo FIRA FINAN ADICIONAL" & r.fecha_inicial.ToString("dd/MM/yyyy")
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = r.importe_abono
+                        If r.Moneda = "MXN" Then
+                            .Cve = "68" & r.Tipar
+                        ElseIf r.Moneda = "USD" Then
+                            Select Case r.Tipar
+                                Case "H", "C", "A"
+                                    .Cve = "8HD"
+                                Case "X"
+                                    .Cve = "8XD"
+                                Case Else
+                                    .Cve = "8TD"
+                            End Select
+                        End If
+                        .Tipar = "W"
+                        .Coa = "1"
+                        .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
+                        .Tipmov = cTipmov
+                        .Banco = ""
+                        .Concepto = "Credito FIRA " & r.id_credito & " FIN ADICIONAL " & r.fecha_inicial.ToString("dd/MM/yyyy")
+                        .Segmento = r.SegmentoNegocio
+                        aMovimientos.Add(aMovimiento)
+                    End With
+                Case 501
+                    With aMovimiento
+                        .Anexo = r.anexo
+                        .Cliente = r.Cliente
+                        .Imp = r.importe_cargo
+                        If r.Moneda = "MXN" Then
+                            .Cve = "70" & r.Tipar
+                        ElseIf r.Moneda = "USD" Then
+                            .Cve = "70D"
+                        End If
+                        .Tipar = "W"
+                        .Coa = "0"
+                        .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
+                        .Tipmov = "11" ' a poliza de egresos
+                        .Banco = ""
+                        .Concepto = "INTERESES FIRA " & r.id_credito.ToString.Trim & " - " & r.fecha_inicial.ToString("dd/MM/yyyy")
+                        .Segmento = "100"
+                        aMovimientos.Add(aMovimiento)
+
+                        'aMovimiento '----------------------cargo a bancos
+                        .Anexo = ""
+                        .Cliente = ""
+                        .Imp = r.importe_cargo
                         .Cve = "99"
                         .Tipar = ""
                         .Coa = "1"
-                        .Fecha = r.fecha_fin.ToString("yyyyMMdd")
-                        .Tipmov = "18" ' a poliza de egresos
+                        .Fecha = r.fecha_inicial.ToString("yyyyMMdd")
+                        .Tipmov = "11" ' a poliza de egresos
                         .Banco = "11"
-                        .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.fecha_fin.ToString("dd/MM/yyyy")
+                        .Concepto = "Liquidacion Fondeo FIRA" & " - " & r.fecha_inicial.ToString("dd/MM/yyyy")
                         .Segmento = "100"
                         aMovimientos.Add(aMovimiento)
                     End With
-                End With
-            End If
-
+            End Select
         Next
-
         ' Luego registro los abonos al Pasivo
         For Each aMovimiento In aMovimientos
             TaAuxCont.Insert(aMovimiento.Cve, aMovimiento.Anexo, aMovimiento.Cliente, aMovimiento.Imp, aMovimiento.Tipar, aMovimiento.Coa, aMovimiento.Fecha, aMovimiento.Tipmov, aMovimiento.Banco, aMovimiento.Concepto, aMovimiento.Segmento)
