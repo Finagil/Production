@@ -21,6 +21,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem90 As MenuItem
     Friend WithEvents MenuItem91 As MenuItem
     Friend WithEvents MenuItem92 As MenuItem
+    Friend WithEvents MenuItem93 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -592,6 +593,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem93 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1992,7 +1994,7 @@ Public Class frmAgil
         '
         Me.MenuItem3.Enabled = False
         Me.MenuItem3.Index = 12
-        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52, Me.MenuItem80, Me.MenuItem90})
+        Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCaptValo, Me.MnuReestruct, Me.MenuItem6, Me.MenuItem7, Me.MnuMcBitacora, Me.MnuLiberMC, Me.MnuLiberAvio, Me.MnuModReest, Me.MenuItem34, Me.MenuItem52, Me.MenuItem80, Me.MenuItem90, Me.MenuItem93})
         Me.MenuItem3.Text = "Mesa de Control"
         '
         'mnuCaptValo
@@ -2160,6 +2162,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem93
+        '
+        Me.MenuItem93.Index = 12
+        Me.MenuItem93.Text = "Cambio Anexo AV"
         '
         'frmAgil
         '
@@ -3668,5 +3675,8 @@ Public Class frmAgil
         newfrmPideAnexo.Show()
     End Sub
 
-
+    Private Sub MenuItem93_Click(sender As Object, e As EventArgs) Handles MenuItem93.Click
+        Dim F As New frmcontrato_CambioAV
+        F.Show()
+    End Sub
 End Class

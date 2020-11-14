@@ -33,7 +33,7 @@
             Exit Sub
         End If
         Me.ContratosSinDispersionTableAdapter.QuitaAmorin(cbanexos.SelectedValue)
-        BITACORA.Insert(UsuarioGlobal, Me.Text, Date.Now, "CambioJUR", System.Environment.MachineName, Label7.Text)
+        BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "CambioJUR", System.Environment.MachineName, Label7.Text)
         MessageBox.Show("Datos Guardados", Label7.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.ContratosSinDispersionTableAdapter.Fill(Me.JuridicoDS.ContratosSinDispersion, cbclientes.SelectedValue)
 
@@ -49,7 +49,7 @@
             Exit Sub
         End If
         Me.ContratosSinDispersionTableAdapter.QuitaAmorin(cbanexos.SelectedValue)
-        BITACORA.Insert(UsuarioGlobal, Me.Text, Date.Now, "CambioJUR", System.Environment.MachineName, Label8.Text)
+        BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "CambioJUR", System.Environment.MachineName, Label8.Text)
         MessageBox.Show("Datos Guardados", Label8.Text, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.ContratosSinDispersionTableAdapter.Fill(Me.JuridicoDS.ContratosSinDispersion, cbclientes.SelectedValue)
     End Sub

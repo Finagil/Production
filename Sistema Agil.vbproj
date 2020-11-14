@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>206</ApplicationRevision>
+    <ApplicationRevision>208</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -184,6 +184,12 @@
       <DependentUpon>FrmCambioRusuarioCXP.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_MC\FrmCambioRusuarioCXP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_MC\frmcontrato_CambioAV.Designer.vb">
+      <DependentUpon>frmcontrato_CambioAV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_MC\frmcontrato_CambioAV.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_RIESG\FrmCarga_PI_SP.Designer.vb">
@@ -2635,6 +2641,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_MC\FrmCambioRusuarioCXP.resx">
       <DependentUpon>FrmCambioRusuarioCXP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_MC\frmcontrato_CambioAV.resx">
+      <DependentUpon>frmcontrato_CambioAV.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_RIESG\FrmCarga_PI_SP.resx">
       <DependentUpon>FrmCarga_PI_SP.vb</DependentUpon>
