@@ -32,7 +32,7 @@ Partial Class frmcontrato_CambioAV
         Me.AviosCambiosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TxtCiclo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LabelCiclo = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dt_fecTerminacion = New System.Windows.Forms.DateTimePicker()
         Me.bt_cambiarfec = New System.Windows.Forms.Button()
@@ -44,6 +44,9 @@ Partial Class frmcontrato_CambioAV
         Me.Label8 = New System.Windows.Forms.Label()
         Me.AviosCambiosTableAdapter = New Agil.MesaControlDSTableAdapters.AviosCambiosTableAdapter()
         Me.ClientesTableAdapter = New Agil.MesaControlDSTableAdapters.ClientesTableAdapter()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.DTp_FechaCont = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AviosCambiosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,47 +125,47 @@ Partial Class frmcontrato_CambioAV
         Me.Label4.Size = New System.Drawing.Size(0, 13)
         Me.Label4.TabIndex = 49
         '
-        'Label5
+        'LabelCiclo
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosCambiosBindingSource, "CicloPagare", True))
-        Me.Label5.Location = New System.Drawing.Point(146, 69)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(89, 13)
-        Me.Label5.TabIndex = 51
-        Me.Label5.Text = "Fec. Terminación"
+        Me.LabelCiclo.AutoSize = True
+        Me.LabelCiclo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosCambiosBindingSource, "CicloPagare", True))
+        Me.LabelCiclo.Location = New System.Drawing.Point(146, 69)
+        Me.LabelCiclo.Name = "LabelCiclo"
+        Me.LabelCiclo.Size = New System.Drawing.Size(67, 13)
+        Me.LabelCiclo.TabIndex = 51
+        Me.LabelCiclo.Text = "Ciclo Pagare"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(75, 102)
+        Me.Label6.Location = New System.Drawing.Point(4, 133)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(72, 13)
+        Me.Label6.Size = New System.Drawing.Size(102, 13)
         Me.Label6.TabIndex = 52
-        Me.Label6.Text = "Nueva Fecha"
+        Me.Label6.Text = "Nueva Fecha Term."
         '
         'dt_fecTerminacion
         '
         Me.dt_fecTerminacion.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AviosCambiosBindingSource, "fechaVEN", True))
         Me.dt_fecTerminacion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dt_fecTerminacion.Location = New System.Drawing.Point(153, 96)
+        Me.dt_fecTerminacion.Location = New System.Drawing.Point(107, 127)
         Me.dt_fecTerminacion.Name = "dt_fecTerminacion"
         Me.dt_fecTerminacion.Size = New System.Drawing.Size(89, 20)
         Me.dt_fecTerminacion.TabIndex = 53
         '
         'bt_cambiarfec
         '
-        Me.bt_cambiarfec.Location = New System.Drawing.Point(247, 94)
+        Me.bt_cambiarfec.Location = New System.Drawing.Point(201, 125)
         Me.bt_cambiarfec.Name = "bt_cambiarfec"
-        Me.bt_cambiarfec.Size = New System.Drawing.Size(118, 23)
+        Me.bt_cambiarfec.Size = New System.Drawing.Size(153, 23)
         Me.bt_cambiarfec.TabIndex = 54
-        Me.bt_cambiarfec.Text = "Cambiar Fecha"
+        Me.bt_cambiarfec.Text = "Cambiar Fecha Terminación"
         Me.bt_cambiarfec.UseVisualStyleBackColor = True
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(90, 130)
+        Me.Label7.Location = New System.Drawing.Point(44, 165)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(57, 13)
         Me.Label7.TabIndex = 55
@@ -172,7 +175,7 @@ Partial Class frmcontrato_CambioAV
         '
         Me.TextDif.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosCambiosBindingSource, "DiffORG", True))
         Me.TextDif.Enabled = False
-        Me.TextDif.Location = New System.Drawing.Point(153, 127)
+        Me.TextDif.Location = New System.Drawing.Point(107, 158)
         Me.TextDif.Name = "TextDif"
         Me.TextDif.ReadOnly = True
         Me.TextDif.Size = New System.Drawing.Size(89, 20)
@@ -181,18 +184,18 @@ Partial Class frmcontrato_CambioAV
         '
         'ButtonDif
         '
-        Me.ButtonDif.Location = New System.Drawing.Point(247, 125)
+        Me.ButtonDif.Location = New System.Drawing.Point(201, 156)
         Me.ButtonDif.Name = "ButtonDif"
-        Me.ButtonDif.Size = New System.Drawing.Size(118, 23)
+        Me.ButtonDif.Size = New System.Drawing.Size(153, 23)
         Me.ButtonDif.TabIndex = 57
         Me.ButtonDif.Text = "Cambiar Diferencial"
         Me.ButtonDif.UseVisualStyleBackColor = True
         '
         'ButtonFondeo
         '
-        Me.ButtonFondeo.Location = New System.Drawing.Point(247, 156)
+        Me.ButtonFondeo.Location = New System.Drawing.Point(201, 187)
         Me.ButtonFondeo.Name = "ButtonFondeo"
-        Me.ButtonFondeo.Size = New System.Drawing.Size(118, 23)
+        Me.ButtonFondeo.Size = New System.Drawing.Size(153, 23)
         Me.ButtonFondeo.TabIndex = 60
         Me.ButtonFondeo.Text = "Cambiar Recursos"
         Me.ButtonFondeo.UseVisualStyleBackColor = True
@@ -201,7 +204,7 @@ Partial Class frmcontrato_CambioAV
         '
         Me.TextFondeo.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AviosCambiosBindingSource, "Fondeotit", True))
         Me.TextFondeo.Enabled = False
-        Me.TextFondeo.Location = New System.Drawing.Point(153, 156)
+        Me.TextFondeo.Location = New System.Drawing.Point(107, 187)
         Me.TextFondeo.Name = "TextFondeo"
         Me.TextFondeo.ReadOnly = True
         Me.TextFondeo.Size = New System.Drawing.Size(89, 20)
@@ -211,7 +214,7 @@ Partial Class frmcontrato_CambioAV
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(90, 159)
+        Me.Label8.Location = New System.Drawing.Point(49, 190)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(52, 13)
         Me.Label8.TabIndex = 58
@@ -225,11 +228,41 @@ Partial Class frmcontrato_CambioAV
         '
         Me.ClientesTableAdapter.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(201, 96)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(153, 23)
+        Me.Button1.TabIndex = 63
+        Me.Button1.Text = "Cambiar Fecha Contrato"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'DTp_FechaCont
+        '
+        Me.DTp_FechaCont.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AviosCambiosBindingSource, "fechaCont", True))
+        Me.DTp_FechaCont.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DTp_FechaCont.Location = New System.Drawing.Point(107, 98)
+        Me.DTp_FechaCont.Name = "DTp_FechaCont"
+        Me.DTp_FechaCont.Size = New System.Drawing.Size(89, 20)
+        Me.DTp_FechaCont.TabIndex = 62
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(4, 106)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(97, 13)
+        Me.Label1.TabIndex = 61
+        Me.Label1.Text = "Nueva Fecha Cont"
+        '
         'frmcontrato_CambioAV
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(372, 188)
+        Me.ClientSize = New System.Drawing.Size(362, 219)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.DTp_FechaCont)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ButtonFondeo)
         Me.Controls.Add(Me.TextFondeo)
         Me.Controls.Add(Me.Label8)
@@ -239,7 +272,7 @@ Partial Class frmcontrato_CambioAV
         Me.Controls.Add(Me.bt_cambiarfec)
         Me.Controls.Add(Me.dt_fecTerminacion)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.LabelCiclo)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.cbclientes)
         Me.Controls.Add(Me.Label3)
@@ -261,7 +294,7 @@ Partial Class frmcontrato_CambioAV
     Friend WithEvents cbanexos As ComboBox
     Friend WithEvents TxtCiclo As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LabelCiclo As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents dt_fecTerminacion As DateTimePicker
     Friend WithEvents bt_cambiarfec As Button
@@ -276,4 +309,7 @@ Partial Class frmcontrato_CambioAV
     Friend WithEvents AviosCambiosTableAdapter As MesaControlDSTableAdapters.AviosCambiosTableAdapter
     Friend WithEvents ClientesBindingSource As BindingSource
     Friend WithEvents ClientesTableAdapter As MesaControlDSTableAdapters.ClientesTableAdapter
+    Friend WithEvents Button1 As Button
+    Friend WithEvents DTp_FechaCont As DateTimePicker
+    Friend WithEvents Label1 As Label
 End Class
