@@ -669,7 +669,7 @@ Public Class frmGenAviso
                         If oMsg_CC.Trim <> "" Then
                             MandaCorreo("avisos@finagil.com.mx", oMsg_CC, oMsg_Subject, oMsg_Body, sSource1)
                         End If
-                        MandaCorreo("avisos@finagil.com.mx", UsuarioGlobalCorreo, oMsg_Subject, oMsg_Body, sSource1)
+                        'MandaCorreo("avisos@finagil.com.mx", UsuarioGlobalCorreo, oMsg_Subject, oMsg_Body, sSource1)
                     End If
 
                     strUpdate = "UPDATE Facturas SET Enviado = 'S' WHERE Factura = " & nFactura
