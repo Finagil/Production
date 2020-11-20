@@ -2367,12 +2367,10 @@ Public Class frmAgil
         'CreaCadenaConexion(Usuario, Password, My.Settings.BaseDatos, My.Settings.ServidorX)
         CreaCadenaConexion("User_PRO", "User_PRO2015", My.Settings.BaseDatos, My.Settings.ServidorPROD)
 
-        Dim Segurdad As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         'If UsuarioGlobal = "vely" Or Segurdad.ScalarArea(UsuarioGlobal) = "PROMOCION" Then
         'Timer1.Enabled = True
         'Call Pendientes()
         'End If
-        Segurdad.Dispose()
         If UsuarioGlobal <> "desarrollo" Then
             Timer1.Start()
         End If

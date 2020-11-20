@@ -397,14 +397,14 @@ Partial Class FrmAltaPolizaAvio
         '
         'TxtSumaAseg
         '
-        Me.TxtSumaAseg.Location = New System.Drawing.Point(488, 84)
+        Me.TxtSumaAseg.Location = New System.Drawing.Point(528, 84)
         Me.TxtSumaAseg.Name = "TxtSumaAseg"
         Me.TxtSumaAseg.Size = New System.Drawing.Size(120, 20)
         Me.TxtSumaAseg.TabIndex = 106
         '
         'Txtcuota
         '
-        Me.Txtcuota.Location = New System.Drawing.Point(370, 84)
+        Me.Txtcuota.Location = New System.Drawing.Point(410, 84)
         Me.Txtcuota.Name = "Txtcuota"
         Me.Txtcuota.Size = New System.Drawing.Size(100, 20)
         Me.Txtcuota.TabIndex = 105
@@ -415,9 +415,9 @@ Partial Class FrmAltaPolizaAvio
         Me.CmbAseg.DisplayMember = "Aseguradora"
         Me.CmbAseg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbAseg.FormattingEnabled = True
-        Me.CmbAseg.Location = New System.Drawing.Point(135, 84)
+        Me.CmbAseg.Location = New System.Drawing.Point(123, 84)
         Me.CmbAseg.Name = "CmbAseg"
-        Me.CmbAseg.Size = New System.Drawing.Size(217, 21)
+        Me.CmbAseg.Size = New System.Drawing.Size(281, 21)
         Me.CmbAseg.TabIndex = 104
         Me.CmbAseg.ValueMember = "IdAseguradora"
         '
@@ -449,7 +449,7 @@ Partial Class FrmAltaPolizaAvio
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(485, 66)
+        Me.Label9.Location = New System.Drawing.Point(525, 66)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(88, 13)
         Me.Label9.TabIndex = 97
@@ -459,7 +459,7 @@ Partial Class FrmAltaPolizaAvio
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(367, 66)
+        Me.Label8.Location = New System.Drawing.Point(407, 66)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(35, 13)
         Me.Label8.TabIndex = 96
@@ -469,7 +469,7 @@ Partial Class FrmAltaPolizaAvio
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(133, 67)
+        Me.Label7.Location = New System.Drawing.Point(120, 67)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(67, 13)
         Me.Label7.TabIndex = 95

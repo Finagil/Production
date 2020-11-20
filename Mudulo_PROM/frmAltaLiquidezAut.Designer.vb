@@ -40,6 +40,8 @@ Partial Class frmAltaLiquidezAut
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.PROMSolicitudesLIQBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PROM_SolicitudesLIQTableAdapter = New Agil.PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter()
         TasaLabel = New System.Windows.Forms.Label()
         CondicionesLabel = New System.Windows.Forms.Label()
         ObservacionesLabel = New System.Windows.Forms.Label()
@@ -47,6 +49,7 @@ Partial Class frmAltaLiquidezAut
         BcLabel = New System.Windows.Forms.Label()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TasaLabel
@@ -113,16 +116,22 @@ Partial Class frmAltaLiquidezAut
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.ClientesTableAdapter = Nothing
         Me.TableAdapterManager.CorreosAnexosTableAdapter = Nothing
+        Me.TableAdapterManager.CXP_BancosTableAdapter = Nothing
         Me.TableAdapterManager.Datos_PLDTableAdapter = Nothing
         Me.TableAdapterManager.DatosLegalesTableAdapter = Nothing
+        Me.TableAdapterManager.EdoctaoTableAdapter = Nothing
+        Me.TableAdapterManager.EdoctasTableAdapter = Nothing
         Me.TableAdapterManager.EdoctavTableAdapter = Nothing
         Me.TableAdapterManager.EmpleadoresTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_ActividadInegiTableAdapter = Nothing
         Me.TableAdapterManager.GEN_EmpleadoresTableAdapter = Nothing
+        Me.TableAdapterManager.GEN_NotificacionesAnexosTableAdapter = Nothing
         Me.TableAdapterManager.LI_PeriodosTableAdapter = Nothing
         Me.TableAdapterManager.LI_PlazosTableAdapter = Nothing
         Me.TableAdapterManager.MetodoPagoTableAdapter = Nothing
         Me.TableAdapterManager.NivelesTableAdapter = Nothing
         Me.TableAdapterManager.PlazasTableAdapter = Nothing
+        Me.TableAdapterManager.PrendaTableAdapter = Nothing
         Me.TableAdapterManager.ProductosTableAdapter = Nothing
         Me.TableAdapterManager.PROM_Cargos_ExtrasTableAdapter = Nothing
         Me.TableAdapterManager.PROM_SolicitudesLIQ_AutorizacionTableAdapter = Me.PROM_SolicitudesLIQ_AutorizacionTableAdapter
@@ -209,6 +218,15 @@ Partial Class frmAltaLiquidezAut
         Me.Button2.Text = "Imprimir"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'PROMSolicitudesLIQBindingSource
+        '
+        Me.PROMSolicitudesLIQBindingSource.DataMember = "PROM_SolicitudesLIQ"
+        Me.PROMSolicitudesLIQBindingSource.DataSource = Me.PromocionDS
+        '
+        'PROM_SolicitudesLIQTableAdapter
+        '
+        Me.PROM_SolicitudesLIQTableAdapter.ClearBeforeFill = True
+        '
         'frmAltaLiquidezAut
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -231,6 +249,7 @@ Partial Class frmAltaLiquidezAut
         Me.Text = "Autorización"
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PROM_SolicitudesLIQ_AutorizacionBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PROMSolicitudesLIQBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -248,4 +267,6 @@ Partial Class frmAltaLiquidezAut
     Friend WithEvents Button1 As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button2 As Button
+    Friend WithEvents PROMSolicitudesLIQBindingSource As BindingSource
+    Friend WithEvents PROM_SolicitudesLIQTableAdapter As PromocionDSTableAdapters.PROM_SolicitudesLIQTableAdapter
 End Class

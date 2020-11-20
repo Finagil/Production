@@ -297,7 +297,30 @@ Public Class FrmAltaLiquidezFinan
     Sub GeneraCorreoAUTX(id As Integer, Fecha As Date)
         Dim Antiguedad As Integer = Fix(DateDiff(DateInterval.Day, Fecha, Date.Now.Date) / 365)
         Dim Asunto As String = ""
-        Dim Archivo As String = GeneraDocAutorizacion(id, Antiguedad)
+        Dim Archivo As String = GeneraDocAutorizacionFirmas(id, Antiguedad)
         MessageBox.Show("Solicitud Generada", id.ToString, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    Function GeneraDocAutorizacionFirmas(ID_Sol2 As Integer, Antiguedad As String) As String
+        Cursor.Current = Cursors.WaitCursor
+        Dim Archivo As String = My.Settings.RutaTMP & "\LQ\Autoriza" & ID_Sol2 & ".Pdf"
+        Dim Archivo2 As String = "\LQ\Autoriza" & ID_Sol2 & ".Pdf"
+        Dim reporte As New rptAltaLiquidezAutorizacionFirmas
+        Dim ta As New PromocionDSTableAdapters.AutorizacionRPTTableAdapter
+        ta.Fill(Me.PromocionDS.AutorizacionRPT, ID_Sol2)
+
+        reporte.SetDataSource(Me.PromocionDS)
+        reporte.SetParameterValue("var_antiguedad", Antiguedad)
+        reporte.SetParameterValue("AreaAutorizo", "DIRECCION GENERAL")
+        Dim Analista As String = USER_SEC.ScalarNombre(Me.PromocionDS.AutorizacionRPT.Rows(0).Item("usuarioCredito"))
+        reporte.SetParameterValue("Analista", Analista)
+        Try
+            File.Delete(Archivo)
+            reporte.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Archivo)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Cursor.Current = Cursors.Default
+        Return Archivo2
+    End Function
 End Class

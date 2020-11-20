@@ -124,9 +124,8 @@
 
     Private Sub CreaSeguimiento(ByRef r As PromocionDS.AviosRow, ByVal Pagare As String)
         Dim ta As New GeneralDSTableAdapters.GEN_PendientesTableAdapter
-        Dim taU As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
-        taU.FillByUsuario(tu, UsuarioGlobal)
+        USER_SEC.FillByUsuario(tu, UsuarioGlobal)
         Dim Nom As String = tu.Item(0).NombreCompleto
 
         ta.Insert("", Date.Now, DTFecha.Value, "Alta de Pagare CC Anexo: " & r.Anexo & " Pagaré: " & Pagare & " Importe: " & CDec(TxtMonto.Text).ToString("n2"), UsuarioGlobal, "atorres", "PCC", UsuarioGlobal, Nom, "PROMOCION", "atorres", r.Cliente)

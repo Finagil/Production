@@ -19341,7 +19341,7 @@ Partial Public Class GeneralDS
             Me.columnDe.MaxLength = 200
             Me.columnPara.MaxLength = 400
             Me.columnAsunto.MaxLength = 100
-            Me.columnMensaje.MaxLength = 2000
+            Me.columnMensaje.MaxLength = 4000
             Me.columnfecha.AllowDBNull = false
             Me.columnAttach.MaxLength = 200
         End Sub
@@ -52365,7 +52365,7 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        id_Correo, De, Para, Asunto, Mensaje, Enviado, fecha, Attach"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
-                "           GEN_Correos_SistemaFinagil"
+                "           GEN_Correos_SistemaFinagil"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Enviado = 0)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

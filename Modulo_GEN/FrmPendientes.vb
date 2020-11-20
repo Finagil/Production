@@ -17,9 +17,8 @@ Public Class FrmPendientes
             Exit Sub
         End If
         Dim ta As New GeneralDSTableAdapters.GEN_PendientesTableAdapter
-        Dim taU As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
-        taU.FillByUsuario(tu, UsuarioGlobal)
+        USER_SEC.FillByUsuario(tu, UsuarioGlobal)
         Dim Nom As String = tu.Item(0).NombreCompleto
         If Tipo = "H" Then
             ta.Insert("", Date.Now, DTFecha.Value, UCase(TxtAsunto.Text), UsuarioGlobal, CmbPersona.SelectedValue, "NEW", UsuarioGlobal, Nom, CmbArea.Text, CmbPersona.Text, CmbCliente.SelectedValue)

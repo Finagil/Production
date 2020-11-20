@@ -12,7 +12,7 @@ Module GEN_Globales
     Public USER_SEC As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
     Public TASA_IVA_SISTEM As Decimal = 0.16
     Public BITACORA As New GeneralDSTableAdapters.GEN_BitacoraFinagilTableAdapter
-
+    Public TACORREOS As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
 
     Public Structure LASTINPUTINFO
         Public cbSize As UInteger
@@ -200,19 +200,16 @@ Module GEN_Globales
     End Function
 
     Public Sub MandaCorreo(De As String, Para As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         AjustaCorreo(Asunto, Mensaje)
         taCorreos.Insert(De, Para, Asunto, Mensaje, False, Date.Now, Archivo)
         taCorreos.Dispose()
     End Sub
 
     Public Sub MandaCorreoDepto(De As String, Depto As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
-        Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
         AjustaCorreo(Asunto, Mensaje)
-        users.FillByDepto(tu, Depto)
+        USER_SEC.FillByDepto(tu, Depto)
         For Each r In tu.Rows
             taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Date.Now, Archivo)
         Next
@@ -220,15 +217,13 @@ Module GEN_Globales
     End Sub
 
     Public Sub MandaCorreoUser(De As String, Usuario As String, Asunto As String, Mensaje As String, Optional Archivo As String = "")
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
-        Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Dim tu As New SeguridadDS.UsuariosFinagilDataTable
         Dim r As SeguridadDS.UsuariosFinagilRow
         AjustaCorreo(Asunto, Mensaje)
         If InStr(Usuario, "@") > 0 Then
             taCorreos.Insert(De, Usuario, Asunto, Mensaje, False, Date.Now, Archivo)
         Else
-            users.FillByUsuario(tu, Usuario)
+            USER_SEC.FillByUsuario(tu, Usuario)
             For Each r In tu.Rows
                 taCorreos.Insert(De, r.correo, Asunto, Mensaje, False, Date.Now, Archivo)
             Next
@@ -238,7 +233,6 @@ Module GEN_Globales
 
     Public Function MandaCorreoFase(De As String, Fase As String, Asunto As String, Mensaje As String, Optional ByVal Archivo As String = "") As Boolean
         Asunto = Asunto.Trim
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim users As New GeneralDSTableAdapters.CorreosFasesTableAdapter
         Dim tu As New GeneralDS.CorreosFasesDataTable
         Dim r As GeneralDS.CorreosFasesRow
@@ -254,8 +248,6 @@ Module GEN_Globales
     End Function
 
     Public Sub MandaCorreoPROMO(Anexo As String, Asunto As String, Mensaje As String, Jefe As Boolean, CopiaRemitente As Boolean, Optional Archivo As String = "", Optional MsgPara As Boolean = False)
-        Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim promo As New GeneralDSTableAdapters.CorreoPROMOTableAdapter
         Dim tu As New GeneralDS.CorreoPROMODataTable
         Dim r As GeneralDS.CorreoPROMORow
@@ -559,8 +551,6 @@ Module GEN_Globales
     End Sub
 
     Public Sub MandaCorreoANEXO(Anexo As String, Asunto As String, Mensaje As String, Jefe As Boolean, CopiaRemitente As Boolean, Optional Archivo As String = "", Optional MsgPara As Boolean = False)
-        Dim users As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
-        Dim taCorreos As New GeneralDSTableAdapters.GEN_Correos_SistemaFinagilTableAdapter
         Dim promo As New GeneralDSTableAdapters.CorreosAnexosCliTableAdapter
         Dim tu As New GeneralDS.CorreosAnexosCliDataTable
         Dim r As GeneralDS.CorreosAnexosCliRow

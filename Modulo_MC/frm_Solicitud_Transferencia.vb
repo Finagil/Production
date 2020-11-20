@@ -188,7 +188,6 @@ Public Class frm_Solicitud_Transferencia
     End Sub
 
     Sub GeneraSolicitud()
-        Dim User_Sec As New SeguridadDSTableAdapters.UsuariosFinagilTableAdapter
         Me.Vw_MC_SOLICITUD_TRANSFERENCIATableAdapter.FillByAnexo_Fecha(Me.Solicitud_transDS.vw_MC_SOLICITUD_TRANSFERENCIA, frm_Solicitud_Transferencia.id_anexo, frm_Solicitud_Transferencia.Ciclo)
         Dim r As MesaControlDS.vw_MC_SOLICITUD_TRANSFERENCIARow
         If Me.Solicitud_transDS.vw_MC_SOLICITUD_TRANSFERENCIA.Rows.Count > 0 Then
@@ -197,7 +196,7 @@ Public Class frm_Solicitud_Transferencia
             Dim VOBO As String = r.Vobo
 
             Dim SUBDIR, FirmaDG, FirmaSUB As String
-            SUBDIR = User_Sec.ScalarNombre(VOBO)
+            SUBDIR = USER_SEC.ScalarNombre(VOBO)
 
             If IsNothing(SUBDIR) Then
                 SUBDIR = ""

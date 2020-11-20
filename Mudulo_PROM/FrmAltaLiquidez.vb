@@ -56,6 +56,9 @@ Public Class FrmAltaLiquidez
             ComboBox8.SelectedIndex = 0
             CmbtipoVivienda.SelectedIndex = 0
             DtpFecSol.Value = Now.Date
+            Me.PROMSolicitudesLIQBindingSource.Current("FirmaPROM") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("FirmaCRE") = ""
+            Me.PROMSolicitudesLIQBindingSource.Current("FirmaDG") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("calle") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("empresa") = ""
             Me.PROMSolicitudesLIQBindingSource.Current("entrecalles") = ""
