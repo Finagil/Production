@@ -2550,13 +2550,14 @@ Public Class frmActuaDat
             MsgBox("Un contrato descontado con FIRA no puede tener Depósito en Garantía", MsgBoxStyle.Critical, "Error de Validación")
         End If
 
-        If cFondeo = "03" And TextLOC_INEGI.Text = "" Then
-            lCorrecto = False
-            MsgBox("el Cliente no tiene asignada una Clave de Localidad del INEGI para descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
-        ELSEIf cFondeo = "03" And LbClave.Visible = False Then
-            lCorrecto = False
-            MsgBox("la Localidad del INEGI del cliente no es suceptible de descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
-        End If
+        ' se quito la validacion por no ser practica para contratos sin actividades primarias EPINEDA MLEAL 23/11/2020
+        'If cFondeo = "03" And TextLOC_INEGI.Text = "" Then
+        'lCorrecto = False
+        'MsgBox("el Cliente no tiene asignada una Clave de Localidad del INEGI para descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
+        'ElseIf cFondeo = "03" And LbClave.Visible = False Then
+        'lCorrecto = False
+        'MsgBox("la Localidad del INEGI del cliente no es suceptible de descontarse con Fira.", MsgBoxStyle.Critical, "Error de Validación")
+        'End If
 
         If Val(txtPorop.Text) < 0 Then
             lCorrecto = False
