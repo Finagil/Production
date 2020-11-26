@@ -400,6 +400,11 @@ Public Class frmBitacora
             Label4.Text = myIdentity.Name
             cQuien = Mid(UsuarioGlobalNombre, 1, 20)
             ComboBox1.MaxDropDownItems = 35
+            If UsuarioGlobalDepto = "COBRANZAS" Or UsuarioGlobalDepto = "SISTEMAS" Then
+                btnModif.Visible = True
+            Else
+                btnModif.Visible = False
+            End If
         Catch eException As Exception
             MsgBox(eException.Source & " " & eException.Message, MsgBoxStyle.Critical, "Mensaje de Error")
         End Try

@@ -702,7 +702,7 @@ Public Class frmAgil
         '
         Me.MnuCargosEXTRAS.Enabled = False
         Me.MnuCargosEXTRAS.Index = 13
-        Me.MnuCargosEXTRAS.Text = "----------"
+        Me.MnuCargosEXTRAS.Text = "Seguimiento de Cobranza"
         '
         'MenuItem16
         '
@@ -3149,8 +3149,8 @@ Public Class frmAgil
     End Sub
 
     Private Sub MenuItem13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuCargosEXTRAS.Click
-        'Dim f As New frmCargosExtras
-        'f.Show()
+        Dim newfrmBitacora As New frmBitacora()
+        newfrmBitacora.Show()
     End Sub
 
     Private Sub MenuItem13_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem13.Click
