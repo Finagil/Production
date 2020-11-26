@@ -8,7 +8,7 @@ Public Class FrmAltaPolizaAvio
         Me.CiclosTableAdapter.FillByVigentes(Me.SegurosDS.Ciclos)
         CmbCiclo_SelectedIndexChanged(Nothing, Nothing)
         Bloquea(True)
-        If UCase(USUARIOX) = "VELY" Or UCase(USUARIOX) = "GAGUILAR" Or UCase(USUARIOX) = "DESARROLLO" Then
+        If UsuarioGlobalDepto = "SEGUROS" Or UsuarioGlobalDepto = "SISTEMAS" Then
             BttCatalogos.Visible = True
         Else
             BttCatalogos.Visible = False
