@@ -23,6 +23,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem92 As MenuItem
     Friend WithEvents MenuItem94 As MenuItem
     Friend WithEvents MenuItem95 As MenuItem
+    Friend WithEvents MenuItem93 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -596,6 +597,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem93 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -714,7 +716,7 @@ Public Class frmAgil
         '
         Me.MnuActiDomi.Enabled = False
         Me.MnuActiDomi.Index = 15
-        Me.MnuActiDomi.Text = "Activar/Desact. Domiciliación"
+        Me.MnuActiDomi.Text = "------"
         '
         'MenuSegCred
         '
@@ -1898,7 +1900,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79, Me.MenuItem81})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79, Me.MenuItem81, Me.MenuItem93})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2175,6 +2177,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem93
+        '
+        Me.MenuItem93.Index = 17
+        Me.MenuItem93.Text = "Activar/Desact. Domiciliación"
         '
         'frmAgil
         '
@@ -3288,11 +3295,6 @@ Public Class frmAgil
         Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub MnuActiDomi_Click(sender As Object, e As EventArgs) Handles MnuActiDomi.Click
-        Dim f As New FrmActiVaDomi
-        f.Show()
-    End Sub
-
     Private Sub MenuItem23_Click(sender As Object, e As EventArgs) Handles MenuItem23.Click
         Dim f As New FrmRptCarteraVEN
         f.ESTATUS = "Reestructurada"
@@ -3689,5 +3691,10 @@ Public Class frmAgil
     Private Sub MenuItem95_Click(sender As Object, e As EventArgs) Handles MenuItem95.Click
         Dim F As New frmcontrato_CambioAV
         F.Show()
+    End Sub
+
+    Private Sub MenuItem93_Click_1(sender As Object, e As EventArgs) Handles MenuItem93.Click
+        Dim f As New FrmActiVaDomi
+        f.Show()
     End Sub
 End Class

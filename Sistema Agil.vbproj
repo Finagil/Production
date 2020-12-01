@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>222</ApplicationRevision>
+    <ApplicationRevision>224</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1446,10 +1446,10 @@
     <Compile Include="Mudulo_PROM\frmActiAnexCS.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mudulo_PROM\FrmActiVaDomi.Designer.vb">
+    <Compile Include="Modulo_JUR\FrmActiVaDomi.Designer.vb">
       <DependentUpon>FrmActiVaDomi.vb</DependentUpon>
     </Compile>
-    <Compile Include="Mudulo_PROM\FrmActiVaDomi.vb">
+    <Compile Include="Modulo_JUR\FrmActiVaDomi.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mudulo_PROM\FrmCorreosAdicionales.Designer.vb">
@@ -3288,7 +3288,7 @@
       <DependentUpon>frmActiAnexCS.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mudulo_PROM\FrmActiVaDomi.resx">
+    <EmbeddedResource Include="Modulo_JUR\FrmActiVaDomi.resx">
       <DependentUpon>FrmActiVaDomi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mudulo_PROM\FrmCorreosAdicionales.resx">
