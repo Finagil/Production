@@ -27,7 +27,6 @@ Partial Class frmCargosExtras
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblPagos = New System.Windows.Forms.Label()
-        Me.btnAdeudos = New System.Windows.Forms.Button()
         Me.txtAdeudo = New System.Windows.Forms.TextBox()
         Me.btnEditarAdeudo = New System.Windows.Forms.Button()
         Me.cbDeudores = New System.Windows.Forms.ComboBox()
@@ -116,16 +115,6 @@ Partial Class frmCargosExtras
         Me.lblPagos.Text = "Estos son los ADEUDOS que se añadirán al cobro domiciliado (adicional a los venci" &
     "mientos domiciliados)"
         Me.lblPagos.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        '
-        'btnAdeudos
-        '
-        Me.btnAdeudos.ForeColor = System.Drawing.Color.Black
-        Me.btnAdeudos.Location = New System.Drawing.Point(559, 236)
-        Me.btnAdeudos.Name = "btnAdeudos"
-        Me.btnAdeudos.Size = New System.Drawing.Size(86, 23)
-        Me.btnAdeudos.TabIndex = 23
-        Me.btnAdeudos.Text = "Ver adeudos"
-        Me.btnAdeudos.UseVisualStyleBackColor = True
         '
         'txtAdeudo
         '
@@ -765,7 +754,6 @@ Partial Class frmCargosExtras
         Me.Controls.Add(Me.dgvCargosRegistrados)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cbDeudores)
-        Me.Controls.Add(Me.btnAdeudos)
         Me.Controls.Add(Me.lblPagos)
         Me.Name = "frmCargosExtras"
         Me.Text = "Captura de Cargos Extras para Domiciliación"
@@ -783,7 +771,6 @@ Partial Class frmCargosExtras
 
     End Sub
     Friend WithEvents lblPagos As System.Windows.Forms.Label
-    Friend WithEvents btnAdeudos As System.Windows.Forms.Button
     Friend WithEvents txtAdeudo As System.Windows.Forms.TextBox
     Friend WithEvents btnEditarAdeudo As System.Windows.Forms.Button
     Friend WithEvents cbDeudores As System.Windows.Forms.ComboBox

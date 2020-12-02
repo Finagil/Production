@@ -81,16 +81,13 @@ Public Class frmCargosExtras
 
     End Sub
 
-    Private Sub btnAdeudos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdeudos.Click
-        If Not cbDeudores.SelectedValue Is Nothing Then
-            GroupBox1.Visible = True
-            cCliente = cbDeudores.SelectedValue.ToString()
-            LlenaDatos()
-        End If
-    End Sub
-
     Private Sub LlenaDatos()
         Me.FacturasTableAdapter.FillByCargosExtras(PromocionDS1.Facturas, Today.Date.ToString("yyyyMMdd"), cCliente)
+        If PromocionDS1.Facturas.Rows.Count > 0 Then
+            btnEditarAdeudo.Enabled = True
+        Else
+            btnEditarAdeudo.Enabled = False
+        End If
         dgvAdeudos.DataSource = PromocionDS1.Facturas
         dgvAdeudos.Columns(0).Width = 30         ' Anexo
         dgvAdeudos.Columns(1).Width = 20         ' Letra
@@ -113,6 +110,7 @@ Public Class frmCargosExtras
     End Sub
 
     Private Sub btnEditarAdeudo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEditarAdeudo.Click
+
         cAnexo = dgvAdeudos.Item(0, dgvAdeudos.CurrentRow.Index).Value
         cLetra = dgvAdeudos.Item(1, dgvAdeudos.CurrentRow.Index).Value
         cNombreCliente = dgvAdeudos.Item(2, dgvAdeudos.CurrentRow.Index).Value
@@ -149,8 +147,14 @@ Public Class frmCargosExtras
         txtIvaMoratorios.Text = "0.00"
         txtCargoTotal.Text = nSaldo.ToString
 
-        dtpFechaMora.Value = Today.Date
-        dtpFechaCargo.Value = Today.Date
+        If InStr(cBanco.ToUpper, "BANCOMER") > 0 Then
+            dtpFechaMora.Value = Today.Date
+            dtpFechaCargo.Value = Today.Date
+        Else
+            dtpFechaMora.Value = Today.Date.AddDays(1)
+            dtpFechaCargo.Value = Today.Date
+        End If
+
         GroupBox2.Visible = True
 
     End Sub
@@ -176,8 +180,12 @@ Public Class frmCargosExtras
     End Sub
 
     Private Sub cbDeudores_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbDeudores.SelectedIndexChanged
-        If GroupBox1.Visible = True Then
-            GroupBox1.Visible = False
+        GroupBox1.Visible = False
+        GroupBox2.Visible = False
+        If Not cbDeudores.SelectedValue Is Nothing Then
+            GroupBox1.Visible = True
+            cCliente = cbDeudores.SelectedValue.ToString()
+            LlenaDatos()
         End If
     End Sub
 
@@ -208,7 +216,11 @@ Public Class frmCargosExtras
     End Function
 
     Private Sub dtpFechaCargo_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtpFechaCargo.ValueChanged
-        dtpFechaMora.Value = dtpFechaCargo.Value
+        If InStr(cBanco.ToUpper, "BANCOMER") > 0 Then
+            dtpFechaMora.Value = dtpFechaCargo.Value
+        Else
+            dtpFechaMora.Value = dtpFechaCargo.Value.AddDays(1)
+        End If
         ValidaFechaCargo()
         CalculaDatos()
     End Sub
