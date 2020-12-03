@@ -1533,10 +1533,10 @@ Public Class frmActiAnexCS
             'End If
 
         ElseIf drAnexo("Sucursal") = "03" Then
-            cTestigo1 = "Llamarse Adolfo Pacheco Mendez, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ciudad Obregon, Sonora, lugar donde nació el día 01 de marzo de 1964, de profesión Ingeniero Agrónomo, con domicilio en Calle No Reelecion No. 712, colonia Centro Navojoa, Sonora México, y con R.F.C. PAMA6403012V1"
-            cTestigo2 = "Llamarse Mitzi López Bojórquez, manifiesta por sus generales ser de nacionalidad mexicana, originario de Ciudad México, Distrito Federal, lugar donde nació el día 07 de noviembre de 1980, de profesión Licenciada en Sistemas de Información Administrativa, con domicilio en Calle No reelección No. 712 Col. Centro, Navojoa Sonora, México C.P. 85050 y con R.F.C. LOBM801107"
-            cFirmaTestigo1 = "ING. ADOLFO PACHECO MENDEZ"
-            cFirmaTestigo2 = "LIC. MITZI LOPÉZ BOJORQUEZ"
+            cTestigo1 = "Llamarse Alain Cozari Cuevas, de profesión licenciado en derecho, originario de ciudad obregón, sonora, lugar donde nació el 21 de febrero de 1986, con R.F.C. COCA860221UR7, de estado civil casado."
+            cTestigo2 = "Llamarse Sergio Sánchez Mackent, de profesión licenciado en contaduría, originario de Cuidad de México, lugar donde nació el 10 de septiembre de 1970, con R.F.C. SAMS700910CW1, de estado civil soltero."
+            cFirmaTestigo1 = "LIC. ALAIN COZARI CUENVAS"
+            cFirmaTestigo2 = "LC. SERGIO SANCHEZ MACKENT"
         ElseIf drAnexo("Sucursal") = "04" Then
             cTestigo1 = "Llamarse Janeth Ibarra Bibiano, manifiesta por sus generales ser de nacionalidad Mexicana, originario de la ciudad de Mexicali, Baja California, lugar donde nació el día 28 de Abril de 1986, de profesión Licenciada en Derecho, con domicilio en Avenida Electricistas número 1954, colonia Libertad, C.P. 21030, Mexicali, Baja California, y con R.F.C. IABJ860428TP8"
             cTestigo2 = "Llamarse Daniel Rentería, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ensenada, Baja California, lugar donde nació el día 15 de Octubre de 1959, de profesión Licenciado en Administración de Empresas, de estado civil casado, con domicilio en Puerta de Alcalá 2822 Frac. Puerta de Hierro, Mexicali, Baja California, México, C.P. 21255, con R.F.C. REDA591015HU8 y con CURP REXD591015HBCNXN00 "
@@ -4704,9 +4704,9 @@ Public Class frmActiAnexCS
             End If
 
         ElseIf drAnexo("Sucursal") = "03" Then
-            cTestigo1 = "Llamarse Adolfo Pacheco Mendez, manifiesta por sus generales ser de nacionalidad mexicana, originaria de Ciudad Obregon, Sonora, lugar donde nació el día 01 de marzo de 1964, de profesión Ingeniero Agrónomo, con domicilio en Calle No Reelecion No. 712, colonia Centro Navojoa, Sonora México, y con R.F.C. PAMA6403012V1"
+            cTestigo1 = "Llamarse Alain Cozari Cuevas, de profesión licenciado en derecho, originario de ciudad obregón, sonora, lugar donde nació el 21 de febrero de 1986, con R.F.C. COCA860221UR7, de estado civil casado."
             cTestigo2 = "Llamarse Mitzi López Bojórquez, manifiesta por sus generales ser de nacionalidad mexicana, de la Ciudad de México Distrito Federal, lugar donde nació el día 07 de Noviembre de 1980, de profesión Licenciada en Sistemas de Información Administrativa, con domicilio en Calle No reelección No.  712 Col. Centro, Navojoa Sonora, México. C.P. 85050, y con R.F.C. LOBM801107"
-            cFirmaTestigo1 = "ING. ADOLFO PACHECO MENDEZ"
+            cFirmaTestigo1 = "LIC. ALAIN COZARI CUENVAS"
             cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJOQUEZ"
         ElseIf drAnexo("Sucursal") = "04" Then
             cTestigo1 = "Llamarse Jesus Oscar Cruz Terán, manifiesta por sus generales ser de nacionalidad mexicana, originario de Rayón, Estado de Sonora México, lugar donde nació el día 11 de diciembre de 1958, de profesión Ingeniero Agrónomo, con domicilio en Avenida  Rio San Angel número 48, fraccionamiento  Valle de  Puebla, Mexicali, Baja California, México, C.P. 21384, y con R.F.C. CUTJ581211JB1"

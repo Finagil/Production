@@ -581,7 +581,7 @@ Public Class frmGeneFact
                     nResidual = Round(nResidual / (1 + (nTasaIVACliente / 100)), 2)
                     Dim nResidualIva As Decimal = Round(nResidual * (nTasaIVACliente / 100), 2)
                     tx.Insert(cAnexo, nResidual, nResidualIva, nTasaIVACliente / 100, "S", "N")
-                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada AP " & cAnexo, nLetra & "-" & TaQUERY.UltimaLetra(cAnexo))
+                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada AP " & cAnexo & "-" & nResidual.ToString, nLetra & "-" & TaQUERY.UltimaLetra(cAnexo))
                 End If
 
 
@@ -1222,7 +1222,7 @@ Public Class frmGeneFact
                 ' Si es el último vencimiento del contrato, debe marcar la opción de compra como exigible
                 If Val(aFactura.Letra) = Val(TaQUERY.UltimaLetra(aFactura.Anexo)) And cTipar <> "B" Then
                     strUpdate = "UPDATE Opciones SET Exigible = 'S' WHERE Anexo = '" & aFactura.Anexo & "'"
-                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada TRA " & aFactura.Anexo, strUpdate)
+                    MandaCorreo("opciones@cmoderna.com", "ecacerest@cmoderna.com", "OP Activada TRA " & aFactura.Anexo & "-" & aFactura.Opcion.ToString, strUpdate)
                     cm1 = New SqlCommand(strUpdate, cnAgil)
                     cm1.ExecuteNonQuery()
                     TaReest.FillORG(Treest, cAnexo)
