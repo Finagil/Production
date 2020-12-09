@@ -91,6 +91,9 @@ Module mRegTabla
                 Else
                     nNuevoSaldo = nNuevoSaldo - nAbcap
                 End If
+                If nNuevoSaldo < 0 Then 'por adelantos mayores al saldo insoluto
+                    nNuevoSaldo = 0
+                End If
 
                 nAbcap = nNuevoSaldo * nFactorCap
                 nInter = nNuevoSaldo * nFactorInt

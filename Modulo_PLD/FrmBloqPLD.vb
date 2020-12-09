@@ -69,7 +69,7 @@
 
         Dim sUC As String = ClientesBindingSource.Current("sucursal")
         MandaCorreo(De, Para, Asunto, Mensaje)
-        MandaCorreoFase(De, Mid(sUC, 5, sUC.Length), Asunto, Mensaje)
+        MandaCorreoFase(De, sUC, Asunto, Mensaje)
         MandaCorreoFase(De, "MESA_CONTROL", Asunto, Mensaje)
         MandaCorreoFase(De, "PLD", Asunto, Mensaje)
     End Sub

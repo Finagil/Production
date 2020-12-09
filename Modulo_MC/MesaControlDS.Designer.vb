@@ -28433,10 +28433,9 @@ Namespace MesaControlDSTableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Clientes.Cliente, rtrim(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
+            Me._commandCollection(1).CommandText = "SELECT        Clientes.Cliente, RTRIM(Clientes.Descr) AS Descr, Clientes.Tipo, Cl"& _ 
                 "ientes.Sucursal, Clientes.Promo, Clientes.Gestor, Clientes.Calle, Clientes.Colon"& _ 
-                "ia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, C"& _ 
-                "lientes.Copos, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Telef1, Clientes.Telef2, Clie"& _ 
+                "ia, Clientes.TipoAsent, Clientes.Delegacion, Clientes.Ciudad, Clientes.Estado, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.Copos, Clientes.Telef1, Clientes.Telef2, Clie"& _ 
                 "ntes.Telef3, Clientes.Fax, Clientes.Fecha1, Clientes.Giro, Clientes.ClaveAE, Cli"& _ 
                 "entes.Plaza, Clientes.RFC, Clientes.CURP, Clientes.EMail1, Clientes.EMail2, Clie"& _ 
                 "ntes.Banco, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes.CuentaBancomer, Clientes.CuentaC"& _ 
@@ -28463,7 +28462,7 @@ Namespace MesaControlDSTableAdapters
                 "es.Promo = Promotores.Promotor LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GEN_Cor"& _ 
                 "reosFases ON 'sub_' + RTRIM(Sucursales.Nombre_Sucursal) = GEN_CorreosFases.Fase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Clientes.Cliente IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        "& _ 
                 "Cliente"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
-                "              WHERE        (Flcan = 'F')))"
+                "              WHERE        (Flcan = 'F')))"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Descr"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection

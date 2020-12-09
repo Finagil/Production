@@ -666,14 +666,14 @@ Public Class frmImpCtoAvio
                     cFertilizante = cFertilizante & "AGUA AMONIACAL"
                     cHerbicidas = "OTILAN" & Chr(13) & "TRETOX" & Chr(13) & "PERMERLIN" & Chr(13) & "BLAZER" & Chr(13) & "FLEX" & Chr(13) & "SELECT" & Chr(13) & "FUSILADE"
                 End If
-                cTestigos = "DECLARA EL TESTIGO LLAMARSE MAGDA IRASEMA CORONADO SOTO, DE PROFESION LICENCIADA EN ADMINISTRACION CON ESPECIALIDAD EN MERCADOTECNIA, ORIGINARIA DE NAVOJOA, SONORA LUGAR DONDE NACIO EL 21 DE AGOSTO DE 1978, CON R.F.C. COSM7808211G2, DE ESTADO CIVIL SOLTERA"
+                cTestigos = "DECLARA EL TESTIGO LLAMARSE ALAIN COZARI CUEVAS, DE PROFESIÓN LICENCIADO EN DERECHO, ORIGINARIO DE CUIDAD OBREGÓN, SONORA LUGAR DONDE NACIÓ EL 21 DE FEBRERO DE 1986, CON R.F.C. COCA860221UR7, DE ESTADO CIVIL CASADO"
                 cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE MITZI LOPEZ BOJORQUEZ, DE PROFESION LICENCIADA EN SISTEMAS DE INFORMACION ADMINISTRATIVA, ORIGINARIO DE LA CIUDAD DE MEXICO DISTRITO FEDERAL LUGAR DONDE NACIO EL 07 DE NOVIEMBRE DE 1980, CON R.F.C. LOBM8011071JA, DE ESTADO CIVIL SOLTERA. "
                 cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE ABRAHAM ARIEL RIVERA LOPEZ, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE CD. OBREGÓN, SONORA LUGAR DONDE NACIO EL 16 DE MARZO DE 1960, CON R.F.C. RILA600316HC2, DE ESTADO CIVIL CASADO."
                 cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE RAFAEL ROCHIN CASTELO, DE PROFESION INGENIERO AGRONOMO, ORIGINARIO DE BATACOSA, QUIRIEGO, SONORA, LUGAR DONDE NACIO EL 05 DE ABRIL DE 1963, CON R.F.C. ROCR6304053W3, DE ESTADO CIVIL CASADO."
                 cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE EDUARDO ZAZUETA GARCIA, DE PROFESION INGENIERO AGRONOMO FITOCCTENISTA, ORIGINARIO DE NAVOJOA, SONORA, LUGAR DONDE NACIO EL 16 DE JUNIO DE 1978, CON R.F.C. ZAGE780616NU5, DE ESTADO CIVIL CASADO."
                 cTestigos += vbCrLf & vbCrLf & "DECLARA EL TESTIGO LLAMARSE JOSE GUADALUPE GASTELUM CORRAL, DE PROFESION INGENIERO EN INNOVACION AGRICOLA SUSTENTABLE, ORIGINARIO DE HUATABAMPO, SONORA, LUGAR DONDE NACIO EL 30 DE JUNIO DE 1994, CON R.F.C. GACG940630CR4, DE ESTADO CIVIL CASADO."
 
-                cFirmaTestigo1 = "LIC. MAGDA IRASEMA CORONADO SOTO"
+                cFirmaTestigo1 = "LIC. ALAIN COZARI CUEVAS"
                 cFirmaTestigo2 = "LIC. MITZI LOPEZ BOJORQUEZ"
                 cFirmaTestigo3 = "ABRAHAM ARIEL RIVERA LOPEZ"
                 cFirmaTestigo4 = "RAFAEL ROCHIN CASTELO"
@@ -1006,8 +1006,8 @@ Public Class frmImpCtoAvio
                                                       "con número de folio 5188007775044, así como la otra parte " & cDescr & ", quien manifestó " & cGeneClie & " con domicilio en " &
                                                       cCalle & " y quien se identificó con Credencial de Elector con fotografía con número de folio ______________________." & Chr(13) & Chr(10) &
                                                       "Y los TESTIGOS quienes manifiestan:" & Chr(13) & Chr(10) &
-                                                      "Llamarse MAGDA IRASEMA CORONADO SOTO,  licenciada en administración con especialidad en mercadotecnia, originario de Navojoa, " &
-                                                      "Sonora lugar donde nació el 21 de agosto de 1978, con R.F.C. COSM7808211G2, de estado civil soltera y quien en este acto se identifica " &
+                                                      "Llamarse ALAIN COZARI CUEVAS,  licenciada en derecho, originario de cuidad Obregon, " &
+                                                      "Sonora lugar donde nació el 21 de febrero de 1986, con R.F.C. COCA860221UR7, de estado civil casado y quien en este acto se identifica " &
                                                       "con Credencial de Elector con fotografía con número de folio ______________." & Chr(13) & Chr(10) &
                                                       "Llamarse ADOLFO PACHECO MENDEZ, de profesión Ingeniero Agrónomo Irrigador, originario de Cd. Obregón, Sonora lugar donde nació " &
                                                       "el 1º. de marzo de 1964, con R.F.C. PAMA6403012V1, de estado civil casado y quien en este acto se identifica " &
