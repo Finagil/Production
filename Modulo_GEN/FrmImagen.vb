@@ -84,7 +84,11 @@ Public Class FrmImagen
             If Pos = 0 And Carga = True Then
                 original = Image.FromFile(Ruta(Pos))
             End If
-            original.SelectActiveFrame(System.Drawing.Imaging.FrameDimension.Page, Pos)
+            Try
+                original.SelectActiveFrame(System.Drawing.Imaging.FrameDimension.Page, Pos)
+            Catch ex As Exception
+                original = Image.FromFile(Ruta(Pos))
+            End Try
         Else
             original = Image.FromFile(Ruta(Pos))
         End If
