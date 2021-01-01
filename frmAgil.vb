@@ -24,6 +24,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem94 As MenuItem
     Friend WithEvents MenuItem95 As MenuItem
     Friend WithEvents MenuItem93 As MenuItem
+    Friend WithEvents MenuItem96 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -566,6 +567,7 @@ Public Class frmAgil
         Me.MenuItem70 = New System.Windows.Forms.MenuItem()
         Me.MenuItem79 = New System.Windows.Forms.MenuItem()
         Me.MenuItem81 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem93 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -597,7 +599,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem93 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem96 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1077,7 +1079,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83, Me.MenuItem96})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -2005,6 +2007,11 @@ Public Class frmAgil
         Me.MenuItem81.Index = 16
         Me.MenuItem81.Text = "Cargos Adicionales (Domiciliación)"
         '
+        'MenuItem93
+        '
+        Me.MenuItem93.Index = 17
+        Me.MenuItem93.Text = "Activar/Desact. Domiciliación"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2178,10 +2185,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem93
+        'MenuItem96
         '
-        Me.MenuItem93.Index = 17
-        Me.MenuItem93.Text = "Activar/Desact. Domiciliación"
+        Me.MenuItem96.Index = 11
+        Me.MenuItem96.Text = "Quitar Opción a Compra"
         '
         'frmAgil
         '
@@ -3695,6 +3702,11 @@ Public Class frmAgil
 
     Private Sub MenuItem93_Click_1(sender As Object, e As EventArgs) Handles MenuItem93.Click
         Dim f As New FrmActiVaDomi
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem96_Click(sender As Object, e As EventArgs) Handles MenuItem96.Click
+        Dim f As New frmQuitarOpciones
         f.Show()
     End Sub
 End Class
