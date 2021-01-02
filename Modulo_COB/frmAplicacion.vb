@@ -886,7 +886,7 @@ Public Class frmAplicacion
             strUpdate = "UPDATE DetalleFinagil SET Factura = '" & SerieX & txtFolio.Text &
             "' WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
             "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
-            "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "'"
+            "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto <> 'INTERESES';"
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
 
