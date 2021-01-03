@@ -362,7 +362,7 @@ Public Class frmEdoCtaAvio
             nSaldoInicial = drDetalle("SaldoFinal")
             cSemilla = drDetalle("Semilla")
             If Not IsDBNull(drDetalle("ConceptoX")) Then
-                If Mid(Trim(drDetalle("ConceptoX")), Trim(drDetalle("ConceptoX")).Length, 1) <> "-" And Trim(drDetalle("Concepto")) <> "INTERESES" Then
+                If Mid(Trim(drDetalle("ConceptoX")), Trim(drDetalle("ConceptoX")).Length, 1) <> "-" Then
                     drDetalle("Concepto") = Trim(drDetalle("ConceptoX"))
                 End If
             End If
