@@ -51,9 +51,6 @@ Public Class frm_solicitudes
     End Sub
 
     Private Sub btn_entregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_entregar.Click
-
-        'declaracion de variables
-
         Dim MC_Bitacora As New MesaControlDSTableAdapters.MC_BitacoraTableAdapter
         Dim fecha_entrega As Date = Date.Now
         If txtid.Text.Length <= 0 Then
@@ -63,7 +60,31 @@ Public Class frm_solicitudes
             Exit Sub
         End If
 
-        id = txtid.Text
+        Dim Bandera As Boolean = True
+        If VwBitacoraanexoBindingSource1.Current("Ciclo").ToString.Trim.Length > 0 Then
+            If TaQUERY.SaldoAVCC(VwBitacoraanexoBindingSource1.Current("Anexo"), VwBitacoraanexoBindingSource1.Current("Ciclo")) > 0 Then
+                MessageBox.Show("Contrato con Saldo de Avío.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Bandera = False
+            End If
+        Else
+            If TaQUERY.SaldoEnFacturas(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
+                MessageBox.Show("Contrato Con Saldo en Facturas.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ElseIf TaQUERY.SaldoInsolutoTRA(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
+                MessageBox.Show("Contrato Con Saldo Insoluto.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ElseIf TaQUERY.SaldoOpcion(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
+                MessageBox.Show("Contrato Con Saldo de opcion a Compra.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Bandera = False
+            End If
+        End If
+        If Bandera Then
+            If MessageBox.Show("¿Desea entregar?", "Enrtrega de Entrega de Documentación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.No Then
+                Exit Sub
+            End If
+        End If
+
+            id = txtid.Text
         'Modificar entrega
         If id > 0 Then
             MC_Bitacora.UpdateEntrega(pagare_org.Checked, txtpagare.Text, contrato_org.Checked, txtcontrato.Text, convenio_org.Checked, txtconvenio.Text,
@@ -131,7 +152,7 @@ Public Class frm_solicitudes
             TxtFiltroAnexo.Text = ""
             TxtFiltroUser.Text = ""
             VwBitacoraanexoBindingSource1.Filter = "Cliente like '%" & TxtFiltroCliente.Text.Trim & "%'"
-        End If
+            End If
     End Sub
 
     Private Sub TxtFiltroAnexo_TextChanged(sender As Object, e As EventArgs) Handles TxtFiltroAnexo.TextChanged
@@ -192,5 +213,9 @@ Public Class frm_solicitudes
         Else
                 MessageBox.Show("No hay datos para Borrar.", "Borra Solicitud", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+    End Sub
+
+    Private Sub TxtFiltroAnexo_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles TxtFiltroAnexo.MaskInputRejected
+
     End Sub
 End Class
