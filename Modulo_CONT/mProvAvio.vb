@@ -70,13 +70,13 @@ Module mProvAvio
 
             With cm1
                 .CommandType = CommandType.Text
-                .CommandText = "SELECT Avios.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Segmento_Negocio, SUM(Intereses) AS Provision, Clientes.tipo FROM DetalleFINAGIL " & _
-                               "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " & _
-                               "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " & _
-                               "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " & _
-                               "WHERE Avios.FechaTerminacion > '" & cFecha & "' AND DetalleFINAGIL.FechaFinal <= '" & cFecha & "' " & _
-                               "GROUP BY Avios.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Segmento_Negocio, clientes.tipo " & _
-                               "HAVING SUM(Intereses) > 0 " & _
+                .CommandText = "SELECT Avios.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Segmento_Negocio, SUM(Intereses) AS Provision, Clientes.tipo, MAX(DetalleFINAGIL.FolioFiscal) AS FolioFiscal FROM DetalleFINAGIL " &
+                               "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
+                               "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
+                               "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
+                               "WHERE Avios.FechaTerminacion > '" & cFecha & "' AND DetalleFINAGIL.FechaFinal <= '" & cFecha & "' " &
+                               "GROUP BY Avios.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Segmento_Negocio, clientes.tipo " &
+                               "HAVING SUM(Intereses) > 0 " &
                                "ORDER BY Anexo"
                 .Connection = cnAgil
             End With
@@ -101,7 +101,7 @@ Module mProvAvio
                     .Fecha = cFecha
                     .Tipmov = cTipMov
                     .Banco = cTipPersona 'ECT new ocupamos tipo de persona
-                    .Concepto = ""
+                    .Concepto = drAnexo("FolioFiscal")
                     .Segmento = cSegmentoNegocio
                 End With
                 aMovimientos.Add(aMovimiento)
