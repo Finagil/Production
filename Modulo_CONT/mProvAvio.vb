@@ -32,7 +32,6 @@ Module mProvAvio
         Dim aPrimaryKey(2) As DataColumn
         Dim drTemporal As DataRow
         Dim strInsert As String
-
         ' Declaración de variables de datos
 
         Dim aMovimiento As New Movimiento()
@@ -101,7 +100,7 @@ Module mProvAvio
                     .Fecha = cFecha
                     .Tipmov = cTipMov
                     .Banco = cTipPersona 'ECT new ocupamos tipo de persona
-                    .Concepto = drAnexo("FolioFiscal")
+                    .Concepto = TaQUERY.UltimoFolioIAV(cAnexo, cCiclo)
                     .Segmento = cSegmentoNegocio
                 End With
                 aMovimientos.Add(aMovimiento)
