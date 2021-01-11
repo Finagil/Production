@@ -314,25 +314,15 @@ Public Class frmAplicacion
         cSucursal = cm1.ExecuteScalar
         cnAgil.Close()
 
-        If nEstaTraspasado > 0 Then
-            SerieX = "REP"
-            Label10.Text = "Serie REP"
-            txtFolio.Text = Folios.FolioPago
-        Else
-            If cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
-                SerieX = "MXL"
-                Label10.Text = "Serie MXL"
-                txtFolio.Text = FOLIOS.FolioMXL
-            Else
-                SerieX = "A"
-                Label10.Text = "Serie A"
-                txtFolio.Text = Folios.FolioA
-            End If
-        End If
+        '+++++++a partir del 01 de enero del 2021 todo es rep por que se factura el interes a fin de mes
+        SerieX = "REP"
+        Label10.Text = "Serie REP"
+        txtFolio.Text = FOLIOS.FolioPago
+
         If CKaplicaBlanco.Checked = True Then
             SerieX = "AB"
             Label10.Text = "Serie AB"
-            txtFolio.Text = Folios.FolioBlanco
+            txtFolio.Text = FOLIOS.FolioBlanco
         End If
         FolioMora = Folios.FolioMora
 
@@ -506,9 +496,7 @@ Public Class frmAplicacion
         Dim cnAgil As New SqlConnection(strConn)
         Dim drPagado As DataRow
         Dim cm1 As New SqlCommand()
-        Dim cm2 As New SqlCommand()
         Dim daBancos As New SqlDataAdapter(cm1)
-        Dim daSeries As New SqlDataAdapter(cm2)
         Dim dsAgil As New DataSet()
         Dim dsBcos As New DataSet()
         Dim PorcGarLIQ As Decimal = taTrapaso.SacaPorcGarLIQ(cAnexo, cCiclo)
@@ -697,61 +685,27 @@ Public Class frmAplicacion
         dgvDeudores.Update()
 
         If nVeces = 0 Then
-
             ' Este Stored Procedure regresa los datos de los Bancos
-
             With cm1
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "Bancos1"
                 .Connection = cnAgil
             End With
 
-            ' El siguiente Command trae los consecutivos de cada Serie
-
-            With cm2
-                .CommandType = CommandType.Text
-                .CommandText = "SELECT IDSerieA, IDSerieMXL, IDBlanco FROM Llaves"
-                .Connection = cnAgil
-            End With
-
             ' Llenar los dataset lo cual abre y cierra la conexión
-
             daBancos.Fill(dsBcos, "Bancos")
-            daSeries.Fill(dsAgil, "Series")
 
             ' Lleno cbBancos con el nombre de los Bancos
-
             cbBancos.DataSource = dsBcos
             cbBancos.DisplayMember = "Bancos.DescBanco"
             cbBancos.ValueMember = "Bancos.Banco"
-
             cbBancos.SelectedIndex = 0
-
-            ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
-
-            'drSerie = dsAgil.Tables("Series").Rows(0)
-            'txtSerie.Text = drSerie("IDSerieA").ToString
-            'txtSerieMXL.Text = drSerie("IDSerieMXL").ToString
-            'TxtSerieBlanco.Text = drSerie("IDBlanco").ToString
-
-            'Label8.Visible = True
-            'rbSerieA.Visible = True
-            'txtSerie.Visible = True
-            'rbSerieMXL.Visible = True
-            'txtSerieMXL.Visible = True
-            'RbSerieBlanco.Visible = True
-            'TxtSerieBlanco.Visible = True
-
-
             nVeces = 1
-
         End If
 
         btnAumentar.Enabled = False
         btnAplicar.Visible = True
         cm1.Dispose()
-        cm2.Dispose()
-
     End Sub
 
     Private Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
@@ -788,14 +742,10 @@ Public Class frmAplicacion
         Dim cPagado As String = ""
         Dim cRenglon As String = ""
         Dim cRFC As String = ""
-        'Dim cSerie As String = ""
-        'Dim cSerieX As String = "" '#ECT para ligar folios fiscales
         Dim i As Integer = 0
         Dim nCapital As Decimal = 0
         Dim nConsecutivoIni As Integer = 0
-        'Dim nIVA As Decimal = 0
         Dim nMinistracion As Decimal = 0
-        'Dim nNumero As Integer = 0
         Dim nPos As Integer = 0
         Dim nSaldoGarantia As Decimal = 0
         Dim nSaldoMinistracion As Decimal = 0
@@ -866,27 +816,20 @@ Public Class frmAplicacion
             cm1.ExecuteNonQuery()
         Next
 
-        ''#ECT para ligar folios Fiscales
-        'If rbSerieA.Checked = True Then
-        '    cSerieX = "A"
-        'ElseIf rbSerieMXL.Checked = True Then
-        '    cSerieX = "MXL"
-        'ElseIf RbSerieBlanco.Checked = True Then
-        '    cSerieX = "AB"
-        'End If
-        'If nEstaTraspasado > 0 Then
-        '    cSerieX = "REP"
-        'End If
-
-
         'Insertamos los Registros correspondientes en la Historia de Pagos
         For Each drDetalleFINAGIL In dtDetalleFINAGIL.Rows
+            If drDetalleFINAGIL("Concepto") = "INTERESES" Then
+                strUpdate = "UPDATE DetalleFinagil SET Facturado = 0 " &
+                "  WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
+                "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
+                "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto = 'INTERESES';"
+            Else
+                strUpdate = "UPDATE DetalleFinagil SET Factura = '" & SerieX & txtFolio.Text &
+                "' WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
+                "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
+                "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto <> 'INTERESES';"
+            End If
 
-            '#ECT se graba la factura en detalle finagil como informativo
-            strUpdate = "UPDATE DetalleFinagil SET Factura = '" & SerieX & txtFolio.Text &
-            "' WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
-            "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
-            "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto <> 'INTERESES';"
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -1343,7 +1286,13 @@ Public Class frmAplicacion
         cFechaPago = DTOC(FECHA_APLICACION)
 
         Dim Ruta As String = "C:\Facturas\FACTURA_"
+        If Not Directory.Exists("C:\Facturas\") Then
+            Directory.CreateDirectory("C:\Facturas\")
+        End If
         If SerieX = "AB" Then
+            If Not Directory.Exists("C:\Facturas\AppBlanco\") Then
+                Directory.CreateDirectory("C:\Facturas\AppBlanco\")
+            End If
             Ruta = "C:\Facturas\AppBlanco\FACTURA_"
         End If
 
@@ -1412,32 +1361,20 @@ Public Class frmAplicacion
             stmFactura.Close()
             Folios.ConsumeFolioMora()
         End If
-
         'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        ''Next
-
         ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
-
-        If SerieX = "A" Then
-            Folios.ConsumeFolioA()
-        ElseIf SerieX = "MXL" Then
-            Folios.ConsumeFolioMXL()
-        ElseIf SerieX = "REP" Then
-            Folios.ConsumeFolioPago()
+        If SerieX = "REP" Then
+            FOLIOS.ConsumeFolioPago()
         Else
-            Folios.ConsumeFolioBlanco()
+            FOLIOS.ConsumeFolioBlanco()
         End If
-
-
         MsgBox("Proceso Completo", MsgBoxStyle.Information)
 
         cnAgil.Close()
         cm1.Dispose()
         cm2.Dispose()
         cm3.Dispose()
-
         Me.Close()
-
     End Sub
 
     Function BuscarTexto(ByVal Texto As String, ByVal Busca As String) As Boolean

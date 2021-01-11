@@ -56,29 +56,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2")>  _
-        Public Property ServidorPROD() As String
-            Get
-                Return CType(Me("ServidorPROD"),String)
-            End Get
-            Set
-                Me("ServidorPROD") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=Use"& _ 
-            "r_PRO2015")>  _
-        Public ReadOnly Property ProductionConnectionString() As String
-            Get
-                Return CType(Me("ProductionConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Production")>  _
         Public Property BaseDatos() As String
             Get
@@ -167,6 +144,29 @@ Namespace My
             Get
                 Return CType(Me("Factor100ConnectionString"),String)
             End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=Use"& _ 
+            "r_PRO2015")>  _
+        Public ReadOnly Property ProductionConnectionString() As String
+            Get
+                Return CType(Me("ProductionConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2")>  _
+        Public Property ServidorPROD() As String
+            Get
+                Return CType(Me("ServidorPROD"),String)
+            End Get
+            Set
+                Me("ServidorPROD") = value
+            End Set
         End Property
     End Class
 End Namespace
