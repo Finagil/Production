@@ -83,7 +83,7 @@ Module DOC_LIQUIDEZ
         Documento.Bookmarks.Item("Anexo3").Range.Text = r.AnexoCon
         Documento.Bookmarks.Item("Anexo4").Range.Text = r.AnexoCon
         Documento.Bookmarks.Item("Anexo5").Range.Text = r.AnexoCon
-        'Documento.Bookmarks.Item("Anexo6").Range.Text = r.AnexoCon
+        Documento.Bookmarks.Item("Anexo6").Range.Text = r.AnexoCon
         'Documento.Bookmarks.Item("Anexo7").Range.Text = r.AnexoCon
         'Documento.Bookmarks.Item("Anexo8").Range.Text = r.AnexoCon
         'Documento.Bookmarks.Item("Anexo9").Range.Text = r.AnexoCon
