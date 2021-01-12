@@ -42776,7 +42776,7 @@ Namespace GeneralDSTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(66) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(67) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT     Anexo"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     (Anexo = @Anexo)"
@@ -43169,38 +43169,46 @@ Namespace GeneralDSTableAdapters
             Me._commandCollection(61).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(62) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(62).Connection = Me.Connection
-            Me._commandCollection(62).CommandText = "SELECT        isnull(MAX(Fecha),'') AS Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Historia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
-                "   (Anexo = @Anexo)"
+            Me._commandCollection(62).CommandText = "SELECT        FolioFiscal, Anexo, Ciclo, FechaFinal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            DetalleFINAG"& _ 
+                "IL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexo = @Anexo) AND (Ciclo = @Ciclo) AND (Concepto = N'Interes"& _ 
+                "es')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY FechaFinal DESC"
             Me._commandCollection(62).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(62).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(62).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Ciclo", Global.System.Data.SqlDbType.NChar, 2, Global.System.Data.ParameterDirection.Input, 0, 0, "Ciclo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(63) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(63).Connection = Me.Connection
-            Me._commandCollection(63).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                MesCalificacion = @Fecha, MesCalfFira = @"& _ 
-                "MesAño, MesCalfFiraPI1 = @MesAño1, MesCalfFiraPI2 = @MesAño2"
+            Me._commandCollection(63).CommandText = "SELECT        isnull(MAX(Fecha),'') AS Pago"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Historia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     "& _ 
+                "   (Anexo = @Anexo)"
             Me._commandCollection(63).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(63).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(63).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(63).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño1", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(63).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño2", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(63).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Anexo", Global.System.Data.SqlDbType.NChar, 9, Global.System.Data.ParameterDirection.Input, 0, 0, "Anexo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(64) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(64).Connection = Me.Connection
-            Me._commandCollection(64).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                CancelaMoraDiaFestivo = @MoraDiaFest"
+            Me._commandCollection(64).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                MesCalificacion = @Fecha, MesCalfFira = @"& _ 
+                "MesAño, MesCalfFiraPI1 = @MesAño1, MesCalfFiraPI2 = @MesAño2"
             Me._commandCollection(64).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(64).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoraDiaFest", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "CancelaMoraDiaFestivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(64).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Fecha", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalificacion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(64).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFira", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(64).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño1", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(64).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MesAño2", Global.System.Data.SqlDbType.NChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "MesCalfFiraPI2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(65) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(65).Connection = Me.Connection
-            Me._commandCollection(65).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+            Me._commandCollection(65).CommandText = "UPDATE       Llaves"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                CancelaMoraDiaFestivo = @MoraDiaFest"
+            Me._commandCollection(65).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(65).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoraDiaFest", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "CancelaMoraDiaFestivo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(66) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(66).Connection = Me.Connection
+            Me._commandCollection(66).CommandText = "UPDATE       Anexos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
                 "       Anexos INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Anexos.Cliente = "& _ 
                 "Clientes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Pro"& _ 
                 "mo = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Anexos.Promotor IS NULL)"
-            Me._commandCollection(65).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(66) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(66).Connection = Me.Connection
-            Me._commandCollection(66).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+            Me._commandCollection(66).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(67) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(67).Connection = Me.Connection
+            Me._commandCollection(67).CommandText = "UPDATE       Avios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Promotor = Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
                 "      Avios INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Clientes ON Avios.Cliente = Cli"& _ 
                 "entes.Cliente INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Promotores ON Clientes.Promo "& _ 
                 "= Promotores.Promotor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Avios.Promotor IS NULL)"
-            Me._commandCollection(66).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(67).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -45188,9 +45196,41 @@ Namespace GeneralDSTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UltimoFolioIAV(ByVal Anexo As String, ByVal Ciclo As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(62)
+            If (Anexo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Anexo")
+            Else
+                command.Parameters(0).Value = CType(Anexo,String)
+            End If
+            If (Ciclo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Ciclo")
+            Else
+                command.Parameters(1).Value = CType(Ciclo,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function UltimoPago(ByVal Anexo As String) As String
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(62)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(63)
             If (Anexo Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -45222,7 +45262,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateMesCalifFira(ByVal Fecha As String, ByVal MesAño As String, ByVal MesAño1 As String, ByVal MesAño2 As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(63)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(64)
             If (Fecha Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -45264,7 +45304,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdateMoraDiaFest(ByVal MoraDiaFest As String) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(64)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(65)
             If (MoraDiaFest Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -45291,7 +45331,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePromoActualAnexos() As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(65)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(66)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -45313,7 +45353,7 @@ Namespace GeneralDSTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
         Public Overloads Overridable Function UpdatePromoActualAvios() As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(66)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(67)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
