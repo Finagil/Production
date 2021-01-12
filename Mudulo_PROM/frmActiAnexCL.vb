@@ -258,6 +258,9 @@ Public Class frmActiAnexCL
     Friend WithEvents PromotoresTableAdapter As Agil.PromocionDSTableAdapters.PromotoresTableAdapter
     Dim myIdentity As Principal.WindowsIdentity
     Friend WithEvents BtnAdenda As Button
+    Friend WithEvents EdoctavBindingSource As BindingSource
+    Friend WithEvents EdoctavTableAdapter As PromocionDSTableAdapters.EdoctavTableAdapter
+    Friend WithEvents EdoctavBindingSource1 As BindingSource
     Friend WithEvents BtnCarta As Button
 
 #Region " Windows Form Designer generated code "
@@ -334,8 +337,13 @@ Public Class frmActiAnexCL
         Me.PromotoresTableAdapter = New Agil.PromocionDSTableAdapters.PromotoresTableAdapter()
         Me.BtnAdenda = New System.Windows.Forms.Button()
         Me.BtnCarta = New System.Windows.Forms.Button()
+        Me.EdoctavBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EdoctavTableAdapter = New Agil.PromocionDSTableAdapters.EdoctavTableAdapter()
+        Me.EdoctavBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.PromotoresBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EdoctavBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EdoctavBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtAnexo
@@ -565,6 +573,20 @@ Public Class frmActiAnexCL
         Me.BtnCarta.TabIndex = 141
         Me.BtnCarta.Text = "Carta Autorización"
         '
+        'EdoctavBindingSource
+        '
+        Me.EdoctavBindingSource.DataMember = "Edoctav"
+        Me.EdoctavBindingSource.DataSource = Me.PromocionDS
+        '
+        'EdoctavTableAdapter
+        '
+        Me.EdoctavTableAdapter.ClearBeforeFill = True
+        '
+        'EdoctavBindingSource1
+        '
+        Me.EdoctavBindingSource1.DataMember = "Edoctav"
+        Me.EdoctavBindingSource1.DataSource = Me.PromocionDS
+        '
         'frmActiAnexCL
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -599,6 +621,8 @@ Public Class frmActiAnexCL
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.PromotoresBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PromocionDS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EdoctavBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EdoctavBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
