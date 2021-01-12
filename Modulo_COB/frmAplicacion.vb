@@ -314,17 +314,27 @@ Public Class frmAplicacion
         cSucursal = cm1.ExecuteScalar
         cnAgil.Close()
 
-        '+++++++a partir del 01 de enero del 2021 todo es rep por que se factura el interes a fin de mes
-        SerieX = "REP"
-        Label10.Text = "Serie REP"
-        txtFolio.Text = FOLIOS.FolioPago
-
+        If nEstaTraspasado > 0 Then
+            SerieX = "REP"
+            Label10.Text = "Serie REP"
+            txtFolio.Text = FOLIOS.FolioPago
+        Else
+            If cSucursal = "04" Or cSucursal = "08" Or cSucursal = "09" Then
+                SerieX = "MXL"
+                Label10.Text = "Serie MXL"
+                txtFolio.Text = FOLIOS.FolioMXL
+            Else
+                SerieX = "A"
+                Label10.Text = "Serie A"
+                txtFolio.Text = FOLIOS.FolioA
+            End If
+        End If
         If CKaplicaBlanco.Checked = True Then
             SerieX = "AB"
             Label10.Text = "Serie AB"
             txtFolio.Text = FOLIOS.FolioBlanco
         End If
-        FolioMora = Folios.FolioMora
+        FolioMora = FOLIOS.FolioMora
 
         If cFecha < cFechaInicial Then
 
@@ -496,7 +506,9 @@ Public Class frmAplicacion
         Dim cnAgil As New SqlConnection(strConn)
         Dim drPagado As DataRow
         Dim cm1 As New SqlCommand()
+        Dim cm2 As New SqlCommand()
         Dim daBancos As New SqlDataAdapter(cm1)
+        Dim daSeries As New SqlDataAdapter(cm2)
         Dim dsAgil As New DataSet()
         Dim dsBcos As New DataSet()
         Dim PorcGarLIQ As Decimal = taTrapaso.SacaPorcGarLIQ(cAnexo, cCiclo)
@@ -685,27 +697,61 @@ Public Class frmAplicacion
         dgvDeudores.Update()
 
         If nVeces = 0 Then
+
             ' Este Stored Procedure regresa los datos de los Bancos
+
             With cm1
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "Bancos1"
                 .Connection = cnAgil
             End With
 
+            ' El siguiente Command trae los consecutivos de cada Serie
+
+            With cm2
+                .CommandType = CommandType.Text
+                .CommandText = "SELECT IDSerieA, IDSerieMXL, IDBlanco FROM Llaves"
+                .Connection = cnAgil
+            End With
+
             ' Llenar los dataset lo cual abre y cierra la conexión
+
             daBancos.Fill(dsBcos, "Bancos")
+            daSeries.Fill(dsAgil, "Series")
 
             ' Lleno cbBancos con el nombre de los Bancos
+
             cbBancos.DataSource = dsBcos
             cbBancos.DisplayMember = "Bancos.DescBanco"
             cbBancos.ValueMember = "Bancos.Banco"
+
             cbBancos.SelectedIndex = 0
+
+            ' Toma el número consecutivo de facturas de pago -que depende de la Serie- y lo incrementa en uno
+
+            'drSerie = dsAgil.Tables("Series").Rows(0)
+            'txtSerie.Text = drSerie("IDSerieA").ToString
+            'txtSerieMXL.Text = drSerie("IDSerieMXL").ToString
+            'TxtSerieBlanco.Text = drSerie("IDBlanco").ToString
+
+            'Label8.Visible = True
+            'rbSerieA.Visible = True
+            'txtSerie.Visible = True
+            'rbSerieMXL.Visible = True
+            'txtSerieMXL.Visible = True
+            'RbSerieBlanco.Visible = True
+            'TxtSerieBlanco.Visible = True
+
+
             nVeces = 1
+
         End If
 
         btnAumentar.Enabled = False
         btnAplicar.Visible = True
         cm1.Dispose()
+        cm2.Dispose()
+
     End Sub
 
     Private Sub btnAplicar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAplicar.Click
@@ -742,10 +788,14 @@ Public Class frmAplicacion
         Dim cPagado As String = ""
         Dim cRenglon As String = ""
         Dim cRFC As String = ""
+        'Dim cSerie As String = ""
+        'Dim cSerieX As String = "" '#ECT para ligar folios fiscales
         Dim i As Integer = 0
         Dim nCapital As Decimal = 0
         Dim nConsecutivoIni As Integer = 0
+        'Dim nIVA As Decimal = 0
         Dim nMinistracion As Decimal = 0
+        'Dim nNumero As Integer = 0
         Dim nPos As Integer = 0
         Dim nSaldoGarantia As Decimal = 0
         Dim nSaldoMinistracion As Decimal = 0
@@ -807,7 +857,6 @@ Public Class frmAplicacion
         Next
 
         ' Grabo físicamente en Avios la fecha de último corte para cada contrato afectado
-
         For Each drDetalleFINAGIL In dtDetalleFINAGIL.Rows
             cAnexo = drDetalleFINAGIL("Anexo")
             cFecha = drDetalleFINAGIL("FechaFinal")
@@ -829,7 +878,6 @@ Public Class frmAplicacion
                 "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
                 "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto <> 'INTERESES';"
             End If
-
             cm1 = New SqlCommand(strUpdate, cnAgil)
             cm1.ExecuteNonQuery()
 
@@ -946,7 +994,7 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & "RIA', "
                         End If
                         strInsert = strInsert & txtFolio.Text & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
@@ -975,7 +1023,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = "RIA" & txtFolio.Text '#ECT para ligar folios Fiscales
                         drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
                     End If
@@ -1136,7 +1184,7 @@ Public Class frmAplicacion
                         If CKaplicaBlanco.Checked = True Then
                             strInsert = strInsert & "AB" & "', "
                         Else
-                            strInsert = strInsert & SerieX & "', "
+                            strInsert = strInsert & "RIA', "
                         End If
                         strInsert = strInsert & txtFolio.Text & ", '"
                         strInsert = strInsert & DTOC(FECHA_APLICACION) & "', '"
@@ -1165,7 +1213,7 @@ Public Class frmAplicacion
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""
-                        drMovimientos("Factura") = SerieX & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Factura") = "RIA" & txtFolio.Text '#ECT para ligar folios Fiscales
                         drMovimientos("Grupo") = NoGrupo
                         dtMovimientos.Rows.Add(drMovimientos)
 
@@ -1286,25 +1334,18 @@ Public Class frmAplicacion
         cFechaPago = DTOC(FECHA_APLICACION)
 
         Dim Ruta As String = "C:\Facturas\FACTURA_"
-        If Not Directory.Exists("C:\Facturas\") Then
-            Directory.CreateDirectory("C:\Facturas\")
-        End If
         If SerieX = "AB" Then
-            If Not Directory.Exists("C:\Facturas\AppBlanco\") Then
-                Directory.CreateDirectory("C:\Facturas\AppBlanco\")
-            End If
             Ruta = "C:\Facturas\AppBlanco\FACTURA_"
         End If
 
         Dim stmFactura As FileStream
         Dim stmWriter As StreamWriter
-
-
-
         Dim Fila As Integer = 0
         Dim taMoviAV As New TesoreriaDSTableAdapters.MovimientosAVTableAdapter
         Dim MoviAV As New TesoreriaDS.MovimientosAVDataTable
 
+        'Captital++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        Fila = 0
         taMoviAV.Fill(MoviAV, txtFolio.Text, cFechaPago, SerieX)
         For Each rr As TesoreriaDS.MovimientosAVRow In MoviAV.Rows
             If Fila = 0 Then
@@ -1327,23 +1368,25 @@ Public Class frmAplicacion
             cRenglon = "D1|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|1|||" & Trim(rr.Observa1) & "||" & rr.Importe & "|0"
             stmWriter.WriteLine(cRenglon)
         Next
-
         If Fila = 1 Then
             stmWriter.Flush()
             stmFactura.Flush()
             stmFactura.Close()
         End If
-
-        'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+        'Captital++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        'Intereses++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         Fila = 0
-        taMoviAV.Fill(MoviAV, FolioMora, cFechaPago, SerieXM)
+        taMoviAV.Fill(MoviAV, txtFolio.Text, cFechaPago, "RIA")
         For Each rr As TesoreriaDS.MovimientosAVRow In MoviAV.Rows
             If Fila = 0 Then
-                stmFactura = New FileStream(Ruta & rr.Serie.Trim & "_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+                stmFactura = New FileStream(Ruta & "RIA_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
                 stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
-                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
+
+                If nEstaTraspasado = 0 Then
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
+                Else
+                    stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PPD|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
+                End If
 
                 cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
                 Trim(rr.Calle) & "|||" & Trim(rr.Colonia) & "|" & Trim(rr.Delegacion) & "|" & Trim(rr.DescPlaza) & "|" & rr.Copos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(rr.RFC) & "|M.N.|" &
@@ -1359,15 +1402,44 @@ Public Class frmAplicacion
             stmWriter.Flush()
             stmFactura.Flush()
             stmFactura.Close()
-            Folios.ConsumeFolioMora()
+        End If
+        'Intereses++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        Fila = 0
+        taMoviAV.Fill(MoviAV, FolioMora, cFechaPago, SerieXM)
+        For Each rr As TesoreriaDS.MovimientosAVRow In MoviAV.Rows
+            If Fila = 0 Then
+                stmFactura = New FileStream(Ruta & rr.Serie.Trim & "_" & rr.Numero & ".txt", FileMode.Create, FileAccess.Write, FileShare.None)
+                stmWriter = New StreamWriter(stmFactura, System.Text.Encoding.Default)
+                stmWriter.WriteLine("H1|" & FECHA_APLICACION.ToShortDateString & "|PUE|" & TaQUERY.SacaInstrumemtoMoneSAT(CmbInstruMon.SelectedValue) & "|" & cCheque & "|" & dtpProceso.Value.ToShortDateString)
+
+                cRenglon = "H3|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|" & Trim(rr.Descr) & "|" &
+                Trim(rr.Calle) & "|||" & Trim(rr.Colonia) & "|" & Trim(rr.Delegacion) & "|" & Trim(rr.DescPlaza) & "|" & rr.Copos & "|" & cCuentaPago & "|" & cFormaPago & "|MEXICO|" & Trim(rr.RFC) & "|M.N.|" &
+                "|FACTURA|" & rr.Cliente & "|LEANDRO VALLE 402||REFORMA Y FFCCNN|TOLUCA|ESTADO DE MEXICO|50070|MEXICO|" & cAnexo & "|" & cCiclo & "|"
+                stmWriter.WriteLine(cRenglon)
+                Fila = 1
+            End If
+            cRenglon = "D1|" & rr.Cliente & "|" & Mid(rr.Anexo, 1, 5) & "/" & Mid(rr.Anexo, 6, 4) & "|" & rr.Serie.Trim & "|" & rr.Numero & "|1|||" & Trim(rr.Observa1) & "||" & rr.Importe & "|0"
+            stmWriter.WriteLine(cRenglon)
+        Next
+        If Fila = 1 Then
+            stmWriter.Flush()
+            stmFactura.Flush()
+            stmFactura.Close()
+            FOLIOS.ConsumeFolioMora()
         End If
         'Moratorios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        ' Debe actualizar el atributo IDSerieA ó el atributo IDSerieMXL de la tabla Llaves
-        If SerieX = "REP" Then
+
+        If SerieX = "A" Then
+            FOLIOS.ConsumeFolioA()
+        ElseIf SerieX = "MXL" Then
+            FOLIOS.ConsumeFolioMXL()
+        ElseIf SerieX = "REP" Then
             FOLIOS.ConsumeFolioPago()
         Else
             FOLIOS.ConsumeFolioBlanco()
         End If
+
         MsgBox("Proceso Completo", MsgBoxStyle.Information)
 
         cnAgil.Close()
@@ -1402,6 +1474,5 @@ Public Class frmAplicacion
             BindingDeudores.Filter = ""
         End If
     End Sub
-
 
 End Class
