@@ -94,8 +94,8 @@ Module DOC_LIQUIDEZ
         'Documento.Bookmarks.Item("FechaConLetra").Range.Text = Cant_LetrasSinParentesis(r.FechaCon.Day, "").ToLower & " de " & MonthName(r.FechaCon.Month).ToLower & " del " & Cant_LetrasSinParentesis(r.FechaCon.Year, "").ToLower.Trim
         'Documento.Bookmarks.Item("FechaLetra").Range.Text = Cant_LetrasSinParentesis(r.FechaCon.Day, "").ToLower & " de " & MonthName(r.FechaCon.Month).ToLower & " del " & Cant_LetrasSinParentesis(r.FechaCon.Year, "").ToLower.Trim
         Documento.Bookmarks.Item("Fechalarga").Range.Text = Date.Now.Day & " de " & MonthName(Date.Now.Month).ToLower & " del " & Date.Now.Year & "."
-        Documento.Bookmarks.Item("Importe").Range.Text = (r.MontoFinanciado + r.Inte + r.Iva).ToString("n2")
-        Documento.Bookmarks.Item("ImporteLetra").Range.Text = Letras((r.MontoFinanciado + r.Inte + r.Iva).ToString())
+        Documento.Bookmarks.Item("Importe").Range.Text = (r.MontoFinanciado).ToString("n2")
+        Documento.Bookmarks.Item("ImporteLetra").Range.Text = Letras((r.MontoFinanciado).ToString())
         'Documento.Bookmarks.Item("Inicia").Range.Text = Cant_LetrasSinParentesis(r.FechaCon.Day, "").ToLower & " de " & MonthName(r.FechaCon.Month).ToLower & " del " & Cant_LetrasSinParentesis(r.FechaCon.Year, "").ToLower.Trim
         Documento.Bookmarks.Item("TerminaLetra").Range.Text = Cant_LetrasSinParentesis(r.FechaVen.Day, "").ToLower & " de " & MonthName(r.FechaVen.Month).ToLower & " del " & Cant_LetrasSinParentesis(r.FechaVen.Year, "").ToLower.Trim
         'Documento.Bookmarks.Item("Interes").Range.Text = r.Inte.ToString("n2")
