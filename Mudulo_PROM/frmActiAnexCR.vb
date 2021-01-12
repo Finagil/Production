@@ -4178,10 +4178,10 @@ Public Class frmActiAnexCR
                         nSumaBoni += drTabla("IvaCapital")
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
-                                Case Is <= 31
+                               Case Is <= 45
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
-                                Case 58 To 80
+                                Case 46 To 80
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
@@ -4211,10 +4211,10 @@ Public Class frmActiAnexCR
                         cBonifica = "0.00"
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
-                                Case Is <= 31
+                               Case Is <= 45
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
-                                Case 58 To 80
+                                Case 46 To 80
                                     cCobert = FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
@@ -4266,10 +4266,10 @@ Public Class frmActiAnexCR
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             cPagomen = cPagomen & Chr(10) & FormatNumber(drTabla("Abcap") + drTabla("Inter") + drTabla("Iva")).ToString
                             Select Case nDiasp
-                                Case Is <= 31
+                               Case Is <= 45
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
-                                Case 58 To 80
+                                Case 46 To 80
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
@@ -4299,10 +4299,10 @@ Public Class frmActiAnexCR
                         cBonifica = cBonifica & Chr(10) & "0.00"
                         If cFondeo = "03" And cAplicaCobertura = "S" Then
                             Select Case nDiasp
-                                Case Is <= 31
+                               Case Is <= 45
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 12), 2)
-                                Case 58 To 80
+                                Case 46 To 80
                                     cCobert = cCobert & Chr(10) & FormatNumber(Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)).ToString
                                     nCobertura = Round(drTabla("Saldo") * (nPorcFEGA / 6), 2)
                                 Case 88 To 100
