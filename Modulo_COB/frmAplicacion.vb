@@ -862,8 +862,8 @@ Public Class frmAplicacion
                 "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
                 "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto = 'INTERESES';"
             Else
-                strUpdate = "UPDATE DetalleFinagil SET Factura = '" & SerieX & txtFolio.Text &
-                "' WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
+                strUpdate = "UPDATE DetalleFinagil SET Factura = '" & SerieX & txtFolio.Text & "', Facturado = 1" &
+                " WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
                 "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
                 "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto <> 'INTERESES';"
             End If
