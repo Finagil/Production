@@ -54,12 +54,12 @@ Module DOC_LIQUIDEZ
 
             oTable.Cell(i, 1).Range.Text = row("Letra")
             oTable.Cell(i, 2).Range.Text = CTOD(row("Feven")).ToShortDateString
-            oTable.Cell(i, 3).Range.Text = row("Saldo")
-            oTable.Cell(i, 4).Range.Text = row("Abcap")
-            oTable.Cell(i, 5).Range.Text = row("Inter")
-            oTable.Cell(i, 6).Range.Text = row("Abcap") + row("Inter")
-            oTable.Cell(i, 7).Range.Text = row("Iva")
-            oTable.Cell(i, 8).Range.Text = row("Abcap") + row("Inter") + row("Iva")
+            oTable.Cell(i, 3).Range.Text = CDec(row("Saldo")).ToString("n2")
+            oTable.Cell(i, 4).Range.Text = CDec(row("Abcap")).ToString("n2")
+            oTable.Cell(i, 5).Range.Text = CDec(row("Inter")).ToString("n2")
+            oTable.Cell(i, 6).Range.Text = CDec(row("Abcap") + row("Inter")).ToString("n2")
+            oTable.Cell(i, 7).Range.Text = CDec(row("Iva")).ToString("n2")
+            oTable.Cell(i, 8).Range.Text = CDec(row("Abcap") + row("Inter") + row("Iva")).ToString("n2")
             i = i + 1
             ' Next
 
