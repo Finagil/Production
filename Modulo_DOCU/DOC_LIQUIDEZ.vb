@@ -53,7 +53,7 @@ Module DOC_LIQUIDEZ
             'dato = row("nombreDeCampo")
 
             oTable.Cell(i, 1).Range.Text = row("Letra")
-            oTable.Cell(i, 2).Range.Text = row("Feven")
+            oTable.Cell(i, 2).Range.Text = CTOD(row("Feven")).ToShortDateString
             oTable.Cell(i, 3).Range.Text = row("Saldo")
             oTable.Cell(i, 4).Range.Text = row("Abcap")
             oTable.Cell(i, 5).Range.Text = row("Inter")
