@@ -20,7 +20,7 @@ Module mProvAvio
     Public Sub ProvAvio(ByVal cFecha As String, ByVal cReferencia As String)
 
         ' Declaración de variables de conexión ADO .NET
-
+        Dim cFechaIni As String = cFecha.Substring(0, 6) & "01"
         Dim cnAgil As New SqlConnection(strConn)
         Dim cm1 As New SqlCommand()
         Dim daAnexos As New SqlDataAdapter(cm1)
@@ -73,7 +73,7 @@ Module mProvAvio
                                "INNER JOIN Avios ON DetalleFINAGIL.Anexo = Avios.Anexo AND DetalleFINAGIL.Ciclo = Avios.Ciclo " &
                                "INNER JOIN Clientes ON Avios.Cliente = Clientes.Cliente " &
                                "INNER JOIN Sucursales ON Clientes.Sucursal = Sucursales.ID_Sucursal " &
-                               "WHERE Avios.FechaTerminacion > '" & cFecha & "' AND DetalleFINAGIL.FechaFinal <= '" & cFecha & "' " &
+                               "WHERE DetalleFINAGIL.FechaInicial >= '" & cFechaIni & "' AND DetalleFINAGIL.FechaFinal <= '" & cFecha & "' " &
                                "GROUP BY Avios.Tipar, DetalleFINAGIL.Anexo, DetalleFINAGIL.Ciclo, Segmento_Negocio, clientes.tipo " &
                                "HAVING SUM(Intereses) > 0 " &
                                "ORDER BY Anexo"
