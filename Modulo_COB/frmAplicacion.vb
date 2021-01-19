@@ -857,7 +857,7 @@ Public Class frmAplicacion
         'Insertamos los Registros correspondientes en la Historia de Pagos
         For Each drDetalleFINAGIL In dtDetalleFINAGIL.Rows
             If drDetalleFINAGIL("Concepto") = "INTERESES" Then
-                strUpdate = "UPDATE DetalleFinagil SET Facturado = 0 " &
+                strUpdate = "UPDATE DetalleFinagil SET Facturado = 0, Factura = 'PAG_IAV' " &
                 "  WHERE Anexo = '" & drDetalleFINAGIL("Anexo") &
                 "' AND Ciclo = '" & drDetalleFINAGIL("Ciclo") &
                 "' AND Consecutivo = '" & drDetalleFINAGIL("Consecutivo") & "' and Concepto = 'INTERESES';"

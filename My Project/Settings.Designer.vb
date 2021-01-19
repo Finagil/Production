@@ -149,8 +149,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID2\DBRESPALDOS, 62887;Initial Catalog=Production;User ID=Us"& _ 
-            "er_PRO;Password=User_PRO2015")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SERVER-RAID2;Initial Catalog=Production;User ID=User_PRO;Password=Use"& _ 
+            "r_PRO2015")>  _
         Public ReadOnly Property ProductionConnectionString() As String
             Get
                 Return CType(Me("ProductionConnectionString"),String)
@@ -159,7 +159,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2\DBRESPALDOS, 62887")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SERVER-RAID2")>  _
         Public Property ServidorPROD() As String
             Get
                 Return CType(Me("ServidorPROD"),String)
