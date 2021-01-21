@@ -70,7 +70,7 @@ Public Class frm_solicitudes
         Else
             If TaQUERY.SaldoEnFacturas(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
                 MessageBox.Show("Contrato Con Saldo en Facturas.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            ElseIf TaQUERY.SaldoInsolutoTRA(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
+            ElseIf TaQUERY.SaldoInsolutoAnexoTRA(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
                 MessageBox.Show("Contrato Con Saldo Insoluto.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             ElseIf TaQUERY.SaldoOpcion(VwBitacoraanexoBindingSource1.Current("Anexo")) > 0 Then
                 MessageBox.Show("Contrato Con Saldo de opcion a Compra.", "Contrato con Adeudo", MessageBoxButtons.OK, MessageBoxIcon.Warning)

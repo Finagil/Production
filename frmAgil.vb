@@ -2772,10 +2772,10 @@ Public Class frmAgil
     End Sub
 
     Private Sub mnuPagosPF_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPagosPF.Click
-        If UsuarioGlobal.ToUpper <> "DESARROLLO" Then
-            MessageBox.Show("Pantalla Bloqueda Temporalmente", "Bleoqueo", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
+        'If UsuarioGlobal.ToUpper <> "DESARROLLO" Then
+        ' MessageBox.Show("Pantalla Bloqueda Temporalmente", "Bleoqueo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'Exit Sub
+        'End If
         Dim f As New FrmSelec
         f.Origen = "PagoAvio"
         If f.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
