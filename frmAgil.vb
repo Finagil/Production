@@ -426,6 +426,7 @@ Public Class frmAgil
         Me.MenuItem42 = New System.Windows.Forms.MenuItem()
         Me.MenuItem61 = New System.Windows.Forms.MenuItem()
         Me.MenuItem83 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem96 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
@@ -599,7 +600,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem96 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1034,7 +1034,7 @@ Public Class frmAgil
         '
         Me.mnuFormMens.Enabled = False
         Me.mnuFormMens.Index = 1
-        Me.mnuFormMens.Text = "Forma Mensajería"
+        Me.mnuFormMens.Text = "..."
         '
         'MnuAltaPolAvi
         '
@@ -1215,6 +1215,11 @@ Public Class frmAgil
         '
         Me.MenuItem83.Index = 10
         Me.MenuItem83.Text = "Cancelación de Avisos"
+        '
+        'MenuItem96
+        '
+        Me.MenuItem96.Index = 11
+        Me.MenuItem96.Text = "Quitar Opción a Compra"
         '
         'mnuSist
         '
@@ -2184,11 +2189,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem96
-        '
-        Me.MenuItem96.Index = 11
-        Me.MenuItem96.Text = "Quitar Opción a Compra"
         '
         'frmAgil
         '
@@ -3713,4 +3713,5 @@ Public Class frmAgil
         Dim f As New frmQuitarOpciones
         f.Show()
     End Sub
+
 End Class

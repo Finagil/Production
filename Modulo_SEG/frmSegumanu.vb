@@ -25,6 +25,7 @@ Public Class frmSegumanu
     Dim NoMensual As New ProductionDataSetTableAdapters.AvisosNoMensualesTableAdapter
     Friend WithEvents BtnCargaImp As Button
     Dim dtCargoseg As New DataTable("Seguro")
+    Friend WithEvents CkSaltar As CheckBox
     Dim cAnexo As String
 
 
@@ -112,6 +113,7 @@ Public Class frmSegumanu
         Me.txtSumaseg = New System.Windows.Forms.TextBox()
         Me.lblSumaseg = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BtnCargaImp = New System.Windows.Forms.Button()
         Me.btnContinuar = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblPlazorestante = New System.Windows.Forms.Label()
@@ -130,7 +132,7 @@ Public Class frmSegumanu
         Me.ListImportes = New System.Windows.Forms.ListBox()
         Me.BtnAdd = New System.Windows.Forms.Button()
         Me.Txttotal = New System.Windows.Forms.TextBox()
-        Me.BtnCargaImp = New System.Windows.Forms.Button()
+        Me.CkSaltar = New System.Windows.Forms.CheckBox()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -343,6 +345,15 @@ Public Class frmSegumanu
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Contrato con Saldo en Seguro Financiado"
         '
+        'BtnCargaImp
+        '
+        Me.BtnCargaImp.Location = New System.Drawing.Point(519, 13)
+        Me.BtnCargaImp.Name = "BtnCargaImp"
+        Me.BtnCargaImp.Size = New System.Drawing.Size(117, 22)
+        Me.BtnCargaImp.TabIndex = 5
+        Me.BtnCargaImp.Text = "Carga Imp Ult. Venc."
+        Me.BtnCargaImp.UseVisualStyleBackColor = True
+        '
         'btnContinuar
         '
         Me.btnContinuar.Location = New System.Drawing.Point(519, 38)
@@ -509,19 +520,21 @@ Public Class frmSegumanu
         Me.Txttotal.TabIndex = 39
         Me.Txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'BtnCargaImp
+        'CkSaltar
         '
-        Me.BtnCargaImp.Location = New System.Drawing.Point(519, 13)
-        Me.BtnCargaImp.Name = "BtnCargaImp"
-        Me.BtnCargaImp.Size = New System.Drawing.Size(117, 22)
-        Me.BtnCargaImp.TabIndex = 5
-        Me.BtnCargaImp.Text = "Carga Imp Ult. Venc."
-        Me.BtnCargaImp.UseVisualStyleBackColor = True
+        Me.CkSaltar.AutoSize = True
+        Me.CkSaltar.Location = New System.Drawing.Point(144, 295)
+        Me.CkSaltar.Name = "CkSaltar"
+        Me.CkSaltar.Size = New System.Drawing.Size(154, 17)
+        Me.CkSaltar.TabIndex = 40
+        Me.CkSaltar.Text = "Saltar Primera Amortización"
+        Me.CkSaltar.UseVisualStyleBackColor = True
         '
         'frmSegumanu
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(664, 604)
+        Me.Controls.Add(Me.CkSaltar)
         Me.Controls.Add(Me.Txttotal)
         Me.Controls.Add(Me.BtnAdd)
         Me.Controls.Add(Me.ListImportes)
@@ -809,7 +822,7 @@ Public Class frmSegumanu
         Dim nIvaseg As Decimal
         Dim nTasaApli As Decimal
         Dim nSumaseg As Decimal
-        Dim Meses As Integer
+        Dim Meses, Aux As Integer
         Dim DiasEntreVenc As Integer = TaQUERY.DiasEntreVecimientos(cAnexo)
 
 
@@ -819,7 +832,6 @@ Public Class frmSegumanu
         btnSave.Enabled = True
 
         If Val(txtPlazo.Text) <= Val(TxtLetras.Text) Then
-
             If txtconPlazo.Text = "S" Then
                 nSdoseg = CDec(Txttotal.Text) + CDec(txtSaldoant.Text)
             Else
@@ -838,9 +850,17 @@ Public Class frmSegumanu
             Else
                 Meses = 1
             End If
+            If nPlaseg = 0 Then
+                nPlaseg = Meses
+            End If
+            If CkSaltar.Checked Then
+                Aux = 1
+            Else
+                Aux = 0
+            End If
             EdoCtaV.FillSinFacturar(EdoCtaVT, cAnexo)
 
-            nRtaseg = Round((nSdoseg * (nTasaApli * Meses)) / (1 - Pow((1 + (nTasaApli * Meses)), -nPlaseg)), 2)
+            nRtaseg = Round((nSdoseg * (nTasaApli * Meses)) / (1 - Pow((1 + (nTasaApli * Meses)), -(nPlaseg - Aux))), 2)
 
             If Val(Txttotal.Text) > 0 Then
 
@@ -874,6 +894,9 @@ Public Class frmSegumanu
                             dtCargoseg.Rows.Add(drDato)
                             Saldo += CDec(ListImportes.Items(X))
                         Next
+                    End If
+                    If Aux = 1 And i = 1 Then
+                        Continue For
                     End If
 
                     cString = Stuff(nVencimiento.ToString, i, 0, 3)
@@ -1063,7 +1086,7 @@ Public Class frmSegumanu
             txtCheque.Enabled = True
             ComboBox1.Enabled = True
             If rbPlazoant.Checked = True Then
-                txtPlazo.Text = nLetras
+                txtPlazo.Text = CInt(TxtLetras.Text)
                 txtPlazo.Enabled = False
             Else
                 txtPlazo.Enabled = True
