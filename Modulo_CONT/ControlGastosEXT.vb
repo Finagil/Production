@@ -9,8 +9,10 @@ Public Class ControlGastosEXT
         ta.Dispose()
         If importe > 0 Then
             TxtImporte.BackColor = Color.Red
+            TxtImporte.ForeColor = Color.White
         Else
             TxtImporte.BackColor = SystemColors.Control
+            TxtImporte.ForeColor = SystemColors.ControlText
         End If
         Opcion = Cliente
     End Sub
@@ -23,8 +25,10 @@ Public Class ControlGastosEXT
         ta.Dispose()
         If importe > 0 Then
             TxtImporte.BackColor = Color.Red
+            TxtImporte.ForeColor = Color.White
         Else
             TxtImporte.BackColor = SystemColors.Control
+            TxtImporte.ForeColor = SystemColors.ControlText
         End If
         Opcion = Anexo
     End Sub

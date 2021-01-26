@@ -4547,11 +4547,12 @@ Public Class frmCierreCo
             End If
 
             If R.Importe + R.Fega > 0 Then
-                Aux.Insert("65", R.Anexo, "", R.Importe + R.Fega, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+                Aux.Insert("65", R.Anexo, "", R.Importe + R.Intereses + R.InteresesDias + R.Fega, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
             End If
 
             If R.Intereses + R.InteresesDias > 0 Then
-                Aux.Insert("72", R.Anexo, "", R.Intereses + R.InteresesDias, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+                Aux.Insert("72", R.Anexo, "", R.InteresesDias, R.Tipar, "1", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
+                Aux.Insert("65", R.Anexo, "", R.InteresesDias, R.Tipar, "0", R.Fecha, "09", "", "Traspasos de Cartera" & Refe, R.Segmento_Negocio)
             End If
 
             If R.GarantiaLiq > 0 Then
