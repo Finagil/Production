@@ -30,6 +30,7 @@ Partial Class frmCargaGPS
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.lblAdeudoant = New System.Windows.Forms.Label()
+        Me.CkSaltar = New System.Windows.Forms.CheckBox()
         CType(Me.DataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,14 +43,14 @@ Partial Class frmCargaGPS
         '
         'txtPlazo
         '
-        Me.txtPlazo.Location = New System.Drawing.Point(293, 51)
+        Me.txtPlazo.Location = New System.Drawing.Point(261, 51)
         Me.txtPlazo.Name = "txtPlazo"
         Me.txtPlazo.Size = New System.Drawing.Size(25, 20)
         Me.txtPlazo.TabIndex = 2
         '
         'btnIniciar
         '
-        Me.btnIniciar.Location = New System.Drawing.Point(371, 51)
+        Me.btnIniciar.Location = New System.Drawing.Point(470, 49)
         Me.btnIniciar.Name = "btnIniciar"
         Me.btnIniciar.Size = New System.Drawing.Size(87, 23)
         Me.btnIniciar.TabIndex = 3
@@ -68,7 +69,7 @@ Partial Class frmCargaGPS
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(254, 54)
+        Me.Label2.Location = New System.Drawing.Point(222, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(33, 13)
         Me.Label2.TabIndex = 5
@@ -97,7 +98,7 @@ Partial Class frmCargaGPS
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(569, 51)
+        Me.btnExit.Location = New System.Drawing.Point(569, 9)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(87, 23)
         Me.btnExit.TabIndex = 21
@@ -107,7 +108,7 @@ Partial Class frmCargaGPS
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(470, 51)
+        Me.btnSave.Location = New System.Drawing.Point(569, 49)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(87, 23)
         Me.btnSave.TabIndex = 22
@@ -124,9 +125,20 @@ Partial Class frmCargaGPS
         Me.lblAdeudoant.Text = "Label3"
         Me.lblAdeudoant.Visible = False
         '
+        'CkSaltar
+        '
+        Me.CkSaltar.AutoSize = True
+        Me.CkSaltar.Location = New System.Drawing.Point(303, 53)
+        Me.CkSaltar.Name = "CkSaltar"
+        Me.CkSaltar.Size = New System.Drawing.Size(154, 17)
+        Me.CkSaltar.TabIndex = 41
+        Me.CkSaltar.Text = "Saltar Primera Amortización"
+        Me.CkSaltar.UseVisualStyleBackColor = True
+        '
         'frmCargaGPS
         '
         Me.ClientSize = New System.Drawing.Size(677, 471)
+        Me.Controls.Add(Me.CkSaltar)
         Me.Controls.Add(Me.lblAdeudoant)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnExit)
@@ -154,4 +166,5 @@ Partial Class frmCargaGPS
     Friend WithEvents btnExit As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents lblAdeudoant As System.Windows.Forms.Label
+    Friend WithEvents CkSaltar As CheckBox
 End Class

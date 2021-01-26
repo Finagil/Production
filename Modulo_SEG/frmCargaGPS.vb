@@ -178,6 +178,7 @@ Public Class frmCargaGPS
         Dim nIva As Decimal
         Dim nRenta As Decimal
         Dim nValorIva As Decimal
+        Dim Aux As Integer
 
         Fila = 1
         nValorIva = 0.16
@@ -185,11 +186,16 @@ Public Class frmCargaGPS
         If Val(txtPlazo.Text) > Val(nPlazoX) Then
             MsgBox("El plazo máximo es de " & nPlazoX, MsgBoxStyle.OkOnly, "Mensaje")
         End If
+        If CkSaltar.Checked Then
+            Aux = 1
+        Else
+            Aux = 0
+        End If
 
         If Val(txtMonto.Text) > 0 And Val(txtPlazo.Text) <= nPlazoX Then
 
             nSaldo = txtMonto.Text + nSaldoAnt
-            nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -txtPlazo.Text)), 2)
+            nRenta = Round((nSaldo * nTasaApli) / (1 - Pow((1 + nTasaApli), -Val(txtPlazo.Text) - Aux)), 2)
 
             ' Defino una Tabla Temporal para cargar la capitalización
 
@@ -216,6 +222,9 @@ Public Class frmCargaGPS
                     drDato("Iva") = 0
                     dtCreaTabla.Rows.Add(drDato)
                     Fila = 0
+                End If
+                If Aux = 1 And i = 1 Then
+                    Continue For
                 End If
 
                 cString = Stuff(nVencimiento.ToString, i, 0, 3)
