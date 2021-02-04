@@ -25,6 +25,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem95 As MenuItem
     Friend WithEvents MenuItem93 As MenuItem
     Friend WithEvents MenuItem96 As MenuItem
+    Friend WithEvents MenuItem97 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -600,6 +601,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem97 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1225,7 +1227,7 @@ Public Class frmAgil
         '
         Me.mnuSist.Enabled = False
         Me.mnuSist.Index = 6
-        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBuroCred, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont, Me.MenuItem64})
+        Me.mnuSist.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuBuroCred, Me.MenuIGenPASS, Me.MnuCancelaMov, Me.MnuBuroNom, Me.MnuPortaCont, Me.MenuItem64, Me.MenuItem97})
         Me.mnuSist.Text = "S&istemas"
         '
         'mnuBuroCred
@@ -2189,6 +2191,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem97
+        '
+        Me.MenuItem97.Index = 6
+        Me.MenuItem97.Text = "Condonar Moratorios"
         '
         'frmAgil
         '
@@ -3714,4 +3721,8 @@ Public Class frmAgil
         f.Show()
     End Sub
 
+    Private Sub MenuItem97_Click(sender As Object, e As EventArgs) Handles MenuItem97.Click
+        Dim f As New frmCondonaMoras
+        f.Show()
+    End Sub
 End Class
