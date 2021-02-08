@@ -31,6 +31,7 @@ Public Class frmAplicacion
     Dim nFEGA As Decimal = 0
     Dim nGarantia As Decimal = 0
     Dim nIntereses As Decimal = 0
+    Dim nInteresesDelCorte As Decimal = 0
     Dim nMontoTotal As Decimal = 0
     Dim nSaldoFinal As Decimal = 0
     Dim nSaldoInicial As Decimal = 0
@@ -410,6 +411,7 @@ Public Class frmAplicacion
             drDetalle("FEGA") = 0
             drDetalle("Garantia") = 0
             nIntereses = Round(nSaldoInicial * nTasaBP / 36000 * nDias, 2)
+            nInteresesDelCorte = nIntereses
             nSaldoFinal = nSaldoInicial + nIntereses
             drDetalle("Intereses") = nIntereses
             drDetalle("SaldoFinal") = nSaldoFinal
@@ -921,7 +923,8 @@ Public Class frmAplicacion
                         drMovimientos("Tipos") = "2"
                         drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
                         drMovimientos("Cve") = "65"
-                        drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1
+                        'drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA")) * -1
+                        drMovimientos("Imp") = (drDetalleFINAGIL("Importe") + drDetalleFINAGIL("FEGA") + drDetalleFINAGIL("Intereses")) * -1 + nMoratorios + nImporteSEGVID
                         drMovimientos("Tip") = "S"
                         drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
                         drMovimientos("Esp") = 0.0
@@ -1004,11 +1007,29 @@ Public Class frmAplicacion
                         drMovimientos("Tipos") = "2"
                         drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
                         drMovimientos("Cve") = "72"
-                        drMovimientos("Imp") = drDetalleFINAGIL("Intereses") * -1
+                        drMovimientos("Imp") = nInteresesDelCorte 'drDetalleFINAGIL("Intereses") * -1
                         drMovimientos("Tip") = "S"
                         drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
                         drMovimientos("Esp") = 0.0
                         drMovimientos("Coa") = "1"
+                        drMovimientos("Tipmon") = "01"
+                        drMovimientos("Banco") = cBanco
+                        drMovimientos("Concepto") = ""
+                        drMovimientos("Factura") = "RIA" & txtFolio.Text '#ECT para ligar folios Fiscales
+                        drMovimientos("Grupo") = NoGrupo
+                        dtMovimientos.Rows.Add(drMovimientos)
+
+                        drMovimientos = dtMovimientos.NewRow()
+                        drMovimientos("Anexo") = cAnexo
+                        drMovimientos("Letra") = "001"
+                        drMovimientos("Tipos") = "2"
+                        drMovimientos("Fepag") = DTOC(FECHA_APLICACION)
+                        drMovimientos("Cve") = "65"
+                        drMovimientos("Imp") = nInteresesDelCorte 'drDetalleFINAGIL("Intereses") * -1
+                        drMovimientos("Tip") = "S"
+                        drMovimientos("Catal") = drDetalleFINAGIL("Tipar")
+                        drMovimientos("Esp") = 0.0
+                        drMovimientos("Coa") = "0"
                         drMovimientos("Tipmon") = "01"
                         drMovimientos("Banco") = cBanco
                         drMovimientos("Concepto") = ""

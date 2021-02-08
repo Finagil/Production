@@ -95,7 +95,7 @@ Module mProvAvio
                     .Fecha = cFecha
                     .Tipmov = cTipMov
                     .Banco = cTipPersona 'ECT new ocupamos tipo de persona
-                    .Concepto = TaQUERY.UltimoFolioIAV(cAnexo, cCiclo)
+                    .Concepto = drAnexo("FolioFiscal")
                     .Segmento = cSegmentoNegocio
                 End With
                 aMovimientos.Add(aMovimiento)
