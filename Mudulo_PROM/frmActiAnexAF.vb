@@ -135,6 +135,7 @@ Public Class frmActiAnexAF
     Dim cRfc As String
     Dim cSaldot As String
     Dim cSerie As String = ""
+    Dim TasaIvaCapital As String = ""
     Dim cSucursal As String
     Dim cTelefono As String = ""
     Dim cTitulo1 As String = ""
@@ -1044,6 +1045,9 @@ Public Class frmActiAnexAF
                 ' y si es asi le aplicamos el valor de la variable
 
                 Select Case cfName
+                    Case "mTasaIvaCapital"
+                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                        myMField.Result.Text = Trim(TasaIvaCapital)
                     Case "mAcumIntereses"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(AcumInte)
@@ -3652,6 +3656,7 @@ Public Class frmActiAnexAF
         End If
 
         For Each drAnexo In drAnexos
+            TasaIvaCapital = drAnexo("TasaIvaCapital")
             TIRactiva = drAnexo("TirActiva")
             TIRpasiva = drAnexo("TirPasiva")
             AcumInte = drAnexo("AcumulaIntereses")

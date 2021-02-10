@@ -38,6 +38,7 @@ Public Class frmActiAnexAP
     Dim cCoacp As String = ""
     Dim cCoac2 As String = ""
     Dim cColonia As String
+    Dim TasaIvaCapital As String = ""
     Dim cCopos As String
     Dim cContrato As String = ""
     Dim cCusnam As String = ""
@@ -1040,6 +1041,9 @@ Public Class frmActiAnexAP
                 ' y si es asi le aplicamos el valor de la variable
 
                 Select Case cfName
+                    Case "mTasaIvaCapital"
+                        oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
+                        myMField.Result.Text = Trim(TasaIvaCapital)
                     Case "mAcumIntereses"
                         oWord.Selection.GoTo(What:=Word.WdGoToItem.wdGoToField, Name:=cfName)
                         myMField.Result.Text = Trim(AcumInte)
@@ -3462,6 +3466,7 @@ Public Class frmActiAnexAP
         drAnexos = dsAgil.Tables("Contrato").Rows
 
         For Each drAnexo In drAnexos
+            TasaIvaCapital = drAnexo("TasaIvaCapital")
             TIRactiva = drAnexo("TirActiva")
             TIRpasiva = drAnexo("TirPasiva")
             AcumInte = drAnexo("AcumulaIntereses")
