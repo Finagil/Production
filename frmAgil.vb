@@ -160,8 +160,6 @@ Public Class frmAgil
     Friend WithEvents mnuImpCtoAvioPorProductor As System.Windows.Forms.MenuItem
     Friend WithEvents mnuImpCtoAvioPorContrato As System.Windows.Forms.MenuItem
     Friend WithEvents mnuDocumentos As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuCheckList As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuReportecl As System.Windows.Forms.MenuItem
     Friend WithEvents mnuConsultaCL As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMinistracionesPorProductor As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMinistracionesPorContrato As System.Windows.Forms.MenuItem
@@ -352,8 +350,6 @@ Public Class frmAgil
         Me.mnuCred = New System.Windows.Forms.MenuItem()
         Me.mnuSeguiCre = New System.Windows.Forms.MenuItem()
         Me.mnuDocumentos = New System.Windows.Forms.MenuItem()
-        Me.mnuCheckList = New System.Windows.Forms.MenuItem()
-        Me.mnuReportecl = New System.Windows.Forms.MenuItem()
         Me.MnuLinCred = New System.Windows.Forms.MenuItem()
         Me.MenuItem27 = New System.Windows.Forms.MenuItem()
         Me.MenuItem31 = New System.Windows.Forms.MenuItem()
@@ -437,6 +433,7 @@ Public Class frmAgil
         Me.MnuBuroNom = New System.Windows.Forms.MenuItem()
         Me.MnuPortaCont = New System.Windows.Forms.MenuItem()
         Me.MenuItem64 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem97 = New System.Windows.Forms.MenuItem()
         Me.mnuCons = New System.Windows.Forms.MenuItem()
         Me.mnuDatosCon = New System.Windows.Forms.MenuItem()
         Me.mnuDCPorAnexo = New System.Windows.Forms.MenuItem()
@@ -601,7 +598,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem97 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -778,18 +774,7 @@ Public Class frmAgil
         'mnuDocumentos
         '
         Me.mnuDocumentos.Index = 1
-        Me.mnuDocumentos.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuCheckList, Me.mnuReportecl})
-        Me.mnuDocumentos.Text = "Documentación"
-        '
-        'mnuCheckList
-        '
-        Me.mnuCheckList.Index = 0
-        Me.mnuCheckList.Text = "Control Exp. Físico"
-        '
-        'mnuReportecl
-        '
-        Me.mnuReportecl.Index = 1
-        Me.mnuReportecl.Text = "Reporte"
+        Me.mnuDocumentos.Text = "-----"
         '
         'MnuLinCred
         '
@@ -1278,6 +1263,11 @@ Public Class frmAgil
         Me.MenuItem64.Index = 5
         Me.MenuItem64.Text = "Movimientos Contables"
         '
+        'MenuItem97
+        '
+        Me.MenuItem97.Index = 6
+        Me.MenuItem97.Text = "Condonar Moratorios"
+        '
         'mnuCons
         '
         Me.mnuCons.Enabled = False
@@ -1363,7 +1353,7 @@ Public Class frmAgil
         'mnuConsultaCL
         '
         Me.mnuConsultaCL.Index = 6
-        Me.mnuConsultaCL.Text = "Documentación Check List"
+        Me.mnuConsultaCL.Text = "-----"
         '
         'mnuBuscarSerie
         '
@@ -1672,7 +1662,7 @@ Public Class frmAgil
         '
         Me.mnuFega.Enabled = False
         Me.mnuFega.Index = 1
-        Me.mnuFega.Text = "Captura comisión FEGA"
+        Me.mnuFega.Text = "-----"
         '
         'mnuTasasApl
         '
@@ -2191,11 +2181,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem97
-        '
-        Me.MenuItem97.Index = 6
-        Me.MenuItem97.Text = "Condonar Moratorios"
         '
         'frmAgil
         '
@@ -2724,11 +2709,6 @@ Public Class frmAgil
         newfrmDepoRefe.Show()
     End Sub
 
-    Private Sub mnuFega_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles mnuFega.Click
-        Dim newfrmFega As New frmFega()
-        newfrmFega.Show()
-    End Sub
-
     Private Sub mnuRCporAnexo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim newfrmPideContrato As New frmPideContrato("mnuReestructuras")
         newfrmPideContrato.Show()
@@ -2859,19 +2839,14 @@ Public Class frmAgil
         'newfrmPideContrato.Show()
     End Sub
 
-    Private Sub mnuCheckList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuCheckList.Click
+    Private Sub mnuCheckList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'Dim newfrmPideAnexo As New frmPideAnexo("mnuCheckList")
         'newfrmPideAnexo.Show()
         Dim newfrmPideCliente As New frmPideCliente("mnuCheckList")
         newfrmPideCliente.Show()
     End Sub
 
-    Private Sub mnuConsultaCL_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuConsultaCL.Click
-        Dim newfrmPideAnexo As New frmPideAnexo("mnuConsultaCL")
-        newfrmPideAnexo.Show()
-    End Sub
-
-    Private Sub mnuReportecl_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuReportecl.Click
+    Private Sub mnuReportecl_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim newfrmRepCL As New frmReporteCheckList()
         newfrmRepCL.Show()
     End Sub

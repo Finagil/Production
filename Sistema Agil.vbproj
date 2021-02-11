@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>259</ApplicationRevision>
+    <ApplicationRevision>260</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -2011,12 +2011,6 @@
     <Compile Include="Modulo_RPT\frmCartaRat.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCheckList.designer.vb">
-      <DependentUpon>frmCheckList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmCheckList.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmCifrasCont.designer.vb">
       <DependentUpon>frmCifrasCont.vb</DependentUpon>
     </Compile>
@@ -2039,12 +2033,6 @@
       <DependentUpon>frmConsultaAviso.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONS\frmConsultaAviso.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmConsultaCheckList.Designer.vb">
-      <DependentUpon>frmConsultaCheckList.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmConsultaCheckList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCotizador.designer.vb">
@@ -2072,12 +2060,6 @@
       <DependentUpon>frmEdoCtaAvio.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_AVI\frmEdoCtaAvio.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmFega.designer.vb">
-      <DependentUpon>frmFega.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmFega.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmImpBlanco.designer.vb">
@@ -3665,10 +3647,6 @@
       <DependentUpon>frmCartaRat.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCheckList.resx">
-      <DependentUpon>frmCheckList.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmCifrasCont.resx">
       <DependentUpon>frmCifrasCont.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -3684,10 +3662,6 @@
     <EmbeddedResource Include="Modulo_CONS\frmConsultaAviso.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmConsultaAviso.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmConsultaCheckList.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmConsultaCheckList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCotizador.resx">
       <DependentUpon>frmCotizador.vb</DependentUpon>
@@ -3707,10 +3681,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_AVI\frmEdoCtaAvio.resx">
       <DependentUpon>frmEdoCtaAvio.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmFega.resx">
-      <DependentUpon>frmFega.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmImpBlanco.resx">

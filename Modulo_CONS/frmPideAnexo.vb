@@ -459,20 +459,6 @@ Public Class frmPideAnexo
                 End If
                 Dim newfrmImprCert As New frmImprCert(Mid(ListBox1.SelectedItem, 1, 10))
                 newfrmImprCert.Show()
-            Case "mnuCheckList"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-                Dim newfrmCheckList As New frmCheckList(Mid(ListBox1.SelectedItem, 1, 10))
-                newfrmCheckList.Show()
-            Case "mnuConsultaCL"
-                If TipoCredito = "B" Then ' FULL SERVICE
-                    MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Select
-                End If
-                Dim newfrmConsultaCL As New frmConsultaCheckList(Mid(ListBox1.SelectedItem, 1, 10))
-                newfrmConsultaCL.Show()
             Case "mnuAltacta"
                 If TipoCredito = "B" Then ' FULL SERVICE
                     MessageBox.Show("Esta operación no se puede para Full Service", "Operación Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error)
