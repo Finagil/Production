@@ -75,7 +75,7 @@ Public Class frmPideContrato
             cAnexo = Mid(mtxtContrato.Text, 1, 5) + Mid(mtxtContrato.Text, 7, 4)
             TipoCredito = ta.SacaTipar(cAnexo)
             SacaAlerta("", cAnexo)
-            If IsNothing(TipoCredito) Then
+            If IsNothing(TipoCredito) And txtMenu.Text <> "mnuCkList" Then
                 lblMensaje.Text = "¡Contrato inexistente o es un Avío!"
                 lblMensaje.Visible = True
                 Exit Sub
@@ -309,7 +309,7 @@ Public Class frmPideContrato
                     Dim RptCKList As New FrmRPT_MC
                     RptCKList.anexo_id = cAnexo
 
-                    If TipoCredito = "H" Or TipoCredito = "AM" Then
+                    If TipoCredito = "H" Or TipoCredito = "AM" Or IsNothing(TipoCredito) Then
                         Dim cCiclo As String = ""
                         With cm1
                             .CommandType = CommandType.Text
