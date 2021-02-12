@@ -180,6 +180,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Modulo_GEN\FrmDiasFestivos.Designer.vb">
+      <DependentUpon>FrmDiasFestivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_GEN\FrmDiasFestivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo_JUR\FrmLiberacionesJUR.Designer.vb">
       <DependentUpon>FrmLiberacionesJUR.vb</DependentUpon>
     </Compile>
@@ -2632,6 +2638,9 @@
     <EmbeddedResource Include="Modulo_FIRA\rptRepCobraFira.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptRepCobraFira.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_GEN\FrmDiasFestivos.resx">
+      <DependentUpon>FrmDiasFestivos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_JUR\FrmLiberacionesJUR.resx">
       <DependentUpon>FrmLiberacionesJUR.vb</DependentUpon>

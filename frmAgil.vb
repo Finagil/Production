@@ -26,6 +26,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem93 As MenuItem
     Friend WithEvents MenuItem96 As MenuItem
     Friend WithEvents MenuItem97 As MenuItem
+    Friend WithEvents MenuItem98 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -594,6 +595,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem98 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1062,7 +1064,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83, Me.MenuItem96})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83, Me.MenuItem96, Me.MenuItem98})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -2166,6 +2168,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem98
+        '
+        Me.MenuItem98.Index = 12
+        Me.MenuItem98.Text = "Días Festivos"
         '
         'frmAgil
         '
@@ -3678,6 +3685,11 @@ Public Class frmAgil
 
     Private Sub MenuItem97_Click(sender As Object, e As EventArgs) Handles MenuItem97.Click
         Dim f As New frmCondonaMoras
+        f.Show()
+    End Sub
+
+    Private Sub MenuItem98_Click(sender As Object, e As EventArgs) Handles MenuItem98.Click
+        Dim f As New FrmDiasFestivos
         f.Show()
     End Sub
 End Class
