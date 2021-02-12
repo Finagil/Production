@@ -144,8 +144,6 @@ Public Class frmAgil
     Friend WithEvents mnuECTC As System.Windows.Forms.MenuItem
     Friend WithEvents mnuPagosPF As System.Windows.Forms.MenuItem
     Friend WithEvents mnuSustrae As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuRCS As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuPSC As System.Windows.Forms.MenuItem
     Friend WithEvents mnuEstratificacion As System.Windows.Forms.MenuItem
     Friend WithEvents mnuMemoria As System.Windows.Forms.MenuItem
     Friend WithEvents mnuRE As System.Windows.Forms.MenuItem
@@ -519,8 +517,6 @@ Public Class frmAgil
         Me.mnuImpCtoAvioPorProductor = New System.Windows.Forms.MenuItem()
         Me.mnuImpCtoAvioPorContrato = New System.Windows.Forms.MenuItem()
         Me.mnuSustrae = New System.Windows.Forms.MenuItem()
-        Me.mnuRCS = New System.Windows.Forms.MenuItem()
-        Me.mnuPSC = New System.Windows.Forms.MenuItem()
         Me.mnuEstratificacion = New System.Windows.Forms.MenuItem()
         Me.mnuMemoria = New System.Windows.Forms.MenuItem()
         Me.mnuRE = New System.Windows.Forms.MenuItem()
@@ -1745,18 +1741,7 @@ Public Class frmAgil
         '
         Me.mnuSustrae.Enabled = False
         Me.mnuSustrae.Index = 3
-        Me.mnuSustrae.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuRCS, Me.mnuPSC})
-        Me.mnuSustrae.Text = "Sustrae"
-        '
-        'mnuRCS
-        '
-        Me.mnuRCS.Index = 0
-        Me.mnuRCS.Text = "Registro de Consultas"
-        '
-        'mnuPSC
-        '
-        Me.mnuPSC.Index = 1
-        Me.mnuPSC.Text = "Productores sin consultar"
+        Me.mnuSustrae.Text = "----"
         '
         'mnuEstratificacion
         '
@@ -2777,11 +2762,6 @@ Public Class frmAgil
             Cursor.Current = Cursors.Default
         End If
         f.Dispose()
-    End Sub
-
-    Private Sub mnuRCS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRCS.Click
-        Dim newfrmSustrae As New frmSustrae()
-        newfrmSustrae.Show()
     End Sub
 
     Private Sub mnuRE_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuRE.Click

@@ -2272,12 +2272,6 @@
     <Compile Include="Modulo_SEG\frmSegumanu.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSustrae.designer.vb">
-      <DependentUpon>frmSustrae.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSustrae.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmTablaCotizador.designer.vb">
       <DependentUpon>frmTablaCotizador.vb</DependentUpon>
     </Compile>
@@ -3897,10 +3891,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_SEG\frmSegumanu.resx">
       <DependentUpon>frmSegumanu.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSustrae.resx">
-      <DependentUpon>frmSustrae.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTablaCotizador.resx">
