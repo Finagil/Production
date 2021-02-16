@@ -11,7 +11,7 @@
         Dim cont As Integer = 0
         For Each r As FiraDS.AviosFIRARow In Me.FiraDS.AviosFIRA.Rows
             If r.AutorizaAut = True Then
-                Me.AviosFiraTableAdapter.LiberaCRE(UsuarioGlobal, r.AutorizaAut, "TesoreriaX", r.Anexo) ' casos de Irapuato
+                Me.AviosFiraTableAdapter.LiberaCRE(UsuarioGlobal, r.AutorizaAut, "TesoreriaCXPX", r.Anexo) ' casos de Irapuato
                 Me.AviosFiraTableAdapter.LiberaFira(r.Anexo)
                 cont += 1
             End If
