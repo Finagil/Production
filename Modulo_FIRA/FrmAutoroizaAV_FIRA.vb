@@ -11,11 +11,12 @@
         Dim cont As Integer = 0
         For Each r As FiraDS.AviosFIRARow In Me.FiraDS.AviosFIRA.Rows
             If r.AutorizaAut = True Then
-                Me.AviosFiraTableAdapter.LiberaCRE(UsuarioGlobal, r.AutorizaAut, "TesoreriaCXPX", r.Anexo) ' casos de Irapuato
+                Me.AviosFiraTableAdapter.LiberaCRE(UsuarioGlobal, r.AutorizaAut, "TesoreriaX", r.Anexo) ' casos de Irapuato
                 Me.AviosFiraTableAdapter.LiberaFira(r.Anexo)
                 cont += 1
             End If
         Next
+        Modulo_CXP.Inserta_CXP_MOVS()
         Me.AviosFiraTableAdapter.Fill(Me.FiraDS.AviosFIRA)
         CheckAll_CheckedChanged(Nothing, Nothing)
         MessageBox.Show(cont & " Contratos Liberados", "Liberación Avío (Crédito)", MessageBoxButtons.OK, MessageBoxIcon.Information)
