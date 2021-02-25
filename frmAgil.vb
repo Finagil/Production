@@ -3707,10 +3707,12 @@ Public Class frmAgil
 
     Private Sub MenuItem99_Click(sender As Object, e As EventArgs) Handles MenuItem99.Click
         Try
-            TaQUERY.InsertaCOMANDO("C:\Jobs\", "ProcesosDiarios.exe", " DOMICILIACION", UsuarioGlobal)
-            MessageBox.Show("Reproceso de domiciliación realizado, en breve llagarán los nuevos archivos generados.", "Domiciliación Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            MandaCorreoFase(UsuarioGlobal, "SISTEMAS", "Domiciliación Regenerada", UsuarioGlobal)
-            MandaCorreoFase(UsuarioGlobal, "COBRANZA_JUR", "Domiciliación Regenerada", UsuarioGlobal)
+            If MessageBox.Show("¿Estas seguro de reprocesar la domiciliacion?", "Regenerar Domiciliación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                TaQUERY.InsertaCOMANDO("C:\Jobs\", "ProcesosDiarios.exe", " DOMICILIACION", UsuarioGlobal)
+                MessageBox.Show("Reproceso de domiciliación realizado, en breve llagarán los nuevos archivos generados.", "Domiciliación Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MandaCorreoFase(UsuarioGlobal, "SISTEMAS", "Domiciliación Regenerada", UsuarioGlobal)
+                MandaCorreoFase(UsuarioGlobal, "COBRANZA_JUR", "Domiciliación Regenerada", UsuarioGlobal)
+            End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
