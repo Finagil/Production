@@ -6,6 +6,7 @@ Imports System.Math
 Public Class frmCancelaAviso
     Dim ConPagos As Boolean
     Dim cAnexo As String
+    Dim cNOMBRE As String
     Dim cLetra As String
     Dim bFacturado As Boolean
     Dim FolioFiscal As String
@@ -176,6 +177,7 @@ Public Class frmCancelaAviso
 
             drAnexo = dsAgil.Tables("Avisos").Rows(0)
             cAnexo = drAnexo("Anexo")
+            cNOMBRE = drAnexo("Descr")
             cCliente = drAnexo("Cliente")
             cTipar = drAnexo("Tipar")
             cFeven = drAnexo("Feven")
@@ -556,6 +558,8 @@ Public Class frmCancelaAviso
         BITACORA.Insert(UsuarioGlobal, Me.Name, Date.Now, "CancelaAvisos", System.Environment.MachineName, cAnexo & "-" & txtAviso.Text)
         CrystalReportViewer1.ReportSource = Nothing
         CrystalReportViewer1.Refresh()
+        MandaCorreoFase(UsuarioGlobalCorreo, "APLICA_PAGOS", "Aviso cancelado: " & cAnexo & "-" & txtAviso.Text & " " & cNOMBRE, "Aviso cancelado: " & cAnexo & "-" & txtAviso.Text & " " & cNOMBRE)
+        MandaCorreoFase(UsuarioGlobalCorreo, "SISTEMAS", "Aviso cancelado: " & txtAviso.Text & " " & cNOMBRE, "Aviso cancelado: " & txtAviso.Text & " " & cNOMBRE)
         MessageBox.Show("Aviso cancelado", "Avisos", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
