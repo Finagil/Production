@@ -423,6 +423,7 @@ Public Class frmAgil
         Me.MenuItem61 = New System.Windows.Forms.MenuItem()
         Me.MenuItem83 = New System.Windows.Forms.MenuItem()
         Me.MenuItem96 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem98 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
@@ -595,7 +596,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem98 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1206,6 +1206,11 @@ Public Class frmAgil
         Me.MenuItem96.Index = 11
         Me.MenuItem96.Text = "Quitar Opción a Compra"
         '
+        'MenuItem98
+        '
+        Me.MenuItem98.Index = 12
+        Me.MenuItem98.Text = "Días Festivos"
+        '
         'mnuSist
         '
         Me.mnuSist.Enabled = False
@@ -1351,7 +1356,7 @@ Public Class frmAgil
         'mnuConsultaCL
         '
         Me.mnuConsultaCL.Index = 6
-        Me.mnuConsultaCL.Text = "-----"
+        Me.mnuConsultaCL.Text = "Tasas Aplicables"
         '
         'mnuBuscarSerie
         '
@@ -2168,11 +2173,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem98
-        '
-        Me.MenuItem98.Index = 12
-        Me.MenuItem98.Text = "Días Festivos"
         '
         'frmAgil
         '
@@ -3690,6 +3690,11 @@ Public Class frmAgil
 
     Private Sub MenuItem98_Click(sender As Object, e As EventArgs) Handles MenuItem98.Click
         Dim f As New FrmDiasFestivos
+        f.Show()
+    End Sub
+
+    Private Sub mnuConsultaCL_Click(sender As Object, e As EventArgs) Handles mnuConsultaCL.Click
+        Dim f As New frmConsTasasvig
         f.Show()
     End Sub
 End Class

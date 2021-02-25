@@ -199,14 +199,16 @@ Public Class frmCargosExtras
         Dim nDiasCargo As Decimal = 0
         nDiasCargo = DateDiff(DateInterval.Day, Today.Date, dtpFechaCargo.Value.Date)
         If cCuentaCLABE <> "" And cBanco <> "BANCOMER" Then
-            If nDiasCargo < 1 Then
-                lblMensajeFecha.Text = "Debe haber por lo menos 1 día entre hoy y la fecha de cargo"
+            If nDiasCargo < 0 Then
+                'lblMensajeFecha.Text = "Debe haber por lo menos 1 día entre hoy y la fecha de cargo"
+                lblMensajeFecha.Text = "Fecha de cargo incorrecta"
                 Return (False)
                 Exit Function
             End If
         Else
-            If nDiasCargo < 1 Then
-                lblMensajeFecha.Text = "Debe haber por lo menos 1 días entre hoy y la fecha de cargo"
+            If nDiasCargo < 0 Then
+                'lblMensajeFecha.Text = "Debe haber por lo menos 1 días entre hoy y la fecha de cargo"
+                lblMensajeFecha.Text = "Fecha de cargo incorrecta"
                 Return (False)
                 Exit Function
             End If
