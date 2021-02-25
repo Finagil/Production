@@ -27,6 +27,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem96 As MenuItem
     Friend WithEvents MenuItem97 As MenuItem
     Friend WithEvents MenuItem98 As MenuItem
+    Friend WithEvents MenuItem99 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -596,6 +597,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
+        Me.MenuItem99 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1891,7 +1893,7 @@ Public Class frmAgil
         '
         Me.MnuJuridico.Enabled = False
         Me.MnuJuridico.Index = 11
-        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79, Me.MenuItem81, Me.MenuItem93})
+        Me.MnuJuridico.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MnuClavesOBS, Me.MnuConvenioJur, Me.MnuBitaJur, Me.mnuBitacora, Me.mnuSegBitacora, Me.MnuRepCobDia, Me.MenuItem32, Me.MenuItem30, Me.MenuItem44, Me.MenuItem49, Me.MenuItem62, Me.MenuItem63, Me.MenuItem65, Me.MenuItem66, Me.MenuItem70, Me.MenuItem79, Me.MenuItem81, Me.MenuItem93, Me.MenuItem99})
         Me.MnuJuridico.Text = "Juridico"
         '
         'MnuClavesOBS
@@ -2173,6 +2175,11 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
+        '
+        'MenuItem99
+        '
+        Me.MenuItem99.Index = 18
+        Me.MenuItem99.Text = "Reprocesar Envío de Domiciliacion"
         '
         'frmAgil
         '
@@ -3696,5 +3703,16 @@ Public Class frmAgil
     Private Sub mnuConsultaCL_Click(sender As Object, e As EventArgs) Handles mnuConsultaCL.Click
         Dim f As New frmConsTasasvig
         f.Show()
+    End Sub
+
+    Private Sub MenuItem99_Click(sender As Object, e As EventArgs) Handles MenuItem99.Click
+        Try
+            TaQUERY.InsertaCOMANDO("C:\Jobs\", "ProcesosDiarios.exe", " DOMICILIACION", UsuarioGlobal)
+            MessageBox.Show("Reproceso de domiciliación realizado, en breve llagarán los nuevos archivos generados.", "Domiciliación Generada", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MandaCorreoFase(UsuarioGlobal, "SISTEMAS", "Domiciliación Regenerada", UsuarioGlobal)
+            MandaCorreoFase(UsuarioGlobal, "COBRANZA_JUR", "Domiciliación Regenerada", UsuarioGlobal)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
