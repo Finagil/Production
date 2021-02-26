@@ -19375,7 +19375,7 @@ Partial Public Class GeneralDS
             Me.columnid_Correo.Unique = true
             Me.columnDe.MaxLength = 200
             Me.columnPara.MaxLength = 400
-            Me.columnAsunto.MaxLength = 100
+            Me.columnAsunto.MaxLength = 150
             Me.columnMensaje.MaxLength = 4000
             Me.columnfecha.AllowDBNull = false
             Me.columnAttach.MaxLength = 200
