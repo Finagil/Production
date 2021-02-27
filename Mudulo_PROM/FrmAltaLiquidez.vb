@@ -130,7 +130,13 @@ Public Class FrmAltaLiquidez
 
     Function GuardarDatos() As Boolean
         Try
-            If DTPIngreso.Value > Date.Now.Date.AddYears(-1) Then
+            If Not IsNumeric(TextBox1.Text) Then
+                MessageBox.Show("Monto financiado incorrecto", "Monto Financiado", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            ElseIf val(TextBox1.Text) > 500000 Then
+                MessageBox.Show("Monto solo puede ser hasta 500,000.", "Monto Financiado", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            ElseIf DTPIngreso.Value > Date.Now.Date.AddYears(-1) Then
                 MessageBox.Show("No tiene la Antigüedad para este producto", "Antigüedad", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Else
