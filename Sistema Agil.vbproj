@@ -56,7 +56,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>271</ApplicationRevision>
+    <ApplicationRevision>283</ApplicationRevision>
     <ApplicationVersion>2.2020.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -158,6 +158,12 @@
       <DependentUpon>frmQuitarOpciones.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulo_CONT\frmQuitarOpciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulo_CONT\FrmReportesFIRANOFIRA.Designer.vb">
+      <DependentUpon>FrmReportesFIRANOFIRA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulo_CONT\FrmReportesFIRANOFIRA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulo_CXP\CxpDS.Designer.vb">
@@ -2630,6 +2636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_CONT\frmQuitarOpciones.resx">
       <DependentUpon>frmQuitarOpciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulo_CONT\FrmReportesFIRANOFIRA.resx">
+      <DependentUpon>FrmReportesFIRANOFIRA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulo_FIRA\frmRepcobraFIRA.resx">
       <DependentUpon>frmRepcobraFIRA.vb</DependentUpon>

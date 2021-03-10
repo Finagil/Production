@@ -28,6 +28,7 @@ Public Class frmAgil
     Friend WithEvents MenuItem97 As MenuItem
     Friend WithEvents MenuItem98 As MenuItem
     Friend WithEvents MenuItem99 As MenuItem
+    Friend WithEvents MenuItem100 As MenuItem
     Dim newProc As New Diagnostics.Process
 
 #Region " Windows Form Designer generated code "
@@ -566,6 +567,7 @@ Public Class frmAgil
         Me.MenuItem79 = New System.Windows.Forms.MenuItem()
         Me.MenuItem81 = New System.Windows.Forms.MenuItem()
         Me.MenuItem93 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem99 = New System.Windows.Forms.MenuItem()
         Me.MenuItem3 = New System.Windows.Forms.MenuItem()
         Me.mnuCaptValo = New System.Windows.Forms.MenuItem()
         Me.mnuCTradicional = New System.Windows.Forms.MenuItem()
@@ -597,7 +599,7 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem99 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem100 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1066,7 +1068,7 @@ Public Class frmAgil
         '
         Me.mnuCont.Enabled = False
         Me.mnuCont.Index = 5
-        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83, Me.MenuItem96, Me.MenuItem98})
+        Me.mnuCont.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuImprCert, Me.mnuProyecta, Me.mnuCierre, Me.mnuRepCierre, Me.mnuRepSald2, Me.MniBloqAvisos, Me.MenuItem19, Me.MenuTipoCambio, Me.MenuItem24, Me.MenuItem61, Me.MenuItem83, Me.MenuItem96, Me.MenuItem98, Me.MenuItem100})
         Me.mnuCont.Text = "Co&ntabilidad"
         '
         'mnuImprCert
@@ -2003,6 +2005,11 @@ Public Class frmAgil
         Me.MenuItem93.Index = 17
         Me.MenuItem93.Text = "Activar/Desact. Domiciliación"
         '
+        'MenuItem99
+        '
+        Me.MenuItem99.Index = 18
+        Me.MenuItem99.Text = "Reprocesar Envío de Domiciliacion"
+        '
         'MenuItem3
         '
         Me.MenuItem3.Enabled = False
@@ -2176,10 +2183,10 @@ Public Class frmAgil
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
         '
-        'MenuItem99
+        'MenuItem100
         '
-        Me.MenuItem99.Index = 18
-        Me.MenuItem99.Text = "Reprocesar Envío de Domiciliacion"
+        Me.MenuItem100.Index = 13
+        Me.MenuItem100.Text = "Procesar Cartera Fira y No Fira"
         '
         'frmAgil
         '
@@ -3716,5 +3723,10 @@ Public Class frmAgil
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub MenuItem100_Click(sender As Object, e As EventArgs) Handles MenuItem100.Click
+        Dim f As New FrmReportesFIRANOFIRA
+        f.Show()
     End Sub
 End Class

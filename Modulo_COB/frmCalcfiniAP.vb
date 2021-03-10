@@ -113,80 +113,86 @@ Public Class frmCalcfiniAP
     Friend WithEvents TxtSegVida As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents TextFega As TextBox
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Label36 As Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.txtAnexo = New System.Windows.Forms.TextBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.txtSaldoafavor = New System.Windows.Forms.TextBox
-        Me.lblSaldoafavor = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.lblIvaDG = New System.Windows.Forms.Label
-        Me.txtIvaDG = New System.Windows.Forms.TextBox
-        Me.Label38 = New System.Windows.Forms.Label
-        Me.Label37 = New System.Windows.Forms.Label
-        Me.txtSaldoOtros = New System.Windows.Forms.TextBox
-        Me.txtRentasVencidas = New System.Windows.Forms.TextBox
-        Me.btnSalir = New System.Windows.Forms.Button
-        Me.btnImprimir = New System.Windows.Forms.Button
-        Me.btnCalcular = New System.Windows.Forms.Button
-        Me.txtIvaIntereses = New System.Windows.Forms.TextBox
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.txtUDIFinal = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.txtUDIInicial = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtImportePago = New System.Windows.Forms.TextBox
-        Me.txtIntereses = New System.Windows.Forms.TextBox
-        Me.Label26 = New System.Windows.Forms.Label
-        Me.lblImportePago = New System.Windows.Forms.Label
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.txtTasaAplicada = New System.Windows.Forms.TextBox
-        Me.lblTasaAplicada = New System.Windows.Forms.Label
-        Me.txtIvaMoratorios = New System.Windows.Forms.TextBox
-        Me.txtDiasIntereses = New System.Windows.Forms.TextBox
-        Me.Label33 = New System.Windows.Forms.Label
-        Me.Label19 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.txtMoratorios = New System.Windows.Forms.TextBox
-        Me.txtIvaRD = New System.Windows.Forms.TextBox
-        Me.Label32 = New System.Windows.Forms.Label
-        Me.Label23 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtImpRD = New System.Windows.Forms.TextBox
-        Me.Label31 = New System.Windows.Forms.Label
-        Me.Label22 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtOpcion = New System.Windows.Forms.TextBox
-        Me.txtSaldoSeguro = New System.Windows.Forms.TextBox
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.txtIvaComision = New System.Windows.Forms.TextBox
-        Me.txtIvaDiferido = New System.Windows.Forms.TextBox
-        Me.Label29 = New System.Windows.Forms.Label
-        Me.Label24 = New System.Windows.Forms.Label
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.txtComision = New System.Windows.Forms.TextBox
-        Me.Label28 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.txtImpDG = New System.Windows.Forms.TextBox
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.lblImpDG = New System.Windows.Forms.Label
-        Me.txtPenalizacion = New System.Windows.Forms.TextBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.txtSaldoEquipo = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.btnProcesar = New System.Windows.Forms.Button
-        Me.Label34 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.TxtSegVida = New System.Windows.Forms.TextBox
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label20 = New System.Windows.Forms.Label
+        Me.txtAnexo = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TxtSegVida = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtSaldoafavor = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.lblSaldoafavor = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblIvaDG = New System.Windows.Forms.Label()
+        Me.txtIvaDG = New System.Windows.Forms.TextBox()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.txtSaldoOtros = New System.Windows.Forms.TextBox()
+        Me.txtRentasVencidas = New System.Windows.Forms.TextBox()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnImprimir = New System.Windows.Forms.Button()
+        Me.btnCalcular = New System.Windows.Forms.Button()
+        Me.txtIvaIntereses = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtUDIFinal = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtUDIInicial = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtImportePago = New System.Windows.Forms.TextBox()
+        Me.txtIntereses = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.lblImportePago = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtTasaAplicada = New System.Windows.Forms.TextBox()
+        Me.lblTasaAplicada = New System.Windows.Forms.Label()
+        Me.txtIvaMoratorios = New System.Windows.Forms.TextBox()
+        Me.txtDiasIntereses = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtMoratorios = New System.Windows.Forms.TextBox()
+        Me.txtIvaRD = New System.Windows.Forms.TextBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtImpRD = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtOpcion = New System.Windows.Forms.TextBox()
+        Me.txtSaldoSeguro = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtIvaComision = New System.Windows.Forms.TextBox()
+        Me.txtIvaDiferido = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtComision = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtImpDG = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.lblImpDG = New System.Windows.Forms.Label()
+        Me.txtPenalizacion = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.txtSaldoEquipo = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.TextFega = New System.Windows.Forms.TextBox()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -201,7 +207,10 @@ Public Class frmCalcfiniAP
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TextFega)
+        Me.GroupBox1.Controls.Add(Me.Label35)
         Me.GroupBox1.Controls.Add(Me.TxtSegVida)
+        Me.GroupBox1.Controls.Add(Me.Label36)
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.txtSaldoafavor)
         Me.GroupBox1.Controls.Add(Me.Label20)
@@ -276,11 +285,29 @@ Public Class frmCalcfiniAP
         Me.GroupBox1.Text = "GroupBox1"
         Me.GroupBox1.Visible = False
         '
+        'TxtSegVida
+        '
+        Me.TxtSegVida.Location = New System.Drawing.Point(520, 183)
+        Me.TxtSegVida.Name = "TxtSegVida"
+        Me.TxtSegVida.ReadOnly = True
+        Me.TxtSegVida.Size = New System.Drawing.Size(100, 20)
+        Me.TxtSegVida.TabIndex = 112
+        Me.TxtSegVida.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label17
+        '
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(344, 181)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(14, 17)
+        Me.Label17.TabIndex = 111
+        Me.Label17.Text = "+"
+        '
         'txtSaldoafavor
         '
         Me.txtSaldoafavor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSaldoafavor.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtSaldoafavor.Location = New System.Drawing.Point(520, 250)
+        Me.txtSaldoafavor.Location = New System.Drawing.Point(520, 275)
         Me.txtSaldoafavor.Name = "txtSaldoafavor"
         Me.txtSaldoafavor.ReadOnly = True
         Me.txtSaldoafavor.Size = New System.Drawing.Size(100, 20)
@@ -288,11 +315,20 @@ Public Class frmCalcfiniAP
         Me.txtSaldoafavor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtSaldoafavor.Visible = False
         '
+        'Label20
+        '
+        Me.Label20.Location = New System.Drawing.Point(360, 183)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(158, 16)
+        Me.Label20.TabIndex = 110
+        Me.Label20.Text = "Seguro de Vida"
+        Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'lblSaldoafavor
         '
         Me.lblSaldoafavor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSaldoafavor.ForeColor = System.Drawing.Color.Red
-        Me.lblSaldoafavor.Location = New System.Drawing.Point(360, 250)
+        Me.lblSaldoafavor.Location = New System.Drawing.Point(360, 275)
         Me.lblSaldoafavor.Name = "lblSaldoafavor"
         Me.lblSaldoafavor.Size = New System.Drawing.Size(158, 16)
         Me.lblSaldoafavor.TabIndex = 105
@@ -448,7 +484,7 @@ Public Class frmCalcfiniAP
         '
         'txtImportePago
         '
-        Me.txtImportePago.Location = New System.Drawing.Point(520, 226)
+        Me.txtImportePago.Location = New System.Drawing.Point(520, 251)
         Me.txtImportePago.Name = "txtImportePago"
         Me.txtImportePago.ReadOnly = True
         Me.txtImportePago.Size = New System.Drawing.Size(100, 20)
@@ -475,7 +511,7 @@ Public Class frmCalcfiniAP
         '
         'lblImportePago
         '
-        Me.lblImportePago.Location = New System.Drawing.Point(360, 226)
+        Me.lblImportePago.Location = New System.Drawing.Point(360, 251)
         Me.lblImportePago.Name = "lblImportePago"
         Me.lblImportePago.Size = New System.Drawing.Size(158, 16)
         Me.lblImportePago.TabIndex = 82
@@ -867,32 +903,32 @@ Public Class frmCalcfiniAP
         Me.DateTimePicker1.Size = New System.Drawing.Size(88, 20)
         Me.DateTimePicker1.TabIndex = 59
         '
-        'TxtSegVida
+        'TextFega
         '
-        Me.TxtSegVida.Location = New System.Drawing.Point(520, 183)
-        Me.TxtSegVida.Name = "TxtSegVida"
-        Me.TxtSegVida.ReadOnly = True
-        Me.TxtSegVida.Size = New System.Drawing.Size(100, 20)
-        Me.TxtSegVida.TabIndex = 112
-        Me.TxtSegVida.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TextFega.Location = New System.Drawing.Point(520, 207)
+        Me.TextFega.Name = "TextFega"
+        Me.TextFega.ReadOnly = True
+        Me.TextFega.Size = New System.Drawing.Size(100, 20)
+        Me.TextFega.TabIndex = 115
+        Me.TextFega.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Label17
+        'Label35
         '
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(344, 181)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(14, 17)
-        Me.Label17.TabIndex = 111
-        Me.Label17.Text = "+"
+        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Location = New System.Drawing.Point(344, 205)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(14, 17)
+        Me.Label35.TabIndex = 114
+        Me.Label35.Text = "+"
         '
-        'Label20
+        'Label36
         '
-        Me.Label20.Location = New System.Drawing.Point(360, 183)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(158, 16)
-        Me.Label20.TabIndex = 110
-        Me.Label20.Text = "Seguro de Vida"
-        Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label36.Location = New System.Drawing.Point(360, 207)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(158, 16)
+        Me.Label36.TabIndex = 113
+        Me.Label36.Text = "Garantía Fega"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmCalcfiniAP
         '
@@ -913,9 +949,9 @@ Public Class frmCalcfiniAP
     End Sub
 
 #End Region
-
     ' Declaración de variables de conexión ADO .NET de alcance privado
-
+    Public CompletoFRM As Boolean = True
+    Public ConnAux As String = ""
     Dim dsAgil As New DataSet()
     Dim dtFiniquito As New DataTable("Finiquito")
     Dim drUdis As DataRowCollection
@@ -988,12 +1024,18 @@ Public Class frmCalcfiniAP
     Dim nPrimaSeguro As Decimal = 0
     Dim nPrimaSeguroAux As Decimal = 0
     Dim AnexosGEN As New ProductionDataSetTableAdapters.AnexosTableAdapter
+    Dim EsAvio As Boolean
+    Dim cAplicaFEGA As String
+    Dim nPorcFega As Decimal
+    Dim Sucursal As String
 
     Private Sub frmCalcfini_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
+        If ConnAux.Length <= 0 Then
+            ConnAux = strConn
+        End If
+        Dim cnAgil As New SqlConnection(ConnAux)
         Dim cm1 As New SqlCommand()
         Dim daUdis As New SqlDataAdapter(cm1)
 
@@ -1044,15 +1086,17 @@ Public Class frmCalcfiniAP
 
         drUdis = dsAgil.Tables("Udis").Rows
         cAnexo = Mid(txtAnexo.Text, 1, 5) & Mid(txtAnexo.Text, 7, 4)
-        AlertasAnexos(cAnexo, "", "FINIQUITO")
+        If CompletoFRM Then AlertasAnexos(cAnexo, "", "FINIQUITO")
 
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
         DateTimePicker1.Enabled = False
         ' Declaración de variables de conexión ADO .NET
-
-        Dim cnAgil As New SqlConnection(strConn)
+        If ConnAux.Length <= 0 Then
+            ConnAux = strConn
+        End If
+        Dim cnAgil As New SqlConnection(ConnAux)
         Dim cm1 As New SqlCommand()
         Dim cm2 As New SqlCommand()
         Dim cm3 As New SqlCommand()
@@ -1176,26 +1220,25 @@ Public Class frmCalcfiniAP
 
         cFondeo = drAnexo("Fondeo")
         If cTipar <> "P" Then
-            MsgBox("Error pantalla para Arrendamiento Puro", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then MsgBox("Error pantalla para Arrendamiento Puro", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
         ElseIf cFondeo = "02" Then
-            MsgBox("No existen prepagos en contratos descontados con NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
-            Me.Close()
+            If CompletoFRM Then MsgBox("No existen prepagos en contratos descontados con NAFIN", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then Me.Close()
         ElseIf cFondeo = "03" Then
-            MsgBox("No existen prepagos en contratos descontados con FIRA", MsgBoxStyle.Critical, "Mensaje del Sistema")
-            Me.Close()
+            If CompletoFRM Then MsgBox("No existen prepagos en contratos descontados con FIRA", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then Me.Close()
         ElseIf cFondeo = "04" Then
-            MsgBox("No existen prepagos en contratos PARAFINANCIEROS", MsgBoxStyle.Critical, "Mensaje del Sistema")
-            Me.Close()
+            If CompletoFRM Then MsgBox("No existen prepagos en contratos PARAFINANCIEROS", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then Me.Close()
         ElseIf drAnexo("Flcan") <> "A" And drAnexo("Flcan") <> "W" Then
-            MsgBox("No se puede realizar el cálculo para un contrato NO ACTIVO", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then MsgBox("No se puede realizar el cálculo para un contrato NO ACTIVO", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
         ElseIf dsAgil.Tables("Anexos").Rows.Count() = 0 Then
-            ' Validando que el Contrato esté en cartera 
-            MsgBox("No existe la tabla de amortización de este contrato", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then MsgBox("No existe la tabla de amortización de este contrato", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
         ElseIf TaQUERY.AvisosSinFacturar(cAnexo, "29990101") <= 0 Then
-            MsgBox("el contrato ya no tienes rentas por facturar, por lo que no es posible realziar un finiquito", MsgBoxStyle.Critical, "Mensaje del Sistema")
+            If CompletoFRM Then MsgBox("el contrato ya no tienes rentas por facturar, por lo que no es posible realziar un finiquito", MsgBoxStyle.Critical, "Mensaje del Sistema")
             Me.Close()
         End If
 
@@ -1215,6 +1258,10 @@ Public Class frmCalcfiniAP
         nIvaeq = drAnexo("Ivaeq")
         nAmorin = drAnexo("Amorin")
         cSegVida = drAnexo("SegVida")
+        EsAvio = drAnexo("EsAvio")
+        cAplicaFEGA = drAnexo("AplicaFega")
+        nPorcFega = drAnexo("PorcFega")
+        Sucursal = drAnexo("Sucursal")
 
         ' Trae la Opción de Compra y el IVA de la Opción de Compra; para este último si la fecha de contratación es anterior
         ' al 1o. de enero de 2010 debe calcular el IVA al 16% ya que los contratos activados a partir del 1o. de enero
@@ -1226,57 +1273,55 @@ Public Class frmCalcfiniAP
         Else
             nOpcion = nOpcion + drAnexo("IvaOpcion")
         End If
+        
+
         If Trim(drAnexo("OCPagado")) = "S" Then
             nOpcion = 0
         End If
-        nOpcion = 0 ' seimpre cero, vcruz solicito quitarlo para finiquitos donde aun tenga plazo
+        nOpcion = 0 ' siempre cero, vcruz solicito quitarlo para finiquitos donde aun tenga plazo
 
         ' Determina saldo de Rentas en Depósito
 
         nRD = drAnexo("RD")
         nImpRD = drAnexo("ImpDG")
         nIvaRD = drAnexo("IvaDG")
+        If Not CompletoFRM Then
+            nRD = 0
+            nImpRD = 0
+            nIvaRD = 0
+        End If
 
         ' Determina monto original de Depósito en Garantía
 
         nDG = drAnexo("DG")
         nImpDG = drAnexo("ImpRD")
         nIvaDG = drAnexo("IvaRD")
+        If Not CompletoFRM Then
+            nDG = 0
+            nImpDG = 0
+            nIvaDG = 0
+        End If
 
         If cFinse = "S" Then
-
             nSaldoSeguro = 0
             lSalir = False
-
             For Each drEdoctas In dsAgil.Tables("Edoctas").Rows
-
-                ' Se debe tomar el saldo insoluto del seguro que no haya sido facturado
-
                 If drEdoctas("Nufac") = 0 And drEdoctas("Indrec") = "S" And lSalir = False Then
                     nSaldoSeguro = drEdoctas("Saldo")
                     lSalir = True
                 End If
-
             Next
-
         End If
 
         If cAdeudo = "S" Then
-
             nSaldoOtros = 0
             lSalir = False
-
             For Each drEdoctao In dsAgil.Tables("Edoctao").Rows
-
-                ' Se busca el saldo insoluto de otros adeudos que no haya sido facturado
-
                 If drEdoctao("Nufac") = 0 And drEdoctao("Indrec") = "S" And lSalir = False Then
                     nSaldoOtros = drEdoctao("Saldo")
                     lSalir = True
                 End If
-
             Next
-
         End If
 
         ' Trae el saldo insoluto del equipo y (si procede) el IVA diferido del Capital
@@ -1290,7 +1335,7 @@ Public Class frmCalcfiniAP
                     nSaldoEquipo = drEdoctav("Saldo")
                     CalcInte(dsAgil.Tables("Facturas").Rows, nTasaFact, nDiasFact, nInteresEquipo, cFecha, cAnexo, cFechacon, cLetra, nSaldoEquipo, cTipta, nDifer)
                     If nDiasFact > 0 And nTasaFact = nDifer Then
-                        MsgBox("Error en tasas de facturación; por lo que NO se puede calcular el finiquito", MsgBoxStyle.Exclamation, "Mensaje")
+                        If CompletoFRM Then MsgBox("Error en tasas de facturación; por lo que NO se puede calcular el finiquito", MsgBoxStyle.Exclamation, "Mensaje")
                         Me.Close()
                     End If
                     If cFinse = "S" Then
@@ -1347,6 +1392,10 @@ Public Class frmCalcfiniAP
                 Else
                     nDiasMora = 0
                 End If
+                If Not CompletoFRM Then
+                    nMora = 0
+                    nIvaMora = 0
+                End If
                 nAdeudo1 += nSaldofac
                 nAdeudo2 += Round(nMora, 2)
                 nAdeudo3 += Round(nIvaMora, 2)
@@ -1395,7 +1444,7 @@ Public Class frmCalcfiniAP
                 nDiasFact = 0
             End If
             If nDiasFact > 0 And (nUdiInicial = 0 Or nUdiFinal = 0) Then
-                MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
+                If CompletoFRM Then MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
                 Me.Close()
             End If
             If cTipo = "F" Then
@@ -1462,7 +1511,7 @@ Public Class frmCalcfiniAP
 
         Dim SaldoFavor As Decimal = TaQUERY.SaldoFavor(cAnexo)
         If SaldoFavor > 0 Then
-            MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If CompletoFRM Then MessageBox.Show("Contrato con Saldo a Favor del Cliente (" & SaldoFavor.ToString("n2") & "), favor de verificar.", "Saldo a Favor", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
         cm1.Dispose()
@@ -1487,6 +1536,7 @@ Public Class frmCalcfiniAP
         Dim nDiasIntereses As Decimal = 0
         Dim nOC As Decimal = 0
         Dim nPenalizacion As Decimal = 0
+        Dim nFega As Decimal
 
         ' Los únicos datos que se pueden actualizar son la tasa de penalización, los días de intereses
         ' y la opción de compra
@@ -1511,6 +1561,10 @@ Public Class frmCalcfiniAP
 
         nComision = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) * nPenalizacion / 100, 2)
         nIvaComision = Round(nComision * nPorcentajeIVA, 2)
+        If Not CompletoFRM Then
+            nComision = 0
+            nIvaComision = 0
+        End If
         txtComision.Text = FormatNumber(nComision, 2)
         txtIvaComision.Text = FormatNumber(nIvaComision, 2)
 
@@ -1544,7 +1598,7 @@ Public Class frmCalcfiniAP
                     nDiasFact = 0
                 End If
                 If nDiasFact > 0 And (nUdiInicial = 0 Or nUdiFinal = 0) Then
-                    MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
+                    If CompletoFRM Then MsgBox("Error en los valores de las UDIS", MsgBoxStyle.Exclamation, "Mensaje")
                     Me.Close()
                 End If
 
@@ -1584,9 +1638,12 @@ Public Class frmCalcfiniAP
         End If
         nSeguroVida = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) / 1000 * nPrimaSeguro / 30.4 * nDiasIntereses, 2)
         '+++++CALCULO DE SEGURO DE VIDA
+        '+++++CALCULO DE FEGA
+        nFega = CalculaFEGA(nDiasIntereses)
+        '+++++CALCULO DE FEGA
 
         nImportePago = nSaldoEquipo - nImpDG - nIvaDG + nIvaDiferido + nSaldoSeguro + nSaldoOtros
-        nImportePago += nInteres + nIvaInteres + nComision + Round(nComision * nPorcentajeIVA, 2) + nSeguroVida
+        nImportePago += nInteres + nIvaInteres + nComision + Round(nComision * nPorcentajeIVA, 2) + nSeguroVida + nFega
         nImportePago += nOC + nAdeudo1 + nAdeudo2 + nAdeudo3 - nImpRD - nIvaRD
 
         If nImportePago < 0 Then
@@ -1607,6 +1664,7 @@ Public Class frmCalcfiniAP
         txtIntereses.Text = FormatNumber(nInteres, 2)
         txtIvaIntereses.Text = FormatNumber(nIvaInteres, 2)
         txtImportePago.Text = FormatNumber(nImportePago, 2)
+        TextFega.Text = FormatNumber(nFega, 2)
 
     End Sub
 
@@ -1667,15 +1725,44 @@ Public Class frmCalcfiniAP
 
         dsImprimir.Dispose()
 
-        MsgBox("Reporte Impreso", MsgBoxStyle.Information, "Mensaje del Sistema")
+        If CompletoFRM Then MsgBox("Reporte Impreso", MsgBoxStyle.Information, "Mensaje del Sistema")
 
     End Sub
 
     Private Sub btnSalir_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSalir.Click
         Me.Close()
     End Sub
+    Function CalculaFEGA(nDias As Integer) As Decimal
+        Dim nImporteFEGA As Decimal
+        If (EsAvio = True And cAnexo <> "030500004") Or (AnexosGEN.CapitalDeTrabajo(cAnexo) > 0) Or (cFondeo = "03" And cAplicaFEGA = "S") Then
+            Select Case cAnexo
+                Case "035890001"
+                    nImporteFEGA = nSaldoEquipo * 0.014641 * (1 + (nTasaIVACliente / 100))
+                Case "035890002"
+                    nImporteFEGA = nSaldoEquipo * 0.012772 * (1 + (nTasaIVACliente / 100))
+                Case "019140007"
+                    nImporteFEGA = nSaldoEquipo * 0.01179 * (1 + (nTasaIVACliente / 100))
+                Case "030500005"
+                    nImporteFEGA = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
+                Case Else
+                    If nPorcFega > 0 Then
+                        nImporteFEGA = nSaldoEquipo * (nPorcFega) * (1 + (nTasaIVACliente / 100))
+                    ElseIf cFechacon < "20160101" Then
+                        nImporteFEGA = nSaldoEquipo * 0.01 * (1 + (nTasaIVACliente / 100))
+                    ElseIf cFechacon < "20180322" Then
+                        nImporteFEGA = nSaldoEquipo * 0.015 * (1 + (nTasaIVACliente / 100))
+                    Else ' en adelante
+                        If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
+                            nImporteFEGA = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIVACliente / 100))
+                        Else
+                            nImporteFEGA = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIVACliente / 100))
+                        End If
 
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+                    End If
+            End Select
+            nImporteFEGA = Round(nImporteFEGA / 360 * nDias, 2)
+        End If
+        Return nImporteFEGA
+    End Function
 
-    End Sub
 End Class

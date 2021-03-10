@@ -23,10 +23,6 @@ Public Class frmRepoSeguros
 
         Dim Fecha As Date = Date.Now
         r = t.NewRow
-        'r("ID") = Date.Now.ToString("yyyyMMdd")
-        'r("TIT") = "A la Fecha"
-        't.Rows.Add(r)
-
         For x As Integer = 0 To 11
             Fecha = Fecha.AddDays(-1 * Fecha.Day)
             If Fecha >= "01/07/2019" Then
@@ -44,8 +40,14 @@ Public Class frmRepoSeguros
     End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
+        Dim TaReest As New ReestructDSTableAdapters.REEST_AnexosBulletTableAdapter
+        Dim Treest As New ReestructDS.REEST_AnexosBulletDataTable
+        Dim Cont As Integer
+        Dim Calcfini1 As frmCalcfiniAP
+        Dim Calcfini2 As frmCalcfini
         Dim DB As String = My.Settings.BaseDatos
         Dim cFecha As String
+        Dim dFecha As Date
         Dim cEdad As String
         Dim drReporte As ReportesDS.dtReporteRow
         Dim nIvaDiferido As Decimal
@@ -60,7 +62,9 @@ Public Class frmRepoSeguros
         ta.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         ta1.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         ta2.Connection.ConnectionString = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
+        Dim ConnAux As String = "Server=" & My.Settings.ServidorBACK & "; DataBase=" & DB & "; User ID=User_PRO; pwd=User_PRO2015"
         cFecha = cbBase.SelectedValue
+        dFecha = CTOD(cFecha)
         ReportesDS1.dtReporte.Clear()
 
         Try
@@ -70,13 +74,17 @@ Public Class frmRepoSeguros
         End Try
 
         For Each r In t.Rows
+            TaReest.FillByBullet(Treest, r.Anexo)
+            If Treest.Rows.Count > 0 Then
+                Continue For
+            End If
             Label2.Text = r.Descr
             Label2.Update()
             cEdad = DameEdad(r.FechaNac.ToString("yyyyMMdd"), cFecha)
 
             drReporte = ReportesDS1.dtReporte.NewdtReporteRow
             drReporte.FechaNac = r.FechaNac.Date
-            drReporte.Nombre = r.nombreCliente
+            drReporte.Nombre = r.NombreCliente
             drReporte.Paterno = r.ApellidoPaterno
             drReporte.Materno = r.ApellidoMaterno
             drReporte.Nombre2 = ""
@@ -85,42 +93,50 @@ Public Class frmRepoSeguros
             drReporte("Contrato") = Mid(r.Anexo, 1, 5) & "/" & Mid(r.Anexo, 6, 4)
             drReporte("NameCte") = Trim(r.Descr)
             drReporte("Edad") = cEdad
-            drReporte("SaldoEq") = ta.SaldoEquipo(r.Anexo)
-            drReporte("SaldoSeg") = ta.SaldoSeguro(r.Anexo)
-            drReporte("SaldoOt") = ta.SaldoOtros(r.Anexo)
+            drReporte("SaldoEq") = 0 'ta.SaldoEquipo(r.Anexo)
+            drReporte("SaldoSeg") = 0 'ta.SaldoSeguro(r.Anexo)
+            drReporte("SaldoOt") = 0 'ta.SaldoOtros(r.Anexo)
             drReporte("FechaCon") = r.Fechacon
             drReporte("FechaVecn") = ta.fechaVenc(r.Anexo)
 
             nIvaDiferido = 0
-            If r.Fechacon >= "20020301" And r.Ivaeq > 0 Then
-                nIvaDiferido = Round(drReporte("SaldoEq") * r.Porieq / 100, 2)
-            End If
-
             nBonifica = 0
-            If r.Fechacon >= "20020901" And r.ImpRD > 0 And r.RtasD = 0 Then
-                nBonifica = Round(ta.SaldoEquipo(r.Anexo) * ((r.ImpRD + r.IvaRD) / r.mtofin), 2)
-            End If
-
-            If r.Tipar = "F" Then
-                nIvaCap = nIvaDiferido - nBonifica
-            Else
-                nIvaCap = nIvaDiferido
-            End If
-
-            drReporte("IvaCap") = nIvaCap
-            drReporte("Rentasven") = ta.RentasVen(r.Anexo)
-            drReporte("OpCompIva") = r.impopc
-            If r.Tipar = "F" Then
-                nRentadep = r.depg
-            ElseIf r.Tipar = "R" Then
-                nRentadep = (r.depg) * -1
-            Else
-                nRentadep = r.depg + (nBonifica) * -1
-            End If
-
-            drReporte("RtasDepIva") = nRentadep * -1
+            drReporte("IvaCap") = 0 'nIvaCap
+            drReporte("Rentasven") = 0 'ta.RentasVen(r.Anexo)
+            drReporte("OpCompIva") = 0 'r.impopc
+            drReporte("RtasDepIva") = 0 'nRentadep * -1
             drReporte("SaldoAvio") = 0
-            nTotalAd = (drReporte("SaldoEq") + drReporte("SaldoSeg") + ta.SaldoOtros(r.Anexo) + nIvaCap + ta.RentasVen(r.Anexo) + r.impopc) - nRentadep
+
+            If r.Tipar = "B" Then ' FULL SERVICE
+                nTotalAd = 0
+            End If
+            If r.Tipar = "P" Then
+                Calcfini1 = New frmCalcfiniAP(r.Anexo.Substring(0, 5) & "/" & r.Anexo.Substring(5, 4))
+                Calcfini1.Hide()
+                Calcfini1.CompletoFRM = False
+                Calcfini1.ConnAux = ConnAux
+                Calcfini1.DateTimePicker1.Value = dFecha
+                Calcfini1.Show()
+                Calcfini1.btnProcesar.PerformClick()
+                Calcfini1.btnCalcular.PerformClick()
+                nTotalAd = Calcfini1.txtImportePago.Text
+                Calcfini1.Close()
+            Else
+                Calcfini2 = New frmCalcfini(r.Anexo.Substring(0, 5) & "/" & r.Anexo.Substring(5, 4))
+                Calcfini2.ConnAux = ConnAux
+                Calcfini2.DateTimePicker1.Value = dFecha
+                Calcfini2.CompletoFRM = False
+                Calcfini2.Show()
+                Calcfini2.btnProcesar.PerformClick()
+                Calcfini2.btnCalcular.PerformClick()
+                nTotalAd = Calcfini2.txtImportePago.Text
+                Calcfini2.Close()
+            End If
+            Cont += 1
+            If Cont >= 5 Then
+                ClearMemory()
+                Cont = 0
+            End If
 
             drReporte("TotalDeuda") = nTotalAd
             drReporte("Pago") = r.Mensu
@@ -153,7 +169,7 @@ Public Class frmRepoSeguros
             'registro del reporte
             drReporte = ReportesDS1.dtReporte.NewRow()
             drReporte.FechaNac = r2.FechaNac.Date
-            drReporte.Nombre = r2.nombreCliente
+            drReporte.Nombre = r2.NombreCliente
             drReporte.Paterno = r2.ApellidoPaterno
             drReporte.Materno = r2.ApellidoMaterno
             drReporte.Nombre2 = ""

@@ -23,6 +23,18 @@ Module GEN_Globales
     Private Function GetLastInputInfo(ByRef plii As LASTINPUTINFO) As Boolean
     End Function
 
+    Private Declare Auto Function SetProcessWorkingSetSize Lib “kernel32.dll” (ByVal procHandle As IntPtr, ByVal min As Int32, ByVal max As Int32) As Boolean
+
+    Public Sub ClearMemory()
+        Try
+            Dim Mem As Process
+            Mem = Process.GetCurrentProcess()
+            SetProcessWorkingSetSize(Mem.Handle, -1, -1)
+        Catch ex As Exception
+            'Control de errores
+        End Try
+    End Sub
+
     Public Function GetInactiveTime() As Nullable(Of TimeSpan)
         Dim info As LASTINPUTINFO = New LASTINPUTINFO
         info.cbSize = CUInt(Marshal.SizeOf(info))
