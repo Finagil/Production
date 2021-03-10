@@ -32,6 +32,10 @@ Partial Class frmFiniquito
         Me.dtpFechaPago = New System.Windows.Forms.DateTimePicker()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
+        Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GeneralDS = New Agil.GeneralDS()
+        Me.Label16 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TxtSegVida = New System.Windows.Forms.TextBox()
@@ -102,15 +106,14 @@ Partial Class frmFiniquito
         Me.lblSaldoEquipo = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.CmbInstruMon = New System.Windows.Forms.ComboBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.GeneralDS = New Agil.GeneralDS()
-        Me.InstrumentoMonetarioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.InstrumentoMonetarioTableAdapter = New Agil.GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextFEGA = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtImportePago
@@ -212,6 +215,9 @@ Partial Class frmFiniquito
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label17)
+        Me.GroupBox1.Controls.Add(Me.Label18)
+        Me.GroupBox1.Controls.Add(Me.TextFEGA)
         Me.GroupBox1.Controls.Add(Me.CmbInstruMon)
         Me.GroupBox1.Controls.Add(Me.Label16)
         Me.GroupBox1.Controls.Add(Me.Label14)
@@ -288,6 +294,38 @@ Partial Class frmFiniquito
         Me.GroupBox1.TabIndex = 126
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Visible = False
+        '
+        'CmbInstruMon
+        '
+        Me.CmbInstruMon.DataSource = Me.InstrumentoMonetarioBindingSource
+        Me.CmbInstruMon.DisplayMember = "Titulo"
+        Me.CmbInstruMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbInstruMon.FormattingEnabled = True
+        Me.CmbInstruMon.Location = New System.Drawing.Point(16, 212)
+        Me.CmbInstruMon.Name = "CmbInstruMon"
+        Me.CmbInstruMon.Size = New System.Drawing.Size(251, 21)
+        Me.CmbInstruMon.TabIndex = 167
+        Me.CmbInstruMon.ValueMember = "Clave"
+        '
+        'InstrumentoMonetarioBindingSource
+        '
+        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
+        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
+        '
+        'GeneralDS
+        '
+        Me.GeneralDS.DataSetName = "GeneralDS"
+        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(13, 196)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(133, 13)
+        Me.Label16.TabIndex = 166
+        Me.Label16.Text = "Instrumento Monetario"
         '
         'Label14
         '
@@ -589,7 +627,7 @@ Partial Class frmFiniquito
         '
         'txtPagoTotal
         '
-        Me.txtPagoTotal.Location = New System.Drawing.Point(582, 398)
+        Me.txtPagoTotal.Location = New System.Drawing.Point(582, 420)
         Me.txtPagoTotal.Name = "txtPagoTotal"
         Me.txtPagoTotal.ReadOnly = True
         Me.txtPagoTotal.Size = New System.Drawing.Size(100, 20)
@@ -599,7 +637,7 @@ Partial Class frmFiniquito
         'lblPagoTotal
         '
         Me.lblPagoTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPagoTotal.Location = New System.Drawing.Point(382, 398)
+        Me.lblPagoTotal.Location = New System.Drawing.Point(382, 420)
         Me.lblPagoTotal.Name = "lblPagoTotal"
         Me.lblPagoTotal.Size = New System.Drawing.Size(199, 16)
         Me.lblPagoTotal.TabIndex = 118
@@ -960,41 +998,37 @@ Partial Class frmFiniquito
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(132, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
-        'CmbInstruMon
-        '
-        Me.CmbInstruMon.DataSource = Me.InstrumentoMonetarioBindingSource
-        Me.CmbInstruMon.DisplayMember = "Titulo"
-        Me.CmbInstruMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbInstruMon.FormattingEnabled = True
-        Me.CmbInstruMon.Location = New System.Drawing.Point(16, 212)
-        Me.CmbInstruMon.Name = "CmbInstruMon"
-        Me.CmbInstruMon.Size = New System.Drawing.Size(251, 21)
-        Me.CmbInstruMon.TabIndex = 167
-        Me.CmbInstruMon.ValueMember = "Clave"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(13, 196)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(133, 13)
-        Me.Label16.TabIndex = 166
-        Me.Label16.Text = "Instrumento Monetario"
-        '
-        'GeneralDS
-        '
-        Me.GeneralDS.DataSetName = "GeneralDS"
-        Me.GeneralDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'InstrumentoMonetarioBindingSource
-        '
-        Me.InstrumentoMonetarioBindingSource.DataMember = "InstrumentoMonetario"
-        Me.InstrumentoMonetarioBindingSource.DataSource = Me.GeneralDS
-        '
         'InstrumentoMonetarioTableAdapter
         '
         Me.InstrumentoMonetarioTableAdapter.ClearBeforeFill = True
+        '
+        'Label17
+        '
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(365, 393)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(14, 17)
+        Me.Label17.TabIndex = 170
+        Me.Label17.Text = "+"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label18
+        '
+        Me.Label18.Location = New System.Drawing.Point(382, 393)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(199, 16)
+        Me.Label18.TabIndex = 169
+        Me.Label18.Text = "Garantía FEGA"
+        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TextFEGA
+        '
+        Me.TextFEGA.Location = New System.Drawing.Point(582, 393)
+        Me.TextFEGA.Name = "TextFEGA"
+        Me.TextFEGA.ReadOnly = True
+        Me.TextFEGA.Size = New System.Drawing.Size(100, 20)
+        Me.TextFEGA.TabIndex = 168
+        Me.TextFEGA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'frmFiniquito
         '
@@ -1018,10 +1052,10 @@ Partial Class frmFiniquito
         Me.Text = "Finiquito de Contrato"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        CType(Me.GeneralDS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InstrumentoMonetarioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1113,4 +1147,7 @@ Partial Class frmFiniquito
     Friend WithEvents GeneralDS As GeneralDS
     Friend WithEvents InstrumentoMonetarioBindingSource As BindingSource
     Friend WithEvents InstrumentoMonetarioTableAdapter As GeneralDSTableAdapters.InstrumentoMonetarioTableAdapter
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents TextFEGA As TextBox
 End Class

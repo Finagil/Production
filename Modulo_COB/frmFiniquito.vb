@@ -44,7 +44,8 @@ Public Class frmFiniquito
     Dim drTemporal As DataRow
 
     ' Declaración de variables de datos de alcance Privado
-
+    Dim nFega As Decimal = 0
+    Dim nIvaFega As Decimal = 0
     Dim cAdeudo As String = ""
     Dim cAnexo As String = ""
     Dim cBanco As String = ""
@@ -129,6 +130,10 @@ Public Class frmFiniquito
     Dim AnexosGEN As New ProductionDataSetTableAdapters.AnexosTableAdapter
     Dim taAux As New ContaDSTableAdapters.AuxiliarTableAdapter
     Dim NoGrupo As Decimal = FOLIOS.SacaNoGrupo()
+    Dim EsAvio As Boolean
+    Dim cAplicaFEGA As String
+    Dim nPorcFega As Decimal
+    Dim Sucursal As String
 
     Private Sub frmFiniquito_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.InstrumentoMonetarioTableAdapter.Fill(Me.GeneralDS.InstrumentoMonetario)
@@ -897,6 +902,12 @@ Public Class frmFiniquito
         End If
         nSeguroVida = Round((nSaldoEquipo + nSaldoSeguro + nSaldoOtros) / 1000 * nPrimaSeguro / 30.4 * nDiasIntereses, 2)
         '+++++CALCULO DE SEGURO DE VIDA
+        '+++++CALCULO DE FEGA
+        nFega = CalculaFEGA(nDiasIntereses)
+        nIvaFega = nFega * (1 + (nTasaIvaCliente / 100))
+        nFega -= nIvaFega
+        '+++++CALCULO DE FEGA
+
 
         ' Inicializo subtotal, iva y total tanto para la factura de pago como para la nota de crédito
 
@@ -916,8 +927,8 @@ Public Class frmFiniquito
             ' Si se tratara de un arrendamiento financiero, el saldo del depósito en garantía debería aplicarse al capital del equipo
             ' y el iva del depósito en garantía debería aplicarse al iva del capital
 
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital - nIvaDG + nIvaInteresTOT + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida + nFega, 2)
+            nIvaFactura = Round(nIvaCapital - nIvaDG + nIvaInteresTOT + nIvaComision + nIvaFega, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
             nSubTotalNota = Round(nImpDG + nImpRD, 2)
@@ -928,8 +939,8 @@ Public Class frmFiniquito
 
             ' Si se tratara de un Crédito Refaccionario, el saldo del depósito en garantía más su iva debería aplicarse íntegramente al capital del equipo ya que no existe iva del capital
 
-            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nIvaDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaCapital + nIvaInteresTOT + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo - nImpDG - nIvaDG - nImpRD - nIvaRD + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida + nFega, 2)
+            nIvaFactura = Round(nIvaCapital + nIvaInteresTOT + nIvaComision + nIvaFega, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
             nSubTotalNota = Round(nImpDG + nImpRD, 2)
@@ -940,24 +951,25 @@ Public Class frmFiniquito
 
             ' Recordar que para los Créditos Simples no existe el concepto de Depósito en Garantía ni de Rentas en Depósito
 
-            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida + nFega, 2)
+            nIvaFactura = Round(nIvaInteresTOT + nIvaComision + nIvaFega, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
         ElseIf cTipar = "L" Then
 
             ' Recordar que para los Créditos Simples no existe el concepto de Depósito en Garantía ni de Rentas en Depósito
 
-            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida, 2)
-            nIvaFactura = Round(nIvaInteresTOT + nIvaComision, 2)
+            nSubTotalFactura = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nInteresTOT + nComision + nSeguroVida + nFega, 2)
+            nIvaFactura = Round(nIvaInteresTOT + nIvaComision + nIvaFega, 2)
             nTotalFactura = Round(nSubTotalFactura + nIvaFactura, 2)
 
         End If
 
         nPagoTotal = Round(nSaldoEquipo + nSaldoSeguro + nSaldoOtros + nIvaCapital - nImpDG - nIvaDG - nImpRD - nIvaRD _
-                    + nInteresTOT + nIvaInteresTOT + nComision + nIvaComision + nOpcion + nIvaOpcion + nSeguroVida, 2)
+                    + nInteresTOT + nIvaInteresTOT + nComision + nIvaComision + nOpcion + nIvaOpcion + nSeguroVida + nFega + nIvaFega, 2)
 
         TxtSegVida.Text = FormatNumber(nSeguroVida, 2)
+        TextFEGA.Text = FormatNumber(nFega + nIvaFega, 2)
         txtUdiInicial.Text = FormatNumber(nUdiInicial, 6)
         txtUdiFinal.Text = FormatNumber(nUdiFinal, 6)
         txtIntereses.Text = FormatNumber(nInteresTOT, 2)
@@ -1799,6 +1811,66 @@ Public Class frmFiniquito
             dtTemporal.Rows.Add(drTemporal)
         End If
 
+        If nFega > 0 Then
+
+            drMovimiento = dtMovimientos.NewRow()
+            drMovimiento("Anexo") = cAnexo
+            drMovimiento("Letra") = "999"
+            drMovimiento("Tipos") = "3"
+            drMovimiento("Fepag") = cFechaAplicacion
+            drMovimiento("Cve") = "78"
+            drMovimiento("Imp") = nFega
+            drMovimiento("Tip") = "S"
+            drMovimiento("Catal") = cCatal
+            drMovimiento("Esp") = 0
+            drMovimiento("Coa") = "1"
+            drMovimiento("Tipmon") = "01"
+            drMovimiento("Banco") = cBanco
+            drMovimiento("Concepto") = cCheque
+            drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
+            drMovimiento("Grupo") = NoGrupo
+            dtMovimientos.Rows.Add(drMovimiento)
+
+            drTemporal = dtTemporal.NewRow()
+            drTemporal("Anexo") = cAnexo
+            drTemporal("Fecha") = cFechaAplicacion
+            drTemporal("Concepto") = "GARANTIA FEGA"
+            drTemporal("Importe") = nFega
+            drTemporal("Banco") = cBanco
+            drTemporal("IVA") = nIvaFega
+            dtTemporal.Rows.Add(drTemporal)
+        End If
+
+        If nIvaFega > 0 Then
+            drMovimiento = dtMovimientos.NewRow()
+            drMovimiento("Anexo") = cAnexo
+            drMovimiento("Letra") = "999"
+            drMovimiento("Tipos") = "3"
+            drMovimiento("Fepag") = cFechaAplicacion
+            drMovimiento("Cve") = "77"
+            drMovimiento("Imp") = nIvaFega
+            drMovimiento("Tip") = "S"
+            drMovimiento("Catal") = cCatal
+            drMovimiento("Esp") = 0
+            drMovimiento("Coa") = "1"
+            drMovimiento("Tipmon") = "01"
+            drMovimiento("Banco") = cBanco
+            drMovimiento("Concepto") = cCheque
+            drMovimiento("Factura") = cSerie & nFactura '#ECT para ligar folios fiscales
+            drMovimiento("Grupo") = NoGrupo
+            dtMovimientos.Rows.Add(drMovimiento)
+
+            drTemporal = dtTemporal.NewRow()
+            drTemporal("Anexo") = cAnexo
+            drTemporal("Fecha") = cFechaAplicacion
+            drTemporal("Concepto") = "IVA DE GARANTIA FEGA"
+            drTemporal("Importe") = nIvaComision
+            drTemporal("Banco") = cBanco
+            drTemporal("IVA") = 0
+            dtTemporal.Rows.Add(drTemporal)
+
+        End If
+
         If Round(nImportePago, 2) < Round(nPagoTotal, 2) Then
 
             MsgBox("El pago no alcanza a cubrir el finiquito", MsgBoxStyle.Critical, "Mensaje de Error")
@@ -2314,4 +2386,36 @@ Public Class frmFiniquito
     Private Sub CkAppBlanco_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CkAppBlanco.CheckedChanged
         btnRecalcular_Click(Nothing, Nothing)
     End Sub
+
+    Function CalculaFEGA(nDias As Integer) As Decimal
+        Dim nImporteFEGA As Decimal
+        If (EsAvio = True And cAnexo <> "030500004") Or (AnexosGEN.CapitalDeTrabajo(cAnexo) > 0) Or (cFondeo = "03" And cAplicaFEGA = "S") Then
+            Select Case cAnexo
+                Case "035890001"
+                    nImporteFEGA = nSaldoEquipo * 0.014641 * (1 + (nTasaIvaCliente / 100))
+                Case "035890002"
+                    nImporteFEGA = nSaldoEquipo * 0.012772 * (1 + (nTasaIvaCliente / 100))
+                Case "019140007"
+                    nImporteFEGA = nSaldoEquipo * 0.01179 * (1 + (nTasaIvaCliente / 100))
+                Case "030500005"
+                    nImporteFEGA = nSaldoEquipo * 0.01 * (1 + (nTasaIvaCliente / 100))
+                Case Else
+                    If nPorcFega > 0 Then
+                        nImporteFEGA = nSaldoEquipo * (nPorcFega) * (1 + (nTasaIvaCliente / 100))
+                    ElseIf cFechacon < "20160101" Then
+                        nImporteFEGA = nSaldoEquipo * 0.01 * (1 + (nTasaIvaCliente / 100))
+                    ElseIf cFechacon < "20180322" Then
+                        nImporteFEGA = nSaldoEquipo * 0.015 * (1 + (nTasaIvaCliente / 100))
+                    Else ' en adelante
+                        If Sucursal = "03" Or Sucursal = "04" Or Sucursal = "08" Or Sucursal = "09" Then
+                            nImporteFEGA = nSaldoEquipo * PORC_FEGA_NORTE_TRA * (1 + (nTasaIvaCliente / 100))
+                        Else
+                            nImporteFEGA = nSaldoEquipo * PORC_FEGA_TRA * (1 + (nTasaIvaCliente / 100))
+                        End If
+                    End If
+            End Select
+            nImporteFEGA = Round(nImporteFEGA / 360 * nDias, 2)
+        End If
+        Return nImporteFEGA
+    End Function
 End Class
