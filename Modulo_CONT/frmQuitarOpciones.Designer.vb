@@ -44,6 +44,16 @@ Partial Class frmQuitarOpciones
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.TextIVADG = New System.Windows.Forms.TextBox()
+        Me.TextDG = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.TextIVARD = New System.Windows.Forms.TextBox()
+        Me.TextRD = New System.Windows.Forms.TextBox()
         CType(Me.ClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesaControlDS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContratosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,7 +164,7 @@ Partial Class frmQuitarOpciones
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(91, 173)
+        Me.Label7.Location = New System.Drawing.Point(10, 174)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 13)
         Me.Label7.TabIndex = 55
@@ -164,7 +174,7 @@ Partial Class frmQuitarOpciones
         '
         Me.TextAmorin.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "IvaOpcion", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.TextAmorin.Enabled = False
-        Me.TextAmorin.Location = New System.Drawing.Point(170, 170)
+        Me.TextAmorin.Location = New System.Drawing.Point(89, 171)
         Me.TextAmorin.Name = "TextAmorin"
         Me.TextAmorin.ReadOnly = True
         Me.TextAmorin.Size = New System.Drawing.Size(89, 20)
@@ -173,7 +183,7 @@ Partial Class frmQuitarOpciones
         '
         'ButtonOP
         '
-        Me.ButtonOP.Location = New System.Drawing.Point(265, 173)
+        Me.ButtonOP.Location = New System.Drawing.Point(193, 148)
         Me.ButtonOP.Name = "ButtonOP"
         Me.ButtonOP.Size = New System.Drawing.Size(101, 47)
         Me.ButtonOP.TabIndex = 4
@@ -184,7 +194,7 @@ Partial Class frmQuitarOpciones
         '
         Me.TextGastos.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "Pagado", True))
         Me.TextGastos.Enabled = False
-        Me.TextGastos.Location = New System.Drawing.Point(170, 199)
+        Me.TextGastos.Location = New System.Drawing.Point(89, 197)
         Me.TextGastos.Name = "TextGastos"
         Me.TextGastos.ReadOnly = True
         Me.TextGastos.Size = New System.Drawing.Size(89, 20)
@@ -194,7 +204,7 @@ Partial Class frmQuitarOpciones
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(106, 202)
+        Me.Label8.Location = New System.Drawing.Point(25, 200)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(44, 13)
         Me.Label8.TabIndex = 58
@@ -204,7 +214,7 @@ Partial Class frmQuitarOpciones
         '
         Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ContratosBindingSource, "Opcion", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(170, 144)
+        Me.TextBox1.Location = New System.Drawing.Point(89, 145)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(89, 20)
@@ -214,17 +224,113 @@ Partial Class frmQuitarOpciones
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(106, 147)
+        Me.Label6.Location = New System.Drawing.Point(25, 148)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(41, 13)
         Me.Label6.TabIndex = 61
         Me.Label6.Text = "Opción"
         '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(119, 273)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(22, 13)
+        Me.Label26.TabIndex = 86
+        Me.Label26.Text = "Iva"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(24, 272)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(43, 13)
+        Me.Label27.TabIndex = 85
+        Me.Label27.Text = "Imp DG"
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(215, 287)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(121, 23)
+        Me.Button11.TabIndex = 84
+        Me.Button11.Text = "Cambia DG"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'TextIVADG
+        '
+        Me.TextIVADG.Location = New System.Drawing.Point(119, 289)
+        Me.TextIVADG.MaxLength = 9
+        Me.TextIVADG.Name = "TextIVADG"
+        Me.TextIVADG.Size = New System.Drawing.Size(90, 20)
+        Me.TextIVADG.TabIndex = 83
+        '
+        'TextDG
+        '
+        Me.TextDG.Location = New System.Drawing.Point(23, 289)
+        Me.TextDG.MaxLength = 9
+        Me.TextDG.Name = "TextDG"
+        Me.TextDG.Size = New System.Drawing.Size(90, 20)
+        Me.TextDG.TabIndex = 82
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(119, 231)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(22, 13)
+        Me.Label25.TabIndex = 81
+        Me.Label25.Text = "Iva"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(24, 230)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(43, 13)
+        Me.Label24.TabIndex = 80
+        Me.Label24.Text = "Imp RD"
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(215, 245)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(121, 23)
+        Me.Button8.TabIndex = 79
+        Me.Button8.Text = "Cambia RD"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'TextIVARD
+        '
+        Me.TextIVARD.Location = New System.Drawing.Point(119, 247)
+        Me.TextIVARD.MaxLength = 9
+        Me.TextIVARD.Name = "TextIVARD"
+        Me.TextIVARD.Size = New System.Drawing.Size(90, 20)
+        Me.TextIVARD.TabIndex = 78
+        '
+        'TextRD
+        '
+        Me.TextRD.Location = New System.Drawing.Point(23, 247)
+        Me.TextRD.MaxLength = 9
+        Me.TextRD.Name = "TextRD"
+        Me.TextRD.Size = New System.Drawing.Size(90, 20)
+        Me.TextRD.TabIndex = 77
+        '
         'frmQuitarOpciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(372, 229)
+        Me.ClientSize = New System.Drawing.Size(346, 319)
+        Me.Controls.Add(Me.Label26)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.Button11)
+        Me.Controls.Add(Me.TextIVADG)
+        Me.Controls.Add(Me.TextDG)
+        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.Label24)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.TextIVARD)
+        Me.Controls.Add(Me.TextRD)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButtonOP)
@@ -271,4 +377,14 @@ Partial Class frmQuitarOpciones
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Button11 As Button
+    Friend WithEvents TextIVADG As TextBox
+    Friend WithEvents TextDG As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Button8 As Button
+    Friend WithEvents TextIVARD As TextBox
+    Friend WithEvents TextRD As TextBox
 End Class

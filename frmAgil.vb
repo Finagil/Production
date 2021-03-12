@@ -426,6 +426,7 @@ Public Class frmAgil
         Me.MenuItem83 = New System.Windows.Forms.MenuItem()
         Me.MenuItem96 = New System.Windows.Forms.MenuItem()
         Me.MenuItem98 = New System.Windows.Forms.MenuItem()
+        Me.MenuItem100 = New System.Windows.Forms.MenuItem()
         Me.mnuSist = New System.Windows.Forms.MenuItem()
         Me.mnuBuroCred = New System.Windows.Forms.MenuItem()
         Me.mnuMorales = New System.Windows.Forms.MenuItem()
@@ -599,7 +600,6 @@ Public Class frmAgil
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PendientesORGTableAdapter = New Agil.GeneralDSTableAdapters.PendientesORGTableAdapter()
         Me.PendientesFINTableAdapter = New Agil.GeneralDSTableAdapters.PendientesFINTableAdapter()
-        Me.MenuItem100 = New System.Windows.Forms.MenuItem()
         mnuCAvio = New System.Windows.Forms.MenuItem()
         CType(Me.PendientesORGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GeneralDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1208,12 +1208,17 @@ Public Class frmAgil
         'MenuItem96
         '
         Me.MenuItem96.Index = 11
-        Me.MenuItem96.Text = "Quitar Opción a Compra"
+        Me.MenuItem96.Text = "Quitar Op.Comp. Dep. Gar. Rta. Dep"
         '
         'MenuItem98
         '
         Me.MenuItem98.Index = 12
         Me.MenuItem98.Text = "Días Festivos"
+        '
+        'MenuItem100
+        '
+        Me.MenuItem100.Index = 13
+        Me.MenuItem100.Text = "Procesar Cartera Fira y No Fira"
         '
         'mnuSist
         '
@@ -2182,11 +2187,6 @@ Public Class frmAgil
         'PendientesFINTableAdapter
         '
         Me.PendientesFINTableAdapter.ClearBeforeFill = True
-        '
-        'MenuItem100
-        '
-        Me.MenuItem100.Index = 13
-        Me.MenuItem100.Text = "Procesar Cartera Fira y No Fira"
         '
         'frmAgil
         '

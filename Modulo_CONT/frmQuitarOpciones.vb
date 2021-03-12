@@ -28,6 +28,36 @@
             Else
                 ButtonOP.Enabled = False
             End If
+            If ContratosBindingSource.Current("Anexo").Length = 9 Then
+                TextRD.Text = TaQUERY.SacaRD(ContratosBindingSource.Current("Anexo"))
+                TextDG.Text = TaQUERY.SacaDG(ContratosBindingSource.Current("Anexo"))
+                TextIVARD.Text = TaQUERY.SacaIvaRD(ContratosBindingSource.Current("Anexo"))
+                TextIVADG.Text = TaQUERY.SacaIvaDG(ContratosBindingSource.Current("Anexo"))
+            Else
+                TextRD.Clear()
+                TextDG.Clear()
+                TextIVARD.Clear()
+                TextIVADG.Clear()
+            End If
         End If
     End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Try
+            TaQUERY.CambiaRD(TextRD.Text, TextIVARD.Text, ContratosBindingSource.Current("Anexo"))
+            MessageBox.Show("Renta en deposito Cambiada", "Cambio RD", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Try
+            TaQUERY.CambiaDG(TextDG.Text, TextIVADG.Text, ContratosBindingSource.Current("Anexo"))
+            MessageBox.Show("Depósito en garantía Cambiada", "Cambio DG", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 End Class
