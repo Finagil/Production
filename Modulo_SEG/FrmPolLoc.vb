@@ -353,7 +353,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+        If Me.SegurosDS.Actifijo.Rows.Count < 0 Then
             If IsNothing(SEGPolizasBienesBindingSource.Current) Then
                 MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
@@ -369,7 +369,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+        If Me.SegurosDS.Actifijo.Rows.Count < 0 Then
             If IsNothing(SEGPolizasBienesBindingSource.Current) Then
                 MessageBox.Show("No existen poliza selecionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
@@ -385,7 +385,7 @@ Public Class FrmPolLoc
             MessageBox.Show("Sin contratos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        If Me.SegurosDS.Actifijo.Rows.Count > 0 Then
+        If Me.SegurosDS.Actifijo.Rows.Count < 0 Then
             MessageBox.Show("No existen Activo selecionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If MessageBox.Show("¿Esta seguro de enviar el correo de TERMINACION?", "Correo TERMINACION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
